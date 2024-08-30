@@ -1,25 +1,14 @@
 :root {
-  --white: #fff;
-  --black: #000;
-
-  --gray-50: #f3f3f4;
-  --gray-100: #e5e6e8;
-  --gray-200: #cbcdd1;
-  --gray-300: #b1b4ba;
-  --gray-400: #979ba3;
-  --gray-500: #7d828c;
-  --gray-600: #646870;
-  --gray-700: #4b4e54;
-  --gray-800: #323438;
-  --gray-900: #1F1F1F;
-  --gray-950: #0d0d0e;
-
-  --accent-color: #440fbf;
-
-  --background: var(--gray-900);
-  --forground: var(--gray-50);
-  --border-color: var(--gray-700);
-  --border-thickness: 0.5px;
+  --primary: #6738ff;
+  --secondary: #d0c1ff;
+  --tertiary: #f0ebff;
+  --background: #f9f9f9;
+  --red: #e11900;
+  --black: #101115;
+  --white: #ffffff;
+  --content-primary: #333333;
+  --content-secondary: #979797;
+  --content-tertiary: #d9d9d9;
 
   --rounded-none: 0;
   --rounded-xs: 2px;
@@ -27,4 +16,38 @@
   --rounded-md: 6px;
   --rounded-lg: 8px;
   --rounded-full: 9999px;
+
+  --spacing-4: 0.25rem;
+  --spacing-8: 0.5rem;
+  --spacing-12: 0.75rem;
+  --spacing-16: 1rem;
+  --spacing-20: 1.25rem;
+  --spacing-24: 1.5rem;
+  --spacing-28: 1.75rem;
+  --spacing-32: 2rem;
+  --spacing-36: 2.25rem;
+  --spacing-40: 2.5rem;
+  --spacing-44: 2.75rem;
+  --spacing-48: 3rem;
+  --spacing-52: 3.25rem;
+  --spacing-56: 3.5rem;
+  --spacing-60: 3.75rem;
+  --spacing-64: 4rem;
+
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-28: 28px;
+  --spacing-32: 32px;
+  --spacing-36: 36px;
+  --spacing-40: 40px;
+  --spacing-44: 44px;
+  --spacing-48: 48px;
+  --spacing-52: 52px;
+  --spacing-56: 56px;
+  --spacing-60: 60px;
+  --spacing-64: 64px;
 }
