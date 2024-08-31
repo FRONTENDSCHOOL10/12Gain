@@ -1,0 +1,21 @@
+.component {
+  padding: var(--spacing-8) var(--spacing-24);
+  margin: auto;
+
+  inline-size: 20rem;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  a {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    text-decoration: none;
+    color: var(--black);
+    font-size: 0.625rem;
+  }
+}
