@@ -2,7 +2,7 @@ import S from './style.module.css';
 
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import Icon from '../Icon';
+import Icon from '@/components/Icon/Icon';
 
 function GlobalNav() {
   const [navList] = useState([
@@ -34,7 +34,11 @@ function GlobalNav() {
           <li key={path}>
             <NavLink to={path}>
               {({ isActive }) =>
-                isActive ? <Icon id={iconFull}></Icon> : <Icon id={icon} />
+                isActive ? (
+                  <Icon id={iconFull} text={text}></Icon>
+                ) : (
+                  <Icon id={icon} text={text} />
+                )
               }
             </NavLink>
           </li>
