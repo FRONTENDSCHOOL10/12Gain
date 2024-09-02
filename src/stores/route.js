@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-export const useNavList = create((set) => ({
+export const useNavList = create(() => ({
   navList: [
     { path: '/', text: '홈', icon: 'home', iconFull: 'homeFull' },
     {
@@ -22,7 +22,10 @@ export const useNavList = create((set) => ({
       iconFull: 'personFull',
     },
   ],
-  inputValue: '', // inputValue 상태 추가
-  setInputValue: (value) => set({ inputValue: value }), // inputValue 업데이트 함수 추가
-  clearInputValue: () => set({ inputValue: '' }), // inputValue 초기화 함수 추가
+}));
+
+export const useInputValue = create((set) => ({
+  inputValue: '',
+  setInputValue: (value) => set({ inputValue: value }),
+  clearInputValue: () => set({ inputValue: '' }),
 }));

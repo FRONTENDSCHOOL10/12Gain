@@ -5,11 +5,12 @@ import pb from '@/api/pb';
 import InputWithDelete from '@/components/Input/InputWithDelete';
 import router from '@/routes/router';
 import { useNavList } from '@/stores/route';
+import { useInputValue } from '@/stores/route';
 
 function App() {
   const record = pb.collection('test');
 
-  const { inputValue, setInputValue, clearInputValue } = useNavList(); // zustand 상태 가져오기
+  const { inputValue, setInputValue, clearInputValue } = useInputValue();
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
