@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Icon from './Icon/Icon';
+// import Icon from '../Icon/Icon';
+import Icon from '@/components/Icon/Icon';
+import S from '@/components/Icon/style.module.css';
 
 const InputWithDelete = ({
   value, // 입력 필드의 현재 값

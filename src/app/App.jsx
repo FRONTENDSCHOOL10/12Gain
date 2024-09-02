@@ -1,21 +1,22 @@
-import { StrictMode, useState } from 'react';
+import { StrictMode } from 'react';
 import { RouterProvider } from 'react-router-dom';
 
 import pb from '@/api/pb';
-import InputWithDelete from '@/components/InputWithDelete';
+import InputWithDelete from '@/components/Input/InputWithDelete';
 import router from '@/routes/router';
+import { useNavList } from '@/stores/route';
 
 function App() {
   const record = pb.collection('test');
 
-  const [inputValue, setInputValue] = useState('');
+  const { inputValue, setInputValue, clearInputValue } = useNavList(); // zustand 상태 가져오기
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
   };
 
   const handleClear = () => {
-    setInputValue('');
+    clearInputValue();
   };
 
   console.log(record);
