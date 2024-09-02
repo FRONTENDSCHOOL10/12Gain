@@ -1,0 +1,26 @@
+.component {
+  display: flex;
+  flex-flow: row;
+  gap: var(--spacing-12);
+  padding: 0 var(--spacing-12);
+  height: var(--spacing-40);
+  align-items: center;
+  font-size: 0.875rem;
+
+  li {
+    height: 100%;
+    align-content: center;
+  }
+
+  a {
+    display: block;
+    align-content: center;
+    height: var(--spacing-40);
+    color: var(--content-secondary);
+
+    &.active {
+      color: var(--black);
+      box-shadow: 0 2px 0 0 var(--black);
+    }
+  }
+}

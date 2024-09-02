@@ -1,0 +1,5 @@
+.component {
+  background-color: var(--background);
+  padding: var(--spacing-20) var(--spacing-12);
+  min-block-size: 16rem;
+}

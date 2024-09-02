@@ -10,6 +10,7 @@
   }
 
   span {
+    padding: var(--spacing-12) 0;
     font-size: 0.625rem;
   }
 }

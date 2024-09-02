@@ -5,6 +5,8 @@ import Home from './home';
 import MyAppointment from './myAppointment';
 import Community from './community';
 import Profile from './profile';
+import MyPost from './profile/component/MyPost';
+import MyFeed from './profile/component/MyFeed';
 
 const routes = [
   {
@@ -14,7 +16,14 @@ const routes = [
       { index: true, element: <Home /> },
       { path: 'myAppointment', element: <MyAppointment /> },
       { path: 'community', element: <Community /> },
-      { path: 'Profile', element: <Profile /> },
+      {
+        path: 'Profile',
+        element: <Profile />,
+        children: [
+          { index: true, element: <MyPost /> },
+          { path: 'community', element: <MyFeed /> },
+        ],
+      },
     ],
   },
 ];
