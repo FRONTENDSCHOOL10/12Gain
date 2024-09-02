@@ -1,4 +1,4 @@
-import S from './style.module.css';
+import S from '@/components/Icon/style.module.css';
 
 import { number } from 'prop-types';
 import { string } from 'prop-types';
