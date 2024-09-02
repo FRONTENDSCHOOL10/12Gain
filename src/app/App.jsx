@@ -28,7 +28,7 @@ function App() {
           value={inputValue}
           onChange={handleChange}
           onClear={handleClear}
-          placeholder="Enter text"
+          placeholder="text"
           showClearButton={true}
         />
       </div>
