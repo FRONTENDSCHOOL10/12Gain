@@ -1,21 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Icon from '../Icon/Icon';
 import Icon from '@/components/Icon/Icon';
 import S from '@/components/Icon/style.module.css';
 
 const InputWithDelete = ({
-  value, // 입력 필드의 현재 값
-  onChange, // 입력 필드 값이 변경될 때 호출되는 함수
-  placeholder = '', // 입력 필드에 표시되는 플레이스홀더 텍스트
-  onClear, // 입력 필드를 지울 때 호출되는 함수
-  type = 'text', // 입력 필드의 유형 (예: 'text', 'password', 등)
-  disabled = false, // 입력 필드를 비활성화할지 여부
-  maxLength, // 입력 필드에 입력 가능한 최대 문자 수
-  style, // 입력 필드와 컨테이너의 인라인 스타일
-  className, // 추가 CSS 클래스
-  name, // 입력 필드의 이름
-  showClearButton = true, // 입력 필드에 지우기 버튼을 표시할지 여부
+  value,
+  onChange,
+  placeholder = '',
+  onClear,
+  type = 'text',
+  disabled = false,
+  maxLength,
+  style,
+  className,
+  name,
+  showClearButton = true,
 }) => {
   const handleClear = () => {
     if (onClear) {
@@ -77,8 +76,8 @@ InputWithDelete.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
   placeholder: PropTypes.string,
-  onClear: PropTypes.func,
-  type: PropTypes.string,
+  onClear: PropTypes.func.isRequired,
+  type: PropTypes.oneOf(['text', 'password', 'email', 'number']), // 여기서 oneOf로 변경
   disabled: PropTypes.bool,
   maxLength: PropTypes.number,
   style: PropTypes.object,
