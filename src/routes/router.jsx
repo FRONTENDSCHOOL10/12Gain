@@ -8,6 +8,9 @@ import Profile from './profile';
 import MyPost from './profile/component/MyPost';
 import MyFeed from './profile/component/MyFeed';
 import EditProfile from './profile/component/EditProfile';
+import Landing from './landing';
+import Login from './login';
+import SignUp from './signup';
 
 const routes = [
   {
@@ -28,6 +31,9 @@ const routes = [
     ],
   },
   { path: 'profile/edit', element: <EditProfile /> },
+  { path: '/Landing', element: <Landing /> },
+  { path: '/Landing/Login', element: <Login /> },
+  { path: '/Landing/SignUp', element: <SignUp /> },
 ];
 
 const router = createBrowserRouter(routes);
