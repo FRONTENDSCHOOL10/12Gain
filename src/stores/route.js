@@ -23,3 +23,9 @@ export const useNavList = create(() => ({
     },
   ],
 }));
+
+export const useInputValue = create((set) => ({
+  inputValue: '',
+  setInputValue: (value) => set({ inputValue: value }),
+  clearInputValue: () => set({ inputValue: '' }),
+}));
