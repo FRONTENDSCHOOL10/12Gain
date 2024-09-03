@@ -1,11 +1,12 @@
 import S from '@/routes/profile/style.module.css';
 
-import Header from '@/routes/profile/component/Header';
+import Header from '@/components/Header/Header';
 import ProfileCard from '@/routes/profile/component/ProfileCard';
 import Button from '@/components/Button/Button';
 import PostList from '@/routes/profile/component/PostList';
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Profile() {
   const [subNavList] = useState([
@@ -13,11 +14,17 @@ function Profile() {
     { path: '/profile/community', text: '게시글' },
   ]);
 
+  const navigate = useNavigate();
+
   return (
     <div className={S.component}>
-      <Header text="프로필" />
+      <Header text="프로필" iconList={['search', 'chat', 'alarm']} />
       <ProfileCard nickName="이름" />
-      <Button text="프로필 수정" height="2.8rem" />
+      <Button
+        text="프로필 수정"
+        height="2.8rem"
+        onClick={() => navigate('edit')}
+      />
       <PostList list={subNavList}></PostList>
       <Outlet />
     </div>

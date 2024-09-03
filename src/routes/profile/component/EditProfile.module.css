@@ -1,0 +1,37 @@
+.component {
+  inline-size: 20rem;
+  margin: auto;
+
+  .profile {
+    padding: var(--spacing-20) var(--spacing-12);
+    height: 6.625rem;
+  }
+
+  label {
+    display: flex;
+    flex-flow: column;
+    gap: var(--spacing-8);
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: var(--spacing-12);
+    border-bottom: 1px solid var(--content-tertiary);
+  }
+
+  .aboutMe {
+    min-height: 19rem;
+  }
+
+  .interest__container {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-12);
+    font-size: 0.875rem;
+    font-weight: 600;
+    height: var(--spacing-46);
+    border-bottom: 1px solid var(--content-tertiary);
+  }
+
+  .button__container {
+    margin: var(--spacing-12) 0;
+  }
+}

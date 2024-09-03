@@ -7,6 +7,7 @@ import Community from './community';
 import Profile from './profile';
 import MyPost from './profile/component/MyPost';
 import MyFeed from './profile/component/MyFeed';
+import EditProfile from './profile/component/EditProfile';
 
 const routes = [
   {
@@ -26,6 +27,7 @@ const routes = [
       },
     ],
   },
+  { path: 'profile/edit', element: <EditProfile /> },
 ];
 
 const router = createBrowserRouter(routes);
