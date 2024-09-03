@@ -48,8 +48,8 @@ const InputWithDelete = ({
       />
       {showClearButton && value && (
         <button
-          type="button"
-          onClick={handleClear}
+          type="reset"
+          // onClick={handleClear}
           style={{
             position: 'absolute',
             right: '12px',
@@ -73,8 +73,8 @@ const InputWithDelete = ({
 };
 
 InputWithDelete.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
   placeholder: PropTypes.string,
   onClear: PropTypes.func.isRequired,
   type: PropTypes.oneOf(['text', 'password', 'email', 'number']), // 여기서 oneOf로 변경
