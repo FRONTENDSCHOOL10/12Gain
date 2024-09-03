@@ -9,13 +9,11 @@ Header.propTypes = {
 };
 
 function Header({ text, iconList }) {
-  const icons = [...iconList];
-
   return (
     <header className={S.component}>
       <h1>{text ? text : <Icon id="Logo_s" width={52} />}</h1>
       <ul className={S.icons__container}>
-        {icons.map((item, index) => (
+        {iconList?.map((item, index) => (
           <li key={index}>
             <Icon id={item} />
           </li>

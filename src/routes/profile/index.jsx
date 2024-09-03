@@ -18,7 +18,7 @@ function Profile() {
 
   return (
     <div className={S.component}>
-      <Header text="프로필" iconList={['search', 'chat']} />
+      <Header text="프로필" iconList={['search', 'chat', 'alarm']} />
       <ProfileCard nickName="이름" />
       <Button
         text="프로필 수정"
