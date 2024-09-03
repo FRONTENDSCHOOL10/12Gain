@@ -49,8 +49,8 @@ const InputWithDelete = ({
       />
       {showClearButton && value && (
         <button
-          type="button"
-          onClick={handleClear}
+          type="reset"
+          // onClick={handleClear}
           style={{
             position: 'absolute',
             right: '12px',
@@ -74,10 +74,10 @@ const InputWithDelete = ({
 };
 
 InputWithDelete.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
   placeholder: PropTypes.string,
-  onClear: PropTypes.func.isRequired,
+  onClear: PropTypes.func,
   type: PropTypes.string,
   disabled: PropTypes.bool,
   maxLength: PropTypes.number,

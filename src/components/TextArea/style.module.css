@@ -1,0 +1,8 @@
+.component {
+  display: block;
+  margin: 0 auto;
+  border: 1px solid var(--content-secondary);
+  resize: none;
+  padding: var(--spacing-8) var(--spacing-12);
+  border-radius: var(--rounded-lg);
+}
