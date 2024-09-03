@@ -15,7 +15,7 @@ function Profile() {
 
   return (
     <div className={S.component}>
-      <Header />
+      <Header text="프로필" />
       <ProfileCard nickName="이름" />
       <Button text="프로필 수정" height="2.8rem" />
       <PostList list={subNavList}></PostList>
