@@ -1,0 +1,9 @@
+.component {
+  width: 20rem;
+  inline-size: 20rem;
+  margin: auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
