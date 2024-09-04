@@ -6,8 +6,11 @@ import InputWithDelete from '@/components/Input/InputWithDelete';
 import Button from '@/components/Button/Button';
 import Icon from '@/components/Icon/Icon';
 import TextArea from '@/components/TextArea/TextArea';
+import { useNavigate } from 'react-router-dom';
 
 function EditProfile() {
+  const handleClick = useNavigate();
+
   return (
     <div className={S.component}>
       <Header text="프로필 수정" iconList={['setting']} />
@@ -21,7 +24,13 @@ function EditProfile() {
         </label>
         <div className={S.interest__container}>
           관심 운동 종목
-          <Icon id="right" width={16} height={16} />
+          <button
+            type="button"
+            onClick={() => handleClick('interest')}
+            className={S.interest__button}
+          >
+            <Icon id="right" width={16} height={16} />
+          </button>
         </div>
 
         <label className={S.aboutMe}>
@@ -36,7 +45,14 @@ function EditProfile() {
         </label>
       </form>
       <div className={S.button__container}>
-        <Button text="저장하기" height="2.8125rem" className={S.button} />
+        <Button
+          text="저장하기"
+          height="2.8125rem"
+          className={S.button}
+          onClick={() => {
+            handleClick(-1);
+          }}
+        />
       </div>
     </div>
   );
