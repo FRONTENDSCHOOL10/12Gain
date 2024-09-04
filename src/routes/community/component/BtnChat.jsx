@@ -1,7 +1,7 @@
 import Button from '@/components/Button/Button';
 import Icon from '@/components/Icon/Icon';
 import { useState } from 'react';
-import S from './BtnCount.module.css';
+import S from '@/routes/community/component/BtnCount.module.css';
 
 function BtnChat() {
   const [countChat, setCountChat] = useState(0);
