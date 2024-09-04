@@ -1,0 +1,15 @@
+.component {
+  display: flex;
+  flex-flow: row;
+  /* justify-content: space-between; */
+  align-items: center;
+  block-size: var(--spacing-40);
+  padding: var(--spacing-8) var(--spacing-12);
+  border-bottom: 1px solid var(--content-tertiary);
+}
+
+/* display: flex;
+width: 20rem;
+padding: 0.375rem 0.75rem;
+justify-content: space-between;
+align-items: center; */
