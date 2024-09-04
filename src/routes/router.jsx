@@ -10,7 +10,7 @@ import MyPost from './profile/component/MyPost';
 import MyFeed from './profile/component/MyFeed';
 import PostDetail from '@/components/PostDetail/PostDetail';
 import EditProfile from './profile/component/EditProfile';
-
+import CreateFeedPage from './community/CreateFeedPage';
 
 const routes = [
   {
@@ -46,6 +46,7 @@ const routes = [
       },
       { path: 'myAppointment', element: <MyAppointment /> },
       { path: 'community', element: <Community /> },
+      { path: 'community/create', element: <CreateFeedPage /> },
       {
         path: 'Profile',
         element: <Profile />,
