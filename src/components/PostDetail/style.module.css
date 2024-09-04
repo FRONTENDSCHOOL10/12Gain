@@ -1,0 +1,41 @@
+.component {
+  inline-size: 20rem;
+  margin: auto;
+
+  img {
+    height: 17.75rem;
+    flex-shrink: 0;
+    align-self: stretch;
+  }
+
+  .input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.125rem;
+    align-self: stretch;
+  }
+
+  .detail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.625rem;
+    align-self: stretch;
+  }
+
+  .title {
+    display: flex;
+    padding: 0.3125rem 1.25rem 0.3125rem 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4375rem;
+    flex: 1 0 0;
+    align-self: stretch;
+  }
+
+  .description {
+    width: 16.9375rem;
+    height: 8.375rem;
+  }
+}
