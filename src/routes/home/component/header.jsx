@@ -1,4 +1,4 @@
-import S from '@/routes/profile/component/header.module.css';
+import S from '@/routes/home/component/header.module.css';
 
 import Icon from '@/components/Icon/Icon';
 import { string } from 'prop-types';
