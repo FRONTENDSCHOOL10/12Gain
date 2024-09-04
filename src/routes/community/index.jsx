@@ -1,4 +1,4 @@
-import S from '@/routes/profile/style.module.css';
+import S from '@/routes/community/style.module.css';
 
 import Header from '@/components/Header/Header';
 import Button from '@/components/Button/Button';
@@ -12,12 +12,8 @@ function Community() {
   return (
     <div className={S.component}>
       <Header text="커뮤니티" iconList={['search', 'chat', 'alarm']} />
-      <Button
-        width="1.75rem"
-        height="1.75rem"
-        onClick={() => navigate('create')}
-      >
-        <Icon id="write" width={16} height={16} />
+      <Button width="48px" height="48px" onClick={() => navigate('create')}>
+        <Icon id="write" width={28} height={28} color={'var(--white)'} />
       </Button>
       <Outlet />
     </div>

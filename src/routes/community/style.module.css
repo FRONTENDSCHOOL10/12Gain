@@ -1,0 +1,8 @@
+.component {
+  inline-size: 20rem;
+  margin: auto;
+
+  Button {
+    border-radius: 50%;
+  }
+}
