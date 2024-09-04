@@ -81,7 +81,5 @@ InputWithDelete.propTypes = {
   name: PropTypes.string,
   showClearButton: PropTypes.bool,
 };
-export default InputWithDelete;
-};
 
 export default InputWithDelete;
