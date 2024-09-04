@@ -1,4 +1,6 @@
 .Button {
+  display: block;
+  margin: 0 auto;
   border: none;
   border-radius: 20px;
   background-color: var(--primary);

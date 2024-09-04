@@ -9,6 +9,8 @@ import MainPost from './home/component/MainPost';
 import MyPost from './profile/component/MyPost';
 import MyFeed from './profile/component/MyFeed';
 import PostDetail from '@/components/PostDetail/PostDetail';
+import EditProfile from './profile/component/EditProfile';
+
 
 const routes = [
   {
@@ -54,6 +56,7 @@ const routes = [
       },
     ],
   },
+  { path: 'profile/edit', element: <EditProfile /> },
 ];
 
 const router = createBrowserRouter(routes);
