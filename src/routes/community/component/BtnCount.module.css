@@ -1,0 +1,10 @@
+.component {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  color: var(--content-secondary);
+  font-size: 16px;
+  line-height: 160%;
+}
