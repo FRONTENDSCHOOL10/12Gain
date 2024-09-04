@@ -18,7 +18,20 @@
   }
 
   .aboutMe {
-    min-height: 19rem;
+    /* min-height: 19rem; */
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding-bottom: 5rem;
+
+    span {
+      height: var(--spacing-20);
+    }
+
+    .aboutMe__textCheck {
+      font-size: 0.625rem;
+      font-weight: 400;
+      color: var(--content-secondary);
+    }
   }
 
   .interest__container {

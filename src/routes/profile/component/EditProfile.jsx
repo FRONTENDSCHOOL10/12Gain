@@ -23,8 +23,10 @@ function EditProfile() {
           관심 운동 종목
           <Icon id="right" width={16} height={16} />
         </div>
+
         <label className={S.aboutMe}>
-          소개글
+          <span>소개글</span>
+          <span className={S.aboutMe__textCheck}>0/180</span>
           <TextArea
             placeholder="Text"
             name="aboutMe"
