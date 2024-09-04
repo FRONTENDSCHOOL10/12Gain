@@ -1,7 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '@/components/Icon/Icon';
-import S from '@/components/Icon/style.module.css';
+import S from '@/components/Input/style.module.css';
 
 const InputWithDelete = ({
   value,
@@ -11,22 +10,28 @@ const InputWithDelete = ({
   type = 'text',
   disabled = false,
   maxLength,
-  style,
   className,
   name,
   showClearButton = true,
+  error = false,
+  onFocus,
+  onBlur,
+  ariaLabel,
+  ariaDescribedby,
+  hasInput = false,
+  children,
 }) => {
-  const handleClear = () => {
+  const handleClear = (e) => {
+    e.preventDefault();
     if (onClear) {
       onClear();
+    } else if (onChange) {
+      onChange({ target: { value: '' } });
     }
   };
 
   return (
-    <div
-      className={`input-container ${className}`}
-      style={{ position: 'relative', ...style }}
-    >
+    <div className={S.inputWrapper}>
       <input
         type={type}
         value={value}
@@ -34,36 +39,25 @@ const InputWithDelete = ({
         placeholder={placeholder}
         disabled={disabled}
         maxLength={maxLength}
-        className="input-field"
+        className={`
+          ${S.component} 
+          ${className} 
+          ${error ? S.error : ''} 
+          ${hasInput ? S.hasInput : ''}
+        `}
         name={name}
-        style={{
-          width: '100%',
-          padding: '12px 40px 12px 24px',
-          borderRadius: '24px',
-          border: '1px solid #ccc',
-          outline: 'none',
-          fontSize: '16px',
-          ...style,
-        }}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        aria-label={ariaLabel}
+        aria-describedby={ariaDescribedby}
       />
-      {showClearButton && value && (
+      {children}
+      {showClearButton && value && value.length > 0 && (
         <button
           type="reset"
-          // onClick={handleClear}
-          style={{
-            position: 'absolute',
-            right: '12px',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            border: 'none',
-            background: 'transparent',
-            cursor: 'pointer',
-            padding: '0',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-          aria-label="Clear input"
+          onClick={handleClear}
+          className={S.clearButton}
+          aria-label="입력 내용 지우기"
         >
           <Icon id="close" width={16} height={16} />
         </button>
@@ -76,14 +70,20 @@ InputWithDelete.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
   placeholder: PropTypes.string,
-  onClear: PropTypes.func.isRequired,
+  onClear: PropTypes.func,
   type: PropTypes.oneOf(['text', 'password', 'email', 'number']), // 여기서 oneOf로 변경
   disabled: PropTypes.bool,
   maxLength: PropTypes.number,
-  style: PropTypes.object,
   className: PropTypes.string,
   name: PropTypes.string,
   showClearButton: PropTypes.bool,
+  error: PropTypes.bool,
+  hasInput: PropTypes.bool,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  ariaLabel: PropTypes.string,
+  ariaDescribedby: PropTypes.string,
+  children: PropTypes.node,
 };
 
 export default InputWithDelete;

@@ -15,7 +15,7 @@ function Landing() {
         height="2.25rem"
         onClick={() => navigate('Login')}
       />
-      <SignupLink />
+      <SignupLink onClick={() => navigate('SignUp')} />
     </div>
   );
 }
