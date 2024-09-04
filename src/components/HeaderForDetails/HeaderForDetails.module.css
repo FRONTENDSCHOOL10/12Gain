@@ -1,0 +1,19 @@
+.component {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  block-size: var(--spacing-40);
+  padding: var(--spacing-8) var(--spacing-12);
+  border-bottom: 1px solid var(--content-tertiary);
+
+  .icons__container {
+    display: flex;
+    gap: var(--spacing-8);
+  }
+
+  h1 {
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+}
