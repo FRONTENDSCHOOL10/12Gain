@@ -19,21 +19,21 @@
   line-height: 1.4;
 }
 
-.heading-large {
+.heading-lg {
   font-family: Pretendard;
   font-size: 1.1664rem; /* 18.662px */
   font-weight: 700;
   line-height: 1.4;
 }
 
-.heading-medium {
+.heading-md {
   font-family: Pretendard;
   font-size: 0.875rem; /* 14px */
   font-weight: 700;
   line-height: 1.4;
 }
 
-.heading-small {
+.heading-sm {
   font-family: Pretendard;
   font-size: 0.6564rem; /* 10.503px */
   font-weight: 700;
@@ -54,21 +54,21 @@
   line-height: 1.5;
 }
 
-.label-large {
+.label-lg {
   font-family: Pretendard;
   font-size: 1.1664rem; /* 18.662px */
   font-weight: 600;
   line-height: 1.5;
 }
 
-.label-medium {
+.label-md {
   font-family: Pretendard;
   font-size: 0.875rem; /* 14px */
   font-weight: 600;
   line-height: 1.5;
 }
 
-.label-small {
+.label-sm {
   font-family: Pretendard;
   font-size: 0.6564rem; /* 10.503px */
   font-weight: 600;
@@ -82,21 +82,21 @@
   line-height: 1.6;
 }
 
-.paragraph-large {
+.paragraph-lg {
   font-family: Pretendard;
   font-size: 1.1664rem; /* 18.662px */
   font-weight: 400;
   line-height: 1.6;
 }
 
-.paragraph-medium {
+.paragraph-md {
   font-family: Pretendard;
   font-size: 0.875rem; /* 14px */
   font-weight: 400;
   line-height: 1.6;
 }
 
-.paragraph-small {
+.paragraph-sm {
   font-family: Pretendard;
   font-size: 0.6564rem; /* 10.503px */
   font-weight: 400;

@@ -2,5 +2,7 @@
   display: flex;
   flex-flow: column;
   align-items: center;
+  justify-content: center;
   gap: 1.25rem;
+  margin-bottom: 14.49rem;
 }
