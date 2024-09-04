@@ -1,4 +1,4 @@
-import { string, bool, func } from 'prop-types';
+import { string, bool, func, object } from 'prop-types';
 import S from './Button.module.css';
 
 function Button({
@@ -7,6 +7,7 @@ function Button({
   height = '2.25rem',
   disabled = false,
   onClick,
+  children,
 }) {
   return (
     <button
@@ -16,16 +17,18 @@ function Button({
       onClick={onClick}
     >
       {text}
+      {children}
     </button>
   );
 }
 
 Button.propTypes = {
-  text: string.isRequired,
+  text: string,
   width: string,
   height: string,
   disabled: bool,
   onClick: func,
+  children: object,
 };
 
 export default Button;
