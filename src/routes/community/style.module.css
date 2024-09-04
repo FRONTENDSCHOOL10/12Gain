@@ -1,8 +1,16 @@
 .component {
-  inline-size: 20rem;
-  margin: auto;
+  main {
+    padding: 0 20px;
+  }
 
   Button {
     border-radius: 50%;
   }
+}
+
+.BtnCount {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 5px;
 }
