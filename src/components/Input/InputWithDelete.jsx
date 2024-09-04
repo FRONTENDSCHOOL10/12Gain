@@ -1,7 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '@/components/Icon/Icon';
-import S from '@/components/Icon/style.module.css';
 
 const InputWithDelete = ({
   value,
@@ -21,7 +19,6 @@ const InputWithDelete = ({
       onClear();
     }
   };
-
   return (
     <div
       className={`input-container ${className}`}
@@ -48,8 +45,8 @@ const InputWithDelete = ({
       />
       {showClearButton && value && (
         <button
-          type="reset"
-          // onClick={handleClear}
+          type="button"
+          onClick={handleClear}
           style={{
             position: 'absolute',
             right: '12px',
@@ -71,10 +68,9 @@ const InputWithDelete = ({
     </div>
   );
 };
-
 InputWithDelete.propTypes = {
-  value: PropTypes.string,
-  onChange: PropTypes.func,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   onClear: PropTypes.func.isRequired,
   type: PropTypes.oneOf(['text', 'password', 'email', 'number']), // 여기서 oneOf로 변경
@@ -84,6 +80,8 @@ InputWithDelete.propTypes = {
   className: PropTypes.string,
   name: PropTypes.string,
   showClearButton: PropTypes.bool,
+};
+export default InputWithDelete;
 };
 
 export default InputWithDelete;

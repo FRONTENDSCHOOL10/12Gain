@@ -10,6 +10,7 @@ import MyPost from './profile/component/MyPost';
 import MyFeed from './profile/component/MyFeed';
 import PostDetail from '@/components/PostDetail/PostDetail';
 import EditProfile from './profile/component/EditProfile';
+import EditInterest from './profile/component/EditInterest';
 import CreateFeedPage from './community/CreateFeedPage';
 
 const routes = [
@@ -58,6 +59,7 @@ const routes = [
     ],
   },
   { path: 'profile/edit', element: <EditProfile /> },
+  { path: 'profile/edit/interest', element: <EditInterest /> },
 ];
 
 const router = createBrowserRouter(routes);
