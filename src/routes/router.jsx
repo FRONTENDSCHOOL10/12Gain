@@ -15,6 +15,7 @@ import EditInterest from './profile/component/EditInterest';
 import Landing from './landing';
 import Login from './login';
 import SignUp from './signup';
+import CreateFeedPage from './community/CreateFeedPage';
 
 const routes = [
   {
@@ -54,6 +55,7 @@ const routes = [
       },
       { path: 'myAppointment', element: <MyAppointment /> },
       { path: 'community', element: <Community /> },
+      { path: 'community/create', element: <CreateFeedPage /> },
       {
         path: 'Profile',
         element: <Profile />,
