@@ -11,12 +11,13 @@
   outline: none;
 }
 
-.component.error {
-  border: 1px solid var(--red);
+.component.hasInput,
+.component:focus {
+  border: 1px solid var(--black);
 }
 
-.component.hasInput {
-  border: 1px solid var(--black);
+.component.error {
+  border: 1px solid var(--red);
 }
 
 .clearButton {

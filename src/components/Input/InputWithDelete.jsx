@@ -19,6 +19,7 @@ const InputWithDelete = ({
   ariaLabel,
   ariaDescribedby,
   hasInput = false,
+
   children,
 }) => {
   const handleClear = (e) => {
@@ -44,6 +45,7 @@ const InputWithDelete = ({
           ${className} 
           ${error ? S.error : ''} 
           ${hasInput ? S.hasInput : ''}
+          
         `}
         name={name}
         onFocus={onFocus}
