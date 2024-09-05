@@ -19,7 +19,7 @@ function HeaderForDetails({ text, leftIcon, rightIcon }) {
           </li>
         ))}
       </ul>
-      <h1>{text ? text : undefined}</h1>
+      {text && <h1>{text}</h1>}
       <ul className={S.icons__container}>
         {rightIcon?.map((item, index) => (
           <li key={index}>

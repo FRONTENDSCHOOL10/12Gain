@@ -1,5 +1,5 @@
 import Button from '@/components/Button/Button';
-import ButtonCategory from '@/components/Button/ButtonCategory';
+import Checkbox from '@/components/Button/Checkbox';
 import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
 import S from '@/routes/profile/component/EditInterest.module.css';
 import { useNavigate } from 'react-router-dom';
@@ -31,7 +31,7 @@ function EditInterest() {
         <ul>
           {INTEREST.map((item, index) => (
             <li key={index}>
-              <ButtonCategory text={item} />
+              <Checkbox text={item} />
             </li>
           ))}
         </ul>
