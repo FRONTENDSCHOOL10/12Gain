@@ -1,15 +1,21 @@
 .component {
   display: flex;
-  flex-flow: row;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   align-items: center;
-  block-size: var(--spacing-40);
   padding: var(--spacing-8) var(--spacing-12);
   border-bottom: 1px solid var(--content-tertiary);
 }
 
-/* display: flex;
-width: 20rem;
-padding: 0.375rem 0.75rem;
-justify-content: space-between;
-align-items: center; */
+.leftIcons,
+.rightIcons {
+  display: flex;
+  gap: var(--spacing-8);
+}
+
+.leftIcons {
+  flex: 1; /* 왼쪽 아이콘을 왼쪽에 고정 */
+}
+
+.rightIcons {
+  justify-content: flex-end; /* 오른쪽 아이콘을 오른쪽 끝으로 정렬 */
+}
