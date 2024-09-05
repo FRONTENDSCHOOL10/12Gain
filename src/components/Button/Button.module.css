@@ -1,6 +1,6 @@
 .Button {
   display: block;
-  margin: 0 auto;
+  margin: 0;
   border: none;
   border-radius: 20px;
   cursor: pointer;
