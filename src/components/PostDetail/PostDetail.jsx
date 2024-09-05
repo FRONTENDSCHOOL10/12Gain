@@ -1,7 +1,9 @@
 import S from '@/components/PostDetail/style.module.css';
-import { useParams } from 'react-router-dom';
-import { string } from 'prop-types';
-import { number } from 'prop-types';
+import { useParams, useNavigate } from 'react-router-dom';
+import Button from '@/components/Button/Button';
+import { string, number } from 'prop-types';
+import Header from '@/routes/home/component/Header';
+import AttendPost from '@/routes/home/component/AttendPost';
 
 PostDetail.propTypes = {
   title: string,
@@ -33,21 +35,22 @@ function PostDetail({
   member = 1,
 }) {
   const { postId } = useParams();
+  const navigate = useNavigate();
 
   // 여기에 postId를 이용해 백엔드에서 데이터를 가져오거나,
   // 상태를 통해 데이터를 전달할 수 있습니다.
   return (
     <article className={S.component}>
-      {/* 헤더 */}
+      <Header iconList={['left', 'home', 'more']} />
       <img src="/running.png" alt="이미지없음" />
       <div className={S.input}>
         <h1>{title}</h1>
         <div className={S.detail}>
           {/* 아래의 <span>태그들 컴포넌트로 사용방식으로 변경 필요 */}
-          <span>종목: {sportType}</span>
-          <span>장소: {location}</span>
-          <span>일시: {datetime}</span>
-          <span>인원: {pop}</span>
+          <span>종목 {sportType}</span>
+          <span>장소 {location}</span>
+          <span>일시 {datetime}</span>
+          <span>인원 {pop}</span>
         </div>
       </div>
       <div className={S.title}>
@@ -57,6 +60,14 @@ function PostDetail({
 
       <h1>Post 상세 페이지</h1>
       <p>Post ID: {postId}</p>
+
+      <Button
+        text="참여하기"
+        height="2.8rem"
+        onClick={() => navigate('join')}
+      />
+
+      <AttendPost nickName="사용자" pop={pop} />
     </article>
   );
 }
