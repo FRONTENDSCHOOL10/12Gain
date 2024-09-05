@@ -5,6 +5,8 @@ function Button({
   text,
   width = '18.5rem',
   height = '2.25rem',
+  color = 'var(--white)',
+  backgroundColor = 'var(--primary)',
   disabled = false,
   onClick,
   children,
@@ -12,7 +14,7 @@ function Button({
   return (
     <button
       className={S.Button}
-      style={{ width, height }}
+      style={{ width, height, color, backgroundColor }}
       disabled={disabled}
       onClick={onClick}
     >
@@ -26,6 +28,8 @@ Button.propTypes = {
   text: string,
   width: string,
   height: string,
+  color: string,
+  backgroundColor: string,
   disabled: bool,
   onClick: func,
   children: object,

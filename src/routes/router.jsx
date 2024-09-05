@@ -12,6 +12,7 @@ import PostDetail from '@/components/PostDetail/PostDetail';
 import EditProfile from './profile/component/EditProfile';
 import AttendPost from '@/routes/home/component/AttendPost';
 import EditInterest from './profile/component/EditInterest';
+import CreateFeedPage from './community/CreateFeedPage';
 
 const routes = [
   {
@@ -51,6 +52,7 @@ const routes = [
       },
       { path: 'myAppointment', element: <MyAppointment /> },
       { path: 'community', element: <Community /> },
+      { path: 'community/create', element: <CreateFeedPage /> },
       {
         path: 'Profile',
         element: <Profile />,
