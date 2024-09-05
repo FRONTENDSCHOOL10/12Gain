@@ -133,7 +133,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-button {
+button, textarea {
   font-family: 'Pretendard Variable', sans-serif;
 }
 
@@ -147,5 +147,6 @@ button {
 body {
   font-family: 'Pretendard Variable', sans-serif;
   line-height: 1.15;
-  margin: 0;
+  width: 20rem;
+  margin: 0 auto;
 }

@@ -1,5 +1,6 @@
 import S from '@/routes/home/style.module.css';
 import Header from '@/components/Header/Header';
+import Header from '@/routes/home/component/header';
 import MainPostList from '@/routes/home/component/MainPostList';
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
