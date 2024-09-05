@@ -14,13 +14,10 @@ const InputWithDelete = ({
   name,
   showClearButton = true,
   error = false,
-  onFocus,
   onBlur,
-  ariaLabel,
-  ariaDescribedby,
   hasInput = false,
-
-  children,
+  ariaLabel,
+  ...restProps
 }) => {
   const handleClear = (e) => {
     e.preventDefault();
@@ -45,15 +42,12 @@ const InputWithDelete = ({
           ${className} 
           ${error ? S.error : ''} 
           ${hasInput ? S.hasInput : ''}
-          
         `}
         name={name}
-        onFocus={onFocus}
         onBlur={onBlur}
         aria-label={ariaLabel}
-        aria-describedby={ariaDescribedby}
+        {...restProps}
       />
-      {children}
       {showClearButton && value && value.length > 0 && (
         <button
           type="reset"
@@ -81,11 +75,8 @@ InputWithDelete.propTypes = {
   showClearButton: PropTypes.bool,
   error: PropTypes.bool,
   hasInput: PropTypes.bool,
-  onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   ariaLabel: PropTypes.string,
-  ariaDescribedby: PropTypes.string,
-  children: PropTypes.node,
 };
 
 export default InputWithDelete;
