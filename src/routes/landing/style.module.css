@@ -1,0 +1,11 @@
+.component {
+  width: 20rem;
+  inline-size: 20rem;
+  height: 43.3125rem;
+  block-size: 43.3125rem;
+  margin: auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}

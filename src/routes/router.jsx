@@ -12,6 +12,9 @@ import PostDetail from '@/components/PostDetail/PostDetail';
 import EditProfile from './profile/component/EditProfile';
 import AttendPost from '@/routes/home/component/AttendPost';
 import EditInterest from './profile/component/EditInterest';
+import Landing from './landing';
+import Login from './login';
+import SignUp from './signup';
 import CreateFeedPage from './community/CreateFeedPage';
 
 const routes = [
@@ -65,6 +68,9 @@ const routes = [
   },
   { path: 'profile/edit', element: <EditProfile /> },
   { path: 'profile/edit/interest', element: <EditInterest /> },
+  { path: '/Landing', element: <Landing /> },
+  { path: '/Landing/Login', element: <Login /> },
+  { path: '/Landing/SignUp', element: <SignUp /> },
 ];
 
 const router = createBrowserRouter(routes);

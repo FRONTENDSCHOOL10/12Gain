@@ -1,4 +1,3 @@
-
 import S from '@/routes/home/component/Header.module.css';
 import Icon from '@/components/Icon/Icon';
 

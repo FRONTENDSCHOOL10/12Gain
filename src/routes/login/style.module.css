@@ -1,0 +1,13 @@
+.component {
+  width: 20rem;
+  inline-size: 20rem;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  padding: 1.25rem;
+}
