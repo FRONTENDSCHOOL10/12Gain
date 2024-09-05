@@ -10,10 +10,11 @@ import MyPost from './profile/component/MyPost';
 import MyFeed from './profile/component/MyFeed';
 import PostDetail from '@/components/PostDetail/PostDetail';
 import EditProfile from './profile/component/EditProfile';
+import AttendPost from '@/routes/home/component/AttendPost';
+import EditInterest from './profile/component/EditInterest';
 import Landing from './landing';
 import Login from './login';
 import SignUp from './signup';
-
 
 const routes = [
   {
@@ -36,10 +37,14 @@ const routes = [
             pop={1}
             description="설명입니다."
           />
-        ), // PostDetail 컴포넌트를 라우터에 추가
+        ),
+        children: [
+          // post/:postId/join 경로 추가
+          { path: 'join', element: <AttendPost /> },
+        ],
       },
       {
-        path: 'home', // Home에 children이 필요한 경우 이렇게 path를 명시적으로 지정
+        path: 'home',
         element: <Home />,
         children: [
           { index: true, element: <MainPost /> },
@@ -60,6 +65,7 @@ const routes = [
     ],
   },
   { path: 'profile/edit', element: <EditProfile /> },
+  { path: 'profile/edit/interest', element: <EditInterest /> },
   { path: '/Landing', element: <Landing /> },
   { path: '/Landing/Login', element: <Login /> },
   { path: '/Landing/SignUp', element: <SignUp /> },

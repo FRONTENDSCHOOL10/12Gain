@@ -27,7 +27,6 @@ const InputWithDelete = ({
       onChange({ target: { value: '' } });
     }
   };
-
   return (
     <div className={S.inputWrapper}>
       <input
@@ -61,10 +60,9 @@ const InputWithDelete = ({
     </div>
   );
 };
-
 InputWithDelete.propTypes = {
-  value: PropTypes.string,
-  onChange: PropTypes.func,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   onClear: PropTypes.func,
   type: PropTypes.oneOf(['text', 'password', 'email', 'number']), // 여기서 oneOf로 변경
