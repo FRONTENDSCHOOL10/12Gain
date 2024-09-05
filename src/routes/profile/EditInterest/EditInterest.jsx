@@ -1,7 +1,8 @@
+import S from '@/routes/profile/EditInterest/EditInterest.module.css';
+
 import Button from '@/components/Button/Button';
 import Checkbox from '@/components/Button/Checkbox';
 import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
-import S from '@/routes/profile/component/EditInterest.module.css';
 import { useNavigate } from 'react-router-dom';
 
 const INTEREST = [
