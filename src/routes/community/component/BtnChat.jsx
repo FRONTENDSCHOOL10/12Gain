@@ -14,16 +14,16 @@ function BtnChat() {
   return (
     <div className={S.component}>
       <Button
-        width="18px"
-        height="18px"
+        width="14px"
+        height="14px"
         color="var(--content-secondary)"
         backgroundColor="transparent"
         onClick={onClickChat}
       >
         <Icon
           id="comment"
-          width={18}
-          height={18}
+          width={14}
+          height={14}
           color="var(--content-secondary)"
         />
       </Button>
