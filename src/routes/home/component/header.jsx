@@ -1,30 +1,29 @@
-import S from '@/routes/home/component/header.module.css';
 
+import S from '@/routes/home/component/Header.module.css';
 import Icon from '@/components/Icon/Icon';
-import { string } from 'prop-types';
 
-Header.propTypes = {
-  text: string,
-};
+function Header({ text, iconList }) {
+  const leftIcons = iconList.slice(0, 2); // 'left', 'home' 아이콘
+  const rightIcon = iconList.slice(2); // 'more' 아이콘
 
-function Header({ text }) {
   return (
     <header className={S.component}>
-      <h1>
-        <Icon id="Logo_s" width={100} />
-      </h1>
-      <ul>
-        <li>
-          <Icon id="search" />
-        </li>
-        <li>
-          <Icon id="chat" />
-        </li>
-        <li>
-          <Icon id="setting" />
-        </li>
-      </ul>
+      <div className={S.leftIcons}>
+        {leftIcons.map((item, index) => (
+          <div key={index}>
+            <Icon id={item} />
+          </div>
+        ))}
+      </div>
+      <div className={S.rightIcons}>
+        {rightIcon.map((item, index) => (
+          <div key={index}>
+            <Icon id={item} />
+          </div>
+        ))}
+      </div>
     </header>
   );
 }
+
 export default Header;

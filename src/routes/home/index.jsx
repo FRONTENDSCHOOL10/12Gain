@@ -1,5 +1,5 @@
 import S from '@/routes/home/style.module.css';
-
+import Header from '@/components/Header/Header';
 import Header from '@/routes/home/component/header';
 import MainPostList from '@/routes/home/component/MainPostList';
 import { useState } from 'react';
@@ -14,7 +14,7 @@ function Home() {
 
   return (
     <div className={S.component}>
-      <Header />
+      <Header iconList={['search', 'chat', 'alarm']} />
       <MainPostList list={subNavList} />
       <Outlet />
     </div>
