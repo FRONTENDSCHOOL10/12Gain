@@ -16,6 +16,10 @@ import Landing from './landing';
 import Login from './login';
 import SignUp from './signup';
 import CreateFeedPage from './community/CreateFeedPage';
+import Setting from './profile/Setting/Setting';
+import DeleteAccount from './profile/Setting/DeleteAccount';
+import ChatList from './chatList';
+import ChatRoom from './chatList/ChatRoom/ChatRoom';
 
 const routes = [
   {
@@ -41,7 +45,7 @@ const routes = [
         ),
         children: [
           // post/:postId/join 경로 추가
-          { path: 'join', element: <AttendPost /> },
+          { path: 'join', element: <AttendPost nickName="닉네임" /> },
         ],
       },
       {
@@ -64,10 +68,17 @@ const routes = [
           { path: 'community', element: <MyFeed /> },
         ],
       },
+      {
+        path: 'chatList',
+        element: <ChatList />,
+      },
     ],
   },
+  { path: 'chatList/chatRoom', element: <ChatRoom /> },
   { path: 'profile/edit', element: <EditProfile /> },
   { path: 'profile/edit/interest', element: <EditInterest /> },
+  { path: 'profile/setting', element: <Setting /> },
+  { path: 'profile/setting/deleteAccount', element: <DeleteAccount /> },
   { path: '/Landing', element: <Landing /> },
   { path: '/Landing/Login', element: <Login /> },
   { path: '/Landing/SignUp', element: <SignUp /> },
