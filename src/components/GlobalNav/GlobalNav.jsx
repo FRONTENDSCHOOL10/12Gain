@@ -9,7 +9,7 @@ function GlobalNav() {
 
   return (
     <nav className={S.component}>
-      <h2>하단 메뉴</h2>
+      <h2 className="sr-only">하단 메뉴</h2>
       <ul>
         {navList.map(({ path, text, icon, iconFull }) => (
           <li key={path}>
