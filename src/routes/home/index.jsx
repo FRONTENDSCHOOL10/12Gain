@@ -14,7 +14,13 @@ function Home() {
   return (
     <div className={S.component}>
       <Header iconList={['search', 'chat', 'alarm']} />
-      <MainPostList list={subNavList} />
+      <ul className={S.subNavList}>
+        {subNavList.map((item, index) => (
+          <li key={index} className={S.subNavItem}>
+            <a href={item.path}>{item.text}</a>
+          </li>
+        ))}
+      </ul>
       <Outlet />
     </div>
   );

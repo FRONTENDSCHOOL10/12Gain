@@ -31,12 +31,12 @@ const routes = [
         path: 'post/:postId',
         element: (
           <PostDetail
-            title="제목입니다"
+            title="TITLE"
             sportType="러닝"
             location="종합운동장"
             datetime="2024년 9월 1일"
             pop={1}
-            description="설명입니다."
+            description="상세 내용"
           />
         ),
         children: [
