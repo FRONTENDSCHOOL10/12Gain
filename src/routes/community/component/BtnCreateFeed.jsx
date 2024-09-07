@@ -1,6 +1,6 @@
 import Button from '@/components/Button/Button';
 import Icon from '@/components/Icon/Icon';
-import S from '@/routes/community/component/BtnCount.module.css';
+import S from '@/routes/community/component/BtnCreateFeed.module.css';
 import { useNavigate } from 'react-router-dom';
 
 function BtnCreateFeed() {
