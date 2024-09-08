@@ -41,6 +41,7 @@ function EditProfile() {
             name="aboutMe"
             maxLength={180}
             className={S.textarea}
+            showTextLength={false}
           />
         </label>
       </form>
