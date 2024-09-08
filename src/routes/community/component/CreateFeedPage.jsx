@@ -1,7 +1,7 @@
 import Button from '@/components/Button/Button';
 import Icon from '@/components/Icon/Icon';
-import TextArea2 from '@/components/TextArea/TextArea2';
-import S from '@/routes/community/CreateFeedPage.module.css';
+import TextArea from '@/components/TextArea/TextArea';
+import S from '@/routes/community/component/CreateFeedPage.module.css';
 
 function CreateFeedPage() {
   return (
@@ -9,7 +9,7 @@ function CreateFeedPage() {
       <label htmlFor="createFeed" className="sr-only">
         커뮤니티 게시물 생성
       </label>
-      <TextArea2
+      <TextArea
         id="createFeed"
         name="createFeed"
         placeholder="내용을 입력해주세요"

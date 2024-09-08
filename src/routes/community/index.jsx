@@ -11,9 +11,13 @@ function Community() {
       <Header text="커뮤니티" iconList={['search', 'chat', 'alarm']} />
       <div>최신 신규</div>
       <main>
+        <BtnCreateFeed />
         <Feed imgSrc="/running.png" />
         <Feed />
-        <BtnCreateFeed />
+        <Feed imgSrc="/running.png" />
+        <Feed />
+        <Feed imgSrc="/running.png" />
+        <Feed />
       </main>
       <Outlet />
     </div>

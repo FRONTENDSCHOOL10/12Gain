@@ -1,10 +1,10 @@
 import S from '@/routes/community/component/Feed.module.css';
 
 import BtnThumsup from '@/routes/community/component/BtnThumsup';
-import BtnChat from '@/routes/community/component/BtnChat';
 import FeedProfile from '@/routes/community/component/FeedProfile';
 import KebabMenu from '@/components/KebabMenu/KebabMenu';
 import { string } from 'prop-types';
+import BtnComment from './BtnComment';
 
 function Feed({ imgSrc }) {
   return (
@@ -29,7 +29,7 @@ function Feed({ imgSrc }) {
       )}
       <section className={S.BtnCount}>
         <BtnThumsup />
-        <BtnChat />
+        <BtnComment />
       </section>
     </article>
   );

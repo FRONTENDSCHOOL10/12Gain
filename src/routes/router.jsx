@@ -15,7 +15,7 @@ import EditInterest from './profile/component/EditInterest';
 import Landing from './landing';
 import Login from './login';
 import SignUp from './signup';
-import CreateFeedPage from './community/CreateFeedPage';
+import CreateFeedPage from './community/component/CreateFeedPage';
 
 const routes = [
   {
