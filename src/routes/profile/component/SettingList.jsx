@@ -7,16 +7,15 @@ SettingList.propTypes = {
   text: string.isRequired,
   key: oneOfType([string, number]),
 
-  title: string.isRequired,
   onClick: func,
   iconColor: string,
 };
 
-function SettingList({ text, key, title, onClick }) {
+function SettingList({ text, key, onClick }) {
   return (
     <li className={S.component} key={key}>
       {text}
-      <IconButton iconId={'right'} title={title} onClick={onClick} />
+      <IconButton iconId={'right'} onClick={onClick} />
     </li>
   );
 }

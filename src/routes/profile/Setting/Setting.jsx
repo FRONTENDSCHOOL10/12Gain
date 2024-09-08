@@ -5,15 +5,18 @@ import SettingList from '../component/SettingList';
 function Setting() {
   return (
     <div className={S.component}>
-      <HeaderForDetails text="설정" leftIcon={['left']} />
+      <HeaderForDetails
+        text="설정"
+        leftIcon={[{ iconId: 'left', path: '/profile', title: '뒤로가기' }]}
+      />
       <main>
         <h2 className="sr-only">설정 항목</h2>
         <ul>
-          <SettingList text="공지사항" title="공지사항으로 이동" />
-          <SettingList text="자주 묻는 질문" title="자주 묻는 질문으로 이동" />
-          <SettingList text="문의 하기" title="문의 하기로 이동" />
-          <SettingList text="로그아웃" title="로그아웃으로 이동" />
-          <SettingList text="탈퇴하기" title="탈퇴하기로 이동" />
+          <SettingList text="공지사항" />
+          <SettingList text="자주 묻는 질문" />
+          <SettingList text="문의 하기" />
+          <SettingList text="로그아웃" />
+          <SettingList text="탈퇴하기" />
         </ul>
       </main>
     </div>

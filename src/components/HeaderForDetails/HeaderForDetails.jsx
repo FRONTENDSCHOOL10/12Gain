@@ -1,7 +1,7 @@
 import S from '@/components/HeaderForDetails/HeaderForDetails.module.css';
 import { array } from 'prop-types';
 import { string } from 'prop-types';
-import Icon from '../Icon/Icon';
+import IconButton from '../Button/IconButton';
 
 HeaderForDetails.propTypes = {
   text: string,
@@ -15,7 +15,11 @@ function HeaderForDetails({ text, leftIcon, rightIcon }) {
       <ul className={S.icons__container}>
         {leftIcon?.map((item, index) => (
           <li key={index}>
-            <Icon id={item} />
+            <IconButton
+              iconId={item.iconId}
+              title={item.title}
+              path={item.path}
+            />
           </li>
         ))}
       </ul>
@@ -23,7 +27,11 @@ function HeaderForDetails({ text, leftIcon, rightIcon }) {
       <ul className={S.icons__container}>
         {rightIcon?.map((item, index) => (
           <li key={index}>
-            <Icon id={item} />
+            <IconButton
+              iconId={item.iconId}
+              title={item.title}
+              path={item.path}
+            />
           </li>
         ))}
       </ul>

@@ -28,26 +28,33 @@ const routes = [
     children: [
       {
         index: true,
-        // element: <Home />,
         element: <Navigate to="home" replace />,
+        // path: '',
+
+        // element: <Home />,
+        // children: [
+        //   { index: true, element: <MainPost /> },
+        //   { path: 'new', element: <MainPost /> },
+        //   { path: 'interest', element: <MainPost /> },
+        // ],
       },
-      {
-        path: 'post/:postId',
-        element: (
-          <PostDetail
-            title="제목입니다"
-            sportType="러닝"
-            location="종합운동장"
-            datetime="2024년 9월 1일"
-            pop={1}
-            description="설명입니다."
-          />
-        ),
-        children: [
-          // post/:postId/join 경로 추가
-          { path: 'join', element: <AttendPost nickName="닉네임" /> },
-        ],
-      },
+      // {
+      //   path: 'post/:postId',
+      //   element: (
+      //     <PostDetail
+      //       title="제목입니다"
+      //       sportType="러닝"
+      //       location="종합운동장"
+      //       datetime="2024년 9월 1일"
+      //       pop={1}
+      //       description="설명입니다."
+      //     />
+      //   ),
+      //   children: [
+      //     // post/:postId/join 경로 추가
+      //     { path: 'join', element: <AttendPost nickName="닉네임" /> },
+      //   ],
+      // },
       {
         path: 'home',
         element: <Home />,
@@ -74,14 +81,31 @@ const routes = [
       },
     ],
   },
+  {
+    path: 'post/:postId',
+    element: (
+      <PostDetail
+        title="제목입니다"
+        sportType="러닝"
+        location="종합운동장"
+        datetime="2024년 9월 1일"
+        pop={1}
+        description="설명입니다."
+      />
+    ),
+    children: [
+      // post/:postId/join 경로 추가
+      { path: 'join', element: <AttendPost nickName="닉네임" /> },
+    ],
+  },
   { path: 'chatList/chatRoom', element: <ChatRoom /> },
   { path: 'profile/edit', element: <EditProfile /> },
   { path: 'profile/edit/interest', element: <EditInterest /> },
   { path: 'profile/setting', element: <Setting /> },
   { path: 'profile/setting/deleteAccount', element: <DeleteAccount /> },
   { path: '/Landing', element: <Landing /> },
-  { path: '/Landing/Login', element: <Login /> },
-  { path: '/Landing/SignUp', element: <SignUp /> },
+  { path: '/Login', element: <Login /> },
+  { path: '/SignUp', element: <SignUp /> },
 ];
 
 const router = createBrowserRouter(routes);

@@ -18,7 +18,10 @@ function Profile() {
 
   return (
     <div className={S.component}>
-      <Header text="프로필" iconList={['setting']} />
+      <Header
+        text="프로필"
+        iconList={[{ iconId: 'setting', path: '/profile/setting' }]}
+      />
       <ProfileCard nickName="이름" />
       <Button
         text="프로필 수정"
