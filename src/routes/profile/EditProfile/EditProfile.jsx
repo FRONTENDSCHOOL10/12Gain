@@ -4,8 +4,8 @@ import Header from '../../../components/Header/Header';
 import ProfileImage from '@/components/ProfileImage/ProfileImage';
 import InputWithDelete from '@/components/Input/InputWithDelete';
 import Button from '@/components/Button/Button';
-import Icon from '@/components/Icon/Icon';
 import TextArea from '@/components/TextArea/TextArea';
+import IconButton from '@/components/Button/IconButton';
 import { useNavigate } from 'react-router-dom';
 
 function EditProfile() {
@@ -13,7 +13,12 @@ function EditProfile() {
 
   return (
     <div className={S.component}>
-      <Header text="프로필 수정" iconList={['setting']} />
+      <Header
+        text="프로필 수정"
+        iconList={[
+          { iconId: 'setting', path: '/profile/setting', title: '설정' },
+        ]}
+      />
       <div className={S.profile}>
         <ProfileImage url="/profile.png" />
       </div>
@@ -24,13 +29,7 @@ function EditProfile() {
         </label>
         <div className={S.interest__container}>
           관심 운동 종목
-          <button
-            type="button"
-            onClick={() => handleClick('interest')}
-            className={S.interest__button}
-          >
-            <Icon id="right" width={16} height={16} />
-          </button>
+          <IconButton iconId="right" path="interest" />
         </div>
 
         <label className={S.aboutMe}>

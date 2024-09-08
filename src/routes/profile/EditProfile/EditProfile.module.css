@@ -1,24 +1,22 @@
 .component {
-  inline-size: 20rem;
-  margin: auto;
+  margin: 0 auto;
 
   .profile {
-    padding: var(--spacing-20) var(--spacing-12);
     height: 6.625rem;
+    padding: var(--spacing-20) var(--spacing-12);
   }
 
   label {
     display: flex;
     flex-flow: column;
     gap: var(--spacing-8);
-    font-size: 0.875rem;
-    font-weight: 600;
     padding: var(--spacing-12);
     border-bottom: 1px solid var(--content-tertiary);
+    font-size: 0.875rem;
+    font-weight: 600;
   }
 
   .aboutMe {
-    /* min-height: 19rem; */
     flex-flow: row wrap;
     justify-content: space-between;
     padding-bottom: 5rem;
@@ -37,11 +35,11 @@
   .interest__container {
     display: flex;
     justify-content: space-between;
+    height: var(--spacing-46);
     padding: var(--spacing-12);
+    border-bottom: 1px solid var(--content-tertiary);
     font-size: 0.875rem;
     font-weight: 600;
-    height: var(--spacing-46);
-    border-bottom: 1px solid var(--content-tertiary);
   }
 
   .button__container {
@@ -51,7 +49,6 @@
   .interest__button {
     border: none;
     background-color: transparent;
-
     cursor: pointer;
   }
 }

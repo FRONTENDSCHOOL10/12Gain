@@ -26,7 +26,10 @@ function EditInterest() {
 
   return (
     <div className={S.component}>
-      <HeaderForDetails text="관심 운동 선택" leftIcon={['left']} />
+      <HeaderForDetails
+        text="관심 운동 선택"
+        leftIcon={[{ iconId: 'left', title: '뒤로가기' }]}
+      />
       <div className={S.contents}>
         <h2 className={S.headline}>관심 있는 운동 종목을 선택해주세요.</h2>
         <ul>
