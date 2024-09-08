@@ -1,9 +1,11 @@
 .Button {
-  display: block;
-  margin: 0;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
+  button {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+  }
 }
 
 .Button:disabled {
