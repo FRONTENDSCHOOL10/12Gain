@@ -1,8 +1,12 @@
-import PasswordInput from '@/routes/login/component/PasswordInput';
 import Button from '@/components/Button/Button';
-import PropTypes from 'prop-types';
+import PasswordInput from '@/routes/login/component/PasswordInput';
 import { useSignupStore } from '@/stores/route';
+import PropTypes from 'prop-types';
 import S from './PasswordStep.module.css';
+
+PasswordStep.propTypes = {
+  onNext: PropTypes.func.isRequired,
+};
 
 function PasswordStep({ onNext }) {
   const {
@@ -32,14 +36,14 @@ function PasswordStep({ onNext }) {
   };
 
   return (
-    <div className={S.component}>
+    <div className={S.Component}>
       <form className={S.PasswordStepForm} onSubmit={handleSubmit}>
-        <div className={S.inputGroup}>
+        <div className={S.InputGroup}>
           <PasswordInput
             showPassword={true}
             value={password}
             onChange={handlePasswordChange}
-            placeholder="비밀번호를 입력하세요"
+            placeholder="비밀번호"
             ariaLabel="비밀번호 입력"
             isValid={true}
           />
@@ -47,7 +51,7 @@ function PasswordStep({ onNext }) {
             showPassword={true}
             value={confirmPassword}
             onChange={handleConfirmPasswordChange}
-            placeholder="비밀번호를 확인하세요"
+            placeholder="비밀번호를 확인"
             ariaLabel="비밀번호 확인 입력"
             isValid={isPasswordMatching()}
           />
@@ -62,9 +66,5 @@ function PasswordStep({ onNext }) {
     </div>
   );
 }
-
-PasswordStep.propTypes = {
-  onNext: PropTypes.func.isRequired,
-};
 
 export default PasswordStep;

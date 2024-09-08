@@ -1,8 +1,14 @@
 import Button from '@/components/Button/Button';
-import PropTypes from 'prop-types';
 import { useSignupStore } from '@/stores/route';
+import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+TermsStep.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
 function TermsStep({ onSubmit }) {
+  const navigate = useNavigate();
   const { agreeToTerms, setAgreeToTerms } = useSignupStore();
 
   const handleSubmit = (e) => {
@@ -25,14 +31,10 @@ function TermsStep({ onSubmit }) {
           />
           이용약관에 동의합니다.
         </label>
-        <Button />
+        <Button text="완료" onClick={() => navigate('/Landing/Login')} />
       </form>
     </div>
   );
 }
-
-TermsStep.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
 
 export default TermsStep;

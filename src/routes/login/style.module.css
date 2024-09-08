@@ -1,5 +1,6 @@
 .Component {
   display: flex;
+
   flex-flow: column;
   justify-content: center;
   align-items: center;
@@ -8,7 +9,7 @@
 .LoginTitle {
   display: flex;
   flex-flow: column;
-  padding: 1.25rem;
+  padding: 1.25rem 0.75rem;
   align-items: flex-start;
   margin-bottom: 2.06rem;
 }
@@ -16,6 +17,7 @@
 .LoginForm {
   display: flex;
   flex-flow: column;
+  margin: 0 auto;
   width: 18.5rem;
   padding: 0.5rem 0.75rem;
   justify-content: center;

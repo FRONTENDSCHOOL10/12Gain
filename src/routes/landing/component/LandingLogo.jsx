@@ -1,5 +1,4 @@
 import S from '@/routes/landing/component/LandingLogo.module.css';
-
 import Icon from '@/components/Icon/Icon';
 
 function LandingLogo() {

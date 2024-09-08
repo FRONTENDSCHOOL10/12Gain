@@ -1,7 +1,11 @@
 import Button from '@/components/Button/Button';
 import InputWithDelete from '@/components/Input/InputWithDelete';
-import PropTypes from 'prop-types';
 import { useSignupStore } from '@/stores/route';
+import PropTypes from 'prop-types';
+
+PhoneStep.propTypes = {
+  onNext: PropTypes.func.isRequired,
+};
 
 function PhoneStep({ onNext }) {
   const { phoneNumber, setPhoneNumber, verificationCode, setVerificationCode } =
@@ -19,11 +23,13 @@ function PhoneStep({ onNext }) {
         <InputWithDelete
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
+          className="paragraph-md"
           placeholder="휴대폰 번호"
         />
         <InputWithDelete
           value={verificationCode}
           onChange={(e) => setVerificationCode(e.target.value)}
+          className="paragraph-md"
           placeholder="인증번호"
         />
         <Button text="인증문자 받기" />
@@ -32,9 +38,5 @@ function PhoneStep({ onNext }) {
     </div>
   );
 }
-
-PhoneStep.propTypes = {
-  onNext: PropTypes.func.isRequired,
-};
 
 export default PhoneStep;

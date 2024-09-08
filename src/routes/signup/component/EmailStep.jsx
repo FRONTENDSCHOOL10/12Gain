@@ -1,8 +1,12 @@
 import Button from '@/components/Button/Button';
-import PropTypes from 'prop-types';
 import EmailInput from '@/routes/login/component/EmailInput';
 import { useLoginForm } from '@/stores/route';
+import PropTypes from 'prop-types';
 import S from './EmailStep.module.css';
+
+EmailStep.propTypes = {
+  onNext: PropTypes.func.isRequired,
+};
 
 function EmailStep({ onNext }) {
   const { email, setEmail, isEmailValid } = useLoginForm();
@@ -17,7 +21,7 @@ function EmailStep({ onNext }) {
   const isButtonDisabled = !isEmailValid || email.trim() === '';
 
   return (
-    <div className={S.component}>
+    <div className={S.Component}>
       <form className={S.EmailStepForm} onSubmit={handleSubmit}>
         <EmailInput
           type="email"
@@ -31,14 +35,11 @@ function EmailStep({ onNext }) {
           height="2.8125rem"
           disabled={isButtonDisabled}
           type="submit"
+          className={isButtonDisabled ? S.disabledButton : ''}
         />
       </form>
     </div>
   );
 }
-
-EmailStep.propTypes = {
-  onNext: PropTypes.func.isRequired,
-};
 
 export default EmailStep;

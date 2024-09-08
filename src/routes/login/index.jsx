@@ -1,10 +1,11 @@
-import S from '@/routes/login/style.module.css';
-import { useNavigate } from 'react-router-dom';
-import { useLoginForm } from '@/stores/route';
 import Button from '@/components/Button/Button';
+import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
+import S from '@/routes/login/style.module.css';
+import { useLoginForm } from '@/stores/route';
+import { useNavigate } from 'react-router-dom';
+import SignupLink from '../landing/component/SignupLink';
 import EmailInput from './component/EmailInput';
 import PasswordInput from './component/PasswordInput';
-import SignupLink from '../landing/component/SignupLink';
 
 function Login() {
   const navigate = useNavigate();
@@ -15,14 +16,17 @@ function Login() {
     e.preventDefault();
     if (isFormValid()) {
       console.log('Form submitted with:', { email, password });
-      clearForm(); // 폼 초기화
+      clearForm();
       navigate('/home');
     }
   };
 
   return (
     <div className={S.component}>
-      <h1 className={S.LoginTitle}>이메일과 비밀번호를 입력해 주세요.</h1>
+      <HeaderForDetails leftIcon={['left']} />
+      <h2 className={`${S.LoginTitle} label-lg`}>
+        이메일과 비밀번호를 입력해 주세요.
+      </h2>
       <form className={S.LoginForm} onSubmit={handleSubmit} noValidate>
         <EmailInput value={email} onChange={(e) => setEmail(e.target.value)} />
         <PasswordInput

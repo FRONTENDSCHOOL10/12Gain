@@ -1,5 +1,9 @@
 import S from '@/routes/landing/component/SignupLink.module.css';
-import { func } from 'prop-types';
+import PropTypes from 'prop-types';
+
+SignupLink.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 function SignupLink({ onClick }) {
   return (
@@ -13,9 +17,5 @@ function SignupLink({ onClick }) {
     </div>
   );
 }
-
-SignupLink.proTypes = {
-  onclick: func,
-};
 
 export default SignupLink;

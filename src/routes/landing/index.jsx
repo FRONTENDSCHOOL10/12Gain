@@ -1,6 +1,6 @@
+import Button from '@/components/Button/Button';
 import S from '@/routes/landing/style.module.css';
 import { useNavigate } from 'react-router-dom';
-import Button from '@/components/Button/Button';
 import LandingLogo from './component/LandingLogo';
 import SignupLink from './component/signupLink';
 

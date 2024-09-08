@@ -1,12 +1,13 @@
+import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
+import { useSignupStore } from '@/stores/route';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import EmailStep from './component/EmailStep';
 import PasswordStep from './component/PasswordStep';
 import PhoneStep from './component/PhoneStep';
-import TermsStep from './component/TermsStep';
-import { useSignupStore } from '@/stores/route';
 import ProgressBar from './component/ProgressBar';
 import SignUpLogo from './component/SignUpLogo';
+import TermsStep from './component/TermsStep';
 
 function SignUp() {
   const [step, setStep] = useState(1);
@@ -24,6 +25,7 @@ function SignUp() {
 
   return (
     <div>
+      <HeaderForDetails leftIcon={['left']} />
       <ProgressBar currentStep={step} totalSteps={totalSteps} />
       <SignUpLogo />
       <div>
