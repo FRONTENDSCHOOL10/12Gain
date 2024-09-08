@@ -1,23 +1,37 @@
 import InputWithDelete from '@/components/Input/InputWithDelete';
-import { useLoginForm } from '@/stores/route';
+import PropTypes from 'prop-types';
 
-function PasswordInput() {
-  const { password, setPassword } = useLoginForm();
-  const isPasswordValid = useLoginForm((state) => state.isPasswordValid);
+function PasswordInput({
+  showPassword = false,
+  value,
+  onChange,
+  placeholder = '비밀번호',
+  ariaLabel = '비밀번호 입력',
+  isValid = true,
+}) {
   return (
     <div>
       <InputWithDelete
-        type="password"
-        value={password}
+        type={showPassword ? 'text' : 'password'}
+        value={value}
+        onChange={onChange}
         className="paragraph-md"
-        placeholder="비밀번호"
-        onChange={(e) => setPassword(e.target.value)}
-        error={password !== '' && !isPasswordValid}
-        hasInput={password !== ''}
-        ariaLabel="비밀번호 입력"
+        placeholder={placeholder}
+        error={value !== '' && !isValid}
+        hasInput={value !== ''}
+        ariaLabel={ariaLabel}
       />
     </div>
   );
 }
+
+PasswordInput.propTypes = {
+  showPassword: PropTypes.bool,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  ariaLabel: PropTypes.string,
+  isValid: PropTypes.bool,
+};
 
 export default PasswordInput;

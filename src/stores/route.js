@@ -51,3 +51,26 @@ export const useLoginForm = create((set, get) => ({
   },
   clearForm: () => set({ email: '', password: '', isEmailValid: false }),
 }));
+
+export const useSignupStore = create((set, get) => ({
+  email: '',
+  password: '',
+  confirmPassword: '',
+  phoneNumber: '',
+  verificationCode: '',
+  agreeToTerms: false,
+  setEmail: (email) => set({ email }),
+  setPassword: (password) => set({ password }),
+  setConfirmPassword: (confirmPassword) => set({ confirmPassword }),
+  setPhoneNumber: (phoneNumber) => set({ phoneNumber }),
+  setVerificationCode: (verificationCode) => set({ verificationCode }),
+  setAgreeToTerms: (agreeToTerms) => set({ agreeToTerms }),
+  isPasswordMatching: () => {
+    const { password, confirmPassword } = get();
+    return password === confirmPassword && password.length > 0;
+  },
+  isNextEnabled: () => {
+    const { password, confirmPassword } = get();
+    return password === confirmPassword && password.length > 0;
+  },
+}));

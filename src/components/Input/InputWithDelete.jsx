@@ -52,6 +52,7 @@ const InputWithDelete = ({
           type="reset"
           onClick={handleClear}
           className={S.clearButton}
+          tabIndex={-1}
           aria-label="입력 내용 지우기"
         >
           <Icon id="close" width={16} height={16} />

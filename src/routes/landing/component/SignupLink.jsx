@@ -3,7 +3,7 @@ import { func } from 'prop-types';
 
 function SignupLink({ onClick }) {
   return (
-    <div className={S.component}>
+    <div className={S.Component}>
       <p className="paragraph-sm">
         아직 회원이 아니신가요?{' '}
         <a className="paragraph-underline" onClick={onClick}>

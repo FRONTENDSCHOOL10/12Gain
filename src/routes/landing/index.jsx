@@ -7,7 +7,7 @@ import SignupLink from './component/signupLink';
 function Landing() {
   const navigate = useNavigate();
   return (
-    <div className={S.component}>
+    <div className={S.Component}>
       <LandingLogo />
       <Button
         className="label-md"
