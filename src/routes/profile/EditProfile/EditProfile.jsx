@@ -1,4 +1,4 @@
-import S from '@/routes/profile/component/EditProfile.module.css';
+import S from '@/routes/profile/EditProfile/EditProfile.module.css';
 
 import Header from '../../../components/Header/Header';
 import ProfileImage from '@/components/ProfileImage/ProfileImage';
