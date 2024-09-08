@@ -1,12 +1,12 @@
-import S from '@/components/Button/ButtonCategory.module.css';
+import S from '@/components/Button/Checkbox.module.css';
 
 import { string } from 'prop-types';
 
-ButtonCategory.propTypes = {
+Checkbox.propTypes = {
   text: string.isRequired,
 };
 
-function ButtonCategory({ text }) {
+function Checkbox({ text }) {
   return (
     <div className={S.component}>
       <input type="checkbox" id={text} name="interest" />
@@ -15,4 +15,4 @@ function ButtonCategory({ text }) {
   );
 }
 
-export default ButtonCategory;
+export default Checkbox;

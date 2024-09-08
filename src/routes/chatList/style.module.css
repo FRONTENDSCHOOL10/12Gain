@@ -1,0 +1,12 @@
+.component {
+  background-color: var(--background);
+
+  .headline {
+    height: var(--spacing-40);
+    align-content: center;
+    padding: var(--spacing-4) var(--spacing-12);
+    font-size: 1.125rem;
+    font-weight: 600;
+    background-color: var(--white);
+  }
+}
