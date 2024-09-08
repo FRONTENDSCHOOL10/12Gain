@@ -19,13 +19,16 @@ function Profile() {
   return (
     <div className={S.component}>
       <Header text="프로필" iconList={['search', 'chat', 'alarm']} />
-      <ProfileCard nickName="이름" />
-      <Button
-        text="프로필 수정"
-        height="2.8rem"
-        onClick={() => navigate('edit')}
-      />
-      <PostList list={subNavList}></PostList>
+      <main className={S.component__profile}>
+        <ProfileCard nickName="이름" />
+        <Button
+          className={S.component__profile__Button}
+          onClick={() => navigate('edit')}
+        >
+          프로필 수정
+        </Button>
+        <PostList list={subNavList}></PostList>
+      </main>
       <Outlet />
     </div>
   );
