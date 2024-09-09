@@ -59,6 +59,7 @@
     gap: 0.8125rem;
     color: var(--Contents-contentPrimary, var(--color-black, #101115));
 
+    /* Label/Medium */
     font-family: Pretendard;
     font-size: 0.875rem;
     font-style: normal;
@@ -72,6 +73,7 @@
 
     color: var(--Contents-contentPrimary, var(--color-black, #101115));
 
+    /* Paragraph/Small */
     font-family: Pretendard;
     font-size: 0.65644rem;
     font-style: normal;
@@ -100,6 +102,7 @@
       align-self: stretch;
       color: var(--Contents-contentPrimary, var(--color-black, #101115));
 
+      /* Label/Small */
       font-family: Pretendard;
       font-size: 0.65644rem;
       font-style: normal;

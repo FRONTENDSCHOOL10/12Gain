@@ -6,10 +6,7 @@
 
 .subNavList {
   display: flex;
-  /* width: 20rem; */
-  /* padding: 0.375rem 0.75rem 0rem 0.75rem; */
   padding-left: 0.75rem;
-  /* align-items: center; */
   gap: 0.75rem;
 
   color: var(--Contents-contentPrimary, var(--color-black, #101115));

@@ -1,15 +1,15 @@
-import S from '@/routes/home/component/AttendPost.module.css';
+import S from './PostManager.module.css';
 import { string, number } from 'prop-types';
 import ProfileImage from '@/components/ProfileImage/ProfileImage';
 
-AttendPost.propTypes = {
+PostManager.propTypes = {
   nickName: string.isRequired,
   pop: number,
   imageWidth: number,
   imageHeight: number,
 };
 
-function AttendPost({ nickName, pop, imageWidth, imageHeight }) {
+function PostManager({ nickName, pop, imageWidth, imageHeight }) {
   return (
     <div className={S.component}>
       <ProfileImage
@@ -22,4 +22,4 @@ function AttendPost({ nickName, pop, imageWidth, imageHeight }) {
     </div>
   );
 }
-export default AttendPost;
+export default PostManager;

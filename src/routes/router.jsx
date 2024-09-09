@@ -10,12 +10,14 @@ import MyPost from './profile/component/MyPost';
 import MyFeed from './profile/component/MyFeed';
 import PostDetail from '@/components/PostDetail/PostDetail';
 import EditProfile from './profile/component/EditProfile';
-import AttendPost from '@/routes/home/component/AttendPost';
 import EditInterest from './profile/component/EditInterest';
 import Landing from './landing';
 import Login from './login';
 import SignUp from './signup';
 import CreateFeedPage from './community/CreateFeedPage';
+import NewPost from './post/component/NewPost';
+import NewCategory from './post/component/NewCategory';
+import AttendPost from './attendpost';
 
 const routes = [
   {
@@ -41,7 +43,7 @@ const routes = [
         ),
         children: [
           // post/:postId/join 경로 추가
-          { path: 'join', element: <AttendPost /> },
+          // { path: 'join', element: <AttendPost /> },
         ],
       },
       {
@@ -71,6 +73,9 @@ const routes = [
   { path: '/Landing', element: <Landing /> },
   { path: '/Landing/Login', element: <Login /> },
   { path: '/Landing/SignUp', element: <SignUp /> },
+  { path: '/new/post', element: <NewPost /> },
+  { path: '/new/post/category', element: <NewCategory /> },
+  { path: '/post/:postId/join', element: <AttendPost /> },
 ];
 
 const router = createBrowserRouter(routes);

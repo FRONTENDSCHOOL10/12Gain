@@ -1,0 +1,16 @@
+.inputWrapper {
+  input {
+    display: flex;
+    width: 20rem;
+    padding: 0.75rem;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    border-top: 1px solid var(--Contents-contentTertiary, #d9d9d9);
+    border-bottom: 1px solid var(--Contents-contentTertiary, #d9d9d9);
+    border-left: 0px;
+    border-right: 0px;
+
+    background: var(--background, #f4f4f4);
+  }
+}
