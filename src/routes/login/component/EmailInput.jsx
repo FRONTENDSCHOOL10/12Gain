@@ -1,6 +1,6 @@
 import InputWithDelete from '@/components/Input/InputWithDelete';
-import { useLoginForm } from '@/stores/route';
 import S from '@/components/Input/style.module.css';
+import { useLoginForm } from '@/stores/route';
 
 function EmailInput() {
   const { email, setEmail } = useLoginForm();

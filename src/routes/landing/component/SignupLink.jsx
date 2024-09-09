@@ -1,9 +1,13 @@
 import S from '@/routes/landing/component/SignupLink.module.css';
-import { func } from 'prop-types';
+import PropTypes from 'prop-types';
+
+SignupLink.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 function SignupLink({ onClick }) {
   return (
-    <div className={S.component}>
+    <div className={S.Component}>
       <p className="paragraph-sm">
         아직 회원이 아니신가요?{' '}
         <a className="paragraph-underline" onClick={onClick}>
@@ -13,9 +17,5 @@ function SignupLink({ onClick }) {
     </div>
   );
 }
-
-SignupLink.proTypes = {
-  onclick: func,
-};
 
 export default SignupLink;
