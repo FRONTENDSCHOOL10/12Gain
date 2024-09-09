@@ -2,6 +2,7 @@ import S from '@/components/Header/style.module.css';
 
 import Icon from '@/components/Icon/Icon';
 import { string, array } from 'prop-types';
+import IconButton from '../Button/IconButton';
 
 Header.propTypes = {
   text: string,
@@ -15,7 +16,11 @@ function Header({ text, iconList }) {
       <ul className={S.icons__container}>
         {iconList?.map((item, index) => (
           <li key={index}>
-            <Icon id={item} />
+            <IconButton
+              iconId={item.iconId}
+              title={item.iconId}
+              path={item.path}
+            />
           </li>
         ))}
       </ul>

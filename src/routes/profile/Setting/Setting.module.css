@@ -1,0 +1,11 @@
+.component {
+  main {
+    padding: var(--spacing-12);
+    background-color: var(--background);
+  }
+  ul {
+    display: flex;
+    flex-flow: column;
+    gap: var(--spacing-20);
+  }
+}

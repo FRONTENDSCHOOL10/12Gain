@@ -2,7 +2,12 @@ import { create } from 'zustand';
 
 export const useNavList = create(() => ({
   navList: [
-    { path: '/home', text: '홈', icon: 'home', iconFull: 'homeFull' },
+    {
+      path: '/home',
+      text: '홈',
+      icon: 'home',
+      iconFull: 'homeFull',
+    },
     {
       path: '/myAppointment',
       text: '내 모임',

@@ -10,6 +10,7 @@ function MyPost() {
         place="성수동"
         member={2}
         category="러닝"
+        id="1"
       />
       <Post
         title="클라이밍"
@@ -17,6 +18,7 @@ function MyPost() {
         place="성수동"
         member={2}
         category="러닝"
+        id="2"
       />
       <Post
         title="클라이밍"
@@ -24,6 +26,7 @@ function MyPost() {
         place="성수동"
         member={2}
         category="러닝"
+        id="3"
       />
     </div>
   );
