@@ -28,11 +28,16 @@ function Login() {
         이메일과 비밀번호를 입력해 주세요.
       </h2>
       <form className={S.LoginForm} onSubmit={handleSubmit} noValidate>
-        <EmailInput value={email} onChange={(e) => setEmail(e.target.value)} />
-        <PasswordInput
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className={S.InputGroup}>
+          <EmailInput
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <PasswordInput
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
         <Button
           text="로그인"
           height="2.8125rem"

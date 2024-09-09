@@ -1,15 +1,12 @@
 import PropTypes from 'prop-types';
-import styles from './ProgressBar.module.css';
+import S from './ProgressBar.module.css';
 
 const ProgressBar = ({ currentStep, totalSteps }) => {
   const progress = (currentStep / totalSteps) * 100;
 
   return (
-    <div className={styles.progressBar}>
-      <div
-        className={styles.progressFill}
-        style={{ width: `${progress}%` }}
-      ></div>
+    <div className={S.progressBar}>
+      <div className={S.progressFill} style={{ width: `${progress}%` }}></div>
     </div>
   );
 };

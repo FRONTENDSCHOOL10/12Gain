@@ -58,13 +58,24 @@ export const useSignupStore = create((set, get) => ({
   confirmPassword: '',
   phoneNumber: '',
   verificationCode: '',
-  agreeToTerms: false,
+  agreeToTerms: {
+    all: false,
+    terms: false,
+    privacy: false,
+    age: false,
+  },
   setEmail: (email) => set({ email }),
   setPassword: (password) => set({ password }),
   setConfirmPassword: (confirmPassword) => set({ confirmPassword }),
   setPhoneNumber: (phoneNumber) => set({ phoneNumber }),
   setVerificationCode: (verificationCode) => set({ verificationCode }),
-  setAgreeToTerms: (agreeToTerms) => set({ agreeToTerms }),
+  setAgreeToTerms: (updater) =>
+    set((state) => ({
+      agreeToTerms:
+        typeof updater === 'function'
+          ? updater(state.agreeToTerms)
+          : { ...state.agreeToTerms, ...updater },
+    })),
   isPasswordMatching: () => {
     const { password, confirmPassword } = get();
     return password === confirmPassword && password.length > 0;
