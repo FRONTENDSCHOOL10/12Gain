@@ -31,12 +31,14 @@ function EmailStep({ onNext }) {
           required
         />
         <Button
-          text="다음"
-          height="2.8125rem"
           disabled={isButtonDisabled}
           type="submit"
-          className={isButtonDisabled ? S.disabledButton : ''}
-        />
+          className={`${
+            isButtonDisabled ? S.disabledButton : S.button
+          } label-md`}
+        >
+          다음
+        </Button>
       </form>
     </div>
   );

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import S from './TermsStep.module.css';
 import TermsItem from './TermsItem';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 TermsStep.propTypes = {
   onSubmit: PropTypes.func.isRequired,
@@ -48,7 +48,10 @@ function TermsStep({ onSubmit }) {
     const requiredTerms = ['terms', 'privacy', 'age'];
     if (requiredTerms.every((term) => agreeToTerms[term])) {
       onSubmit();
-      navigate('/Landing/Login');
+      navigate('/Login');
+      toast('회원가입이 완료되었습니다!', {
+        icon: '🎉',
+      });
     } else {
       toast.error('필수 약관에 모두 동의해주세요.');
     }
@@ -56,7 +59,6 @@ function TermsStep({ onSubmit }) {
 
   return (
     <div>
-      <Toaster />
       <h2 className="sr-only">이용 약관</h2>
       <ul className={S.termsList}>
         {terms.map((term) => (
@@ -70,7 +72,9 @@ function TermsStep({ onSubmit }) {
           />
         ))}
       </ul>
-      <Button text="완료" onClick={handleNavigation} />
+      <Button type="submit" onClick={handleNavigation} className={S.button}>
+        완료
+      </Button>
     </div>
   );
 }

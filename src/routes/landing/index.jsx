@@ -10,13 +10,12 @@ function Landing() {
     <div className={S.Component}>
       <LandingLogo />
       <Button
-        className={S.button}
-        height="2.25rem"
+        className={`${S.button} label-md`}
         onClick={() => navigate('Login')}
       >
         시작하기
       </Button>
-      <SignupLink onClick={() => navigate('SignUp')} />
+      <SignupLink onClick={() => navigate('landing/SignUp')} />
     </div>
   );
 }
