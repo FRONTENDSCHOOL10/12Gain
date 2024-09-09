@@ -5,7 +5,7 @@ import Button from '@/components/Button/Button';
 import FormGroup from './component/FormGroup';
 import SignupLink from '../landing/component/SignupLink';
 
-function Login() {
+export function Component() {
   const navigate = useNavigate();
   const isFormValid = useLoginForm((state) => state.isFormValid());
   const handleSubmit = (e) => {
@@ -35,5 +35,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login;

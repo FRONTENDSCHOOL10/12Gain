@@ -1,5 +1,3 @@
-function SignUp() {
+export function Component() {
   return <div>SignUp</div>;
 }
-
-export default SignUp;

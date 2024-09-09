@@ -1,29 +1,37 @@
 import S from '@/components/Header/style.module.css';
 
 import Icon from '@/components/Icon/Icon';
-import { string, array } from 'prop-types';
-import IconButton from '../Button/IconButton';
+import IconButton from '@/components/Button/IconButton';
+import { useLocation } from 'react-router-dom';
+import { useHeader } from '@/stores/route';
 
-Header.propTypes = {
-  text: string,
-  iconList: array,
-};
+function Header() {
+  const location = useLocation();
+  const currentPath = location.pathname;
 
-function Header({ text, iconList }) {
+  const [header] = useHeader((s) => [s.header]);
+
   return (
-    <header className={S.component}>
-      <h1>{text ? text : <Icon id="Logo_s" width={52} />}</h1>
-      <ul className={S.icons__container}>
-        {iconList?.map((item, index) => (
-          <li key={index}>
-            <IconButton
-              iconId={item.iconId}
-              title={item.iconId}
-              path={item.path}
-            />
-          </li>
-        ))}
-      </ul>
+    <header>
+      {header.map(
+        (item, index) =>
+          item.path === currentPath && (
+            <div key={index} className={S.component}>
+              <h1>{item.text ? item.text : <Icon id="Logo_s" width={52} />}</h1>
+              <ul className={S.icons__container}>
+                {item.iconList?.map((iconList, index) => (
+                  <li key={index}>
+                    <IconButton
+                      iconId={iconList.iconId}
+                      title={iconList.title}
+                      path={iconList.path}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+      )}
     </header>
   );
 }

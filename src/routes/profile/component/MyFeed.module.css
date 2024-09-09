@@ -1,4 +1,8 @@
 .component {
+  display: flex;
+  flex-flow: column;
+  gap: var(--spacing-12);
+  align-items: center;
   min-height: 35rem;
   padding: var(--spacing-20) var(--spacing-12);
   background-color: var(--background);

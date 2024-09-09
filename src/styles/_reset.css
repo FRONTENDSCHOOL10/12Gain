@@ -133,7 +133,8 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-button, textarea {
+button,
+textarea {
   font-family: 'Pretendard Variable', sans-serif;
 }
 

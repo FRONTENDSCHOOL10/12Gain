@@ -1,11 +1,6 @@
 import S from '@/routes/chatList/ChatRoom/ChatRoom.module.css';
 import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
 import SendMessage from '../component/SendMessage';
-import { array } from 'prop-types';
-
-ChatRoom.propTypes = {
-  data: array,
-};
 
 const data = [
   { id: 1, message: 1 },
@@ -16,7 +11,7 @@ const data = [
 
 const myId = 1;
 
-function ChatRoom() {
+export function Component() {
   return (
     <>
       <HeaderForDetails
@@ -61,5 +56,3 @@ function ChatRoom() {
     </>
   );
 }
-
-export default ChatRoom;

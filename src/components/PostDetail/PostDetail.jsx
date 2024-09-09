@@ -25,20 +25,25 @@ PostDetail.propTypes = {
  * 현재는 데이터 하드코딩으로 우선 작업
  * 포켓베이스 통해서 값 넣어주는 방식으로 변경 필요
  */
-function PostDetail({
-  title,
-  sportType,
-  location,
-  datetime,
-  pop,
-  description,
-  member = 1,
-}) {
+
+const testData = {
+  title: '제목입니다',
+  sportType: '러닝',
+  location: '종합운동장',
+  datetime: '2024년 9월 1일',
+  pop: 1,
+  description: '설명입니다.',
+};
+
+function PostDetail() {
   const { postId } = useParams();
   const navigate = useNavigate();
 
   // 여기에 postId를 이용해 백엔드에서 데이터를 가져오거나,
   // 상태를 통해 데이터를 전달할 수 있습니다.
+
+  const { title, sportType, location, datetime, pop, description } = testData;
+
   return (
     <article className={S.component}>
       <Header iconList={['left', 'home', 'more']} />

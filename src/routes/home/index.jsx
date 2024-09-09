@@ -1,10 +1,10 @@
 import S from '@/routes/home/style.module.css';
-import Header from '@/components/Header/Header';
+
 import MainPostList from '@/routes/home/component/MainPostList';
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
-function Home() {
+export function Component() {
   const [subNavList] = useState([
     { path: '/home', text: '추천', end: true },
     { path: '/home/new', text: '신규' },
@@ -13,11 +13,8 @@ function Home() {
 
   return (
     <div className={S.component}>
-      <Header iconList={['search', 'chat', 'alarm']} />
       <MainPostList list={subNavList} />
       <Outlet />
     </div>
   );
 }
-
-export default Home;

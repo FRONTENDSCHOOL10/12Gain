@@ -1,11 +1,10 @@
-import S from '@/routes/profile/Setting/DeleteAccount.module.css';
-import { string } from 'prop-types';
+import S from '@/routes/profile/DeleteAccount/DeleteAccount.module.css';
 
-DeleteAccount.propTypes = {
-  nickName: string,
-};
+const NICKNAME = '닉네임';
 
-function DeleteAccount({ nickName }) {
+export function Component() {
+  let nickName = NICKNAME;
+
   return (
     <main className={S.component}>
       <h2 className="sr-only">회원 탈퇴</h2>
@@ -27,5 +26,3 @@ function DeleteAccount({ nickName }) {
     </main>
   );
 }
-
-export default DeleteAccount;
