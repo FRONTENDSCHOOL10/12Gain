@@ -1,8 +1,8 @@
 import S from '@/routes/profile/component/ProfileCard.module.css';
 
-import { string } from 'prop-types';
 import ProfileImage from '@/components/ProfileImage/ProfileImage';
 import MyInterestList from '@/routes/profile/component/MyInterestList';
+import { string } from 'prop-types';
 
 ProfileCard.propTypes = {
   nickName: string.isRequired,

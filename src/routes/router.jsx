@@ -2,14 +2,16 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import MainPost from './home/component/MainPost';
 import PostDetail from '@/components/PostDetail/PostDetail';
-import AttendPost from '@/routes/home/component/AttendPost';
+import AttendPost from '@/routes/attendpost';
 import Landing from './landing';
 import CreateFeedPage from './community/CreateFeedPage/CreateFeedPage';
+import NewPost from './post/component/NewPost';
+import NewCategory from './post/component/NewCategory';
 
 const routes = [
   { path: '/', element: <Landing /> },
   { path: 'login', lazy: () => import('@/routes/login') },
-  { path: 'signUp', lazy: () => import('@/routes/signup') },
+  { path: 'Landing/signUp', lazy: () => import('@/routes/signup') },
   {
     path: '/main',
     lazy: () => import('@/routes/RootLayout'),
@@ -85,6 +87,8 @@ const routes = [
     path: 'main/profile/deleteAccount',
     lazy: () => import('@/routes/profile/DeleteAccount'),
   },
+  { path: 'main/home/new/post', element: <NewPost /> },
+  { path: 'main/home/new/post/category', element: <NewCategory /> },
 ];
 
 const router = createBrowserRouter(routes);

@@ -1,4 +1,5 @@
 import S from '@/routes/profile/component/MyInterestList.module.css';
+
 import { array } from 'prop-types';
 
 MyInterestList.propTypes = {

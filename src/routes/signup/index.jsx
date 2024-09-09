@@ -9,7 +9,7 @@ import ProgressBar from './component/ProgressBar';
 import SignUpLogo from './component/SignUpLogo';
 import TermsStep from './component/TermsStep';
 
-function SignUp() {
+export function Component() {
   const [step, setStep] = useState(1);
   const navigate = useNavigate();
   const signupState = useSignupStore();
@@ -37,5 +37,3 @@ function SignUp() {
     </div>
   );
 }
-
-export default SignUp;

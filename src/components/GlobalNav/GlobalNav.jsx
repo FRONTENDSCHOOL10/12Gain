@@ -8,7 +8,7 @@ function GlobalNav() {
   const [navList] = useNavList((s) => [s.navList]);
 
   return (
-    <nav className={S.component}>
+    <nav className={`${S.component} ${S.navigation}`}>
       <h2 className="sr-only">하단 메뉴</h2>
       <ul>
         {navList.map(({ path, text, icon, iconFull }) => (

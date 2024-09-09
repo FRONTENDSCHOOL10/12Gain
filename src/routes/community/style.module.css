@@ -1,6 +1,6 @@
 .component {
   padding: 0 var(--spacing-12);
-  background-color: var(--content-tertiary);
+  background-color: var(--background);
 
   aside {
     width: calc(20rem - (0.75rem * 2));

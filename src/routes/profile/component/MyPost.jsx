@@ -1,7 +1,8 @@
-import Post from '@/components/Post/Post';
 import S from '@/routes/profile/component/MyPost.module.css';
 
-function MyPost() {
+import Post from '@/components/Post/Post';
+
+export function Component() {
   return (
     <div className={S.component}>
       <Post
@@ -31,5 +32,3 @@ function MyPost() {
     </div>
   );
 }
-
-export default MyPost;

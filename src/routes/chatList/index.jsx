@@ -4,7 +4,7 @@ import Header from '@/components/Header/Header';
 import Chat from './component/Chat';
 import { useNavigate } from 'react-router-dom';
 
-function ChatList() {
+export function Component() {
   const navigate = useNavigate();
 
   return (
@@ -29,5 +29,3 @@ function ChatList() {
     </>
   );
 }
-
-export default ChatList;

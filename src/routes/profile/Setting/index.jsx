@@ -1,13 +1,16 @@
-import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
 import S from '@/routes/profile/Setting/Setting.module.css';
-import SettingList from '../component/SettingList';
 
-function Setting() {
+import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
+import SettingList from '@/routes/profile/component/SettingList';
+
+export function Component() {
   return (
     <div className={S.component}>
       <HeaderForDetails
         text="설정"
-        leftIcon={[{ iconId: 'left', path: '/profile', title: '뒤로가기' }]}
+        leftIcon={[
+          { iconId: 'left', path: '/main/profile/edit', title: '뒤로가기' },
+        ]}
       />
       <main>
         <h2 className="sr-only">설정 항목</h2>
@@ -22,5 +25,3 @@ function Setting() {
     </div>
   );
 }
-
-export default Setting;

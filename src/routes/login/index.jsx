@@ -7,7 +7,7 @@ import SignupLink from '../landing/component/SignupLink';
 import EmailInput from './component/EmailInput';
 import PasswordInput from './component/PasswordInput';
 
-function Login() {
+export function Component() {
   const navigate = useNavigate();
   const { email, password, setEmail, setPassword, isFormValid, clearForm } =
     useLoginForm();
@@ -53,5 +53,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login;

@@ -1,14 +1,14 @@
 .component {
   .contents {
     padding: var(--spacing-20);
-    background-color: var(--background);
     border-bottom: 1px solid var(--content-tertiary);
+    background-color: var(--background);
   }
 
   .headline {
+    margin-bottom: var(--spacing-16);
     font-size: 0.875rem;
     font-weight: 400;
-    margin-bottom: var(--spacing-16);
   }
 
   ul {

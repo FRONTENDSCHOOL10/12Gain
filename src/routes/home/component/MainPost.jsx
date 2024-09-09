@@ -8,7 +8,7 @@ function MainPost() {
   const navigate = useNavigate();
 
   const handlePostButtonClick = () => {
-    navigate('/new/post');
+    navigate('/main/home/new/post');
   };
 
   return (

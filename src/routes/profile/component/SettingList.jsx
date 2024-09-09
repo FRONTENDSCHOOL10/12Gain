@@ -1,6 +1,6 @@
-import IconButton from '@/components/Button/IconButton';
-
 import S from '@/routes/profile/component/SettingList.module.css';
+
+import IconButton from '@/components/Button/IconButton';
 import { func, number, oneOfType, string } from 'prop-types';
 
 SettingList.propTypes = {

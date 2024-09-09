@@ -1,5 +1,3 @@
-function MyAppointment() {
+export function Component() {
   return <div>My Appointment</div>;
 }
-
-export default MyAppointment;
