@@ -36,18 +36,7 @@
   background-color: aqua;
 }
 
-.checkIcon {
-  width: 1.25rem;
-  height: 1.25rem;
-  border-color: var(--tertiary);
-}
-
-.checkbox.checked .checkIcon {
-  color: var(--primary);
-}
-
 .arrowIcon {
   width: 1.25rem;
   height: 1.25rem;
-  color: var(--black);
 }

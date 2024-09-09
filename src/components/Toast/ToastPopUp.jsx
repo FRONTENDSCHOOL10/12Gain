@@ -1,36 +1,23 @@
-import PropTypes from 'prop-types';
 import toast from 'react-hot-toast';
-import S from './ToastPopup.module.css';
+import Icon from '../Icon/Icon';
+import S from './CustomToast.module.css';
 
-const ToastPopUp = ({ icon: Icon, text, variant }) => {
-  const iconColorClass = variant === 'error' ? S.iconError : S.iconDefault;
-  const textColorClass = variant === 'error' ? S.textError : S.textDefault;
-
+const CustomToast = ({ text, iconId }) => {
   return (
-    <div className={S.toast}>
-      <div className={S.content}>
-        {Icon && <Icon className={`${S.icon} ${iconColorClass}`} />}
-        <span className={`label-sm ${textColorClass}`}>{text}</span>
-      </div>
+    <div className={S.toastContainer}>
+      <Icon
+        id={iconId}
+        className={`${S.icon} ${
+          iconId === 'error' ? S.errorIcon : S.successIcon
+        }`}
+      />
+      <span className={S.text}>{text}</span>
     </div>
   );
 };
 
-ToastPopUp.propTypes = {
-  icon: PropTypes.elementType,
-  text: PropTypes.string.isRequired,
-  variant: PropTypes.oneOf(['default', 'error']),
+export const showToast = (text, iconId = 'circle-check') => {
+  return toast.custom((t) => <CustomToast text={text} iconId={iconId} />);
 };
 
-ToastPopUp.defaultProps = {
-  variant: 'default',
-};
-
-const showToast = (text, options = {}) => {
-  const { icon, variant = 'default' } = options;
-  toast.custom(() => <ToastPopUp icon={icon} text={text} variant={variant} />);
-};
-
-ToastPopUp.show = showToast;
-
-export default ToastPopUp;
+export default CustomToast;

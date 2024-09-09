@@ -31,11 +31,11 @@ function TermsItem({
           className={S.hiddenCheckbox}
         />
         <div className={`${S.checkbox} ${isChecked ? S.checked : ''}`}>
-          <Icon id="checkbox" className={S.checkIcon} />
+          <Icon id="checkbox" />
         </div>
         <span className={S.termText}>{text}</span>
       </label>
-      {showArrow && <Icon id="right" className={S.arrowIcon} />}
+      {showArrow && <Icon id="right" />}
     </div>
   );
 }
