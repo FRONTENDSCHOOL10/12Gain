@@ -1,0 +1,12 @@
+.component {
+  position: absolute;
+  bottom: 0;
+  right: 16px;
+
+  .BtnCreateFeed {
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--primary);
+    border-radius: 50%;
+  }
+}

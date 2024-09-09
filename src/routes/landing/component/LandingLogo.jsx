@@ -1,10 +1,9 @@
 import S from '@/routes/landing/component/LandingLogo.module.css';
-
 import Icon from '@/components/Icon/Icon';
 
 function LandingLogo() {
   return (
-    <div className={S.component}>
+    <div className={S.Component}>
       <h1 aria-label="유앤밋">
         <Icon id="Logo_m" width={87} height={32.09} />
       </h1>

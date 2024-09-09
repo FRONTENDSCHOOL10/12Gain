@@ -1,25 +1,43 @@
-import S from '@/routes/login/style.module.css';
-import { useNavigate } from 'react-router-dom';
-import { useLoginForm } from '@/stores/route';
 import Button from '@/components/Button/Button';
-import FormGroup from './component/FormGroup';
+import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
+import S from '@/routes/login/style.module.css';
+import { useLoginForm } from '@/stores/route';
+import { useNavigate } from 'react-router-dom';
 import SignupLink from '../landing/component/SignupLink';
+import EmailInput from './component/EmailInput';
+import PasswordInput from './component/PasswordInput';
 
 export function Component() {
   const navigate = useNavigate();
-  const isFormValid = useLoginForm((state) => state.isFormValid());
+  const { email, password, setEmail, setPassword, isFormValid, clearForm } =
+    useLoginForm();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isFormValid) {
+    if (isFormValid()) {
+      console.log('Form submitted with:', { email, password });
+      clearForm();
       navigate('/home');
     }
   };
 
   return (
     <div className={S.component}>
-      <h1 className="label-lg">이메일과 비밀번호를 입력해 주세요.</h1>
-      <form onSubmit={handleSubmit} noValidate>
-        <FormGroup />
+      <HeaderForDetails leftIcon={['left']} />
+      <h2 className={`${S.LoginTitle} label-lg`}>
+        이메일과 비밀번호를 입력해 주세요.
+      </h2>
+      <form className={S.LoginForm} onSubmit={handleSubmit} noValidate>
+        <div className={S.InputGroup}>
+          <EmailInput
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <PasswordInput
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
         <Button
           text="로그인"
           height="2.8125rem"

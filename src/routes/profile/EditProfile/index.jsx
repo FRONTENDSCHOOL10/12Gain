@@ -44,6 +44,7 @@ export function Component() {
             name="aboutMe"
             maxLength={180}
             className={S.textarea}
+            showTextLength={false}
           />
         </label>
       </form>

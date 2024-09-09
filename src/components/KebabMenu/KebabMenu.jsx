@@ -1,5 +1,6 @@
 import Button from '@/components/Button/Button';
 import Icon from '@/components/Icon/Icon';
+import S from '@/components/KebabMenu/style.module.css';
 
 function KebabMenu() {
   const onClickMenu = () => {
@@ -7,12 +8,7 @@ function KebabMenu() {
   };
 
   return (
-    <Button
-      width="20px"
-      height="20px"
-      backgroundColor="transparent"
-      onClick={onClickMenu}
-    >
+    <Button className={S.component} onClick={onClickMenu}>
       <Icon id="more" width={20} height={20} />
     </Button>
   );

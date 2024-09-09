@@ -2,8 +2,9 @@ import S from '@/components/PostDetail/style.module.css';
 import { useParams, useNavigate } from 'react-router-dom';
 import Button from '@/components/Button/Button';
 import { string, number } from 'prop-types';
-import Header from '@/routes/home/component/Header';
-import AttendPost from '@/routes/home/component/AttendPost';
+import DetailItem from '@/components/DetailItem/DetailItem';
+import PostManager from '@/components/PostManager/PostManager';
+import Header from '../Header/Header';
 
 PostDetail.propTypes = {
   title: string,
@@ -47,32 +48,47 @@ function PostDetail() {
   return (
     <article className={S.component}>
       <Header iconList={['left', 'home', 'more']} />
-      <img src="/running.png" alt="이미지없음" />
-      <div className={S.input}>
-        <h1>{title}</h1>
-        <div className={S.detail}>
-          {/* 아래의 <span>태그들 컴포넌트로 사용방식으로 변경 필요 */}
-          <span>종목 {sportType}</span>
-          <span>장소 {location}</span>
-          <span>일시 {datetime}</span>
-          <span>인원 {pop}</span>
+      <img className={S.img_main} src="/running.png" alt="이미지없음" />
+
+      <div className={S.main}>
+        <p className={S.main_title}>{title}</p>
+        <div className={S.main_detail}>
+          <DetailItem label="종목" value={sportType} />
+          <DetailItem label="장소" value={location} />
+          <DetailItem label="일시" value={datetime} />
+          <DetailItem label="인원" value={pop} />
         </div>
       </div>
-      <div className={S.title}>
-        내용
-        <div className={S.description}>{description}</div>
+
+      <div className={S.sub}>
+        <p className={S.sub_title}>내용</p>
+        <div className={S.sub_description}>{description}</div>
       </div>
 
-      <h1>Post 상세 페이지</h1>
-      <p>Post ID: {postId}</p>
+      <div className={S.attend}>
+        <div className={S.attend_member}>
+          <span className={S.attend_member_pop}>
+            참여멤버 {pop}명
+            <span className={S.attend_member_pop_max}> / 4명 </span>{' '}
+          </span>
+          <div className={S.attend_member_info}>
+            <PostManager
+              nickName="사용자"
+              pop={pop}
+              imageWidth={44}
+              imageHeight={44}
+            />
+          </div>
+        </div>
+      </div>
 
-      <Button
-        text="참여하기"
-        height="2.8rem"
-        onClick={() => navigate('join')}
-      />
-
-      <AttendPost nickName="사용자" pop={pop} />
+      <div className={S.attend_button}>
+        <Button
+          text="참여하기"
+          height="2.8rem"
+          onClick={() => navigate('join')}
+        />
+      </div>
     </article>
   );
 }

@@ -4,7 +4,7 @@ import MainPost from './home/component/MainPost';
 import PostDetail from '@/components/PostDetail/PostDetail';
 import AttendPost from '@/routes/home/component/AttendPost';
 import Landing from './landing';
-import CreateFeedPage from './community/CreateFeedPage';
+import CreateFeedPage from './community/CreateFeedPage/CreateFeedPage';
 
 const routes = [
   { path: '/', element: <Landing /> },

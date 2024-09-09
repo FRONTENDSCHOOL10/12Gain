@@ -1,0 +1,18 @@
+.Component {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.EmailStepForm {
+  display: flex;
+  flex-flow: column;
+  gap: 5.25rem;
+}
+
+.disabledButton {
+  background-color: var(--content-tertiary);
+  color: var(--content-secondary);
+  cursor: not-allowed;
+}

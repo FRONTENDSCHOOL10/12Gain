@@ -12,13 +12,7 @@ function BtnThumsup() {
   };
   return (
     <div className={S.component}>
-      <Button
-        width="16px"
-        height="16px"
-        color="var(--content-secondary)"
-        backgroundColor="transparent"
-        onClick={onClickThumsUp}
-      >
+      <Button className={S.BtnThumsup} onClick={onClickThumsUp}>
         <Icon
           id="thumbs-up"
           width={16}

@@ -1,0 +1,5 @@
+.termsList {
+  padding: 0.875rem 0.75rem;
+  display: flex;
+  flex-flow: column;
+}

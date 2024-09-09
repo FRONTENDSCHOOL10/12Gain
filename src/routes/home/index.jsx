@@ -1,6 +1,5 @@
 import S from '@/routes/home/style.module.css';
 
-import MainPostList from '@/routes/home/component/MainPostList';
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
@@ -13,7 +12,13 @@ export function Component() {
 
   return (
     <div className={S.component}>
-      <MainPostList list={subNavList} />
+      <ul className={S.subNavList}>
+        {subNavList.map((item, index) => (
+          <li key={index} className={S.subNavItem}>
+            <a href={item.path}>{item.text}</a>
+          </li>
+        ))}
+      </ul>
       <Outlet />
     </div>
   );
