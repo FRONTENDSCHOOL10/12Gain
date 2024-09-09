@@ -7,11 +7,4 @@
   color: var(--content-secondary);
   font-size: 0.625rem;
   line-height: 160%;
-
-  .BtnThumsup,
-  .BtnComment {
-    width: 1rem;
-    height: 1rem;
-    background-color: transparent;
-  }
 }

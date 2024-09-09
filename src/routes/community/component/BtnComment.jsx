@@ -1,21 +1,17 @@
-import Button from '@/components/Button/Button';
-import Icon from '@/components/Icon/Icon';
+import IconButton from '@/components/Button/IconButton';
 import S from '@/routes/community/component/BtnCount.module.css';
-import { useNavigate } from 'react-router-dom';
 
 function BtnComment() {
-  const navigate = useNavigate();
-
   return (
     <div className={S.component}>
-      <Button className={S.BtnComment} onClick={() => navigate('comment')}>
-        <Icon
-          id="comment"
-          width={14}
-          height={14}
-          color="var(--content-secondary)"
-        />
-      </Button>
+      <IconButton
+        title="댓글 페이지로 이동"
+        iconId="comment"
+        width={14}
+        height={14}
+        path="comment"
+        iconColor="var(--content-secondary)"
+      />
       <span>0</span>
     </div>
   );

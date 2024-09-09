@@ -6,6 +6,12 @@ import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
 const Comment = () => {
   return (
     <>
+      <HeaderForDetails
+        text="댓글"
+        leftIcon={[
+          { iconId: 'left', path: '/main/community', title: '뒤로가기' },
+        ]}
+      />
       <main>
         <section className={S.Comment__list}>
           {/* <p className={S.Comment__list__empty}>아직 댓글이 없습니다.</p> */}
@@ -15,10 +21,6 @@ const Comment = () => {
           <AddComment />
         </section>
       </main>
-      <HeaderForDetails
-        text="댓글"
-        leftIcon={[{ iconId: 'left', path: '/community', title: '뒤로가기' }]}
-      />
     </>
   );
 };
