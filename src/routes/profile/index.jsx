@@ -14,13 +14,11 @@ export function Component() {
 
   return (
     <div className={S.component}>
-      <main>
+      <main className={S.component__profile}>
         <ProfileCard nickName="이름" />
-        <Button
-          text="프로필 수정"
-          height="2.8rem"
-          onClick={() => navigate('edit')}
-        />
+        <Button className={S.button} onClick={() => navigate('edit')}>
+          프로필 수정
+        </Button>
         <PostList list={profileNav}></PostList>
         <Outlet />
       </main>

@@ -1,5 +1,5 @@
 import Button from '@/components/Button/Button';
-import ButtonCategory from '@/components/Button/ButtonCategory';
+import ButtonCategory from '@/components/Button/Checkbox';
 import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
 import S from '@/routes/post/component/NewCategory.module.css';
 import { useNavigate } from 'react-router-dom';

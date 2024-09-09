@@ -1,5 +1,5 @@
 import S from '@/components/PostDetail/style.module.css';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Button from '@/components/Button/Button';
 import { string, number } from 'prop-types';
 import DetailItem from '@/components/DetailItem/DetailItem';
@@ -37,7 +37,6 @@ const testData = {
 };
 
 function PostDetail() {
-  const { postId } = useParams();
   const navigate = useNavigate();
 
   // 여기에 postId를 이용해 백엔드에서 데이터를 가져오거나,
@@ -84,10 +83,12 @@ function PostDetail() {
 
       <div className={S.attend_button}>
         <Button
-          text="참여하기"
+          className={S.button}
           height="2.8rem"
           onClick={() => navigate('join')}
-        />
+        >
+          참여하기
+        </Button>
       </div>
     </article>
   );
