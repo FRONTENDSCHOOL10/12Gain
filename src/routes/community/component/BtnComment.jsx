@@ -1,23 +1,14 @@
 import Button from '@/components/Button/Button';
 import Icon from '@/components/Icon/Icon';
-import { useState } from 'react';
 import S from '@/routes/community/component/BtnCount.module.css';
-import Comment from './Comment';
+import { useNavigate } from 'react-router-dom';
 
 function BtnComment() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+  const navigate = useNavigate();
 
   return (
     <div className={S.component}>
-      <Button className={S.BtnComment} onClick={handleOpenModal}>
+      <Button className={S.BtnComment} onClick={() => navigate('comment')}>
         <Icon
           id="comment"
           width={14}
@@ -26,7 +17,6 @@ function BtnComment() {
         />
       </Button>
       <span>0</span>
-      <Comment isOpen={isModalOpen} onClose={handleCloseModal} />
     </div>
   );
 }

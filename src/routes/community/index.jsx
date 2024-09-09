@@ -15,11 +15,11 @@ function Community() {
 
   return (
     <>
-      <Header text="커뮤니티" iconList={['search', 'chat', 'alarm']} />
       <div className={S.component}>
-        <PostList list={subNavList}></PostList>
-        <main>
+        <aside>
           <BtnCreateFeed />
+        </aside>
+        <main>
           <Feed imgSrc="/running.png" />
           <Feed />
           <Feed imgSrc="/running.png" />
@@ -29,6 +29,15 @@ function Community() {
         </main>
         <Outlet />
       </div>
+      <PostList list={subNavList}></PostList>
+      <Header
+        text="커뮤니티"
+        iconList={[
+          { iconId: 'search', path: '/main/search', title: '검색' },
+          { iconId: 'chat', path: '/main/chat', title: '채팅' },
+          { iconId: 'alarm', path: '/main/alarm', title: '알림' },
+        ]}
+      />
     </>
   );
 }
