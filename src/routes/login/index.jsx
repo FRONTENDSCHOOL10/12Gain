@@ -22,7 +22,7 @@ export function Component() {
   };
 
   return (
-    <div className={S.component}>
+    <div>
       <HeaderForDetails
         leftIcon={[{ iconId: 'left', path: '/', title: '뒤로가기' }]}
       />
