@@ -1,5 +1,6 @@
 import { string, bool, func, node } from 'prop-types';
 import S from './Button.module.css';
+import { oneOf } from 'prop-types';
 
 function Button({ type, className, disabled = false, onClick, children }) {
   return (
@@ -17,7 +18,7 @@ function Button({ type, className, disabled = false, onClick, children }) {
 }
 
 Button.propTypes = {
-  type: string,
+  type: oneOf(['button', 'submit', 'reset']),
   className: string,
   disabled: bool,
   onClick: func,
