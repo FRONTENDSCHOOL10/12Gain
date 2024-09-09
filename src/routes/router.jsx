@@ -15,11 +15,12 @@ import EditInterest from './profile/EditInterest/EditInterest';
 import Landing from './landing';
 import Login from './login';
 import SignUp from './signup';
-import CreateFeedPage from './community/component/CreateFeedPage';
+import CreateFeedPage from './community/CreateFeedPage/CreateFeedPage';
 import Setting from './profile/Setting/Setting';
 import DeleteAccount from './profile/Setting/DeleteAccount';
 import ChatList from './chatList';
 import ChatRoom from './chatList/ChatRoom/ChatRoom';
+import Comment from './community/CommentPage/CommentPage';
 
 const routes = [
   {
@@ -67,6 +68,7 @@ const routes = [
       { path: 'myAppointment', element: <MyAppointment /> },
       { path: 'community', element: <Community /> },
       { path: 'community/create', element: <CreateFeedPage /> },
+      { path: 'community/comment', element: <Comment /> },
       {
         path: 'Profile',
         element: <Profile />,
