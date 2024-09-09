@@ -1,8 +1,8 @@
 .component {
   .button {
-    width: 100%;
-    height: 2.8rem;
-    padding: 0 var(--spacing-12);
+    width: 18.5rem;
+    height: 2.8125rem;
+    margin: var(--spacing-12) auto;
     border-radius: 1.25rem;
     background-color: var(--primary);
     color: var(--white);

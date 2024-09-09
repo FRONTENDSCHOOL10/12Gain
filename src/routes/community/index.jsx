@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import BtnCreateFeed from './component/BtnCreateFeed';
 import Feed from './component/Feed';
 import { useState } from 'react';
-import PostList from '../profile/component/PostList';
+import PostList from '@/routes/profile/PostList';
 
 export function Component() {
   const [subNavList] = useState([

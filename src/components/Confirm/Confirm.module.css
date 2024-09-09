@@ -19,6 +19,25 @@
     gap: var(--spacing-8);
   }
 
+  .button__cancel {
+    width: 6.25rem;
+    height: 2.5rem;
+    border-radius: 1.25rem;
+    background-color: var(--content-tertiary);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .button__confirm {
+    width: 6.25rem;
+    height: 2.5rem;
+    border-radius: 1.25rem;
+    background-color: var(--primary);
+    color: var(--white);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
   span {
     font-size: 0.875rem;
     text-align: center;
