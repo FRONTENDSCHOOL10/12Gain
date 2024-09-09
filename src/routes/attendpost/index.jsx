@@ -1,12 +1,12 @@
-import S from '@/components/PostDetail/style.module.css';
+import S from '@/routes/attendpost/style.module.css';
 import { useParams, useNavigate } from 'react-router-dom';
 import Button from '@/components/Button/Button';
 import { string, number } from 'prop-types';
 import DetailItem from '@/components/DetailItem/DetailItem';
 import PostManager from '@/components/PostManager/PostManager';
-import Header from '../Header/Header';
+import Header from '@/components/Header/Header';
 
-PostDetail.propTypes = {
+AttendPost.propTypes = {
   title: string,
   sportType: string,
   location: string,
@@ -16,7 +16,7 @@ PostDetail.propTypes = {
   member: number,
 };
 
-function PostDetail({
+function AttendPost({
   title,
   sportType,
   location,
@@ -31,7 +31,6 @@ function PostDetail({
   return (
     <article className={S.component}>
       <Header iconList={['left', 'home', 'more']} />
-      <img className={S.img_main} src="/running.png" alt="이미지없음" />
 
       <div className={S.main}>
         <p className={S.main_title}>{title}</p>
@@ -67,13 +66,13 @@ function PostDetail({
 
       <div className={S.attend_button}>
         <Button
-          text="참여하기"
+          text="채팅하기"
           height="2.8rem"
-          onClick={() => navigate('join')}
+          onClick={() => navigate('../chat')} //TODO: chatting
         />
       </div>
     </article>
   );
 }
 
-export default PostDetail;
+export default AttendPost;

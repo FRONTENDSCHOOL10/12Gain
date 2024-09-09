@@ -7,3 +7,10 @@
   padding: var(--spacing-20) var(--spacing-12);
   min-block-size: 16rem;
 }
+
+.buttonFixed {
+  position: fixed;
+  bottom: var(--spacing-16);
+  right: var(--spacing-16);
+  z-index: 1000;
+}
