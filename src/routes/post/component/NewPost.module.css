@@ -44,11 +44,27 @@
 
 .attend_button {
   display: flex;
-  height: 4.3125rem;
-  padding: 0.625rem 0rem;
+  width: 18.5rem;
+  height: 2.8rem;
+
   justify-content: center;
   align-items: center;
-  gap: 8.75rem;
-  flex-shrink: 0;
-  align-self: stretch;
+
+  margin: 0.625rem auto;
+  border: none;
+  border-radius: 1.25rem;
+  background-color: var(--primary);
+  cursor: pointer;
+}
+
+.button {
+  background-color: var(--primary);
+  text-align: center;
+
+  color: var(--background);
+  font-family: Pretendard;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  width: 18rem;
 }

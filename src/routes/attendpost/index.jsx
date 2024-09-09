@@ -5,6 +5,7 @@ import { string, number } from 'prop-types';
 import DetailItem from '@/components/DetailItem/DetailItem';
 import PostManager from '@/components/PostManager/PostManager';
 import Header from '@/components/Header/Header';
+import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
 
 AttendPost.propTypes = {
   title: string,
@@ -30,7 +31,15 @@ function AttendPost({
 
   return (
     <article className={S.component}>
-      <Header iconList={['left', 'home', 'more']} />
+      <HeaderForDetails
+        leftIcon={[
+          { iconId: 'left', path: `/post/${postId}`, title: '뒤로가기' }, // TODO:
+        ]}
+        rightIcon={[
+          { iconId: 'home', path: '/main', title: 'home' },
+          { iconId: 'more', path: '/', title: 'more' },
+        ]}
+      />
 
       <div className={S.main}>
         <p className={S.main_title}>{title}</p>
@@ -66,10 +75,12 @@ function AttendPost({
 
       <div className={S.attend_button}>
         <Button
-          text="채팅하기"
+          className={S.button}
           height="2.8rem"
           onClick={() => navigate('../chat')} //TODO: chatting
-        />
+        >
+          채팅하기
+        </Button>
       </div>
     </article>
   );

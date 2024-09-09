@@ -57,10 +57,11 @@ const routes = [
   },
   {
     path: 'post/:postId',
+    // lazy: () => import('@/routes/post'),
     element: <PostDetail />,
     children: [
       // post/:postId/join 경로 추가
-      { path: 'join', element: <AttendPost nickName="닉네임" /> },
+      // { path: 'join', element: <AttendPost /> },
     ],
   },
   {
@@ -89,6 +90,7 @@ const routes = [
   },
   { path: 'main/home/new/post', element: <NewPost /> },
   { path: 'main/home/new/post/category', element: <NewCategory /> },
+  { path: 'post/:postId/join', element: <AttendPost /> },
 ];
 
 const router = createBrowserRouter(routes);
