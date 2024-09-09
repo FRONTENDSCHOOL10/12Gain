@@ -1,6 +1,5 @@
-import { string, bool, func, node } from 'prop-types';
+import { string, bool, func, node, oneOf } from 'prop-types';
 import S from './Button.module.css';
-import { oneOf } from 'prop-types';
 
 function Button({ type, className, disabled = false, onClick, children }) {
   return (
