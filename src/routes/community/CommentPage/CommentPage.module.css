@@ -1,0 +1,14 @@
+.Comment__list {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--content-tertiary);
+}
+
+.Comment__list__empty {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  color: var(--content-secondary);
+  font-size: 0.875rem;
+}
