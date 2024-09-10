@@ -25,7 +25,9 @@ export function Component() {
 
   return (
     <div>
-      <HeaderForDetails leftIcon={['left']} />
+      <HeaderForDetails
+        leftIcon={[{ iconId: 'left', path: '/', title: '뒤로가기' }]}
+      />
       <ProgressBar currentStep={step} totalSteps={totalSteps} />
       <SignUpLogo />
       <div>

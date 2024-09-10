@@ -37,11 +37,13 @@ function PhoneStep({ onNext }) {
         <p className={`${S.PhoneNotice} paragraph-sm`}>
           어떤 경우에도 타인에게 공유하지 마세요!
         </p>
-        <Button text="인증문자 받기" />
+        <Button className={`${S.messageButton} label-md`}>인증문자 받기</Button>
         <a className={`${S.PhoneMessage} paragraph-underline`}>
           인증문자가 오지 않아요?
         </a>
-        <Button text="다음" />
+        <Button type="submit" className={`${S.button} label-md`}>
+          다음
+        </Button>
       </form>
     </div>
   );

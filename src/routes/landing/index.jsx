@@ -1,4 +1,5 @@
 import Button from '@/components/Button/Button';
+import Tooltip from '@/components/Tooltip/Tooltip';
 import S from '@/routes/landing/style.module.css';
 import { useNavigate } from 'react-router-dom';
 import LandingLogo from './component/LandingLogo';
@@ -9,14 +10,15 @@ function Landing() {
   return (
     <div className={S.Component}>
       <LandingLogo />
-      <Button
-        className={S.button}
-        height="2.25rem"
-        onClick={() => navigate('Login')}
-      >
-        시작하기
-      </Button>
-      <SignupLink onClick={() => navigate('SignUp')} />
+      <Tooltip text="로그인" position="top">
+        <Button
+          className={`${S.button} label-md`}
+          onClick={() => navigate('Login')}
+        >
+          시작하기
+        </Button>
+      </Tooltip>
+      <SignupLink onClick={() => navigate('landing/SignUp')} />
     </div>
   );
 }

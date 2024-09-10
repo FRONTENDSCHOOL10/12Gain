@@ -22,8 +22,10 @@ export function Component() {
   };
 
   return (
-    <div className={S.component}>
-      <HeaderForDetails leftIcon={['left']} />
+    <div>
+      <HeaderForDetails
+        leftIcon={[{ iconId: 'left', path: '/', title: '뒤로가기' }]}
+      />
       <h2 className={`${S.LoginTitle} label-lg`}>
         이메일과 비밀번호를 입력해 주세요.
       </h2>
@@ -39,12 +41,13 @@ export function Component() {
           />
         </div>
         <Button
-          text="로그인"
-          height="2.8125rem"
+          className={`${S.button} label-md`}
           disabled={!isFormValid}
-          onClick={() => navigate('/home')}
+          onClick={() => navigate('/main/home')}
           type="submit"
-        />
+        >
+          로그인
+        </Button>
       </form>
       <SignupLink
         onClick={() => navigate('/Landing/SignUp')}
