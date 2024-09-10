@@ -7,6 +7,7 @@ import Landing from './landing';
 import CreateFeedPage from './community/CreateFeedPage/CreateFeedPage';
 import NewPost from './post/component/NewPost';
 import NewCategory from './post/component/NewCategory';
+import Comment from './community/CommentPage/CommentPage';
 
 const routes = [
   { path: '/', element: <Landing /> },
@@ -35,6 +36,7 @@ const routes = [
       },
       { path: 'community', lazy: () => import('@/routes/community') },
       { path: 'community/create', element: <CreateFeedPage /> },
+      { path: 'community/comment', element: <Comment /> },
       {
         path: 'profile',
         lazy: () => import('@/routes/profile'),
@@ -57,10 +59,11 @@ const routes = [
   },
   {
     path: 'post/:postId',
+    // lazy: () => import('@/routes/post'),
     element: <PostDetail />,
     children: [
       // post/:postId/join 경로 추가
-      { path: 'join', element: <AttendPost nickName="닉네임" /> },
+      // { path: 'join', element: <AttendPost /> },
     ],
   },
   {
@@ -89,6 +92,7 @@ const routes = [
   },
   { path: 'main/home/new/post', element: <NewPost /> },
   { path: 'main/home/new/post/category', element: <NewCategory /> },
+  { path: 'post/:postId/join', element: <AttendPost /> },
 ];
 
 const router = createBrowserRouter(routes);

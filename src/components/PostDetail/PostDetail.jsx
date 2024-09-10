@@ -5,6 +5,7 @@ import { string, number } from 'prop-types';
 import DetailItem from '@/components/DetailItem/DetailItem';
 import PostManager from '@/components/PostManager/PostManager';
 import Header from '../Header/Header';
+import HeaderForDetails from '../HeaderForDetails/HeaderForDetails';
 
 PostDetail.propTypes = {
   title: string,
@@ -46,7 +47,16 @@ function PostDetail() {
 
   return (
     <article className={S.component}>
-      <Header iconList={['left', 'home', 'more']} />
+      {/* <Header iconList={['left', 'home', 'more']} /> */}
+      <HeaderForDetails
+        leftIcon={[
+          { iconId: 'left', path: '/main', title: '뒤로가기' }, // TODO:
+        ]}
+        rightIcon={[
+          { iconId: 'home', path: '/main', title: 'home' },
+          { iconId: 'more', path: '/', title: 'more' },
+        ]}
+      />
       <img className={S.img_main} src="/running.png" alt="이미지없음" />
 
       <div className={S.main}>
