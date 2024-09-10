@@ -38,6 +38,12 @@
 }
 
 .button-icon {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button-icon-fixed {
   width: 3rem;
   height: 3rem;
   border: none;
@@ -57,7 +63,7 @@
   cursor: pointer;
 }
 
-.button-main-disabled {
+.button-disabled {
   background-color: var(--content-tertiary);
   cursor: not-allowed;
 }
