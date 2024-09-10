@@ -1,15 +1,13 @@
-import { useNavigate } from 'react-router-dom';
-import Icon from '@/components/Icon/Icon';
-import Post from '@/components/Post/Post';
-import PostButton from '@/components/PostButton/PostButton';
 import S from '@/routes/home/component/MainPost.module.css';
 
-function MainPost() {
-  const navigate = useNavigate();
+import Post from '@/components/Post/Post';
 
-  const handlePostButtonClick = () => {
-    navigate('/main/home/new/post');
-  };
+function MainPost() {
+  // const navigate = useNavigate();
+
+  // const handlePostButtonClick = () => {
+  //   navigate('/main/home/new/post');
+  // };
 
   return (
     <div className={S.component}>
@@ -38,7 +36,7 @@ function MainPost() {
         id="3"
       />
 
-      <PostButton
+      {/* <PostButton
         zIndex="1000"
         bottom="15.3rem"
         right="15.3rem"
@@ -46,7 +44,7 @@ function MainPost() {
         onClick={handlePostButtonClick} // 클릭 시 이동
       >
         <Icon id="calendarPlus" color={'var(--white)'}></Icon>
-      </PostButton>
+      </PostButton> */}
     </div>
   );
 }
