@@ -1,7 +1,8 @@
 import S from '@/routes/home/style.module.css';
 
+import MainPostList from '@/routes/home/component/MainPostList';
+import PostButton from '@/components/Button/PostButton';
 import { useState } from 'react';
-
 import { Outlet } from 'react-router-dom';
 
 export function Component() {
@@ -13,13 +14,25 @@ export function Component() {
 
   return (
     <div className={S.component}>
-      <ul className={S.subNavList}>
-        {subNavList.map((item, index) => (
+      <aside>
+        <div className={S.button__container}>
+          <PostButton iconId={'calendarPlus'} path={'/main/home/new/post'} />
+        </div>
+      </aside>
+      <MainPostList list={subNavList} />
+      {/* <ul className={S.subNavList}>
+        {subNavList.map(({ path, text, end }, index) => (
           <li key={index} className={S.subNavItem}>
-            <a href={item.path}>{item.text}</a>
+            <NavLink
+              to={path}
+              end={end}
+              className={({ isActive }) => (isActive ? S.active : undefined)}
+            >
+              {text}
+            </NavLink>
           </li>
         ))}
-      </ul>
+      </ul> */}
       <Outlet />
     </div>
   );

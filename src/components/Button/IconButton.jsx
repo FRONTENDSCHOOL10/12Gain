@@ -25,12 +25,12 @@ function IconButton({
   return (
     <>
       {path ? (
-        <NavLink to={path} className={S.component} title={title}>
+        <NavLink to={path} className={S.IconButton} title={title}>
           <Icon id={iconId} width={width} height={height} color={iconColor} />
         </NavLink>
       ) : (
         <button
-          className={S.component}
+          className={S.IconButton}
           type="button"
           title={title}
           onClick={onClick}
