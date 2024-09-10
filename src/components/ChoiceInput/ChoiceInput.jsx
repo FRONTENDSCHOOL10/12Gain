@@ -63,7 +63,7 @@ const ChoiceInput = ({ memberCount, date, time, location, onChange }) => {
 };
 
 ChoiceInput.propTypes = {
-  memberCount: PropTypes.number.isRequired,
+  memberCount: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,

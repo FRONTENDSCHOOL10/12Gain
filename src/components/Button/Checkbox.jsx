@@ -7,9 +7,19 @@ Checkbox.propTypes = {
 };
 
 function Checkbox({ text }) {
+  const handleInterestFilter = (e) => {
+    console.log(e.target.value, e.target.checked);
+  };
+
   return (
     <div className={S.component}>
-      <input type="checkbox" id={text} name="interest" />
+      <input
+        type="checkbox"
+        id={text}
+        name="interest"
+        value={text}
+        onChange={handleInterestFilter}
+      />
       <label htmlFor={text}>{text}</label>
     </div>
   );

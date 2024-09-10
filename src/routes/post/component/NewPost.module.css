@@ -1,6 +1,4 @@
 .component {
-  inline-size: 20rem;
-  margin: auto;
   background: var(--background, #f4f4f4);
 
   .category {

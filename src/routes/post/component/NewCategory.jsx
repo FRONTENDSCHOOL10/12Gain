@@ -1,7 +1,8 @@
-import Button from '@/components/Button/Button';
-import ButtonCategory from '@/components/Button/Checkbox';
-import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
 import S from '@/routes/post/component/NewCategory.module.css';
+
+import Button from '@/components/Button/Button';
+import RadioBox from '@/components/Button/RadioBox';
+import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
 import { useNavigate } from 'react-router-dom';
 
 const CATEGORY = [
@@ -25,26 +26,25 @@ function NewCategory() {
 
   return (
     <div className={S.component}>
-      <HeaderForDetails text="운동 종목 선택" leftIcon={['left']} />
+      <HeaderForDetails
+        text="운동 종목 선택"
+        leftIcon={[
+          { iconId: 'left', path: '/main/home/new/post', title: '뒤로가기' },
+        ]}
+      />
       <div className={S.contents}>
         <h2 className={S.headline}>운동 종목을 선택해주세요.</h2>
-        <ul>
-          {CATEGORY.map((item, index) => (
-            <li key={index}>
-              <ButtonCategory text={item} />
-            </li>
-          ))}
-        </ul>
+        <RadioBox list={CATEGORY} />
       </div>
       <div className={S.button__container}>
         <Button
-          text="저장하기"
-          height="2.8125rem"
           className={S.button}
           onClick={() => {
             handleClick(-1);
           }}
-        />
+        >
+          저장하기
+        </Button>
       </div>
     </div>
   );

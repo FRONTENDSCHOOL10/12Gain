@@ -1,5 +1,6 @@
-import PropTypes from 'prop-types';
 import S from '@/components/PostTextArea/style.module.css';
+
+import { string, func, bool, number } from 'prop-types';
 
 const PostTextarea = ({
   value,
@@ -30,12 +31,13 @@ const PostTextarea = ({
 };
 
 PostTextarea.propTypes = {
-  value: PropTypes.string,
-  onChange: PropTypes.func,
-  placeholder: PropTypes.string,
-  disabled: PropTypes.bool,
-  name: PropTypes.string,
-  maxLength: PropTypes.number, // maxLength도 PropTypes에 추가
+  value: string,
+  onChange: func,
+  placeholder: string,
+  type: string,
+  disabled: bool,
+  name: string,
+  maxLength: number,
 };
 
 export default PostTextarea;
