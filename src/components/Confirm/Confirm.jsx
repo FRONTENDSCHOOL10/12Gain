@@ -11,12 +11,8 @@ function Confirm({ text }) {
     <div className={S.component}>
       <span>{text}</span>
       <div className={S.button__container}>
-        <Button
-          text="취소"
-          backgroundColor="var(--content-tertiary)"
-          color="var(--black)"
-        ></Button>
-        <Button text="확인"></Button>
+        <Button className={S.button__cancel}>취소</Button>
+        <Button className={S.button__confirm}>확인</Button>
       </div>
     </div>
   );

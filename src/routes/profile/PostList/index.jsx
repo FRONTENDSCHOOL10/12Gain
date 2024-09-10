@@ -1,4 +1,4 @@
-import S from '@/routes/profile/component/PostList.module.css';
+import S from '@/routes/profile/PostList/PostList.module.css';
 
 import { array } from 'prop-types';
 import { NavLink } from 'react-router-dom';

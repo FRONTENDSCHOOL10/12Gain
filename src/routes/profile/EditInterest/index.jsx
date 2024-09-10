@@ -42,16 +42,15 @@ export function Component() {
           ))}
         </ul>
       </div>
-      <div className={S.button__container}>
-        <Button
-          text="저장하기"
-          height="2.8125rem"
-          className={S.button}
-          onClick={() => {
-            handleClick(-1);
-          }}
-        />
-      </div>
+
+      <Button
+        className={S.button}
+        onClick={() => {
+          handleClick(-1);
+        }}
+      >
+        저장하기
+      </Button>
     </div>
   );
 }

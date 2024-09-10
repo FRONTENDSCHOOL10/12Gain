@@ -2,7 +2,7 @@ import S from '@/routes/profile/style.module.css';
 
 import ProfileCard from '@/routes/profile/component/ProfileCard';
 import Button from '@/components/Button/Button';
-import PostList from '@/routes/profile/component/PostList';
+import PostList from '@/routes/profile/PostList';
 import { Outlet } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useProfileNav } from '@/stores/route';

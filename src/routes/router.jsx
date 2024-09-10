@@ -72,7 +72,7 @@ const routes = [
   },
   {
     path: 'chat/:chatroomId',
-    lazy: () => import('@/routes/chatList/ChatRoom/ChatRoom'),
+    lazy: () => import('@/routes/chatList/ChatRoom'),
   },
   {
     path: 'main/profile/edit',
@@ -87,7 +87,7 @@ const routes = [
     lazy: () => import('@/routes/profile/Setting'),
   },
   {
-    path: 'main/profile/deleteAccount',
+    path: 'main/profile/setting/deleteAccount',
     lazy: () => import('@/routes/profile/DeleteAccount'),
   },
   { path: 'main/home/new/post', element: <NewPost /> },
