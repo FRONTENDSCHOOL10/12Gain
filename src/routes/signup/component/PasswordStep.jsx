@@ -57,11 +57,12 @@ function PasswordStep({ onNext }) {
           />
         </div>
         <Button
-          text="다음"
-          height="2.8125rem"
           type="submit"
           disabled={!isNextEnabled()}
-        />
+          className={`${S.button} label-md`}
+        >
+          다음
+        </Button>
       </form>
     </div>
   );

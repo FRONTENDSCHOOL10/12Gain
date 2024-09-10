@@ -3,3 +3,12 @@
   display: flex;
   flex-flow: column;
 }
+
+.button {
+  width: 18.5rem;
+  height: 2.8125rem;
+  justify-content: center;
+  border-radius: 1.25rem;
+  background-color: var(--primary);
+  color: var(--white);
+}
