@@ -7,6 +7,12 @@ import S from '@/routes/community/CreateFeedPage/CreateFeedPage.module.css';
 function CreateFeedPage() {
   return (
     <>
+      <HeaderForDetails
+        text="피드 생성"
+        leftIcon={[
+          { iconId: 'left', path: '/main/community', title: '뒤로가기' },
+        ]}
+      />
       <form className={S.component}>
         <label htmlFor="createFeed" className="sr-only">
           커뮤니티 게시물 생성
@@ -20,19 +26,15 @@ function CreateFeedPage() {
         <div className={S.BtnAddPicture}>
           <Button className={S.BtnAddPicture__Button}>
             <Icon id="camera" width={20} height={20} />
+            <p>
+              사진추가<span>(선택)</span>
+            </p>
           </Button>
-          <p>
-            사진추가<span>(선택)</span>
-          </p>
         </div>
         <Button type="submit" className={S.CreateFeedPage__Button}>
           완료
         </Button>
       </form>
-      <HeaderForDetails
-        text="피드 생성"
-        leftIcon={[{ iconId: 'left', path: '/community', title: '뒤로가기' }]}
-      />
     </>
   );
 }

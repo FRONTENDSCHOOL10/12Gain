@@ -4,9 +4,8 @@
 
   aside {
     width: calc(20rem - (0.75rem * 2));
-    background-color: pink;
     position: fixed;
     bottom: 50px;
-    /* GlovalNav 픽스되면 bottom값 수정 필수.. */
+    /* GlobalNav 픽스되면 bottom값 수정 필수.. */
   }
 }

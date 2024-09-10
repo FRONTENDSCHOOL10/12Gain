@@ -7,6 +7,7 @@ import Landing from './landing';
 import CreateFeedPage from './community/CreateFeedPage/CreateFeedPage';
 import NewPost from './post/component/NewPost';
 import NewCategory from './post/component/NewCategory';
+import Comment from './community/CommentPage/CommentPage';
 
 const routes = [
   { path: '/', element: <Landing /> },
@@ -35,6 +36,7 @@ const routes = [
       },
       { path: 'community', lazy: () => import('@/routes/community') },
       { path: 'community/create', element: <CreateFeedPage /> },
+      { path: 'community/comment', element: <Comment /> },
       {
         path: 'profile',
         lazy: () => import('@/routes/profile'),

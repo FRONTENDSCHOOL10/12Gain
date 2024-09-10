@@ -1,7 +1,6 @@
-import Button from '@/components/Button/Button';
-import Icon from '@/components/Icon/Icon';
 import { useState } from 'react';
 import S from '@/routes/community/component/BtnCount.module.css';
+import IconButton from '@/components/Button/IconButton';
 
 function BtnThumsup() {
   const [countThumsUp, setCountThumsUp] = useState(0);
@@ -12,14 +11,14 @@ function BtnThumsup() {
   };
   return (
     <div className={S.component}>
-      <Button className={S.BtnThumsup} onClick={onClickThumsUp}>
-        <Icon
-          id="thumbs-up"
-          width={16}
-          height={16}
-          color="var(--content-secondary)"
-        />
-      </Button>
+      <IconButton
+        title="좋아요"
+        iconId="thumbs-up"
+        width={16}
+        height={16}
+        iconColor="var(--content-secondary)"
+        onClick={onClickThumsUp}
+      />
       <span>{countThumsUp}</span>
     </div>
   );

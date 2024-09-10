@@ -1,6 +1,6 @@
 .component {
   position: absolute;
-  bottom: 0;
+  bottom: 12px;
   right: 16px;
 
   .BtnCreateFeed {
