@@ -8,6 +8,7 @@ import Icon from '@/components/Icon/Icon';
 import { useNavigate } from 'react-router-dom';
 import ChoiceInput from '@/components/ChoiceInput/ChoiceInput';
 import { useState } from 'react';
+import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
 
 function NewPost() {
   const navigate = useNavigate();
@@ -34,7 +35,12 @@ function NewPost() {
 
   return (
     <div className={S.component}>
-      <Header iconList={['left']} />
+      {/* <Header iconList={['left']} /> */}
+      <HeaderForDetails
+        leftIcon={[
+          { iconId: 'left', path: '/main', title: '뒤로가기' }, // TODO:
+        ]}
+      />
 
       <form onSubmit={handleSubmit}>
         <label>
@@ -89,11 +95,12 @@ function NewPost() {
 
         <div className={S.attend_button}>
           <Button
-            text="완료"
+            className={S.button}
             height="2.8rem"
             onClick={() => navigate('join')}
-            type="submit"
-          />
+          >
+            완료
+          </Button>
         </div>
       </form>
     </div>
