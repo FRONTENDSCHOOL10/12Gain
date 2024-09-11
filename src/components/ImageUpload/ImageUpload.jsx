@@ -1,16 +1,15 @@
 import S from '@/components/ImageUpload/ImageUpload.module.css';
-import { usePostData } from '@/stores/form';
-import { node, string, func } from 'prop-types';
+import {} from 'prop-types';
+import { node, string, func, array } from 'prop-types';
 
 ImageUpload.propTypes = {
   children: node,
   value: string,
   onChange: func,
+  imageData: array,
 };
 
-function ImageUpload({ children, onChange }) {
-  const { imageData } = usePostData();
-
+function ImageUpload({ children, onChange, imageData }) {
   return (
     <div className={S.ImageUpload__container}>
       <label className={S.label}>
@@ -25,10 +24,10 @@ function ImageUpload({ children, onChange }) {
         {children}
       </label>
 
-      {imageData.length > 0 && (
+      {imageData && (
         <div className={S.ImageUpload__imageName}>
           {imageData.map((item, index) => (
-            <span key={index}>{item}</span>
+            <span key={index}>{item.name}</span>
           ))}
         </div>
       )}

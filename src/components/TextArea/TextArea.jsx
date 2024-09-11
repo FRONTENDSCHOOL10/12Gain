@@ -1,49 +1,45 @@
 import S from '@/components/TextArea/style.module.css';
-import { string, number, bool } from 'prop-types';
-import { useState } from 'react';
+
+import { string, number, bool, func } from 'prop-types';
 
 function TextArea({
+  value,
   name,
   id,
   placeholder,
   className,
-  maxLength,
+  maxLength = 1000,
+  onChange,
   showTextLength = 'true',
 }) {
-  const [text, setText] = useState('');
-
-  const handleUpdateText = (e) => {
-    const newText = e.target.value;
-    if (newText.length <= maxLength) {
-      setText(newText);
-    }
-  };
-
   return (
-    <div className={S.component}>
+    <label className={S.component} htmlFor={id}>
       <textarea
+        value={value}
         name={name}
         id={id}
         placeholder={placeholder}
         className={className}
         maxLength={maxLength}
-        onChange={handleUpdateText}
+        onChange={onChange}
       ></textarea>
       {showTextLength && (
-        <span>
-          {text.length} / {maxLength}
+        <span className={S.charCount}>
+          {value ? value.length : 0}/{maxLength}
         </span>
       )}
-    </div>
+    </label>
   );
 }
 
 TextArea.propTypes = {
+  value: string,
   name: string,
   id: string,
   placeholder: string,
   className: string,
   maxLength: number,
+  onChange: func,
   showTextLength: bool,
 };
 

@@ -4,9 +4,6 @@ import MainPost from './home/component/MainPost';
 import PostDetail from '@/components/PostDetail/PostDetail';
 import AttendPost from '@/routes/attendpost';
 import Landing from './landing';
-import CreateFeedPage from './community/CreateFeedPage/CreateFeedPage';
-import NewPost from './post/component/NewPost';
-import NewCategory from './post/component/NewCategory';
 import Comment from './community/CommentPage/CommentPage';
 
 const routes = [
@@ -35,7 +32,10 @@ const routes = [
         lazy: () => import('@/routes/myAppointment'),
       },
       { path: 'community', lazy: () => import('@/routes/community') },
-      { path: 'community/create', element: <CreateFeedPage /> },
+      {
+        path: 'community/create',
+        lazy: () => import('@/routes/community/CreateFeed'),
+      },
       { path: 'community/comment', element: <Comment /> },
       {
         path: 'profile',
@@ -90,8 +90,14 @@ const routes = [
     path: 'main/profile/setting/deleteAccount',
     lazy: () => import('@/routes/profile/DeleteAccount'),
   },
-  { path: 'main/home/new/post', element: <NewPost /> },
-  { path: 'main/home/new/post/category', element: <NewCategory /> },
+  {
+    path: 'main/home/new/post',
+    lazy: () => import('@/routes/home/CreatePost'),
+  },
+  {
+    path: 'main/home/new/post/category',
+    lazy: () => import('@/routes/home/SelectCategory'),
+  },
   { path: 'post/:postId/join', element: <AttendPost /> },
 ];
 

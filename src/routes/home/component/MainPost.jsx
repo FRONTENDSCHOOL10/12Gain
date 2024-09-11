@@ -3,12 +3,6 @@ import S from '@/routes/home/component/MainPost.module.css';
 import Post from '@/components/Post/Post';
 
 function MainPost() {
-  // const navigate = useNavigate();
-
-  // const handlePostButtonClick = () => {
-  //   navigate('/main/home/new/post');
-  // };
-
   return (
     <div className={S.component}>
       <Post
@@ -35,16 +29,6 @@ function MainPost() {
         category="러닝"
         id="3"
       />
-
-      {/* <PostButton
-        zIndex="1000"
-        bottom="15.3rem"
-        right="15.3rem"
-        borderRadius="3.125rem"
-        onClick={handlePostButtonClick} // 클릭 시 이동
-      >
-        <Icon id="calendarPlus" color={'var(--white)'}></Icon>
-      </PostButton> */}
     </div>
   );
 }

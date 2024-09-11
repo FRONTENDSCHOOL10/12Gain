@@ -17,7 +17,7 @@ const INITIAL_POSTDATA = {
   date: '',
   time: '',
   location: '',
-  writer: '',
+  // writer: '',
 };
 
 // 내 모임 데이터 업데이트
@@ -31,4 +31,21 @@ export const usePostData = create((set) => ({
   resetPostData: () => set({ postData: INITIAL_POSTDATA }),
 
   updateImageData: (data) => set(() => ({ imageData: data })),
+
+  resetImageData: () => set({ imageData: [] }),
+}));
+
+const INITAIL_FEEDDATA = {
+  title: '',
+  content: '',
+  writer: '',
+};
+
+export const useFeedData = create((set) => ({
+  feedData: INITAIL_FEEDDATA,
+
+  updateFeedData: (data) =>
+    set(({ feedData }) => ({ feedData: { ...feedData, ...data } })),
+
+  resetFeedData: () => set({ feedData: INITAIL_FEEDDATA }),
 }));

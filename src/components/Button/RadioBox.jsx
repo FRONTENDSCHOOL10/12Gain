@@ -1,27 +1,29 @@
 import S from '@/components/Button/RadioBox.module.css';
-import { array, func } from 'prop-types';
+import { array, string, func } from 'prop-types';
 
 RadioBox.propTypes = {
   list: array,
+  name: string,
   onChange: func,
+  defaultChecked: string,
 };
 
-function RadioBox({ list, onChange }) {
+function RadioBox({ list, name, defaultChecked, onChange }) {
   return (
     <div className={S.component}>
       <ul>
         {list.map((item, index) => (
           <li key={index}>
-            <label>
-              <input
-                className={S.input}
-                type="radio"
-                name="interest"
-                value={item}
-                onChange={onChange}
-              />
-              {item}
-            </label>
+            <input
+              className={S.input}
+              type="radio"
+              id={item}
+              name={name}
+              value={item}
+              onChange={onChange}
+              defaultChecked={defaultChecked === item ? true : false}
+            />
+            <label htmlFor={item}>{item}</label>
           </li>
         ))}
       </ul>
