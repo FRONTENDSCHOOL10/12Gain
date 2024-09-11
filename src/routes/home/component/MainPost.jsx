@@ -5,10 +5,11 @@ import Post from '@/components/Post/Post';
 import PostButton from '@/components/PostButton/PostButton';
 import S from '@/routes/home/component/MainPost.module.css';
 import usePostStore from '@/stores/postStore';
+import LoadingSpinner from '../../../components/LoadingSpinner/LoadingSpinner';
 
 function MainPost() {
   const navigate = useNavigate();
-  const { posts, fetchPosts, isLoading, error } = usePostStore();
+  const { posts, fetchPosts, isLoading } = usePostStore();
 
   useEffect(() => {
     fetchPosts();
@@ -18,8 +19,7 @@ function MainPost() {
     navigate('/main/home/new/post');
   };
 
-  if (isLoading) return <div>로딩스피너?</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  if (isLoading) return <LoadingSpinner />;
 
   return (
     <div className={S.component}>
