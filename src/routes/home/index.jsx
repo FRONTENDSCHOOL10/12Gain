@@ -3,6 +3,7 @@ import S from '@/routes/home/style.module.css';
 import { useState } from 'react';
 
 import { Outlet } from 'react-router-dom';
+import Banner from './banner/Banner';
 
 export function Component() {
   const [subNavList] = useState([
@@ -20,6 +21,7 @@ export function Component() {
           </li>
         ))}
       </ul>
+      <Banner />
       <Outlet />
     </div>
   );
