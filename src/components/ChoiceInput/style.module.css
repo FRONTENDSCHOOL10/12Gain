@@ -13,10 +13,9 @@
 
 .label {
   display: flex;
-  gap: 0.5rem;
-
-  color: var(--Contents-contentPrimary, var(--color-black, #101115));
-  font-family: Pretendard;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-8);
   font-size: 0.875rem;
   line-height: 1.4rem;
 }
@@ -25,7 +24,6 @@
   width: 8rem;
   border: 0px solid #ccc;
 
-  font-family: Pretendard;
   font-size: 0.875rem;
   line-height: 1.4rem;
   background: var(--background, #f4f4f4);

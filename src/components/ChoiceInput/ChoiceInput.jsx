@@ -7,7 +7,8 @@ const ChoiceInput = ({ memberCount, date, time, location, onChange }) => {
     <div className={S.panel}>
       <div className={S.row}>
         <div className={S.label}>
-          <Icon id="people"></Icon>인원
+          <Icon id="people" />
+          인원
         </div>
         <input
           type="number"

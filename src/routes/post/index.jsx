@@ -1,6 +1,7 @@
 import S from '@/routes/profile/style.module.css';
 
 import { Outlet } from 'react-router-dom';
+import NewPost from './component/NewPost';
 
 function Post() {
   return (

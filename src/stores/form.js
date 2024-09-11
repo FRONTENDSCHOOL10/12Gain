@@ -9,7 +9,7 @@ export const useCheckedInterest = create((set) => ({
 }));
 
 // 포켓베이스 내 모임 데이터 항목
-const INITIAL_VALUE = {
+const INITIAL_POSTDATA = {
   title: '',
   description: '',
   category: '',
@@ -22,10 +22,13 @@ const INITIAL_VALUE = {
 
 // 내 모임 데이터 업데이트
 export const usePostData = create((set) => ({
-  postData: INITIAL_VALUE,
+  postData: INITIAL_POSTDATA,
+  imageData: [],
 
   updatePostData: (data) =>
     set(({ postData }) => ({ postData: { ...postData, ...data } })),
 
-  reset: () => set({ postData: INITIAL_VALUE }),
+  resetPostData: () => set({ postData: INITIAL_POSTDATA }),
+
+  updateImageData: (data) => set(() => ({ imageData: data })),
 }));
