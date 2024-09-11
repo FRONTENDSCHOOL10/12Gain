@@ -8,41 +8,84 @@ import ImageUpload from '@/components/ImageUpload/ImageUpload';
 import TextArea from '@/components/TextArea/TextArea';
 import { useFeedData } from '@/stores/form';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 
 export function Component() {
   const navigate = useNavigate();
 
-  const { feedData, updateFeedData } = useFeedData();
+  const {
+    feedData,
+    imageData,
+    updateFeedData,
+    resetFeedData,
+    updateImageData,
+    resetImageData,
+  } = useFeedData();
 
+  // postData store에 데이터 추가
   const handleFeedData = (e) => {
     const { name, value } = e.target;
 
     updateFeedData({ [name]: value });
   };
 
-  const formData = new FormData();
+  // 이미지 데이터를 store에 추가
 
-  const handleImageData = (e) => {
+  const handleImageName = (e) => {
+    let image = [];
+
     for (let file of e.target.files) {
-      formData.append('image', file);
+      image = [...image, file];
     }
+
+    updateImageData(image);
   };
 
+  // 파일명 랜더링을 위한 데이터
+  const fileName = imageData.map((data) => data.name);
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  // 완료 버튼 클릭 시
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // formData에 feedData 입력
+    // formData에 전송할 데이터 입력
+    const formData = new FormData();
+
     const dataCollection = Object.entries(feedData);
     dataCollection.forEach((data) => formData.append(data[0], data[1]));
+    imageData.forEach((data) => formData.append('image', data));
 
     // 서버로 데이터 전송
-    await pb.collection('feeds').create(formData);
+    setIsLoading(true);
+    await pb
+      .collection('feeds')
+      .create(formData)
+      .then(() => {
+        resetFeedData();
+        resetImageData();
+
+        setIsLoading(false);
+      });
+
+    // 데이터 리셋
 
     // 생성된 모임 상세 페이지로 이동
     navigate('/main/community');
   };
 
-  return (
+  // 사진 외 모든 데이터 값 입력 시 버튼 활성화
+  const collectedData = Object.entries(feedData).filter(
+    ([key]) => key != 'writer'
+  );
+
+  const isValid = collectedData.every((item) => Boolean(item[1]));
+
+  return isLoading ? (
+    <LoadingSpinner />
+  ) : (
     <>
       <HeaderForDetails
         text="피드 생성"
@@ -50,7 +93,7 @@ export function Component() {
           { iconId: 'left', path: '/main/community', title: '뒤로가기' },
         ]}
       />
-      <form className={S.component} onSubmit={handleSubmit}>
+      <form className={S.component}>
         <div className={S.textarea}>
           <TextArea
             value={feedData.content}
@@ -63,16 +106,18 @@ export function Component() {
         </div>
 
         <div className={S.image__upload}>
-          <ImageUpload
-            onChange={handleImageData}
-            imageData={feedData.imageData}
-          >
+          <ImageUpload onChange={handleImageName} imageData={fileName}>
             <Icon id="camera" />
             사진추가 <p>(선택)</p>
           </ImageUpload>
         </div>
 
-        <Button type="submit" className={S.button}>
+        <Button
+          type="button"
+          className={S.button}
+          onClick={handleSubmit}
+          disabled={!isValid}
+        >
           완료
         </Button>
       </form>

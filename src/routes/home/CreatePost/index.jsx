@@ -11,12 +11,15 @@ import pb from '@/api/pb';
 import IconButton from '@/components/Button/IconButton';
 import ImageUpload from '@/components/ImageUpload/ImageUpload';
 import TextArea from '@/components/TextArea/TextArea';
+import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
+import { useState } from 'react';
 
 export function Component() {
   // const navigate = useNavigate();
 
   const {
     postData,
+    imageData,
     updatePostData,
     resetPostData,
     updateImageData,
@@ -30,61 +33,68 @@ export function Component() {
     updatePostData({ [name]: value });
   };
 
-  const formData = new FormData();
+  // 이미지 데이터를 store에 추가
 
-  // 이미지를 폼 데이터에 추가
-  const handleImageForm = (e) => {
-    for (let file of e.target.files) {
-      formData.append('image', file);
-    }
-  };
-
-  // 파일명 imageData store에 추가
   const handleImageName = (e) => {
-    let filenames = [];
+    let image = [];
 
     for (let file of e.target.files) {
-      filenames = [...filenames, file.name];
+      image = [...image, file];
     }
 
-    updateImageData(filenames);
+    updateImageData(image);
   };
 
-  const handleImage = (e) => {
-    handleImageName(e);
-    handleImageForm(e);
+  // 파일명 랜더링을 위한 데이터
+  const fileName = imageData.map((data) => data.name);
 
-    console.log(formData.get('image'));
-  };
+  const [isLoading, setIsLoading] = useState();
 
-  // form 완료 버튼
+  // 완료 버튼 클릭 시
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // formData에 postData 입력
+    // formData에 전송할 데이터 입력
+    const formData = new FormData();
+
     const dataCollection = Object.entries(postData);
     dataCollection.forEach((data) => formData.append(data[0], data[1]));
+    imageData.forEach((data) => formData.append('image', data));
 
     // 서버로 데이터 전송
-    await pb.collection('appointments').create(formData);
+    setIsLoading(true);
 
-    resetPostData();
-    resetImageData();
+    await pb
+      .collection('appointments')
+      .create(formData)
+      .then(() => {
+        resetPostData();
+        resetImageData();
+
+        setIsLoading(false);
+      });
 
     // 생성된 모임 상세 페이지로 이동
     // navigate('/main/home/new/post/postID');
   };
 
-  const isValid = Object.values(postData).every((item) => Boolean(item));
+  // 사진 외 모든 데이터 값 입력 시 버튼 활성화
+  const collectedData = Object.entries(postData).filter(
+    ([key]) => key != 'writer'
+  );
 
-  return (
+  const isValid = collectedData.every((item) => Boolean(item[1]));
+
+  return isLoading ? (
+    <LoadingSpinner />
+  ) : (
     <>
       <HeaderForDetails
         text="모임 생성하기"
         leftIcon={[{ iconId: 'left', path: '/main', title: '뒤로가기' }]}
       />
       <div className={S.component}>
-        <form onSubmit={handleSubmit}>
+        <form>
           <label>
             <PostInput
               placeholder="제목을 입력해주세요"
@@ -110,7 +120,7 @@ export function Component() {
           </div>
 
           <div className={S.image__upload}>
-            <ImageUpload onChange={handleImage}>
+            <ImageUpload onChange={handleImageName} imageData={fileName}>
               <Icon id="camera" />
               사진추가 <p>(선택)</p>
             </ImageUpload>
@@ -125,7 +135,12 @@ export function Component() {
               onChange={handlePostData}
             />
           </label>
-          <Button className={S.button} type="submit" disabled={!isValid}>
+          <Button
+            className={S.button}
+            type="button"
+            disabled={!isValid}
+            onClick={handleSubmit}
+          >
             완료
           </Button>
         </form>

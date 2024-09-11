@@ -1,10 +1,10 @@
 import S from '@/routes/community/style.module.css';
 
 import { Outlet } from 'react-router-dom';
-import BtnCreateFeed from './component/BtnCreateFeed';
 import Feed from './component/Feed';
 import { useState } from 'react';
 import PostList from '@/routes/profile/PostList';
+import PostButton from '@/components/Button/PostButton';
 
 export function Component() {
   const [subNavList] = useState([
@@ -17,7 +17,9 @@ export function Component() {
       <PostList list={subNavList}></PostList>
       <div className={S.component}>
         <aside>
-          <BtnCreateFeed />
+          <div className={S.button__container}>
+            <PostButton iconId={'write'} path={'/main/community/create'} />
+          </div>
         </aside>
         <main>
           <Feed imgSrc="/running.png" />

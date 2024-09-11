@@ -24,10 +24,10 @@ function ImageUpload({ children, onChange, imageData }) {
         {children}
       </label>
 
-      {imageData && (
+      {imageData.length > 0 && (
         <div className={S.ImageUpload__imageName}>
           {imageData.map((item, index) => (
-            <span key={index}>{item.name}</span>
+            <span key={index}>{item}</span>
           ))}
         </div>
       )}

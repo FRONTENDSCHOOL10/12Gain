@@ -20,19 +20,6 @@ export function Component() {
         </div>
       </aside>
       <MainPostList list={subNavList} />
-      {/* <ul className={S.subNavList}>
-        {subNavList.map(({ path, text, end }, index) => (
-          <li key={index} className={S.subNavItem}>
-            <NavLink
-              to={path}
-              end={end}
-              className={({ isActive }) => (isActive ? S.active : undefined)}
-            >
-              {text}
-            </NavLink>
-          </li>
-        ))}
-      </ul> */}
       <Outlet />
     </div>
   );
