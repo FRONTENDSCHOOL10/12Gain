@@ -5,7 +5,7 @@ import IconButton from '@/components/Button/IconButton';
 function BtnThumsup() {
   const [countThumsUp, setCountThumsUp] = useState(0);
 
-  const onClickThumsUp = () => {
+  const handleThumsUp = () => {
     setCountThumsUp((prevCount) => prevCount + 1);
     console.log(countThumsUp);
   };
@@ -17,7 +17,7 @@ function BtnThumsup() {
         width={16}
         height={16}
         iconColor="var(--content-secondary)"
-        onClick={onClickThumsUp}
+        onClick={handleThumsUp}
       />
       <span>{countThumsUp}</span>
     </div>

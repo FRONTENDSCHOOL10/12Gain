@@ -3,9 +3,9 @@
   background-color: var(--background);
 
   aside {
-    width: calc(20rem - (0.75rem * 2));
     position: fixed;
-    bottom: 50px;
+    bottom: calc(48px + 16px);
     /* GlobalNav 픽스되면 bottom값 수정 필수.. */
+    width: calc(20rem - (0.75rem * 2));
   }
 }

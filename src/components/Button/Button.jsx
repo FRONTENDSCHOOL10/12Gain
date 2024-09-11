@@ -1,7 +1,7 @@
 import { string, func, node, oneOf } from 'prop-types';
 import S from './Button.module.css';
 
-function Button({ type, className, onClick, children }) {
+function Button({ type = 'submit', className, onClick, children }) {
   return (
     <div className={S.Button}>
       <button type={type} className={className} onClick={onClick}>
