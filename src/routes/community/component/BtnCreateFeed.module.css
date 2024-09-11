@@ -2,11 +2,4 @@
   position: absolute;
   bottom: 12px;
   right: 16px;
-
-  .BtnCreateFeed {
-    width: 3rem;
-    height: 3rem;
-    background-color: var(--primary);
-    border-radius: 50%;
-  }
 }
