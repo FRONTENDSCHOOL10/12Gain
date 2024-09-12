@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import Icon from '@/components/Icon/Icon';
 import S from '@/components/Input/style.module.css';
+import { useEffect } from 'react';
 
 const InputWithDelete = ({
   value,
@@ -17,10 +18,26 @@ const InputWithDelete = ({
   onBlur,
   hasInput = false,
   ariaLabel,
-  title = '입력 필드', // 기본 title 설정
-  clearButtonTitle = '입력 내용 지우기', // 기본 title 설정
+  title = '입력 필드',
+  clearButtonTitle = '입력 내용 지우기',
   ...restProps
 }) => {
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === 'escape' && !e.shiftKey) {
+        input.value = '';
+      }
+    };
+
+    input.addEventListner('keyup', handleKey);
+
+    return () => {
+      input.removeEventListener('keyup', handleKey);
+    };
+  }, []);
+
   const handleClear = (e) => {
     e.preventDefault();
     if (onClear) {
@@ -56,7 +73,7 @@ const InputWithDelete = ({
           type="reset"
           onClick={handleClear}
           className={S.clearButton}
-          tabIndex={-1}
+          tabIndex={-1} ////// 수정 필요 !
           aria-label="입력 내용 지우기"
           title={clearButtonTitle} // title 속성 추가
         >
@@ -82,8 +99,8 @@ InputWithDelete.propTypes = {
   hasInput: PropTypes.bool,
   onBlur: PropTypes.func,
   ariaLabel: PropTypes.string,
-  title: PropTypes.string, // title propTypes 추가
-  clearButtonTitle: PropTypes.string, // clearButton의 title propTypes 추가
+  title: PropTypes.string,
+  clearButtonTitle: PropTypes.string,
 };
 
 export default InputWithDelete;
