@@ -1,6 +1,6 @@
 import Button from '@/components/Button/Button';
 import EmailInput from '@/routes/login/component/EmailInput';
-import { useLoginForm } from '@/stores/route';
+import { useLoginForm } from '@/stores/authStore';
 import PropTypes from 'prop-types';
 import S from './EmailStep.module.css';
 

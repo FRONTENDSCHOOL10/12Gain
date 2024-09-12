@@ -1,6 +1,6 @@
 import Button from '@/components/Button/Button';
 import InputWithDelete from '@/components/Input/InputWithDelete';
-import { useSignupStore } from '@/stores/route';
+import { useSignup } from '@/stores/authStore';
 import PropTypes from 'prop-types';
 import S from './PhoneStep.module.css';
 
@@ -10,7 +10,7 @@ PhoneStep.propTypes = {
 
 function PhoneStep({ onNext }) {
   const { phoneNumber, setPhoneNumber, verificationCode, setVerificationCode } =
-    useSignupStore();
+    useSignup();
 
   const handleSubmit = (e) => {
     e.preventDefault();

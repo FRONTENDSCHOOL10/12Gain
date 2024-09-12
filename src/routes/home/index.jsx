@@ -33,7 +33,7 @@ export function Component() {
         </div>
       </aside>
       <MainPostList list={subNavList} />
-      <ul className={S.subNavList}>
+      {/* <ul className={S.subNavList}>
         {subNavList.map((item, index) => (
           <li key={index} className={S.subNavItem}>
             <NavLink
@@ -45,7 +45,7 @@ export function Component() {
             </NavLink>
           </li>
         ))}
-      </ul>
+      </ul> */}
       <Banner />
       <Outlet />
     </div>

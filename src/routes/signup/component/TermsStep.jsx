@@ -1,5 +1,5 @@
 import Button from '@/components/Button/Button';
-import { useSignupStore } from '@/stores/route';
+import { useSignup } from '@/stores/authStore';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import S from './TermsStep.module.css';
@@ -12,7 +12,7 @@ TermsStep.propTypes = {
 
 function TermsStep({ onSubmit }) {
   const navigate = useNavigate();
-  const { agreeToTerms, setAgreeToTerms } = useSignupStore();
+  const { agreeToTerms, setAgreeToTerms } = useSignup();
 
   const toggleTerm = (key) => {
     setAgreeToTerms((prev) => {
