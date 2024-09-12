@@ -1,7 +1,8 @@
 import S from '@/routes/home/style.module.css';
 
+import MainPostList from '@/routes/home/component/MainPostList';
+import PostButton from '@/components/Button/PostButton';
 import { useState, useEffect } from 'react';
-
 import { Outlet, NavLink, useLocation } from 'react-router-dom';
 import Banner from './banner/Banner';
 import usePostStore from '@/stores/postStore';
@@ -26,6 +27,12 @@ export function Component() {
 
   return (
     <div className={S.component}>
+      <aside>
+        <div className={S.button__container}>
+          <PostButton iconId={'calendarPlus'} path={'/main/home/new/post'} />
+        </div>
+      </aside>
+      <MainPostList list={subNavList} />
       <ul className={S.subNavList}>
         {subNavList.map((item, index) => (
           <li key={index} className={S.subNavItem}>

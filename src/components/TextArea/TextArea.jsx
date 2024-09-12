@@ -1,62 +1,46 @@
 import S from '@/components/TextArea/style.module.css';
-import { func } from 'prop-types';
-import { string, number, bool } from 'prop-types';
-import { useState } from 'react';
+
+import { string, number, bool, func } from 'prop-types';
 
 function TextArea({
+  value,
   name,
   id,
   placeholder,
   className,
-  maxLength,
-  showTextLength = 'true',
-  label,
-  value,
+  maxLength = 1000,
   onChange,
+  showTextLength = 'true',
 }) {
-  const [text, setText] = useState('');
-
-  const handleChange = (e) => {
-    const newText = e.target.value;
-    if (newText.length <= maxLength) {
-      setText(newText);
-      onChange(e);
-    }
-  };
-
   return (
-    <div className={S.component}>
-      <label htmlFor={id} className="sr-only">
-        {label}
-      </label>
+    <label className={S.component} htmlFor={id}>
       <textarea
+        value={value}
         name={name}
         id={id}
         placeholder={placeholder}
         className={className}
         maxLength={maxLength}
-        value={value}
-        onChange={handleChange}
+        onChange={onChange}
       ></textarea>
       {showTextLength && (
-        <span>
-          {text.length} / {maxLength}
+        <span className={S.charCount}>
+          {value ? value.length : 0}/{maxLength}
         </span>
       )}
-    </div>
+    </label>
   );
 }
 
 TextArea.propTypes = {
+  value: string,
   name: string,
   id: string,
   placeholder: string,
   className: string,
   maxLength: number,
-  showTextLength: bool,
-  label: string,
-  value: string,
   onChange: func,
+  showTextLength: bool,
 };
 
 export default TextArea;

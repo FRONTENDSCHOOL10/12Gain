@@ -41,6 +41,7 @@ export const useCheckedInterest = create((set) => ({
     set((state) => ({ count: state.count + 1 + value })),
 }));
 
+// 포켓베이스 내 모임 데이터 항목
 const INITIAL_POSTDATA = {
   title: '',
   description: '',
@@ -49,30 +50,39 @@ const INITIAL_POSTDATA = {
   date: '',
   time: '',
   location: '',
+  writer: '',
 };
 
+// 내 모임 데이터 업데이트
 export const usePostData = create((set) => ({
   postData: INITIAL_POSTDATA,
   imageData: [],
 
   updatePostData: (data) =>
     set(({ postData }) => ({ postData: { ...postData, ...data } })),
+
   resetPostData: () => set({ postData: INITIAL_POSTDATA }),
+
   updateImageData: (data) => set(() => ({ imageData: data })),
+
   resetImageData: () => set({ imageData: [] }),
 }));
 
 const INITAIL_FEEDDATA = {
-  title: '',
   content: '',
   writer: '',
 };
 
 export const useFeedData = create((set) => ({
   feedData: INITAIL_FEEDDATA,
+  imageData: [],
 
   updateFeedData: (data) =>
     set(({ feedData }) => ({ feedData: { ...feedData, ...data } })),
 
   resetFeedData: () => set({ feedData: INITAIL_FEEDDATA }),
+
+  updateImageData: (data) => set(() => ({ imageData: data })),
+
+  resetImageData: () => set({ imageData: [] }),
 }));
