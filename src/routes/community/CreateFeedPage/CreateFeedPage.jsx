@@ -14,14 +14,12 @@ function CreateFeedPage() {
         ]}
       />
       <form className={S.component}>
-        <label htmlFor="createFeed" className="sr-only">
-          커뮤니티 게시물 생성
-        </label>
         <TextArea
           id="createFeed"
           name="createFeed"
           placeholder="내용을 입력해주세요"
           maxLength={1000}
+          label="커뮤니티 게시물 생성"
         />
         <div className={S.BtnAddPicture}>
           <Button className={S.BtnAddPicture__Button}>
@@ -31,7 +29,7 @@ function CreateFeedPage() {
             </p>
           </Button>
         </div>
-        <Button type="submit" className={S.CreateFeedPage__Button}>
+        <Button type="submit" className="button-main">
           완료
         </Button>
       </form>

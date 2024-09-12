@@ -6,9 +6,9 @@
 }
 
 .nickName {
-  height: 30px;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-around;
+  height: 30px;
   font-size: 0.625rem;
 }

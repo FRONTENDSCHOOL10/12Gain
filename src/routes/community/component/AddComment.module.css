@@ -6,11 +6,11 @@
   .input__container {
     display: flex;
     justify-content: space-between;
-    background-color: var(--background);
     width: 15.5rem;
     height: var(--spacing-36);
     padding: var(--spacing-8) var(--spacing-12);
     border-radius: var(--spacing-20);
+    background-color: var(--background);
 
     input {
       border: none;

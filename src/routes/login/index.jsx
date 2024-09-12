@@ -6,18 +6,37 @@ import { useNavigate } from 'react-router-dom';
 import SignupLink from '../landing/component/SignupLink';
 import EmailInput from './component/EmailInput';
 import PasswordInput from './component/PasswordInput';
+import pb from '@/api/pb.js';
+import { useAuthStore } from '@/stores/form.js';
 
 export function Component() {
   const navigate = useNavigate();
   const { email, password, setEmail, setPassword, isFormValid, clearForm } =
     useLoginForm();
 
-  const handleSubmit = (e) => {
+  const { setUser, setToken } = useAuthStore();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (isFormValid()) {
-      console.log('Form submitted with:', { email, password });
-      clearForm();
-      navigate('/home');
+      try {
+        const authData = await pb
+          .collection('users')
+          .authWithPassword(email, password);
+        console.log('authData:', authData);
+
+        setUser(authData.record);
+        setToken(authData.token);
+
+        console.log('User stored in Zustand:', authData.record);
+        console.log('Token stored in Zustand:', authData.token);
+
+        clearForm();
+        navigate('/main');
+      } catch (error) {
+        console.error('Login failed:', error);
+      }
     }
   };
 
@@ -42,8 +61,7 @@ export function Component() {
         </div>
         <Button
           className={`${S.button} label-md`}
-          disabled={!isFormValid}
-          onClick={() => navigate('/main/home')}
+          disabled={!isFormValid()}
           type="submit"
         >
           로그인
