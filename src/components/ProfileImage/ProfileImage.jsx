@@ -14,7 +14,7 @@ function ProfileImage({ url, nickName, width = 68, height = 68 }) {
     <img
       className={S.component}
       src={url}
-      alt={`${nickName}의 프로필 이미지`}
+      alt={`${nickName}의 프로필`}
       width={width}
       height={height}
     />

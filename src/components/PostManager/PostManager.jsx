@@ -4,7 +4,7 @@ import ProfileImage from '@/components/ProfileImage/ProfileImage';
 
 PostManager.propTypes = {
   nickName: string.isRequired,
-  pop: number,
+  pop: string,
   imageWidth: number,
   imageHeight: number,
 };

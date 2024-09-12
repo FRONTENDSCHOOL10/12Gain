@@ -17,7 +17,7 @@ Post.propTypes = {
 function Post({ title, date, place, member = 1, category, id }) {
   return (
     <article className={S.component}>
-      <Link to={`/post/${id}`} className={S.link}>
+      <Link to={`/main/post/${id}`} className={S.link}>
         <h2>{title}</h2>
         <span>{date}</span>
         <div className={S.details}>
