@@ -13,6 +13,7 @@ import ImageUpload from '@/components/ImageUpload/ImageUpload';
 import TextArea from '@/components/TextArea/TextArea';
 import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 import { useState } from 'react';
+import clsx from 'clsx';
 
 export function Component() {
   // const navigate = useNavigate();
@@ -136,7 +137,7 @@ export function Component() {
             />
           </label>
           <Button
-            className={S.button}
+            className={clsx(S.button, 'button-main')}
             type="button"
             disabled={!isValid}
             onClick={handleSubmit}
