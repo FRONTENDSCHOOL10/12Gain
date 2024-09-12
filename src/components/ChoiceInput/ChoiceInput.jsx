@@ -7,7 +7,8 @@ const ChoiceInput = ({ memberCount, date, time, location, onChange }) => {
     <div className={S.panel}>
       <div className={S.row}>
         <div className={S.label}>
-          <Icon id="people"></Icon>인원
+          <Icon id="people" />
+          인원
         </div>
         <input
           type="number"
@@ -63,7 +64,7 @@ const ChoiceInput = ({ memberCount, date, time, location, onChange }) => {
 };
 
 ChoiceInput.propTypes = {
-  memberCount: PropTypes.number.isRequired,
+  memberCount: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,

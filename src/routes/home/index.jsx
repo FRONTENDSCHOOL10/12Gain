@@ -1,9 +1,11 @@
 import S from '@/routes/home/style.module.css';
 
-import { useState } from 'react';
-
-import { Outlet } from 'react-router-dom';
+import MainPostList from '@/routes/home/component/MainPostList';
+import PostButton from '@/components/Button/PostButton';
+import { useState, useEffect } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import Banner from './banner/Banner';
+import usePostStore from '@/stores/postStore';
 
 export function Component() {
   const [subNavList] = useState([
@@ -12,15 +14,25 @@ export function Component() {
     { path: '/main/home/interest', text: '관심' },
   ]);
 
+  const { setFilter, fetchPosts } = usePostStore();
+  const location = useLocation();
+
+  useEffect(() => {
+    const currentPath = location.pathname;
+    const currentTab =
+      subNavList.find((item) => item.path === currentPath)?.text || '추천';
+    setFilter({ mainCategory: currentTab });
+    fetchPosts();
+  }, [location, setFilter, fetchPosts, subNavList]);
+
   return (
     <div className={S.component}>
-      <ul className={S.subNavList}>
-        {subNavList.map((item, index) => (
-          <li key={index} className={S.subNavItem}>
-            <a href={item.path}>{item.text}</a>
-          </li>
-        ))}
-      </ul>
+      <aside>
+        <div className={S.button__container}>
+          <PostButton iconId={'calendarPlus'} path={'/main/home/new/post'} />
+        </div>
+      </aside>
+      <MainPostList list={subNavList} />
       <Banner />
       <Outlet />
     </div>

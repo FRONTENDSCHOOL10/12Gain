@@ -53,6 +53,7 @@ PostButton.propTypes = {
   disabled: bool,
   onClick: func,
   children: object,
+  zIndex: number,
 };
 
 export default PostButton;

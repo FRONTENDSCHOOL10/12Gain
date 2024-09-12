@@ -4,8 +4,12 @@
 
   aside {
     position: fixed;
-    bottom: calc(48px + 16px);
-    /* GlobalNav 픽스되면 bottom값 수정 필수.. */
-    width: calc(20rem - (0.75rem * 2));
+    bottom: 0;
+  }
+
+  .button__container {
+    position: absolute;
+    bottom: 3.5rem;
+    left: 15rem;
   }
 }
