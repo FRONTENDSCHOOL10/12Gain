@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import Icon from '@/components/Icon/Icon';
 import S from '@/components/Input/style.module.css';
+import { useEffect } from 'react';
 
 const InputWithDelete = ({
   value,
@@ -17,8 +18,26 @@ const InputWithDelete = ({
   onBlur,
   hasInput = false,
   ariaLabel,
+  title = '입력 필드',
+  clearButtonTitle = '입력 내용 지우기',
   ...restProps
 }) => {
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === 'escape' && !e.shiftKey) {
+        input.value = '';
+      }
+    };
+
+    input.addEventListner('keyup', handleKey);
+
+    return () => {
+      input.removeEventListener('keyup', handleKey);
+    };
+  }, []);
+
   const handleClear = (e) => {
     e.preventDefault();
     if (onClear) {
@@ -27,6 +46,7 @@ const InputWithDelete = ({
       onChange({ target: { value: '' } });
     }
   };
+
   return (
     <div className={S.inputWrapper}>
       <input
@@ -45,6 +65,7 @@ const InputWithDelete = ({
         name={name}
         onBlur={onBlur}
         aria-label={ariaLabel}
+        title={title} // title 속성 추가
         {...restProps}
       />
       {showClearButton && value && value.length > 0 && (
@@ -52,8 +73,9 @@ const InputWithDelete = ({
           type="reset"
           onClick={handleClear}
           className={S.clearButton}
-          tabIndex={-1}
+          tabIndex={-1} ////// 수정 필요 !
           aria-label="입력 내용 지우기"
+          title={clearButtonTitle} // title 속성 추가
         >
           <Icon id="close" width={16} height={16} />
         </button>
@@ -61,12 +83,13 @@ const InputWithDelete = ({
     </div>
   );
 };
+
 InputWithDelete.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   onClear: PropTypes.func,
-  type: PropTypes.oneOf(['text', 'password', 'email', 'number']), // 여기서 oneOf로 변경
+  type: PropTypes.oneOf(['text', 'password', 'email', 'number']),
   disabled: PropTypes.bool,
   maxLength: PropTypes.number,
   className: PropTypes.string,
@@ -76,6 +99,8 @@ InputWithDelete.propTypes = {
   hasInput: PropTypes.bool,
   onBlur: PropTypes.func,
   ariaLabel: PropTypes.string,
+  title: PropTypes.string,
+  clearButtonTitle: PropTypes.string,
 };
 
 export default InputWithDelete;

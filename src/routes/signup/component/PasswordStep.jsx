@@ -1,6 +1,6 @@
 import Button from '@/components/Button/Button';
 import PasswordInput from '@/routes/login/component/PasswordInput';
-import { useSignupStore } from '@/stores/route';
+import { useSignup } from '@/stores/authStore';
 import PropTypes from 'prop-types';
 import S from './PasswordStep.module.css';
 
@@ -16,7 +16,7 @@ function PasswordStep({ onNext }) {
     setConfirmPassword,
     isPasswordMatching,
     isNextEnabled,
-  } = useSignupStore();
+  } = useSignup();
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
