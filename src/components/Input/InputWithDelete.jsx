@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import Icon from '@/components/Icon/Icon';
 import S from '@/components/Input/style.module.css';
 import { useEffect } from 'react';
+import { useRef } from 'react';
 
 const InputWithDelete = ({
   value,
@@ -25,13 +26,15 @@ const InputWithDelete = ({
   const inputRef = useRef(null);
 
   useEffect(() => {
+    const input = inputRef.current;
+
     const handleKey = (e) => {
-      if (e.key === 'escape' && !e.shiftKey) {
+      if (e.key === 'Escape' && !e.shiftKey) {
         input.value = '';
       }
     };
 
-    input.addEventListner('keyup', handleKey);
+    input.addEventListener('keyup', handleKey);
 
     return () => {
       input.removeEventListener('keyup', handleKey);
@@ -50,6 +53,7 @@ const InputWithDelete = ({
   return (
     <div className={S.inputWrapper}>
       <input
+        ref={inputRef}
         type={type}
         value={value}
         onChange={onChange}
