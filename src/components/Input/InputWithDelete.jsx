@@ -17,6 +17,8 @@ const InputWithDelete = ({
   onBlur,
   hasInput = false,
   ariaLabel,
+  title = '입력 필드', // 기본 title 설정
+  clearButtonTitle = '입력 내용 지우기', // 기본 title 설정
   ...restProps
 }) => {
   const handleClear = (e) => {
@@ -27,6 +29,7 @@ const InputWithDelete = ({
       onChange({ target: { value: '' } });
     }
   };
+
   return (
     <div className={S.inputWrapper}>
       <input
@@ -45,6 +48,7 @@ const InputWithDelete = ({
         name={name}
         onBlur={onBlur}
         aria-label={ariaLabel}
+        title={title} // title 속성 추가
         {...restProps}
       />
       {showClearButton && value && value.length > 0 && (
@@ -54,6 +58,7 @@ const InputWithDelete = ({
           className={S.clearButton}
           tabIndex={-1}
           aria-label="입력 내용 지우기"
+          title={clearButtonTitle} // title 속성 추가
         >
           <Icon id="close" width={16} height={16} />
         </button>
@@ -61,12 +66,13 @@ const InputWithDelete = ({
     </div>
   );
 };
+
 InputWithDelete.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   onClear: PropTypes.func,
-  type: PropTypes.oneOf(['text', 'password', 'email', 'number']), // 여기서 oneOf로 변경
+  type: PropTypes.oneOf(['text', 'password', 'email', 'number']),
   disabled: PropTypes.bool,
   maxLength: PropTypes.number,
   className: PropTypes.string,
@@ -76,6 +82,8 @@ InputWithDelete.propTypes = {
   hasInput: PropTypes.bool,
   onBlur: PropTypes.func,
   ariaLabel: PropTypes.string,
+  title: PropTypes.string, // title propTypes 추가
+  clearButtonTitle: PropTypes.string, // clearButton의 title propTypes 추가
 };
 
 export default InputWithDelete;
