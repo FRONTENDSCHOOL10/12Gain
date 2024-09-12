@@ -6,7 +6,6 @@ import DetailItem from '@/components/DetailItem/DetailItem';
 import PostManager from '@/components/PostManager/PostManager';
 import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
 import usePostStore from '@/stores/postStore';
-import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 import PostDetailImage from './component/postDetailsImage';
@@ -14,12 +13,8 @@ import PostDetailImage from './component/postDetailsImage';
 export function Component() {
   const navigate = useNavigate();
 
-  const { posts, fetchPosts, isLoading } = usePostStore();
+  const { posts, isLoading } = usePostStore();
   const { postId } = useParams();
-
-  useEffect(() => {
-    fetchPosts();
-  }, [fetchPosts]);
 
   const post = posts.filter((item) => item.id === postId)[0];
 
