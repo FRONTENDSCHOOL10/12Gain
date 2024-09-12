@@ -34,7 +34,8 @@ export const useSignupStore = create((set) => ({
 
 export const useCheckedInterest = create((set) => ({
   checkedInterest: '',
-  setCheckedInterest: (value) => set({ CheckedInterest: value }),
+  //   setCheckedInterest: (value) => set({ CheckedInterest: value }),
+  setCheckedInterest: (value) => set({ checkedInterest: value }),
   count: 0,
   IncreaseCount: (value) =>
     set((state) => ({ count: state.count + 1 + value })),
