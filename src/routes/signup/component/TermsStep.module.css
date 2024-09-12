@@ -11,4 +11,5 @@
   border-radius: 1.25rem;
   background-color: var(--primary);
   color: var(--white);
+  border: none;
 }
