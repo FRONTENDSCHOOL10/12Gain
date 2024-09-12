@@ -1,25 +1,18 @@
-import { useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import Icon from '@/components/Icon/Icon';
-import Post from '@/components/Post/Post';
-// import PostButton from '@/components/PostButton/PostButton';
 import S from '@/routes/home/component/MainPost.module.css';
+
+import { useEffect } from 'react';
+import Post from '@/components/Post/Post';
 import usePostStore from '@/stores/postStore';
-import LoadingSpinner from '../../../components/LoadingSpinner/LoadingSpinner';
+import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 import { format, parseISO } from 'date-fns';
 import { ko } from 'date-fns/locale';
 
 function MainPost() {
-  // const navigate = useNavigate();
   const { posts, fetchPosts, isLoading } = usePostStore();
 
   useEffect(() => {
     fetchPosts();
   }, [fetchPosts]);
-
-  // const handlePostButtonClick = () => {
-  //   navigate('/main/home/new/post');
-  // };
 
   if (isLoading) return <LoadingSpinner />;
 

@@ -1,7 +1,7 @@
+import { useEffect, useRef } from 'react'; // useRef 추가
 import PropTypes from 'prop-types';
 import Icon from '@/components/Icon/Icon';
 import S from '@/components/Input/style.module.css';
-import { useEffect } from 'react';
 
 const InputWithDelete = ({
   value,
@@ -26,15 +26,15 @@ const InputWithDelete = ({
 
   useEffect(() => {
     const handleKey = (e) => {
-      if (e.key === 'escape' && !e.shiftKey) {
-        input.value = '';
+      if (e.key === 'Escape' && !e.shiftKey) {
+        inputRef.current.value = '';
       }
     };
 
-    input.addEventListner('keyup', handleKey);
+    inputRef.current?.addEventListener('keyup', handleKey);
 
     return () => {
-      input.removeEventListener('keyup', handleKey);
+      inputRef.current?.removeEventListener('keyup', handleKey);
     };
   }, []);
 
@@ -66,6 +66,7 @@ const InputWithDelete = ({
         onBlur={onBlur}
         aria-label={ariaLabel}
         title={title} // title 속성 추가
+        ref={inputRef} // ref 속성 추가
         {...restProps}
       />
       {showClearButton && value && value.length > 0 && (
@@ -73,7 +74,7 @@ const InputWithDelete = ({
           type="reset"
           onClick={handleClear}
           className={S.clearButton}
-          tabIndex={-1} ////// 수정 필요 !
+          tabIndex={-1}
           aria-label="입력 내용 지우기"
           title={clearButtonTitle} // title 속성 추가
         >
