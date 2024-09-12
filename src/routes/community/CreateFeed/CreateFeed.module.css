@@ -16,17 +16,6 @@
     }
   }
 
-  .button {
-    width: 18.5rem;
-    height: 2.8125rem;
-    margin: var(--spacing-12) auto;
-    border-radius: 1.25rem;
-    background-color: var(--primary);
-    color: var(--white);
-    font-size: 0.875rem;
-    font-weight: 600;
-  }
-
   .button:disabled {
     background-color: var(--content-tertiary);
     cursor: not-allowed;
