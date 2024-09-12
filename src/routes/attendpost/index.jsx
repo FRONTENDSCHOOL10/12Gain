@@ -4,7 +4,6 @@ import Button from '@/components/Button/Button';
 import { string, number } from 'prop-types';
 import DetailItem from '@/components/DetailItem/DetailItem';
 import PostManager from '@/components/PostManager/PostManager';
-import Header from '@/components/Header/Header';
 import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
 
 AttendPost.propTypes = {
