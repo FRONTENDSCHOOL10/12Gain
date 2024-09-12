@@ -1,4 +1,5 @@
 import InputWithDelete from '@/components/Input/InputWithDelete';
+import Tooltip from '@/components/Tooltip/Tooltip';
 import PropTypes from 'prop-types';
 
 function PasswordInput({
@@ -11,16 +12,18 @@ function PasswordInput({
 }) {
   return (
     <div>
-      <InputWithDelete
-        type={showPassword ? 'text' : 'password'}
-        value={value}
-        onChange={onChange}
-        className="paragraph-md"
-        placeholder={placeholder}
-        error={value !== '' && !isValid}
-        hasInput={value !== ''}
-        ariaLabel={ariaLabel}
-      />
+      <Tooltip text="비밀번호 입력" position="bottom">
+        <InputWithDelete
+          type={showPassword ? 'text' : 'password'}
+          value={value}
+          onChange={onChange}
+          className="paragraph-md"
+          placeholder={placeholder}
+          error={value !== '' && !isValid}
+          hasInput={value !== ''}
+          ariaLabel={ariaLabel}
+        />
+      </Tooltip>
     </div>
   );
 }
