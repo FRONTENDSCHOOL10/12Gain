@@ -4,7 +4,6 @@ import Button from '@/components/Button/Button';
 import { string, number } from 'prop-types';
 import DetailItem from '@/components/DetailItem/DetailItem';
 import PostManager from '@/components/PostManager/PostManager';
-import Header from '../Header/Header';
 import HeaderForDetails from '../HeaderForDetails/HeaderForDetails';
 
 PostDetail.propTypes = {
@@ -12,7 +11,7 @@ PostDetail.propTypes = {
   sportType: string,
   location: string,
   datetime: string,
-  pop: number,
+  pop: string,
   description: string,
   member: number,
 };
@@ -33,7 +32,7 @@ const testData = {
   sportType: '러닝',
   location: '종합운동장',
   datetime: '2024년 9월 1일',
-  pop: 1,
+  pop: '1',
   description: '설명입니다.',
 };
 
@@ -47,7 +46,6 @@ function PostDetail() {
 
   return (
     <article className={S.component}>
-      {/* <Header iconList={['left', 'home', 'more']} /> */}
       <HeaderForDetails
         leftIcon={[
           { iconId: 'left', path: '/main', title: '뒤로가기' }, // TODO:
