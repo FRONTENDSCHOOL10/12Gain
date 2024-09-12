@@ -3,7 +3,7 @@ import S from '@/routes/home/style.module.css';
 import MainPostList from '@/routes/home/component/MainPostList';
 import PostButton from '@/components/Button/PostButton';
 import { useState, useEffect } from 'react';
-import { Outlet, NavLink, useLocation } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Banner from './banner/Banner';
 import usePostStore from '@/stores/postStore';
 
@@ -33,19 +33,6 @@ export function Component() {
         </div>
       </aside>
       <MainPostList list={subNavList} />
-      {/* <ul className={S.subNavList}>
-        {subNavList.map((item, index) => (
-          <li key={index} className={S.subNavItem}>
-            <NavLink
-              to={item.path}
-              end={item.end}
-              className={({ isActive }) => (isActive ? S.active : undefined)}
-            >
-              {item.text}
-            </NavLink>
-          </li>
-        ))}
-      </ul> */}
       <Banner />
       <Outlet />
     </div>
