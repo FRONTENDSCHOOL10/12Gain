@@ -22,12 +22,12 @@ const InputWithDelete = ({
   clearButtonTitle = '입력 내용 지우기',
   ...restProps
 }) => {
-  const inputRef = useRef(null); // useRef 사용
+  const inputRef = useRef(null);
 
   useEffect(() => {
     const handleKey = (e) => {
       if (e.key === 'Escape' && !e.shiftKey) {
-        inputRef.current.value = ''; // inputRef를 사용하여 input 참조
+        inputRef.current.value = '';
       }
     };
 
