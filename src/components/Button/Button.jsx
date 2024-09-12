@@ -1,15 +1,10 @@
-import { string, bool, func, node, oneOf } from 'prop-types';
+import { string, func, node, oneOf } from 'prop-types';
 import S from './Button.module.css';
 
-function Button({ type, className, disabled = false, onClick, children }) {
+function Button({ type = 'submit', className, onClick, children }) {
   return (
     <div className={S.Button}>
-      <button
-        type={type}
-        className={className}
-        disabled={disabled}
-        onClick={onClick}
-      >
+      <button type={type} className={className} onClick={onClick}>
         {children}
       </button>
     </div>
@@ -19,7 +14,6 @@ function Button({ type, className, disabled = false, onClick, children }) {
 Button.propTypes = {
   type: oneOf(['button', 'submit', 'reset']),
   className: string,
-  disabled: bool,
   onClick: func,
   children: node,
 };

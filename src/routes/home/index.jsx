@@ -4,6 +4,7 @@ import MainPostList from '@/routes/home/component/MainPostList';
 import PostButton from '@/components/Button/PostButton';
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import Banner from './banner/Banner';
 
 export function Component() {
   const [subNavList] = useState([
@@ -20,6 +21,14 @@ export function Component() {
         </div>
       </aside>
       <MainPostList list={subNavList} />
+      <ul className={S.subNavList}>
+        {subNavList.map((item, index) => (
+          <li key={index} className={S.subNavItem}>
+            <a href={item.path}>{item.text}</a>
+          </li>
+        ))}
+      </ul>
+      <Banner />
       <Outlet />
     </div>
   );

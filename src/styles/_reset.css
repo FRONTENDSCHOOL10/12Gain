@@ -151,4 +151,9 @@ body {
   line-height: 1.15;
   width: 20rem;
   margin: 0 auto;
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
