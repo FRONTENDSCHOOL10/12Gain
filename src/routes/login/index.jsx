@@ -1,7 +1,7 @@
 import Button from '@/components/Button/Button';
 import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
 import S from '@/routes/login/style.module.css';
-import { useLoginForm } from '@/stores/route';
+import { useLoginForm } from '@/stores/authStore';
 import { useNavigate } from 'react-router-dom';
 import SignupLink from '../landing/component/SignupLink';
 import EmailInput from './component/EmailInput';

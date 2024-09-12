@@ -27,18 +27,17 @@ const usePostStore = create((set, get) => ({
         filterString = `category ~ "${filter.userInterests.join('|')}"`;
       }
 
-      if (filter.sortBy === '일정 가까운 순') {
-        sortField = 'date';
-      } else if (filter.sortBy === '지역순') {
-        sortField = 'location';
-      }
-
       const records = await pb.collection('appointments').getList(1, 50, {
         sort: sortField,
         filter: filterString,
         expand: 'writer',
       });
-      set({ posts: records.items, isLoading: false });
+      const formattedPosts = records.items.map((post) => ({
+        ...post,
+        date: post.date ? new Date(post.date).toISOString() : null,
+      }));
+
+      set({ posts: formattedPosts, isLoading: false });
     } catch (error) {
       set({ error, isLoading: false });
     }

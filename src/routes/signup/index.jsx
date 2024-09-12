@@ -1,5 +1,5 @@
 import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
-import { useSignupStore } from '@/stores/route';
+import { useSignup } from '@/stores/authStore';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import EmailStep from './component/EmailStep';
@@ -12,7 +12,7 @@ import TermsStep from './component/TermsStep';
 export function Component() {
   const [step, setStep] = useState(1);
   const navigate = useNavigate();
-  const signupState = useSignupStore();
+  const signupState = useSignup();
 
   const totalSteps = 4;
 
