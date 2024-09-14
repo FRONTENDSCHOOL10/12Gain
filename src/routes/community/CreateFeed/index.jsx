@@ -55,6 +55,8 @@ export function Component() {
     const formData = new FormData();
 
     const dataCollection = Object.entries(feedData);
+    const auth = JSON.parse(localStorage.getItem('pocketbase_auth')).model;
+    formData.append('writer', auth.id);
     dataCollection.forEach((data) => formData.append(data[0], data[1]));
     imageData.forEach((data) => formData.append('image', data));
 
