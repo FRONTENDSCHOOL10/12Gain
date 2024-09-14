@@ -1,10 +1,11 @@
 import Button from '@/components/Button/Button';
-import { useSignup } from '@/stores/authStore';
+import { useSignupStore } from '@/stores/authStore';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import S from './TermsStep.module.css';
 import TermsItem from './TermsItem';
 import toast from 'react-hot-toast';
+import pb from '@/api/pb.js'; // 포켓베이스 인스턴스 가져오기
 
 TermsStep.propTypes = {
   onSubmit: PropTypes.func.isRequired,
@@ -12,7 +13,16 @@ TermsStep.propTypes = {
 
 function TermsStep({ onSubmit }) {
   const navigate = useNavigate();
-  const { agreeToTerms, setAgreeToTerms } = useSignup();
+  const {
+    agreeToTerms,
+    email,
+    password,
+    passwordConfirm,
+    nickname,
+    setAgreeToTerms,
+    setUser,
+    setToken,
+  } = useSignupStore();
 
   const toggleTerm = (key) => {
     setAgreeToTerms((prev) => {
@@ -44,14 +54,32 @@ function TermsStep({ onSubmit }) {
     { key: 'age', text: '본인은 만 14세 이상입니다. (필수)', showArrow: true },
   ];
 
-  const handleNavigation = () => {
+  const handleSignUp = async () => {
     const requiredTerms = ['terms', 'privacy', 'age'];
     if (requiredTerms.every((term) => agreeToTerms[term])) {
-      onSubmit();
-      navigate('/Login');
-      toast('회원가입이 완료되었습니다!', {
-        icon: '🎉',
-      });
+      try {
+        // 포켓베이스에 회원가입 요청
+        const userData = await pb.collection('users').create({
+          email: email,
+          emailVisibility: true,
+          password: password,
+          passwordConfirm: passwordConfirm,
+          nickname: nickname,
+        });
+
+        console.log('회원가입 완료:', userData);
+        // setUser(userData); // Zustand에 사용자 정보 저장
+        // setToken(userData.token); // 상태에 토큰 저장
+
+        // onSubmit();
+        navigate('/Login');
+        toast('회원가입이 완료되었습니다!', {
+          icon: '🎉',
+        });
+      } catch (error) {
+        console.error('회원가입 실패:', error);
+        toast.error('회원가입에 실패했습니다.');
+      }
     } else {
       toast.error('필수 약관에 모두 동의해주세요.');
     }
@@ -72,7 +100,7 @@ function TermsStep({ onSubmit }) {
           />
         ))}
       </ul>
-      <Button type="submit" onClick={handleNavigation} className={S.button}>
+      <Button type="button" onClick={handleSignUp} className={S.button}>
         완료
       </Button>
     </div>

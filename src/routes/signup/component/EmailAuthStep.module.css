@@ -7,21 +7,21 @@
 .InputGroup {
   display: flex;
   flex-flow: column;
-  gap: 0.75rem;
+  margin-bottom: 5.25rem;
 }
 
-.PhoneNotice {
+.AuthNotice {
   margin-bottom: 0.5rem;
 }
 
-.PhoneMessage {
+.AuthMessage {
   display: flex;
   flex-flow: column;
   text-align: center;
   margin: 0.75rem 0;
 }
 
-.messageButton {
+.AuthButton {
   width: 18.5rem;
   height: 2.8125rem;
   justify-content: center;
@@ -29,6 +29,7 @@
   border: 0.5px solid var(--content-secondary);
   background-color: var(--white);
   color: var(--content-primary);
+  border: none;
 }
 
 .button {

@@ -7,7 +7,8 @@ import SignupLink from '../landing/component/SignupLink';
 import EmailInput from './component/EmailInput';
 import PasswordInput from './component/PasswordInput';
 import pb from '@/api/pb.js';
-import { useAuthStore } from '@/stores/form.js';
+import { useAuthStore } from '@/stores/authStore';
+import toast from 'react-hot-toast';
 
 export function Component() {
   const navigate = useNavigate();
@@ -24,19 +25,18 @@ export function Component() {
         const authData = await pb
           .collection('users')
           .authWithPassword(email, password);
-        console.log('authData:', authData);
 
         setUser(authData.record);
         setToken(authData.token);
 
-        console.log('User stored in Zustand:', authData.record);
-        console.log('Token stored in Zustand:', authData.token);
-
         clearForm();
         navigate('/main');
+        toast.success('유앤밋에 방문하신 것을 환영합니다🤗');
       } catch (error) {
-        console.error('Login failed:', error);
+        toast.error('로그인이 실패되었습니다. 다시 시도하세요.');
       }
+    } else {
+      toast.error('이메일 또는 비밀번호를 입력해주세요.');
     }
   };
 
@@ -45,9 +45,7 @@ export function Component() {
       <HeaderForDetails
         leftIcon={[{ iconId: 'left', path: '/', title: '뒤로가기' }]}
       />
-      <h2 className={`${S.LoginTitle} label-lg`}>
-        이메일과 비밀번호를 입력해 주세요.
-      </h2>
+      <h2 className={`${S.LoginTitle} label-lg`}>로그인</h2>
       <form className={S.LoginForm} onSubmit={handleSubmit} noValidate>
         <div className={S.InputGroup}>
           <EmailInput
