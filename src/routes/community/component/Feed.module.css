@@ -2,8 +2,9 @@
   display: flex;
   flex-flow: column nowrap;
   gap: 12px;
-  padding: 12px 0 36px;
+  padding: 12px var(--spacing-12) 36px;
   font-size: 0.625rem;
+  background-color: var(--background);
 
   .feedHeader {
     display: flex;
