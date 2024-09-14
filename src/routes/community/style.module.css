@@ -1,7 +1,4 @@
 .component {
-  padding: 0 var(--spacing-12);
-  background-color: var(--background);
-
   aside {
     position: fixed;
     bottom: 0;
@@ -10,6 +7,6 @@
   .button__container {
     position: absolute;
     bottom: 3.5rem;
-    left: 15rem;
+    left: 16rem;
   }
 }
