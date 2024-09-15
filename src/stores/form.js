@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import pb from '@/api/pb';
 
 export const useAuthStore = create((set) => ({
   user: null,
@@ -51,6 +52,7 @@ const INITIAL_POSTDATA = {
   time: '',
   location: '',
   writer: '',
+  image: null,
 };
 
 // 내 모임 데이터 업데이트
@@ -60,6 +62,12 @@ export const usePostData = create((set) => ({
 
   updatePostData: (data) =>
     set(({ postData }) => ({ postData: { ...postData, ...data } })),
+
+  fetchPost: async (postId) => {
+    const post = await pb.collection('appointments').getOne(`${postId}`);
+
+    set({ postData: post });
+  },
 
   resetPostData: () => set({ postData: INITIAL_POSTDATA }),
 

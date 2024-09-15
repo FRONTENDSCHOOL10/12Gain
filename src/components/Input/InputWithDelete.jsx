@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'; // useRef 추가
 import PropTypes from 'prop-types';
 import Icon from '@/components/Icon/Icon';
 import S from '@/components/Input/style.module.css';
-import { useRef } from 'react';
 
 const InputWithDelete = ({
   value,
