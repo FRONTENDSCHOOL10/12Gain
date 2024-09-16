@@ -1,0 +1,7 @@
+.component {
+  padding: 0.375rem;
+  inline-size: 20rem;
+  margin: auto;
+  background: var(--background, #f4f4f4);
+  min-height: 35rem;
+}

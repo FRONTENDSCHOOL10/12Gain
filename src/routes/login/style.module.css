@@ -2,8 +2,8 @@
   display: flex;
   flex-flow: column;
   padding: 1.25rem 0.75rem;
-  align-items: flex-start;
   margin-bottom: 2.06rem;
+  align-items: center;
 }
 
 .LoginForm {

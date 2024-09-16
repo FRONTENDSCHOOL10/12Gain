@@ -1,20 +1,23 @@
+// [signup / index.jsx];
+
 import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
-import { useSignup } from '@/stores/authStore';
+import { useSignupStore } from '@/stores/authStore';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import EmailStep from './component/EmailStep';
 import PasswordStep from './component/PasswordStep';
-import PhoneStep from './component/PhoneStep';
+import EmailAuthStep from './component/EmailAuthStep';
 import ProgressBar from './component/ProgressBar';
 import SignUpLogo from './component/SignUpLogo';
 import TermsStep from './component/TermsStep';
+import NicknameStep from './component/NicknameStep';
 
 export function Component() {
   const [step, setStep] = useState(1);
   const navigate = useNavigate();
-  const signupState = useSignup();
+  const signupState = useSignupStore();
 
-  const totalSteps = 4;
+  const totalSteps = 5;
 
   const nextStep = () => setStep((prev) => Math.min(prev + 1, totalSteps));
 
@@ -32,9 +35,10 @@ export function Component() {
       <SignUpLogo />
       <div>
         {step === 1 && <EmailStep onNext={nextStep} />}
-        {step === 2 && <PasswordStep onNext={nextStep} />}
-        {step === 3 && <PhoneStep onNext={nextStep} />}
-        {step === 4 && <TermsStep onSubmit={handleSubmit} />}
+        {step === 2 && <EmailAuthStep onNext={nextStep} />}
+        {step === 3 && <NicknameStep onNext={nextStep} />}
+        {step === 4 && <PasswordStep onNext={nextStep} />}
+        {step === 5 && <TermsStep onSubmit={handleSubmit} />}
       </div>
     </div>
   );
