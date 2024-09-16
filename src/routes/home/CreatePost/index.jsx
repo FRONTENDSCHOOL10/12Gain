@@ -5,7 +5,7 @@ import Button from '@/components/Button/Button';
 import Icon from '@/components/Icon/Icon';
 import ChoiceInput from '@/components/ChoiceInput/ChoiceInput';
 import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { usePostData } from '@/stores/form';
 import pb from '@/api/pb';
 import IconButton from '@/components/Button/IconButton';
@@ -16,7 +16,7 @@ import { useState } from 'react';
 import clsx from 'clsx';
 
 export function Component() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const {
     postData,
@@ -58,8 +58,12 @@ export function Component() {
     // formData에 전송할 데이터 입력
     const formData = new FormData();
 
+    const auth = JSON.parse(localStorage.getItem('pocketbase_auth')).model;
+    formData.append('writer', auth.id);
+
     const dataCollection = Object.entries(postData);
     dataCollection.forEach((data) => formData.append(data[0], data[1]));
+
     imageData.forEach((data) => formData.append('image', data));
 
     // 서버로 데이터 전송
@@ -71,15 +75,31 @@ export function Component() {
       .then(() => {
         resetPostData();
         resetImageData();
-
-        setIsLoading(false);
       });
 
+    const resultList = await pb.collection('appointments').getList(1, 1, {
+      filter: 'writer = "y93ptze0grvt7gn"',
+      sort: '-created',
+    });
+
+    console.log(resultList);
+
+    console.log(resultList.items[0].id);
+
+    const joinData = {
+      user_id: resultList.items[0].writer,
+      appointment_id: resultList.items[0].id,
+    };
+
+    await pb.collection('join').create(joinData);
+
+    setIsLoading(false);
+
     // 생성된 모임 상세 페이지로 이동
-    // navigate('/main/home/new/post/postID');
+    navigate(`/main/home/new/post/${resultList.items[0].id}`);
   };
 
-  // 사진 외 모든 데이터 값 입력 시 버튼 활성화
+  // 작성자 외 모든 데이터 값 입력 시 버튼 활성화
   const collectedData = Object.entries(postData).filter(
     ([key]) => key != 'writer'
   );

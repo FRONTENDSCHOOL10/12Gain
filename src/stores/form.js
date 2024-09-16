@@ -1,36 +1,36 @@
 import { create } from 'zustand';
 
-export const useAuthStore = create((set) => ({
-  user: null,
-  token: null,
-  setUser: (user) => set({ user }),
-  setToken: (token) => set({ token }),
-  clearAuth: () => set({ user: null, token: null }),
-}));
+// export const useAuthStore = create((set) => ({
+//   user: null,
+//   token: null,
+//   setUser: (user) => set({ user }),
+//   setToken: (token) => set({ token }),
+//   clearAuth: () => set({ user: null, token: null }),
+// }));
 
-export const useSignupStore = create((set) => ({
-  email: '',
-  setEmail: (email) => set({ email }),
-  password: '',
-  setPassword: (password) => set({ password }),
-  confirmPassword: '',
-  setConfirmPassword: (confirmPassword) => set({ confirmPassword }),
-  phoneNumber: '',
-  setPhoneNumber: (phoneNumber) => set({ phoneNumber }),
-  verificationCode: '',
-  setVerificationCode: (verificationCode) => set({ verificationCode }),
-  agreeToTerms: { all: false, terms: false, privacy: false, age: false },
-  setAgreeToTerms: (terms) => set({ agreeToTerms: terms }),
-  user: null, // 추가: 사용자 상태
-  setUser: (user) => set({ user }), // 추가: 사용자 설정 함수
-  token: '', // 추가: 토큰 상태
-  setToken: (token) => set({ token }), // 추가: 토큰 설정 함수
+// export const useSignupStore = create((set) => ({
+//   email: '',
+//   setEmail: (email) => set({ email }),
+//   password: '',
+//   setPassword: (password) => set({ password }),
+//   confirmPassword: '',
+//   setConfirmPassword: (confirmPassword) => set({ confirmPassword }),
+//   phoneNumber: '',
+//   setPhoneNumber: (phoneNumber) => set({ phoneNumber }),
+//   verificationCode: '',
+//   setVerificationCode: (verificationCode) => set({ verificationCode }),
+//   agreeToTerms: { all: false, terms: false, privacy: false, age: false },
+//   setAgreeToTerms: (terms) => set({ agreeToTerms: terms }),
+//   user: null, // 추가: 사용자 상태
+//   setUser: (user) => set({ user }), // 추가: 사용자 설정 함수
+//   token: '', // 추가: 토큰 상태
+//   setToken: (token) => set({ token }), // 추가: 토큰 설정 함수
 
-  isEmailValid: (email) => /\S+@\S+\.\S+/.test(email),
-  isPasswordMatching: (state) => state.password === state.confirmPassword,
-  isNextEnabled: (state) =>
-    state.password && state.confirmPassword && state.isPasswordMatching(state),
-}));
+//   isEmailValid: (email) => /\S+@\S+\.\S+/.test(email),
+//   isPasswordMatching: (state) => state.password === state.confirmPassword,
+//   isNextEnabled: (state) =>
+//     state.password && state.confirmPassword && state.isPasswordMatching(state),
+// }));
 
 export const useCheckedInterest = create((set) => ({
   checkedInterest: '',
