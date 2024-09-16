@@ -66,17 +66,17 @@ export function Component() {
       <article className={S.component}>
         {postData.image && postData.image.length > 0 && <PostDetailImage />}
         <div className={S.main}>
-          <p className={S.main_title}>{postData.title}</p>
+          <h2 className={S.main_title}>{postData.title}</h2>
           <div className={S.main_detail}>
             <DetailItem label="종목" value={postData.category} />
             <DetailItem label="장소" value={postData.location} />
             <DetailItem label="일시" value={postData.date} />
-            <DetailItem label="인원" value={'1'} />
+            <DetailItem label="인원" value={postData.memberCount} />
           </div>
         </div>
 
         <div className={S.sub}>
-          <p className={S.sub_title}>내용</p>
+          <h3 className={S.sub_title}>내용</h3>
           <div className={S.sub_description}>{postData.description}</div>
         </div>
 

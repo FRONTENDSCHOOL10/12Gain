@@ -131,7 +131,10 @@ export function Component() {
           </div>
 
           <div className={S.category}>
-            카테고리를 선택해주세요
+            {'카테고리를 선택해주세요'}
+            {postData.category && (
+              <span className={S.category__content}>{postData.category}</span>
+            )}
             <IconButton iconId="right" path="/main/home/new/post/category" />
           </div>
 

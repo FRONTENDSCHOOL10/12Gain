@@ -84,7 +84,6 @@
   justify-content: left;
   align-items: flex-start;
 
-  min-height: 6.25rem;
   padding: 0.625rem 0.75rem;
   flex-shrink: 0;
   border-bottom: 1px solid var(--Contents-contentTertiary, #d9d9d9);
@@ -95,7 +94,7 @@
     align-self: stretch;
     color: var(--Contents-contentPrimary, var(--color-black, #101115));
 
-    font-family: Pretendard;
+    font-family: 'Pretendard Variable';
     font-size: 0.65644rem;
     font-style: normal;
     font-weight: 600;
