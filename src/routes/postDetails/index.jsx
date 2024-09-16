@@ -38,8 +38,6 @@ export function Component() {
     fetchUsers(filter);
   }, [fetchUsers, filter]);
 
-  console.log(postData);
-
   const handleClick = async () => {
     setIsLoading(true);
 

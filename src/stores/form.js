@@ -52,7 +52,7 @@ const INITIAL_POSTDATA = {
   time: '',
   location: '',
   writer: '',
-  image: null,
+  image: [],
 };
 
 // 내 모임 데이터 업데이트
