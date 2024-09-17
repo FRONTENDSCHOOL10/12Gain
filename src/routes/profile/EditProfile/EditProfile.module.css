@@ -11,17 +11,25 @@
     flex-flow: column;
     gap: var(--spacing-8);
     padding: var(--spacing-12);
-    border-bottom: 1px solid var(--content-tertiary);
     font-size: 0.875rem;
     font-weight: 600;
   }
 
   .aboutMe {
-    flex-flow: row wrap;
+    display: flex;
+    flex-flow: column nowrap;
     justify-content: space-between;
+    gap: var(--spacing-8);
+    border-bottom: 1px solid var(--content-tertiary);
+    font-size: 0.875rem;
+    font-weight: 600;
     padding-bottom: 5rem;
 
-    span {
+    h3 {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      padding: var(--spacing-12);
       height: var(--spacing-20);
     }
 
@@ -32,6 +40,7 @@
     }
 
     .textarea {
+      width: calc(20rem - (2 * var(--spacing-12)));
       border: 1px solid var(--content-secondary);
       padding: var(--spacing-8) var(--spacing-12);
       border-radius: var(--rounded-lg);
@@ -43,18 +52,8 @@
     justify-content: space-between;
     height: var(--spacing-46);
     padding: var(--spacing-12);
+    border-top: 1px solid var(--content-tertiary);
     border-bottom: 1px solid var(--content-tertiary);
-    font-size: 0.875rem;
-    font-weight: 600;
-  }
-
-  .button {
-    width: 18.5rem;
-    height: 2.8125rem;
-    margin: var(--spacing-12) auto;
-    border-radius: 1.25rem;
-    background-color: var(--primary);
-    color: var(--white);
     font-size: 0.875rem;
     font-weight: 600;
   }

@@ -3,7 +3,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import MainPost from './home/component/MainPost';
 import AttendPost from '@/routes/attendpost';
 import Landing from './landing';
-import Comment from './community/CommentPage/CommentPage';
+import Comment from './community/CommentPage';
 
 const routes = [
   { path: '/', element: <Landing /> },
