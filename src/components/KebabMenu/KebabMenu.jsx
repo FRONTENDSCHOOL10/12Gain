@@ -1,38 +1,52 @@
 import S from '@/components/KebabMenu/style.module.css';
 import IconButton from '@/components/Button/IconButton';
-import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import pb from '@/api/pb';
-import Button from '../Button/Button';
-import { useCallback } from 'react';
+import Button from '@/components/Button/Button';
+import Confirm from '@/components/Confirm/Confirm';
 
-function KebabMenu({ postAuthorId }) {
-  const [isOptionOpen, setIsOptionOpen] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null);
+import { useEffect } from 'react';
+import { NavLink, useParams, useNavigate } from 'react-router-dom';
+import { oneOf, bool } from 'prop-types';
+import clsx from 'clsx';
+import { useKebabMenuStore } from '@/stores/kebabStore';
+
+KebabMenuPost.propTypes = {
+  category: oneOf(['appointments', 'feeds']).isRequired,
+  categoryText: oneOf(['모임', '게시물']).isRequired,
+  chat: bool,
+};
+
+function KebabMenuPost({ category, categoryText, chat = false }) {
+  const { postId } = useParams();
+  const nav = useNavigate();
+  const {
+    isOptionOpen,
+    currentUser,
+    postWriter,
+    showConfirm,
+    confirmText,
+    fetchUser,
+    fetchPostWriter,
+    handleOpenMenu,
+    handleCloseMenu,
+    handleDeleteClick,
+    handleReportClick,
+    handleLeaveChatClick,
+    handleConfirm,
+    handleCancel,
+  } = useKebabMenuStore();
 
   useEffect(() => {
-    const fetchUser = async () => {
-      const user = await pb.authStore.model;
-      setCurrentUser(user);
-    };
-
     fetchUser();
-  }, []);
+  }, [fetchUser]);
 
-  const handleOpenMenu = useCallback(() => {
-    setIsOptionOpen((open) => !open);
-    console.log('옵션창 열렸습니당?');
-  }, []);
+  useEffect(() => {
+    fetchPostWriter(category, postId);
+  }, [fetchPostWriter, category, postId]);
 
-  const handleCloseMenu = useCallback(() => {
-    setIsOptionOpen((close) => !close);
-    console.log('옵션창 닫혔습니당?');
-  }, []);
-
-  const isAuthor = currentUser && currentUser.id === postAuthorId;
+  const isAuthor = currentUser === postWriter;
 
   return (
-    <div className="button-icon">
+    <div className={clsx(S.component, 'button-icon')}>
       <IconButton
         title="옵션 선택"
         iconId="more"
@@ -43,20 +57,51 @@ function KebabMenu({ postAuthorId }) {
       {isOptionOpen && (
         <div className={S.option}>
           <div className={S.option__content}>
-            {isAuthor ? (
-              <div>
-                <NavLink to="my edit post or feed" className={S.option__button}>
+            {chat ? (
+              <div className={clsx(S.option__wrapper)}>
+                <Button
+                  className={clsx(S.option__button, S.option__buttonRed)}
+                  onClick={() => handleLeaveChatClick(isAuthor)}
+                >
+                  채팅방 나가기
+                </Button>
+                <Button
+                  className={clsx(S.option__button, S.option__buttonCancel)}
+                  onClick={handleCloseMenu}
+                >
+                  취소
+                </Button>
+              </div>
+            ) : isAuthor ? (
+              <div className={clsx(S.option__wrapper)}>
+                <NavLink to={'/main'} className={clsx(S.option__button)}>
                   수정하기
                 </NavLink>
-                <Button className={S.option__button}>삭제하기</Button>
-                <Button className={S.option__button} onClick={handleCloseMenu}>
+                <Button
+                  className={clsx(S.option__button, S.option__buttonRed)}
+                  onClick={() => handleDeleteClick(categoryText)}
+                >
+                  삭제하기
+                </Button>
+                <Button
+                  className={clsx(S.option__button, S.option__buttonCancel)}
+                  onClick={handleCloseMenu}
+                >
                   취소
                 </Button>
               </div>
             ) : (
-              <div>
-                <Button className={S.option__button}>신고하기</Button>
-                <Button className={S.option__button} onClick={handleCloseMenu}>
+              <div className={clsx(S.option__wrapper)}>
+                <Button
+                  className={clsx(S.option__button, S.option__buttonRed)}
+                  onClick={() => handleReportClick(categoryText)}
+                >
+                  신고하기
+                </Button>
+                <Button
+                  className={clsx(S.option__button, S.option__buttonCancel)}
+                  onClick={handleCloseMenu}
+                >
                   취소
                 </Button>
               </div>
@@ -64,8 +109,19 @@ function KebabMenu({ postAuthorId }) {
           </div>
         </div>
       )}
+      {showConfirm && (
+        <article>
+          <Confirm
+            text={confirmText}
+            onClick={() =>
+              handleConfirm(category, postId, categoryText, nav, isAuthor)
+            }
+            onCancel={handleCancel}
+          />
+        </article>
+      )}
     </div>
   );
 }
 
-export default KebabMenu;
+export default KebabMenuPost;
