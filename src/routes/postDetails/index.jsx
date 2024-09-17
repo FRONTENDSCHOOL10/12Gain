@@ -1,22 +1,56 @@
 import S from '@/routes/postDetails/postDetails.module.css';
 
-import { useNavigate } from 'react-router-dom';
 import Button from '@/components/Button/Button';
 import DetailItem from '@/components/DetailItem/DetailItem';
 import PostManager from '@/components/PostManager/PostManager';
 import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
-import usePostStore from '@/stores/postStore';
 import { useParams } from 'react-router-dom';
-import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 import PostDetailImage from './component/postDetailsImage';
+import { usePostData } from '@/stores/form';
+import { useEffect } from 'react';
+import { useJoin } from '@/stores/join';
+import { useUsers } from '@/stores/users';
+import { Link } from 'react-router-dom';
+import pb from '@/api/pb';
+import { useState } from 'react';
+import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 
 export function Component() {
-  const navigate = useNavigate();
-
-  const { posts, isLoading } = usePostStore();
   const { postId } = useParams();
 
-  const post = posts.filter((item) => item.id === postId)[0];
+  const [isLoading, setIsLoading] = useState(false);
+  const { postData, fetchPost } = usePostData();
+  const { joinData, fetchJoinData } = useJoin();
+  const { users, fetchUsers } = useUsers();
+
+  const auth = JSON.parse(localStorage.getItem('pocketbase_auth'));
+  const user = auth.model.id;
+
+  useEffect(() => {
+    fetchPost(postId);
+    fetchJoinData(postId);
+  }, [fetchPost, fetchJoinData, postId]);
+
+  const members = joinData.map((item) => item.user_id);
+  const filter = members.map((item) => `id = "${item}"`).join(' || ');
+
+  useEffect(() => {
+    fetchUsers(filter);
+  }, [fetchUsers, filter]);
+
+  const handleClick = async () => {
+    setIsLoading(true);
+
+    const data = {
+      user_id: user,
+      appointment_id: postData.id,
+    };
+
+    await pb.collection('join').create(data);
+
+    setIsLoading(false);
+    location.reload();
+  };
 
   return isLoading ? (
     <LoadingSpinner />
@@ -30,45 +64,47 @@ export function Component() {
         ]}
       />
       <article className={S.component}>
-        {post.image.length > 0 && <PostDetailImage />}
+        {postData.image && postData.image.length > 0 && <PostDetailImage />}
         <div className={S.main}>
-          <p className={S.main_title}>{post.title}</p>
+          <h2 className={S.main_title}>{postData.title}</h2>
           <div className={S.main_detail}>
-            <DetailItem label="종목" value={post.category} />
-            <DetailItem label="장소" value={post.location} />
-            <DetailItem label="일시" value={post.date} />
-            <DetailItem label="인원" value={'1'} />
+            <DetailItem label="종목" value={postData.category} />
+            <DetailItem label="장소" value={postData.location} />
+            <DetailItem label="일시" value={postData.date} />
+            <DetailItem label="인원" value={postData.memberCount} />
           </div>
         </div>
 
         <div className={S.sub}>
-          <p className={S.sub_title}>내용</p>
-          <div className={S.sub_description}>{post.description}</div>
+          <h3 className={S.sub_title}>내용</h3>
+          <div className={S.sub_description}>{postData.description}</div>
         </div>
 
         <div className={S.attend}>
-          <div className={S.attend_member}>
-            <span className={S.attend_member_pop}>
-              참여멤버 {1}명
-              <span className={S.attend_member_pop_max}>
-                / {post.memberCount}명
-              </span>
+          <span className={S.attend_member_pop}>
+            참여멤버 {members.length}명
+            <span className={S.attend_member_pop_max}>
+              / {postData.memberCount}명
             </span>
-            <div className={S.attend_member_info}>
-              <PostManager
-                nickName="사용자"
-                pop={'1'}
-                imageWidth={44}
-                imageHeight={44}
-              />
-            </div>
-          </div>
+          </span>
+          <PostManager
+            nickName="사용자"
+            members={users}
+            imageWidth={44}
+            imageHeight={44}
+          />
         </div>
 
         <div className={S.attend_button}>
-          <Button className={S.button} onClick={() => navigate('join')}>
-            참여하기
-          </Button>
+          {members.includes(user) ? (
+            <Link to={'join'} className={S.button}>
+              채팅하기
+            </Link>
+          ) : (
+            <Button className={S.button} onClick={handleClick}>
+              참여하기
+            </Button>
+          )}
         </div>
       </article>
     </>

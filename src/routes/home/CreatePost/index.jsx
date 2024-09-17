@@ -78,13 +78,9 @@ export function Component() {
       });
 
     const resultList = await pb.collection('appointments').getList(1, 1, {
-      filter: 'writer = "y93ptze0grvt7gn"',
+      filter: `writer = "${auth.id}"`,
       sort: '-created',
     });
-
-    console.log(resultList);
-
-    console.log(resultList.items[0].id);
 
     const joinData = {
       user_id: resultList.items[0].writer,
@@ -96,7 +92,7 @@ export function Component() {
     setIsLoading(false);
 
     // 생성된 모임 상세 페이지로 이동
-    navigate(`/main/home/new/post/${resultList.items[0].id}`);
+    navigate(`/main/post/${resultList.items[0].id}`);
   };
 
   // 작성자 외 모든 데이터 값 입력 시 버튼 활성화
@@ -136,7 +132,10 @@ export function Component() {
           </div>
 
           <div className={S.category}>
-            카테고리를 선택해주세요
+            {'카테고리를 선택해주세요'}
+            {postData.category && (
+              <span className={S.category__content}>{postData.category}</span>
+            )}
             <IconButton iconId="right" path="/main/home/new/post/category" />
           </div>
 
