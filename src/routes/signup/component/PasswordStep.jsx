@@ -2,7 +2,7 @@ import Button from '@/components/Button/Button';
 import PasswordInput from '@/routes/login/component/PasswordInput';
 import { useSignupStore } from '@/stores/authStore';
 import PropTypes from 'prop-types';
-import toast from 'react-hot-toast'; // 사용자 알림
+import toast from 'react-hot-toast';
 import S from './PasswordStep.module.css';
 
 PasswordStep.propTypes = {
@@ -15,7 +15,7 @@ function PasswordStep({ onNext }) {
     setPassword,
     passwordConfirm,
     setPasswordConfirm,
-    isPasswordMatching, // 상태에서 가져옴
+    isPasswordMatching,
     isNextEnabled,
   } = useSignupStore();
 
@@ -46,7 +46,7 @@ function PasswordStep({ onNext }) {
             onChange={handlePasswordChange}
             placeholder="비밀번호"
             ariaLabel="비밀번호 입력"
-            isValid={password.length >= 8} // 비밀번호 유효성 검사 추가 (예: 길이 8 이상)
+            isValid={password.length >= 8}
           />
           <PasswordInput
             showPassword={true}
@@ -54,12 +54,12 @@ function PasswordStep({ onNext }) {
             onChange={handlePasswordConfirmChange}
             placeholder="비밀번호를 확인"
             ariaLabel="비밀번호 확인 입력"
-            isValid={isPasswordMatching({ password, passwordConfirm })} // 비밀번호 일치 여부 검사
+            isValid={isPasswordMatching({ password, passwordConfirm })}
           />
         </div>
         <Button
           type="submit"
-          disabled={!isNextEnabled({ password, passwordConfirm })} // 다음 버튼 활성화 여부
+          disabled={!isNextEnabled({ password, passwordConfirm })}
           className={`${S.button} label-md`}
         >
           다음

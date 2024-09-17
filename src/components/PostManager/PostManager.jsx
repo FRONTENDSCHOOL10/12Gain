@@ -18,7 +18,6 @@ function PostManager({ nickName, pop, imageWidth, imageHeight }) {
         height={imageHeight}
       />
       <span>{nickName}</span>
-      {/* <span>{pop}</span> */}
     </div>
   );
 }

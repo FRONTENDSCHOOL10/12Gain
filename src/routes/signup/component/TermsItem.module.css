@@ -33,7 +33,7 @@
 
 .checkbox.checked {
   border-color: var(--primary);
-  background-color: aqua;
+  background-color: #6738ff;
 }
 
 .arrowIcon {

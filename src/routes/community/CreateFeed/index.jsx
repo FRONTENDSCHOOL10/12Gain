@@ -23,14 +23,11 @@ export function Component() {
     resetImageData,
   } = useFeedData();
 
-  // postData store에 데이터 추가
   const handleFeedData = (e) => {
     const { name, value } = e.target;
 
     updateFeedData({ [name]: value });
   };
-
-  // 이미지 데이터를 store에 추가
 
   const handleImageName = (e) => {
     let image = [];
@@ -42,23 +39,19 @@ export function Component() {
     updateImageData(image);
   };
 
-  // 파일명 랜더링을 위한 데이터
   const fileName = imageData.map((data) => data.name);
 
   const [isLoading, setIsLoading] = useState(false);
 
-  // 완료 버튼 클릭 시
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // formData에 전송할 데이터 입력
     const formData = new FormData();
 
     const dataCollection = Object.entries(feedData);
     dataCollection.forEach((data) => formData.append(data[0], data[1]));
     imageData.forEach((data) => formData.append('image', data));
 
-    // 서버로 데이터 전송
     setIsLoading(true);
     await pb
       .collection('feeds')
@@ -70,13 +63,9 @@ export function Component() {
         setIsLoading(false);
       });
 
-    // 데이터 리셋
-
-    // 생성된 모임 상세 페이지로 이동
     navigate('/main/community');
   };
 
-  // 사진 외 모든 데이터 값 입력 시 버튼 활성화
   const collectedData = Object.entries(feedData).filter(
     ([key]) => key != 'writer'
   );
