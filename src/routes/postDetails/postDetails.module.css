@@ -1,6 +1,4 @@
 .component {
-  inline-size: 20rem;
-  margin: auto;
   background: var(--background, #f4f4f4);
 
   .img_main {
@@ -82,33 +80,28 @@
 
 .attend {
   display: flex;
-  height: 6.25rem;
-  padding: 0.625rem 0rem 0.625rem 0.75rem;
-  align-items: center;
+  flex-flow: column;
+  justify-content: left;
+  align-items: flex-start;
+
+  padding: 0.625rem 0.75rem;
   flex-shrink: 0;
-  align-self: stretch;
   border-bottom: 1px solid var(--Contents-contentTertiary, #d9d9d9);
 
-  .attend_member {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.375rem;
+  .attend_member_pop {
+    align-items: center;
+    gap: 0.125rem;
+    align-self: stretch;
+    color: var(--Contents-contentPrimary, var(--color-black, #101115));
 
-    .attend_member_pop {
-      align-items: center;
-      gap: 0.125rem;
-      align-self: stretch;
-      color: var(--Contents-contentPrimary, var(--color-black, #101115));
+    font-family: 'Pretendard Variable';
+    font-size: 0.65644rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 0.98469rem;
 
-      font-family: Pretendard;
-      font-size: 0.65644rem;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 0.98469rem;
-
-      .attend_member_pop_max {
-        color: var(--Contents-contentSecondary, #979797);
-      }
+    .attend_member_pop_max {
+      color: var(--Contents-contentSecondary, #979797);
     }
 
     .attend_member_info {
@@ -151,4 +144,5 @@
   font-weight: 600;
   width: 18rem;
   border: none;
+  cursor: pointer;
 }
