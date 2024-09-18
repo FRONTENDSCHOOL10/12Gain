@@ -2,6 +2,7 @@ import S from '@/components/Button/IconButton.module.css';
 import Icon from '../Icon/Icon';
 import { string, func, number } from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import { memo } from 'react';
 
 IconButton.propTypes = {
   title: string,
@@ -42,4 +43,6 @@ function IconButton({
   );
 }
 
-export default IconButton;
+const memoizedIconButton = memo(IconButton);
+
+export default memoizedIconButton;
