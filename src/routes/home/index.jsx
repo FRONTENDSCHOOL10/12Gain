@@ -5,7 +5,7 @@ import PostButton from '@/components/Button/PostButton';
 import { useState, useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Banner from './banner/Banner';
-import usePostStore from '@/stores/postStore';
+import postStore from '@/stores/postStore';
 
 export function Component() {
   const [subNavList] = useState([
@@ -14,7 +14,7 @@ export function Component() {
     { path: '/main/home/interest', text: '관심' },
   ]);
 
-  const { setFilter, fetchPosts } = usePostStore();
+  const { setFilter, fetchPosts } = postStore();
   const location = useLocation();
 
   useEffect(() => {

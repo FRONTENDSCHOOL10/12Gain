@@ -74,6 +74,15 @@ export const useHeader = create(() => ({
       ],
     },
     {
+      path: '/main/community/new',
+      text: '커뮤니티',
+      iconList: [
+        { iconId: 'search', path: '/main/search', title: '검색' },
+        { iconId: 'chat', path: '/main/chat', title: '채팅' },
+        { iconId: 'alarm', path: '/main/alarm', title: '알림' },
+      ],
+    },
+    {
       path: '/main/profile/appointment',
       text: '프로필',
       iconList: [
