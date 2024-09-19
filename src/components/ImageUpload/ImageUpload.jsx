@@ -8,12 +8,13 @@ ImageUpload.propTypes = {
   value: string,
   onChange: func,
   imageData: array,
+  post: string,
   className: string,
 };
 
-function ImageUpload({ children, onChange, imageData, className }) {
+function ImageUpload({ children, onChange, imageData, post, className }) {
   return (
-    <div className={S.ImageUpload__container}>
+    <div className={`S.ImageUpload__container__${post}`}>
       <label className={clsx(S.label, className)}>
         <input
           className={S.input}
