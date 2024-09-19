@@ -3,6 +3,7 @@ import S from '@/routes/profile/component/ProfileCard.module.css';
 import ProfileImage from '@/components/ProfileImage/ProfileImage';
 import MyInterestList from '@/routes/profile/component/MyInterestList';
 import { string } from 'prop-types';
+import { useUserProfile } from '@/stores/users';
 
 ProfileCard.propTypes = {
   nickName: string.isRequired,
@@ -10,7 +11,8 @@ ProfileCard.propTypes = {
 };
 
 function ProfileCard({ nickName, description = '소개글을 작성 해주세요' }) {
-  const interestList = ['헬스', '필라테스', '러닝'];
+  const { userData } = useUserProfile();
+  const interestList = userData.interest;
 
   return (
     <div className={S.component}>
