@@ -4,9 +4,9 @@ import EmailInput from '@/routes/login/component/EmailInput';
 import { useSignupStore } from '@/stores/authStore';
 import PropTypes from 'prop-types';
 import S from './EmailStep.module.css';
-import toast from 'react-hot-toast'; // 사용자 알림
-import emailjs from '@emailjs/browser'; // EmailJS 라이브러리
-import pb from '@/api/pb'; // 포켓베이스 인스턴스 가져오기
+import toast from 'react-hot-toast';
+import emailjs from '@emailjs/browser';
+import pb from '@/api/pb';
 
 EmailStep.propTypes = {
   onNext: PropTypes.func.isRequired,
@@ -14,7 +14,7 @@ EmailStep.propTypes = {
 
 function EmailStep({ onNext }) {
   const { email, setEmail, setVerificationCode } = useSignupStore();
-  const [isSubmitting, setIsSubmitting] = useState(false); // 제출 중 상태 추가
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -29,13 +29,12 @@ function EmailStep({ onNext }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setIsSubmitting(true); // 제출 시작 시 상태 업데이트
+    setIsSubmitting(true);
 
     const verificationCode = Math.floor(1000 + Math.random() * 9000).toString();
-    setVerificationCode(verificationCode); // 상태에 인증코드 저장
+    setVerificationCode(verificationCode);
 
     try {
-      // 포켓베이스에 이메일과 인증코드 저장
       await pb.collection('emailcode').create({
         email,
         code: verificationCode,
@@ -43,26 +42,24 @@ function EmailStep({ onNext }) {
         updated: new Date().toISOString(),
       });
 
-      // 이메일로 인증코드 전송
       await emailjs.send(
-        'service_d5zdioj', // EmailJS 서비스 ID
-        'template_lytf70a', // 이메일 템플릿 ID
-        { email, verificationCode }, // 이메일 템플릿에 전달할 데이터
-        'qJ_Qj8NKcIo9gXPmo' // EmailJS 사용자 ID
+        'service_d5zdioj',
+        'template_lytf70a',
+        { email, verificationCode },
+        'qJ_Qj8NKcIo9gXPmo'
       );
 
       toast.success('인증코드를 이메일로 발송했습니다.');
-      onNext(); // 다음 단계로 이동
+      onNext();
     } catch (error) {
       console.error('인증코드 발송 실패:', error);
       toast.error('인증코드 발송에 실패했습니다. 다시 시도해 주세요.');
-      setEmail(''); // 이메일 상태를 빈 문자열로 설정
+      setEmail('');
     } finally {
-      setIsSubmitting(false); // 제출 완료 시 상태 업데이트
+      setIsSubmitting(false);
     }
   };
 
-  // 이메일 유효성에 따른 버튼 비활성화 여부
   const isButtonDisabled =
     !isValidEmail(email) || email.trim() === '' || isSubmitting;
 

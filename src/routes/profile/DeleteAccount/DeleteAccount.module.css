@@ -2,6 +2,7 @@
   .content__container {
     display: flex;
     flex-flow: column;
+    height: 34.4375rem;
     gap: var(--spacing-8);
     padding: var(--spacing-12);
     border-bottom: 1px solid var(--content-tertiary);
@@ -11,20 +12,35 @@
   h2 {
     display: flex;
     flex-flow: column;
+
+    color: #000;
+    font-family: Pretendard;
     font-size: 0.875rem;
+    font-style: normal;
     font-weight: 400;
+    line-height: 1.4rem;
   }
 
   .contents {
-    font-size: 0.625rem;
+    color: #000;
+    font-family: Pretendard;
+    font-size: 0.65644rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.05031rem;
   }
 
   .terms__container {
     display: flex;
     align-items: center;
     gap: var(--spacing-4);
-    font-size: 0.625rem;
+
+    color: var(--Contents-contentPrimary, #333);
+    font-family: Pretendard;
+    font-size: 0.65644rem;
+    font-style: normal;
     font-weight: 600;
+    line-height: 0.98469rem;
   }
 
   .button {
