@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import S from './TermsStep.module.css';
 import TermsItem from './TermsItem';
 import toast from 'react-hot-toast';
-import pb from '@/api/pb.js'; // 포켓베이스 인스턴스 가져오기
+import pb from '@/api/pb.js';
 
 TermsStep.propTypes = {
   onSubmit: PropTypes.func.isRequired,
@@ -58,7 +58,6 @@ function TermsStep({ onSubmit }) {
     const requiredTerms = ['terms', 'privacy', 'age'];
     if (requiredTerms.every((term) => agreeToTerms[term])) {
       try {
-        // 포켓베이스에 회원가입 요청
         const userData = await pb.collection('users').create({
           email: email,
           emailVisibility: true,
@@ -68,10 +67,6 @@ function TermsStep({ onSubmit }) {
         });
 
         console.log('회원가입 완료:', userData);
-        // setUser(userData); // Zustand에 사용자 정보 저장
-        // setToken(userData.token); // 상태에 토큰 저장
-
-        // onSubmit();
         navigate('/Login');
         toast('회원가입이 완료되었습니다!', {
           icon: '🎉',

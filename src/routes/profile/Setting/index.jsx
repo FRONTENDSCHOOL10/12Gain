@@ -1,14 +1,14 @@
-import { useState } from 'react'; // 상태 관리를 위한 useState
+import { useState } from 'react';
 import S from '@/routes/profile/Setting/Setting.module.css';
 import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
 import SettingList from '@/routes/profile/component/SettingList';
-import pb from '@/api/pb'; // PocketBase 인스턴스 가져오기
-import { useNavigate } from 'react-router-dom'; // 페이지 이동을 위한 훅
+import pb from '@/api/pb';
+import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 export function Component() {
-  const [showLogoutPopup, setShowLogoutPopup] = useState(false); // 팝업 상태 관리
-  const navigate = useNavigate(); // 페이지 이동을 위한 훅
+  const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {

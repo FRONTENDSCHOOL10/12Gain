@@ -3,7 +3,7 @@ import InputWithDelete from '@/components/Input/InputWithDelete';
 import { useSignupStore } from '@/stores/authStore';
 import PropTypes from 'prop-types';
 import S from './EmailAuthStep.module.css';
-import pb from '@/api/pb.js'; // 포켓베이스 인스턴스 가져오기
+import pb from '@/api/pb.js';
 import toast from 'react-hot-toast';
 
 EmailAuthStep.propTypes = {
@@ -16,10 +16,9 @@ function EmailAuthStep({ onNext }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // 포켓베이스에서 최근 인증코드 조회
       const response = await pb.collection('emailcode').getList(1, 1, {
         filter: `email="${email}"`,
-        sort: '-created', // 최근 생성된 순서로 정렬
+        sort: '-created',
       });
 
       if (response.items.length === 0) {
@@ -50,9 +49,6 @@ function EmailAuthStep({ onNext }) {
             placeholder="인증코드"
           />
         </div>
-        {/* <p className={`${S.AuthNotice} paragraph-sm`}>
-          어떤 경우에도 타인에게 공유하지 마세요!
-        </p> */}
         <Button type="submit" className={`${S.button} label-md`}>
           다음
         </Button>

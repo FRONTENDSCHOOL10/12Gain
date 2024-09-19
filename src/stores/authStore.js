@@ -21,7 +21,6 @@ export const useSignupStore = create((set, get) => ({
   nickname: '',
   setNickname: (nickname) => set({ nickname }),
 
-  // 이용약관 동의 상태
   agreeToTerms: { all: false, terms: false, privacy: false, age: false },
   setAgreeToTerms: (updater) =>
     set((state) => ({
@@ -31,13 +30,11 @@ export const useSignupStore = create((set, get) => ({
           : { ...state.agreeToTerms, ...updater },
     })),
 
-  // 비밀번호 일치 여부를 확인하는 함수
   isPasswordMatching: () => {
     const { password, passwordConfirm } = get();
     return password === passwordConfirm && password.length > 0;
   },
 
-  // "다음" 버튼 활성화 여부
   isNextEnabled: () => {
     const { password, passwordConfirm } = get();
     return password === passwordConfirm && password.length > 0;
