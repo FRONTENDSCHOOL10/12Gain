@@ -11,7 +11,7 @@ PostDetail.propTypes = {
   sportType: string,
   location: string,
   datetime: string,
-  pop: number,
+  pop: string,
   description: string,
   member: number,
 };
@@ -21,7 +21,7 @@ const testData = {
   sportType: '러닝',
   location: '종합운동장',
   datetime: '2024년 9월 1일',
-  pop: 1,
+  pop: '1',
   description: '설명입니다.',
 };
 

@@ -1,15 +1,14 @@
 import S from './PostManager.module.css';
-import { string, number } from 'prop-types';
+import { number, array } from 'prop-types';
 import ProfileImage from '@/components/ProfileImage/ProfileImage';
 
 PostManager.propTypes = {
-  nickName: string.isRequired,
-  pop: number,
+  members: array,
   imageWidth: number,
   imageHeight: number,
 };
 
-function PostManager({ nickName, pop, imageWidth, imageHeight }) {
+function PostManager({ members, imageWidth, imageHeight }) {
   return (
     <div className={S.component}>
       <ProfileImage

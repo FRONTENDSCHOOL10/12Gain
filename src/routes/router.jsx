@@ -1,10 +1,9 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import MainPost from './home/component/MainPost';
-import PostDetail from '@/components/PostDetail/PostDetail';
 import AttendPost from '@/routes/attendpost';
 import Landing from './landing';
-import Comment from './community/CommentPage/CommentPage';
+import Comment from './community/CommentPage';
 
 const routes = [
   { path: '/', element: <Landing /> },
@@ -58,9 +57,8 @@ const routes = [
     ],
   },
   {
-    path: 'post/:postId',
-    // lazy: () => import('@/routes/post'),
-    element: <PostDetail />,
+    path: '/main/post/:postId',
+    lazy: () => import('@/routes/postDetails'),
     children: [
       // post/:postId/join 경로 추가
       // { path: 'join', element: <AttendPost /> },

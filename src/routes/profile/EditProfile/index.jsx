@@ -23,33 +23,36 @@ export function Component() {
           { iconId: 'setting', path: '/main/profile/setting', title: '설정' },
         ]}
       />
-      <div className={S.profile}>
+      <section className={S.profile}>
         <ProfileImage url="/profile.png" />
-      </div>
+      </section>
       <form action="/">
         <label>
           이름
           <InputWithDelete placeholder="닉네임" name="nickName" />
         </label>
-        <div className={S.interest__container}>
+        <section className={S.interest__container}>
           관심 운동 종목
           <IconButton iconId="right" path="interest" />
-        </div>
+        </section>
 
-        <label className={S.aboutMe}>
-          <span>소개글</span>
-          <span className={S.aboutMe__textCheck}>0/180</span>
+        <section className={S.aboutMe}>
+          <h3>
+            <span>소개글</span>
+            <span className={S.aboutMe__textCheck}>0/180</span>
+          </h3>
           <TextArea
             placeholder="Text"
+            id="aboutMe"
             name="aboutMe"
             maxLength={180}
             className={S.textarea}
             showTextLength={false}
           />
-        </label>
+        </section>
       </form>
       <Button
-        className={S.button}
+        className="button-main"
         onClick={() => {
           handleClick(-1);
         }}

@@ -5,7 +5,7 @@ import Button from '@/components/Button/Button';
 import Icon from '@/components/Icon/Icon';
 import ChoiceInput from '@/components/ChoiceInput/ChoiceInput';
 import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { usePostData } from '@/stores/form';
 import pb from '@/api/pb';
 import IconButton from '@/components/Button/IconButton';
@@ -13,9 +13,10 @@ import ImageUpload from '@/components/ImageUpload/ImageUpload';
 import TextArea from '@/components/TextArea/TextArea';
 import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 import { useState } from 'react';
+import clsx from 'clsx';
 
 export function Component() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const {
     postData,
@@ -57,8 +58,12 @@ export function Component() {
     // formData에 전송할 데이터 입력
     const formData = new FormData();
 
+    const auth = JSON.parse(localStorage.getItem('pocketbase_auth')).model;
+    formData.append('writer', auth.id);
+
     const dataCollection = Object.entries(postData);
     dataCollection.forEach((data) => formData.append(data[0], data[1]));
+
     imageData.forEach((data) => formData.append('image', data));
 
     // 서버로 데이터 전송
@@ -70,15 +75,27 @@ export function Component() {
       .then(() => {
         resetPostData();
         resetImageData();
-
-        setIsLoading(false);
       });
 
+    const resultList = await pb.collection('appointments').getList(1, 1, {
+      filter: `writer = "${auth.id}"`,
+      sort: '-created',
+    });
+
+    const joinData = {
+      user_id: resultList.items[0].writer,
+      appointment_id: resultList.items[0].id,
+    };
+
+    await pb.collection('join').create(joinData);
+
+    setIsLoading(false);
+
     // 생성된 모임 상세 페이지로 이동
-    // navigate('/main/home/new/post/postID');
+    navigate(`/main/post/${resultList.items[0].id}`);
   };
 
-  // 사진 외 모든 데이터 값 입력 시 버튼 활성화
+  // 작성자 외 모든 데이터 값 입력 시 버튼 활성화
   const collectedData = Object.entries(postData).filter(
     ([key]) => key != 'writer'
   );
@@ -115,7 +132,10 @@ export function Component() {
           </div>
 
           <div className={S.category}>
-            카테고리를 선택해주세요
+            {'카테고리를 선택해주세요'}
+            {postData.category && (
+              <span className={S.category__content}>{postData.category}</span>
+            )}
             <IconButton iconId="right" path="/main/home/new/post/category" />
           </div>
 
@@ -136,7 +156,7 @@ export function Component() {
             />
           </label>
           <Button
-            className={S.button}
+            className={clsx(S.button, 'button-main')}
             type="button"
             disabled={!isValid}
             onClick={handleSubmit}

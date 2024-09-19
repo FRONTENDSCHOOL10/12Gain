@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { string } from 'prop-types';
 import S from './style.module.css';
 
 function DetailItem({ label, value }) {
@@ -12,8 +11,8 @@ function DetailItem({ label, value }) {
 }
 
 DetailItem.propTypes = {
-  label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  label: string.isRequired,
+  value: string.isRequired,
 };
 
 export default DetailItem;
