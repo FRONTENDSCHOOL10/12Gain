@@ -1,5 +1,6 @@
 import S from '@/components/ImageUpload/ImageUpload.module.css';
 import clsx from 'clsx';
+import { oneOf } from 'prop-types';
 import {} from 'prop-types';
 import { node, string, func, array } from 'prop-types';
 
@@ -8,13 +9,13 @@ ImageUpload.propTypes = {
   value: string,
   onChange: func,
   imageData: array,
-  post: string,
+  type: oneOf(['post', 'icon']),
   className: string,
 };
 
-function ImageUpload({ children, onChange, imageData, post, className }) {
+function ImageUpload({ children, onChange, imageData, className }) {
   return (
-    <div className={`S.ImageUpload__container__${post}`}>
+    <div className={S.ImageUpload__container}>
       <label className={clsx(S.label, className)}>
         <input
           className={S.input}
