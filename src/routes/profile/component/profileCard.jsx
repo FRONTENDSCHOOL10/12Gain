@@ -10,13 +10,16 @@ ProfileCard.propTypes = {
   description: string,
 };
 
-function ProfileCard({ nickName, description = '소개글을 작성 해주세요' }) {
+function ProfileCard({
+  nickName = '유앤밋',
+  description = '소개글을 작성 해주세요',
+}) {
   const { userData } = useUserProfile();
   const interestList = userData.interest;
 
   return (
     <div className={S.component}>
-      <ProfileImage url="/profile.png" />
+      <ProfileImage url={userData.avatarUrl} nickName={userData.nickname} />
       <h2>{nickName}</h2>
       <span>{description}</span>
       <MyInterestList list={interestList} />
