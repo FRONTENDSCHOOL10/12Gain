@@ -9,8 +9,8 @@ import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 
 export function Component() {
   const [subNavList] = useState([
-    { path: '/main/community', text: '추천', end: true },
     { path: '/main/community/new', text: '신규' },
+    { path: '/main/community/recommend', text: '추천' },
   ]);
 
   const location = useLocation();
@@ -44,6 +44,9 @@ export function Component() {
                 imgSrc={feed.image}
                 userId={feed.writer}
                 content={feed.content}
+                createdAt={feed.created}
+                category={feed.category}
+                writer={feed.expand?.writer}
               />
             ))
           )}

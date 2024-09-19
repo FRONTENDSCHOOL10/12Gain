@@ -48,6 +48,14 @@ export const useHeader = create(() => ({
       ],
     },
     {
+      path: '/main/home/recommend',
+      iconList: [
+        { iconId: 'search', path: '/main/search', title: '검색' },
+        { iconId: 'chat', path: '/main/chat', title: '채팅' },
+        { iconId: 'alarm', path: '/main/alarm', title: '알림' },
+      ],
+    },
+    {
       path: '/main/home/interest',
       iconList: [
         { iconId: 'search', path: '/main/search', title: '검색' },
@@ -75,6 +83,15 @@ export const useHeader = create(() => ({
     },
     {
       path: '/main/community/new',
+      text: '커뮤니티',
+      iconList: [
+        { iconId: 'search', path: '/main/search', title: '검색' },
+        { iconId: 'chat', path: '/main/chat', title: '채팅' },
+        { iconId: 'alarm', path: '/main/alarm', title: '알림' },
+      ],
+    },
+    {
+      path: '/main/community/recommend',
       text: '커뮤니티',
       iconList: [
         { iconId: 'search', path: '/main/search', title: '검색' },
