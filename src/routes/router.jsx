@@ -22,8 +22,9 @@ const routes = [
         path: 'home',
         lazy: () => import('@/routes/home'),
         children: [
-          { index: true, element: <MainPost /> },
+          { index: true, element: <Navigate to="new" replace /> },
           { path: 'new', element: <MainPost /> },
+          { path: 'recommend', element: <MainPost /> },
           { path: 'interest', element: <MainPost /> },
         ],
       },
@@ -31,14 +32,13 @@ const routes = [
         path: 'myAppointment',
         lazy: () => import('@/routes/myAppointment'),
       },
-      { path: 'community', lazy: () => import('@/routes/community') },
       {
         path: 'community',
         lazy: () => import('@/routes/community'),
         children: [
-          { index: true, element: <Feed /> },
+          { index: true, element: <Navigate to="new" replace /> },
           { path: 'new', element: <Feed /> },
-          { path: 'interest', element: <Feed /> },
+          { path: 'recommend', element: <Feed /> },
         ],
       },
       {

@@ -9,8 +9,8 @@ import postStore from '@/stores/postStore';
 
 export function Component() {
   const [subNavList] = useState([
-    { path: '/main/home', text: '추천', end: true },
     { path: '/main/home/new', text: '신규' },
+    { path: '/main/home/recommend', text: '추천' },
     { path: '/main/home/interest', text: '관심' },
   ]);
 
@@ -19,8 +19,10 @@ export function Component() {
 
   useEffect(() => {
     const currentPath = location.pathname;
+    console.log('현재 경로:', currentPath);
     const currentTab =
-      subNavList.find((item) => item.path === currentPath)?.text || '추천';
+      subNavList.find((item) => item.path === currentPath)?.text || '신규';
+    console.log('현재 탭:', currentTab);
     setFilter({ mainCategory: currentTab });
     fetchPosts();
   }, [location, setFilter, fetchPosts, subNavList]);

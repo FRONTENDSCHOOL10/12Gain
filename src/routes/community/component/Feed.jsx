@@ -7,17 +7,15 @@ import PropTypes from 'prop-types';
 
 import BtnComment from './BtnComment';
 
-function Feed({ imgSrc, userId, content }) {
-  const currentUserId = localStorage.getItem('auth');
-
+function Feed({ imgSrc, userId, content, createdAt, category, writer }) {
   return (
     <article className={S.Feed}>
       <section className={S.feedHeader}>
-        <FeedProfile nickName="라옹" />
-
-        {/* 로컬 스토리지에서 가져오는 auth 데이터 부분 수정 필요 */}
-        {/* {userId === localStorage.getItem('auth') && <KebabMenu />} */}
-        <KebabMenu />
+        <FeedProfile
+          nickName={writer?.name || 'Unknown'}
+          createdAt={createdAt}
+        />
+        <KebabMenu category={category} categoryText="게시물" />
       </section>
       <section className={S.feedMainDesc}>
         <span>{content}</span>
@@ -43,9 +41,13 @@ function Feed({ imgSrc, userId, content }) {
 }
 
 Feed.propTypes = {
-  imgSrc: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  imgSrc: PropTypes.string,
   userId: PropTypes.string,
   content: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  writer: PropTypes.shape({
+    name: PropTypes.string,
+  }),
 };
-
 export default Feed;
