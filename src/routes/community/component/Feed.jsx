@@ -13,8 +13,11 @@ function Feed({ imgSrc, userId, content }) {
   return (
     <article className={S.Feed}>
       <section className={S.feedHeader}>
-        <FeedProfile nickName="사용자" />
-        {userId === currentUserId && <KebabMenu />}
+        <FeedProfile nickName="라옹" />
+
+        {/* 로컬 스토리지에서 가져오는 auth 데이터 부분 수정 필요 */}
+        {/* {userId === localStorage.getItem('auth') && <KebabMenu />} */}
+        <KebabMenu />
       </section>
       <section className={S.feedMainDesc}>
         <span>{content}</span>

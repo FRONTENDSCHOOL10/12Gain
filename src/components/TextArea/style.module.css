@@ -20,7 +20,7 @@
     }
   }
 
-  span {
+  .charCount {
     position: absolute;
     bottom: 1px;
     right: var(--spacing-4);

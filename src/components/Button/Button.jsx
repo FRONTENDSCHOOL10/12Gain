@@ -1,19 +1,46 @@
 import { string, func, node, oneOf } from 'prop-types';
 import S from './Button.module.css';
+import { NavLink } from 'react-router-dom';
+import clsx from 'clsx';
 
-function Button({ type = 'submit', className, onClick, children }) {
+function Button({
+  path,
+  className,
+  title,
+  type = 'button',
+  onClick,
+  children,
+}) {
   return (
     <div className={S.Button}>
-      <button type={type} className={className} onClick={onClick}>
-        {children}
-      </button>
+      {path ? (
+        <NavLink
+          to={path}
+          className={clsx(S.Button, className)}
+          title={title}
+          onClick={onClick}
+        >
+          {children}
+        </NavLink>
+      ) : (
+        <button
+          className={clsx(S.Button, className)}
+          type={type}
+          title={title}
+          onClick={onClick}
+        >
+          {children}
+        </button>
+      )}
     </div>
   );
 }
 
 Button.propTypes = {
-  type: oneOf(['button', 'submit', 'reset']),
+  path: string,
   className: string,
+  title: string,
+  type: oneOf(['button', 'submit', 'reset']),
   onClick: func,
   children: node,
 };

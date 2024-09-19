@@ -10,6 +10,7 @@ import { useFeedData } from '@/stores/form';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
+import clsx from 'clsx';
 
 export function Component() {
   const navigate = useNavigate();
@@ -115,8 +116,10 @@ export function Component() {
         </div>
 
         <Button
+          path="community"
+          title="피드 게시하기"
           type="button"
-          className={S.button}
+          className={clsx(S.button, 'button-main')}
           onClick={handleSubmit}
           disabled={!isValid}
         >
