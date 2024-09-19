@@ -34,7 +34,7 @@ const postStore = create((set, get) => ({
         }
       }
 
-      const records = await pb.collection('appointments').getList(1, 50, {
+      const records = await pb.collection('appointments').getList(1, 15, {
         sort: sortField,
         filter: filterString,
         expand: 'writer',
