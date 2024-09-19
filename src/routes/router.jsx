@@ -4,6 +4,7 @@ import MainPost from './home/component/MainPost';
 import AttendPost from '@/routes/attendpost';
 import Landing from './landing';
 import Comment from './community/CommentPage';
+import Feed from './community/component/Feed';
 
 const routes = [
   { path: '/', element: <Landing /> },
@@ -31,6 +32,15 @@ const routes = [
         lazy: () => import('@/routes/myAppointment'),
       },
       { path: 'community', lazy: () => import('@/routes/community') },
+      {
+        path: 'community',
+        lazy: () => import('@/routes/community'),
+        children: [
+          { index: true, element: <Feed /> },
+          { path: 'new', element: <Feed /> },
+          { path: 'interest', element: <Feed /> },
+        ],
+      },
       {
         path: 'community/create',
         lazy: () => import('@/routes/community/CreateFeed'),

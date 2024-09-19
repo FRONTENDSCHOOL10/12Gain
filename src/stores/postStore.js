@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import pb from '@/api/pb';
 
-const usePostStore = create((set, get) => ({
+const postStore = create((set, get) => ({
   posts: [],
   isLoading: false,
   error: null,
@@ -44,4 +44,4 @@ const usePostStore = create((set, get) => ({
   },
 }));
 
-export default usePostStore;
+export default postStore;
