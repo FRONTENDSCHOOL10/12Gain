@@ -1,7 +1,6 @@
 .ImageUpload__container {
   display: flex;
   flex-direction: column;
-  padding: 0 var(--spacing-12);
 }
 
 .label {
