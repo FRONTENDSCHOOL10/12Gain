@@ -1,7 +1,5 @@
-import getPbImageURL from '@/api/getPbImageURL';
 import S from '@/routes/home/banner/Banner.module.css';
-import { getRecords } from '@/api/getRecords';
-import { useState, useEffect } from 'react';
+import { useEffect, useCallback, memo } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Keyboard, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -9,30 +7,41 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import IconButton from '@/components/Button/IconButton';
+import { useBannerStore } from '@/stores/bannerStore';
+import { number } from 'prop-types';
+
+const SwiperPagination = memo(({ index, total }) => (
+  <div className={S.pagination__text}>
+    <span>{index + 1}</span>
+    <span>/</span>
+    <span>{total}</span>
+  </div>
+));
+
+SwiperPagination.propTypes = {
+  index: number,
+  total: number,
+};
+
+SwiperPagination.displayName = 'SwiperPagination';
 
 function Banner() {
-  const [images, setImages] = useState([]);
-  const [swiperIndex, setSwiperIndex] = useState(0);
-  const [swiper, setSwiper] = useState();
-
-  const handleNext = () => {
-    swiper?.slideNext();
-  };
+  const {
+    images,
+    swiperIndex,
+    swiper,
+    fetchImages,
+    setSwiperIndex,
+    setSwiper,
+  } = useBannerStore();
 
   useEffect(() => {
-    const fetchImages = async () => {
-      const banners = await getRecords('banners');
-      const bannerData = banners.map((banner) => ({
-        id: banner.id,
-        title: banner.title,
-        url: banner.url,
-        image: getPbImageURL(banner, 'image'),
-      }));
-      setImages(bannerData);
-    };
-
     fetchImages();
-  }, []);
+  }, [fetchImages]);
+
+  const handleNext = useCallback(() => {
+    swiper?.slideNext();
+  }, [swiper]);
 
   return (
     <section className={S.component}>
@@ -41,15 +50,11 @@ function Banner() {
         modules={[Navigation, Pagination, Keyboard, Autoplay]}
         spaceBetween={0}
         slidesPerView={1}
-        // navigation={true}
-        // pagination={{ clickable: true }}
         keyboard={{ enabled: true }}
         autoplay={{ delay: 2500, disableOnInteraction: false }}
         loop={true}
         onActiveIndexChange={(e) => setSwiperIndex(e.realIndex)}
-        onSwiper={(e) => {
-          setSwiper(e);
-        }}
+        onSwiper={setSwiper}
       >
         {images.map((banner) => (
           <SwiperSlide key={banner.id}>
@@ -60,12 +65,7 @@ function Banner() {
         ))}
       </Swiper>
       <div className={`${S.pagination} label-sm`}>
-        <div className={S.pagination__text}>
-          <span>{swiperIndex + 1}</span>
-          <span>/</span>
-          <span>{images.length}</span>
-        </div>
-
+        <SwiperPagination index={swiperIndex} total={images.length} />
         <IconButton
           title="next"
           iconId="plus"

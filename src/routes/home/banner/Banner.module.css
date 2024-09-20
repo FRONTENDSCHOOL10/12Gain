@@ -31,6 +31,7 @@
 
 .pagination__text {
   color: var(--content-secondary);
+  font-variant-numeric: tabular-nums;
 
   & span:nth-child(1) {
     color: var(--white);
