@@ -1,6 +1,6 @@
 import S from '@/routes/profile/style.module.css';
 
-import ProfileCard from '@/routes/profile/component/ProfileCard';
+import ProfileCard from '@/routes/profile/component/profileCard';
 import Button from '@/components/Button/Button';
 import PostList from '@/routes/profile/PostList';
 import { Outlet } from 'react-router-dom';
