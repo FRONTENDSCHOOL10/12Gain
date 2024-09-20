@@ -5,7 +5,7 @@ import DetailItem from '@/components/DetailItem/DetailItem';
 import PostManager from '@/components/PostManager/PostManager';
 import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
 import { useParams } from 'react-router-dom';
-import PostDetailImage from './component/postDetailsImage';
+import PostDetailImage from './component/PostDetailsImage';
 import { usePostData } from '@/stores/form';
 import { useEffect } from 'react';
 import { useJoin } from '@/stores/join';

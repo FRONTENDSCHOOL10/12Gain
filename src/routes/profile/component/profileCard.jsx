@@ -1,4 +1,4 @@
-import S from '@/routes/profile/component/ProfileCard.module.css';
+import S from '@/routes/profile/component/profileCard.module.css';
 
 import ProfileImage from '@/components/ProfileImage/ProfileImage';
 import MyInterestList from '@/routes/profile/component/MyInterestList';
