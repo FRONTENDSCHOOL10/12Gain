@@ -15,6 +15,7 @@
   width: 18.5rem;
   height: 2.8125rem;
   justify-content: center;
+  align-items: center;
   border-radius: 1.25rem;
   background-color: var(--primary);
   color: var(--white);

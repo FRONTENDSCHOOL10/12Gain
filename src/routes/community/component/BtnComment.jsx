@@ -1,18 +1,23 @@
 import IconButton from '@/components/Button/IconButton';
 import S from '@/routes/community/component/BtnCount.module.css';
+import { func, array } from 'prop-types';
 
-function BtnComment() {
+BtnComment.propTypes = {
+  onClick: func,
+  commentList: array,
+};
+
+function BtnComment({ onClick, commentList, count }) {
   return (
-    <div className={S.component}>
+    <div className={S.component} onClick={onClick}>
       <IconButton
-        title="댓글 페이지로 이동"
+        title="댓글 보이기"
         iconId="comment"
         width={14}
         height={14}
-        path="comment"
         iconColor="var(--content-secondary)"
       />
-      <span>0</span>
+      <span>{count}</span>
     </div>
   );
 }

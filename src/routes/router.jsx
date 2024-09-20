@@ -1,9 +1,7 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import MainPost from './home/component/MainPost';
-import AttendPost from '@/routes/attendpost';
 import Landing from './landing';
-import Comment from './community/CommentPage';
 import Feed from './community/component/Feed';
 
 const routes = [
@@ -22,8 +20,9 @@ const routes = [
         path: 'home',
         lazy: () => import('@/routes/home'),
         children: [
-          { index: true, element: <MainPost /> },
+          { index: true, element: <Navigate to="new" replace /> },
           { path: 'new', element: <MainPost /> },
+          { path: 'recommend', element: <MainPost /> },
           { path: 'interest', element: <MainPost /> },
         ],
       },
@@ -31,21 +30,19 @@ const routes = [
         path: 'myAppointment',
         lazy: () => import('@/routes/myAppointment'),
       },
-      { path: 'community', lazy: () => import('@/routes/community') },
       {
         path: 'community',
         lazy: () => import('@/routes/community'),
         children: [
-          { index: true, element: <Feed /> },
+          { index: true, element: <Navigate to="new" replace /> },
           { path: 'new', element: <Feed /> },
-          { path: 'interest', element: <Feed /> },
+          { path: 'recommend', element: <Feed /> },
         ],
       },
       {
         path: 'community/create',
         lazy: () => import('@/routes/community/CreateFeed'),
       },
-      { path: 'community/comment', element: <Comment /> },
       {
         path: 'profile',
         lazy: () => import('@/routes/profile'),
@@ -69,10 +66,6 @@ const routes = [
   {
     path: '/main/post/:postId',
     lazy: () => import('@/routes/postDetails'),
-    children: [
-      // post/:postId/join 경로 추가
-      // { path: 'join', element: <AttendPost /> },
-    ],
   },
   {
     path: 'chat',
@@ -106,7 +99,6 @@ const routes = [
     path: 'main/home/new/post/category',
     lazy: () => import('@/routes/home/SelectCategory'),
   },
-  { path: 'post/:postId/join', element: <AttendPost /> },
 ];
 
 const router = createBrowserRouter(routes);

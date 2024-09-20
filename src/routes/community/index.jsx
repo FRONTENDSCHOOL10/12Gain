@@ -6,16 +6,17 @@ import PostList from '@/routes/profile/PostList';
 import PostButton from '@/components/Button/PostButton';
 import communityStore from '@/stores/communityStore';
 import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
+import { useCommentData } from '@/stores/comment';
 
 export function Component() {
   const [subNavList] = useState([
-    { path: '/main/community', text: '추천', end: true },
     { path: '/main/community/new', text: '신규' },
+    { path: '/main/community/recommend', text: '추천' },
   ]);
 
   const location = useLocation();
   const { feeds, fetchFeeds, setFilter, isLoading } = communityStore();
-  const currentUserId = localStorage.getItem('auth');
+  const { commentList, fetchCommentsData } = useCommentData();
 
   useEffect(() => {
     const currentPath = location.pathname;
@@ -24,6 +25,10 @@ export function Component() {
     setFilter({ category: currentTab });
     fetchFeeds();
   }, [location, setFilter, fetchFeeds, subNavList]);
+
+  useEffect(() => {
+    fetchCommentsData();
+  }, [fetchCommentsData]);
 
   return (
     <>
@@ -44,6 +49,12 @@ export function Component() {
                 imgSrc={feed.image}
                 userId={feed.writer}
                 content={feed.content}
+                createdAt={feed.created}
+                category={feed.category}
+                writer={feed.expand?.writer}
+                user={feed.expand}
+                feed={feed}
+                comments={commentList.filter((item) => item.feed === feed.id)}
               />
             ))
           )}
