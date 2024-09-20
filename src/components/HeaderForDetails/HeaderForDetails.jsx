@@ -1,15 +1,15 @@
 import S from '@/components/HeaderForDetails/HeaderForDetails.module.css';
-import { array } from 'prop-types';
-import { string } from 'prop-types';
+import { array, string, node } from 'prop-types';
 import IconButton from '../Button/IconButton';
 
 HeaderForDetails.propTypes = {
   text: string,
   leftIcon: array.isRequired,
   rightIcon: array,
+  children: node,
 };
 
-function HeaderForDetails({ text, leftIcon, rightIcon }) {
+function HeaderForDetails({ text, leftIcon, rightIcon, children }) {
   return (
     <header className={S.component}>
       <ul className={S.icons__container}>
@@ -35,6 +35,7 @@ function HeaderForDetails({ text, leftIcon, rightIcon }) {
           </li>
         ))}
       </ul>
+      {children}
     </header>
   );
 }
