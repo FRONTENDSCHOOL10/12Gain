@@ -1,9 +1,7 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import MainPost from './home/component/MainPost';
-import AttendPost from '@/routes/attendpost';
 import Landing from './landing';
-import Comment from './community/CommentPage/CommentPage';
 import Feed from './community/component/Feed';
 
 const routes = [
@@ -45,7 +43,6 @@ const routes = [
         path: 'community/create',
         lazy: () => import('@/routes/community/CreateFeed'),
       },
-      { path: 'community/comment', element: <Comment /> },
       {
         path: 'profile',
         lazy: () => import('@/routes/profile'),
@@ -69,10 +66,6 @@ const routes = [
   {
     path: '/main/post/:postId',
     lazy: () => import('@/routes/postDetails'),
-    children: [
-      // post/:postId/join 경로 추가
-      // { path: 'join', element: <AttendPost /> },
-    ],
   },
   {
     path: 'chat',
@@ -106,7 +99,6 @@ const routes = [
     path: 'main/home/new/post/category',
     lazy: () => import('@/routes/home/SelectCategory'),
   },
-  { path: 'post/:postId/join', element: <AttendPost /> },
 ];
 
 const router = createBrowserRouter(routes);

@@ -6,6 +6,7 @@ import PostList from '@/routes/profile/PostList';
 import PostButton from '@/components/Button/PostButton';
 import communityStore from '@/stores/communityStore';
 import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
+import { useCommentData } from '@/stores/comment';
 
 export function Component() {
   const [subNavList] = useState([
@@ -15,7 +16,7 @@ export function Component() {
 
   const location = useLocation();
   const { feeds, fetchFeeds, setFilter, isLoading } = communityStore();
-  const currentUserId = localStorage.getItem('auth');
+  const { commentList, fetchCommentsData } = useCommentData();
 
   useEffect(() => {
     const currentPath = location.pathname;
@@ -24,6 +25,10 @@ export function Component() {
     setFilter({ category: currentTab });
     fetchFeeds();
   }, [location, setFilter, fetchFeeds, subNavList]);
+
+  useEffect(() => {
+    fetchCommentsData();
+  }, [fetchCommentsData]);
 
   return (
     <>
@@ -44,6 +49,9 @@ export function Component() {
                 imgSrc={feed.image}
                 userId={feed.writer}
                 content={feed.content}
+                user={feed.expand}
+                feed={feed}
+                comments={commentList.filter((item) => item.feed === feed.id)}
               />
             ))
           )}
