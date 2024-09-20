@@ -1,5 +1,3 @@
-// [signup / index.jsx];
-
 import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
 import { useSignupStore } from '@/stores/authStore';
 import { useState } from 'react';

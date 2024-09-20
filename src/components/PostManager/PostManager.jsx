@@ -11,17 +11,12 @@ PostManager.propTypes = {
 function PostManager({ members, imageWidth, imageHeight }) {
   return (
     <div className={S.component}>
-      {members &&
-        members.map((member, index) => (
-          <div className={S.user__container} key={index}>
-            <ProfileImage
-              url="/profile.png"
-              width={imageWidth}
-              height={imageHeight}
-            />
-            <span>{member.nickname}</span>
-          </div>
-        ))}
+      <ProfileImage
+        url="/profile.png"
+        width={imageWidth}
+        height={imageHeight}
+      />
+      <span>{nickName}</span>
     </div>
   );
 }

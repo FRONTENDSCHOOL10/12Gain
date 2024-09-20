@@ -2,28 +2,23 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Post from '@/components/Post/Post';
 import S from '@/routes/myAppointment/component/MyPost.module.css';
-import pb from '@/api/pb.js'; // 포켓베이스 인스턴스 가져오기
-import { useAuthStore } from '@/stores/authStore'; // Zustand의 authStore 가져오기
+import pb from '@/api/pb.js';
+import { useAuthStore } from '@/stores/authStore';
 
 function MyPost() {
   const navigate = useNavigate();
   const [appointmentsData, setAppointmentsData] = useState([]);
-
-  // Zustand에서 로그인한 사용자의 정보를 가져오기
   const { user } = useAuthStore();
-  const userId = user?.id; // 로그인한 사용자의 ID 가져오기
+  const userId = user?.id;
   console.log(user);
 
   useEffect(() => {
     async function fetchData() {
       try {
         if (userId) {
-          // "join" 컬렉션에서 로그인 사용자의 user_id와 일치하는 데이터 조회
           const joinRecords = await pb.collection('join').getFullList({
             filter: `user_id="${userId}"`,
           });
-
-          // 각 join의 appointment_id에 맞는 appointments 데이터 가져오기
           const appointmentPromises = joinRecords.map(async (join) => {
             return await pb
               .collection('appointments')

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'; // useRef 추가
+import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '@/components/Icon/Icon';
 import S from '@/components/Input/style.module.css';
@@ -65,8 +65,8 @@ const InputWithDelete = ({
         name={name}
         onBlur={onBlur}
         aria-label={ariaLabel}
-        title={title} // title 속성 추가
-        ref={inputRef} // ref 속성 추가
+        title={title}
+        ref={inputRef}
         {...restProps}
       />
       {showClearButton && value && value.length > 0 && (
@@ -76,7 +76,7 @@ const InputWithDelete = ({
           className={S.clearButton}
           tabIndex={-1}
           aria-label="입력 내용 지우기"
-          title={clearButtonTitle} // title 속성 추가
+          title={clearButtonTitle}
         >
           <Icon id="close" width={16} height={16} />
         </button>

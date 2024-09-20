@@ -3,16 +3,24 @@ import S from '@/routes/community/component/Feed.module.css';
 import BtnThumsup from '@/routes/community/component/BtnThumsup';
 import FeedProfile from '@/routes/community/component/FeedProfile';
 import KebabMenu from '@/components/KebabMenu/KebabMenu';
-
+import PropTypes from 'prop-types';
 import BtnComment from './BtnComment';
-import Comment from '../Comment/Comment';
 import { useState } from 'react';
 import { useRef } from 'react';
 import { animate } from 'motion';
-import { oneOfType, object, array, string } from 'prop-types';
+import { object, array } from 'prop-types';
 
-function Feed({ imgSrc, userId, content, user, feed, comments }) {
-  const currentUserId = localStorage.getItem('auth');
+function Feed({
+  imgSrc,
+  userId,
+  content,
+  user,
+  feed,
+  comments,
+  createdAt,
+  category,
+  writer,
+}) {
   const [commentActive, setcommentActive] = useState(false);
 
   const handleCommentClick = () => {
@@ -48,8 +56,11 @@ function Feed({ imgSrc, userId, content, user, feed, comments }) {
     <>
       <article className={S.Feed}>
         <section className={S.feedHeader}>
-          <FeedProfile nickName={user?.writer?.nickname} />
-          {userId === currentUserId && <KebabMenu />}
+          <FeedProfile
+            nickName={writer?.name || 'Unknown'}
+            createdAt={createdAt}
+          />
+          <KebabMenu category={category} categoryText="게시물" />
         </section>
         <section className={S.feedMainDesc}>
           <span>{content}</span>
@@ -68,7 +79,7 @@ function Feed({ imgSrc, userId, content, user, feed, comments }) {
         )}
         <section className={S.BtnCount}>
           <BtnThumsup />
-          <BtnComment onClick={handleCommentClick} count={count} />
+          <BtnComment nClick={handleCommentClick} count={count} />
         </section>
       </article>
 
@@ -86,12 +97,16 @@ function Feed({ imgSrc, userId, content, user, feed, comments }) {
 }
 
 Feed.propTypes = {
-  imgSrc: oneOfType([string, array]),
-  userId: string,
-  content: string,
+  imgSrc: PropTypes.string,
+  userId: PropTypes.string,
+  content: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  writer: PropTypes.shape({
+    name: PropTypes.string,
+  }),
   user: object,
   feed: object,
   comments: array,
 };
-
 export default Feed;

@@ -8,10 +8,11 @@ const postStore = create((set, get) => ({
   filter: {
     mainCategory: '추천',
     sortBy: '등록순',
-    userInterests: [],
   },
+
   setFilter: (newFilter) =>
     set((state) => ({ filter: { ...state.filter, ...newFilter } })),
+
   fetchPosts: async () => {
     const { filter } = get();
     set({ isLoading: true, error: null });
@@ -24,7 +25,13 @@ const postStore = create((set, get) => ({
       } else if (filter.mainCategory === '신규') {
         sortField = '-created';
       } else if (filter.mainCategory === '관심') {
-        filterString = `category ~ "${filter.userInterests.join('|')}"`;
+        const currentUser = pb.authStore.model;
+        if (currentUser && currentUser.interests) {
+          filterString = `category ~ "${currentUser.interests.join('|')}"`;
+        } else {
+          set({ error: '관심 카테고리를 설정해주세요.', isLoading: false });
+          return;
+        }
       }
 
       const records = await pb.collection('appointments').getList(1, 50, {
@@ -40,6 +47,24 @@ const postStore = create((set, get) => ({
       set({ posts: formattedPosts, isLoading: false });
     } catch (error) {
       set({ error, isLoading: false });
+    }
+  },
+
+  updateUserInterests: async (newInterests) => {
+    try {
+      const currentUser = pb.authStore.model;
+      if (currentUser) {
+        await pb.collection('users').update(currentUser.id, {
+          interests: newInterests,
+        });
+
+        const updatedUser = await pb.collection('users').getOne(currentUser.id);
+        pb.authStore.save(updatedUser.token, updatedUser);
+      } else {
+        throw new Error('사용자가 로그인하지 않았습니다.');
+      }
+    } catch (error) {
+      set({ error });
     }
   },
 }));
