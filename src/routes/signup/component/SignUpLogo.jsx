@@ -1,5 +1,5 @@
 import Icon from '@/components/Icon/Icon';
-import S from './signUpLogo.module.css';
+import S from './SignUpLogo.module.css';
 
 function signUpTitle() {
   return (
