@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { useRef } from 'react';
 import { animate } from 'motion';
 import { object, array } from 'prop-types';
+import Comment from '../Comment/Comment';
 
 function Feed({
   imgSrc,
