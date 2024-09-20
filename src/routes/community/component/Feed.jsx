@@ -13,9 +13,7 @@ import Comment from '../Comment/Comment';
 
 function Feed({
   imgSrc,
-  userId,
   content,
-  user,
   feed,
   comments,
   createdAt,
@@ -80,7 +78,7 @@ function Feed({
         )}
         <section className={S.BtnCount}>
           <BtnThumsup />
-          <BtnComment nClick={handleCommentClick} count={count} />
+          <BtnComment onClick={handleCommentClick} count={count} />
         </section>
       </article>
 
