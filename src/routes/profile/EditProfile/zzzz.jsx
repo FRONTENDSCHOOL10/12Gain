@@ -1,11 +1,9 @@
-// 확인
 import S from '@/routes/profile/EditInterest/EditInterest.module.css';
+
 import Button from '@/components/Button/Button';
 import Checkbox from '@/components/Button/Checkbox';
 import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
 import { useNavigate } from 'react-router-dom';
-import { useUserProfile } from '@/stores/users';
-import { useState, useEffect } from 'react';
 
 const INTEREST = [
   '필라테스',
@@ -24,26 +22,7 @@ const INTEREST = [
 ];
 
 export function Component() {
-  const navigate = useNavigate();
-  const { userData, setTempInterest } = useUserProfile();
-  const [selectedInterests, setSelectedInterests] = useState([]);
-
-  useEffect(() => {
-    setSelectedInterests(userData.interest || []);
-  }, [userData.interest]);
-
-  const handleInterestToggle = (interest) => {
-    setSelectedInterests((prev) =>
-      prev.includes(interest)
-        ? prev.filter((item) => item !== interest)
-        : [...prev, interest]
-    );
-  };
-
-  const handleSave = () => {
-    setTempInterest(selectedInterests);
-    navigate(-1);
-  };
+  const handleClick = useNavigate();
 
   return (
     <div className={S.component}>
@@ -58,17 +37,18 @@ export function Component() {
         <ul>
           {INTEREST.map((item, index) => (
             <li key={index}>
-              <Checkbox
-                text={item}
-                checked={selectedInterests.includes(item)}
-                onChange={() => handleInterestToggle(item)}
-              />
+              <Checkbox text={item} />
             </li>
           ))}
         </ul>
       </div>
 
-      <Button className={S.button} onClick={handleSave}>
+      <Button
+        className={S.button}
+        onClick={() => {
+          handleClick(-1);
+        }}
+      >
         저장하기
       </Button>
     </div>
