@@ -19,8 +19,6 @@ function MainFeed() {
 
   if (isLoading) return <LoadingSpinner />;
 
-  console.log(feeds);
-
   return feeds.map((feed) => (
     <Feed
       key={feed.id}

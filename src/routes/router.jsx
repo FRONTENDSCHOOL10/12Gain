@@ -72,7 +72,7 @@ const routes = [
     lazy: () => import('@/routes/chatList'),
   },
   {
-    path: 'chat/:chatroomId',
+    path: '/main/post/:postId/chat',
     lazy: () => import('@/routes/chatList/ChatRoom'),
   },
   {

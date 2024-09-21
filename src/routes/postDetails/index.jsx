@@ -61,6 +61,8 @@ export function Component() {
     }
   };
 
+  const routeToChat = `/main/post/:${postData.id}/chat`;
+
   return isLoading ? (
     <LoadingSpinner />
   ) : (
@@ -101,7 +103,7 @@ export function Component() {
 
         <div className={S.attend_button}>
           {members.includes(user) ? (
-            <Link to={'join'} className={S.button}>
+            <Link to={routeToChat} className={S.button}>
               채팅하기
             </Link>
           ) : (
