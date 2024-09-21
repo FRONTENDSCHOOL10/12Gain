@@ -11,8 +11,6 @@ PostManager.propTypes = {
 };
 
 function PostManager({ members, imageWidth, imageHeight }) {
-  console.log(members);
-
   return (
     <div className={S.component}>
       {members.map((member, index) => (
