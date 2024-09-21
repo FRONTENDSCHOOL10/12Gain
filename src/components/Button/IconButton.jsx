@@ -26,17 +26,16 @@ function IconButton({
 }) {
   const nav = useNavigate();
 
-  const handlePath = (e) => {
+  const handleClick = (e) => {
+    if (path === '-1') {
+      e.preventDefault();
+      nav(-1);
+    }
     if (onClick) {
       onClick(e);
     }
-
-    if (path === '-1') {
-      nav(-1);
-    } else {
-      nav(path);
-    }
   };
+
   return (
     <>
       {path ? (
@@ -44,7 +43,7 @@ function IconButton({
           to={path !== '-1' ? path : '#'}
           className={S.IconButton}
           title={title}
-          onClick={handlePath}
+          onClick={handleClick}
         >
           <Icon id={iconId} width={width} height={height} color={iconColor} />
         </NavLink>
