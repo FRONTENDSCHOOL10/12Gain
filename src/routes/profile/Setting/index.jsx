@@ -24,9 +24,7 @@ export function Component() {
     <div className={S.component}>
       <HeaderForDetails
         text="설정"
-        leftIcon={[
-          { iconId: 'left', path: '/main/profile/edit', title: '뒤로가기' },
-        ]}
+        leftIcon={[{ iconId: 'left', path: '-1', title: '뒤로가기' }]}
       />
       <main>
         <h2 className="sr-only">설정 항목</h2>

@@ -3,6 +3,7 @@ import Icon from '../Icon/Icon';
 import { string, func, number } from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { memo } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 IconButton.propTypes = {
   title: string,
@@ -23,10 +24,28 @@ function IconButton({
   iconId,
   path,
 }) {
+  const nav = useNavigate();
+
+  const handlePath = (e) => {
+    if (onClick) {
+      onClick(e);
+    }
+
+    if (path === '-1') {
+      nav(-1);
+    } else {
+      nav(path);
+    }
+  };
   return (
     <>
       {path ? (
-        <NavLink to={path} className={S.IconButton} title={title}>
+        <NavLink
+          to={path !== '-1' ? path : '#'}
+          className={S.IconButton}
+          title={title}
+          onClick={handlePath}
+        >
           <Icon id={iconId} width={width} height={height} color={iconColor} />
         </NavLink>
       ) : (

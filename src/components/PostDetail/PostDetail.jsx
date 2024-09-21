@@ -34,7 +34,7 @@ function PostDetail() {
     <article className={S.component}>
       <HeaderForDetails
         leftIcon={[
-          { iconId: 'left', path: '/main', title: '뒤로가기' }, // TODO:
+          { iconId: 'left', path: '-1', title: '뒤로가기' }, // TODO:
         ]}
         rightIcon={[
           { iconId: 'home', path: '/main', title: 'home' },
