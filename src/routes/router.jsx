@@ -2,7 +2,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import MainPost from './home/component/MainPost';
 import Landing from './landing';
-import Feed from './community/component/Feed';
+import MainFeed from './community/component/MainFeed';
 
 const routes = [
   { path: '/', element: <Landing /> },
@@ -35,8 +35,8 @@ const routes = [
         lazy: () => import('@/routes/community'),
         children: [
           { index: true, element: <Navigate to="new" replace /> },
-          { path: 'new', element: <Feed /> },
-          { path: 'recommend', element: <Feed /> },
+          { path: 'new', element: <MainFeed /> },
+          { path: 'recommend', element: <MainFeed /> },
         ],
       },
       {

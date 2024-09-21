@@ -56,7 +56,7 @@ function Feed({
       <article className={S.Feed}>
         <section className={S.feedHeader}>
           <FeedProfile
-            nickName={writer?.name || 'Unknown'}
+            nickName={writer?.nickname || 'Unknown'}
             createdAt={createdAt}
           />
           <KebabMenu category={category} categoryText="게시물" />
@@ -102,7 +102,7 @@ Feed.propTypes = {
   createdAt: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   writer: PropTypes.shape({
-    name: PropTypes.string,
+    nickname: PropTypes.string,
   }),
   user: object,
   feed: object,
