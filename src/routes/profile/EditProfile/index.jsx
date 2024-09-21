@@ -8,13 +8,12 @@ import IconButton from '@/components/Button/IconButton';
 import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
 import ImageUpload from '@/components/ImageUpload/ImageUpload';
 import Icon from '@/components/Icon/Icon';
-import { useFeedData } from '@/stores/form';
 import Tooltip from '@/components/Tooltip/Tooltip';
 import { useKebabMenuStore } from '@/stores/kebabStore';
 import { useUserProfile } from '@/stores/users';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export function Component() {
   const {
@@ -25,64 +24,44 @@ export function Component() {
     updateProfile,
     tempInterest,
     resetTempInterest,
+    setTempAvatar,
+    updateAvatar,
+    tempAvatar,
   } = useUserProfile();
 
   const { fetchUser, currentUser } = useKebabMenuStore();
-
-  // 사진 업로드
-  const { imageData, updateImageData } = useFeedData();
-  const handleImageName = (e) => {
-    let image = [];
-
-    for (let file of e.target.files) {
-      image = [...image, file];
-    }
-
-    updateImageData(image);
-  };
-  const fileName = imageData.map((data) => data.name);
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   const formData = new FormData();
-
-  //   const dataCollection = Object.entries(feedData);
-  //   const auth = JSON.parse(localStorage.getItem('pocketbase_auth')).model;
-  //   formData.append('writer', auth.id);
-  //   dataCollection.forEach((data) => formData.append(data[0], data[1]));
-  //   imageData.forEach((data) => formData.append('image', data));
-
-  //   setIsLoading(true);
-  //   await pb
-  //     .collection('feeds')
-  //     .create(formData)
-  //     .then(() => {
-  //       resetFeedData();
-  //       resetImageData();
-
-  //       setIsLoading(false);
-  //     });
-
-  //   navigate('/main/community');
-  // };
+  const nav = useNavigate();
 
   useEffect(() => {
     fetchUser();
   }, [fetchUser]);
 
   useEffect(() => {
-    fetchUserProfile(currentUser);
+    if (currentUser) {
+      fetchUserProfile(currentUser);
+    }
   }, [fetchUserProfile, currentUser]);
+
+  const handleImageChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setTempAvatar(e.target.files[0]);
+    }
+  };
 
   const handleSave = async () => {
     try {
+      if (tempAvatar) {
+        await updateAvatar(currentUser, tempAvatar);
+      }
+
       await updateProfile(currentUser, {
         nickname: userData.nickname,
         introduction: userData.introduction,
         interest: tempInterest || userData.interest,
       });
+
       resetTempInterest();
-      Navigate(-1);
+      nav(-1);
       toast.success('저장이 완료되었습니다.');
     } catch (error) {
       console.error('Failed to save profile:', error);
@@ -103,13 +82,17 @@ export function Component() {
       />
 
       <section className={S.profile}>
-        <ProfileImage url={userData.avatarUrl} nickname={userData.nickname} />
+        <ProfileImage
+          url={
+            tempAvatar ? URL.createObjectURL(tempAvatar) : userData.avatarUrl
+          }
+          nickname={userData.nickname}
+        />
         <div className={S.profile__upload}>
           <Tooltip text="프로필 수정하기" position="right">
             <ImageUpload
-              onChange={handleImageName}
-              imageData={fileName}
               className={S.upload__label}
+              onChange={handleImageChange}
             >
               <Icon id="pencil" width={10} height={10} />
             </ImageUpload>
