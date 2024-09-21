@@ -102,7 +102,7 @@ export function Component() {
 
       <form action="/">
         <label>
-          이름
+          <h3>이름</h3>
           <InputWithDelete
             placeholder="닉네임"
             name="nickName"
@@ -112,22 +112,20 @@ export function Component() {
         </label>
 
         <section className={S.interest__container}>
-          관심 운동 종목
+          <h3>관심 운동 종목</h3>
           <IconButton iconId="right" path="interest" />
         </section>
 
         <section className={S.aboutMe}>
-          <h3>
-            <span>소개글</span>
-            <span className={S.aboutMe__textCheck}>0/180</span>
-          </h3>
+          <h3>소개글</h3>
           <TextArea
             placeholder="Text"
             id="aboutMe"
             name="aboutMe"
             maxLength={180}
             className={S.textarea}
-            showTextLength={false}
+            classNameCount={S.textarea__span}
+            showTextLength={true}
             value={userData.introduction}
             onChange={(e) => setIntroduction(e.target.value)}
           />
