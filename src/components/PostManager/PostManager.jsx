@@ -10,15 +10,21 @@ PostManager.propTypes = {
   nickName: string,
 };
 
-function PostManager({ imageWidth, imageHeight, nickName }) {
+function PostManager({ members, imageWidth, imageHeight }) {
+  console.log(members);
+
   return (
     <div className={S.component}>
-      <ProfileImage
-        url="/profile.png"
-        width={imageWidth}
-        height={imageHeight}
-      />
-      <span>{nickName}</span>
+      {members.map((member, index) => (
+        <div key={index} className={S.profile__container}>
+          <ProfileImage
+            url="/profile.png"
+            width={imageWidth}
+            height={imageHeight}
+          />
+          <span>{member.nickname}</span>
+        </div>
+      ))}
     </div>
   );
 }

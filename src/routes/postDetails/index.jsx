@@ -87,12 +87,7 @@ export function Component() {
               / {postData.memberCount}명
             </span>
           </span>
-          <PostManager
-            nickName="사용자"
-            members={users}
-            imageWidth={44}
-            imageHeight={44}
-          />
+          <PostManager members={users} imageWidth={44} imageHeight={44} />
         </div>
 
         <div className={S.attend_button}>
