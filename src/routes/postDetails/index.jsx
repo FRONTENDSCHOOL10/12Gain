@@ -61,7 +61,7 @@ export function Component() {
     }
   };
 
-  const routeToChat = `/main/post/:${postData.id}/chat`;
+  const routeToChat = `/main/post/${postData.id}/chat`;
 
   return isLoading ? (
     <LoadingSpinner />
