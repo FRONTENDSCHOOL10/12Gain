@@ -16,7 +16,7 @@ export const useKebabMenuStore = create((set, get) => ({
   setConfirmText: (text) => set({ confirmText: text }),
 
   fetchUser: async () => {
-    const user = await pb.authStore.model.id;
+    const user = JSON.parse(localStorage.getItem('pocketbase_auth')).model.id;
     set({ currentUser: user });
   },
 
