@@ -23,6 +23,7 @@ export const useUsers = create((set) => ({
 const INITIAL_USERDATA = {
   email: '',
   nickname: '',
+  avatar: '',
   avatarUrl: '',
   interest: [],
   introduction: '',
@@ -38,7 +39,8 @@ export const useUserProfile = create((set) => ({
     set({ isLoading: true, error: null });
     try {
       const record = await pb.collection('users').getOne(userId);
-      const avatarUrl = getPbImageURL(record, 'avatar') || '/profile.png';
+      const avatarUrl =
+        record.avatar === '' ? '/profile.png' : getPbImageURL(record, 'avatar');
       set({ userData: { ...record, avatarUrl }, isLoading: false });
     } catch (error) {
       console.error('Failed to fetch user profile:', error);
