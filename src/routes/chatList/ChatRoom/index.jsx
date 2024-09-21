@@ -1,27 +1,53 @@
 import S from '@/routes/chatList/ChatRoom/ChatRoom.module.css';
 import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
 import SendMessage from '../component/SendMessage';
-
-const data = [
-  { id: 1, message: 1 },
-  { id: 1, message: 2 },
-  { id: 1, message: 3 },
-  { id: 2, message: 3 },
-];
-
-const myId = 1;
+import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useMessageData } from '@/stores/chat';
+import { useParams } from 'react-router-dom';
+import { usePostData } from '@/stores/form';
+import pb from '@/api/pb';
 
 export function Component() {
-  return (
+  const { postId } = useParams();
+  const userId = JSON.parse(localStorage.getItem('pocketbase_auth')).model.id;
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { chatData, fetchChatData, fetchChatRealTime } = useMessageData();
+  const { postData, fetchPost } = usePostData();
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetchChatData(postId);
+    fetchPost(postId);
+
+    pb.collection('messages').subscribe(`${chatData.id}`, function (e) {
+      fetchChatRealTime(e.record);
+    });
+
+    setIsLoading(false);
+
+    return () => {
+      pb.collection('messages').unsubscribe(`${chatData.id}`);
+    };
+  }, [fetchChatData, postId, fetchPost, fetchChatRealTime, chatData.id]);
+
+  return isLoading ? (
+    <LoadingSpinner />
+  ) : (
     <>
       <HeaderForDetails
-        leftIcon={['left']}
-        text="채팅방 이름"
-        rightIcon={['more']}
+        leftIcon={[
+          { iconId: 'left', title: '뒤로가기', path: '/main/chatlist' },
+        ]}
+        text={postData.title}
+        rightIcon={[{ iconId: 'more', title: '더보기' }]}
       />
       <main className={S.component}>
         <h2 className="sr-only">메시지 내용</h2>
-        {data ? (
+        {chatData?.id ? (
           <div className={S.chatRoom__container}>
             <div className={S.chatRoom__guide}>
               <span>
@@ -29,20 +55,20 @@ export function Component() {
                 수 있어요. 자세히 보기
               </span>
             </div>
-            {data.map((item, index) =>
-              item.id === myId ? (
+            {chatData?.messages?.map((item, index) =>
+              item.sender === userId ? (
                 <div
                   key={index}
                   className={`${S.message__container} ${S.message__container__user}`}
                 >
                   <span className={`${S.message__user} ${S.message}`}>
-                    맞음
+                    {item.message}
                   </span>
                 </div>
               ) : (
                 <div key={index} className={S.message__container}>
                   <span className={`${S.message__others} ${S.message}`}>
-                    안맞음
+                    {item.message}
                   </span>
                 </div>
               )

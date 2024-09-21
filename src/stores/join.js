@@ -15,5 +15,14 @@ export const useJoin = create((set) => ({
     set({ joinData: results.items });
   },
 
+  fetchJoinDataByUser: async (userId) => {
+    const results = await pb.collection('join').getList(1, 50, {
+      filter: `user_id = "${userId}"`,
+      expand: 'appointment_id, user_id',
+    });
+
+    set({ joinData: results.items });
+  },
+
   resetJoinData: () => set({ postData: [] }),
 }));
