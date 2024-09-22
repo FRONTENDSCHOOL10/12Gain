@@ -32,13 +32,16 @@ function MainPost() {
           console.error('날짜 포맷팅 오류:', error);
         }
 
+        const currentMemberCount = post.currentMemberCount || 0;
+        const totalMemberCount = post.memberCount || 0;
+
         return (
           <Post
             key={post.id}
             title={post.title}
             date={formattedDate}
             place={post.location}
-            member={Number(post.memberCount) || 0}
+            member={`${currentMemberCount} / ${totalMemberCount}`}
             category={post.category}
             id={post.id}
             writer={post.expand?.writer?.name || 'Unknown'}

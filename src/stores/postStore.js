@@ -52,13 +52,26 @@ const postStore = create((set, get) => ({
         expand: 'writer',
       });
 
+      // Fetch all join information in one request
+      const joinRecords = await pb.collection('join').getList(1, 1000, {
+        fields: 'appointment_id',
+      });
+
+      // Create a map of appointment_id to join count
+      const joinCounts = joinRecords.items.reduce((acc, join) => {
+        acc[join.appointment_id] = (acc[join.appointment_id] || 0) + 1;
+        return acc;
+      }, {});
+
       const formattedPosts = records.items.map((post) => ({
         ...post,
         date: post.date ? new Date(post.date).toISOString() : null,
+        currentMemberCount: joinCounts[post.id] || 0,
       }));
 
       set({ posts: formattedPosts, isLoading: false });
     } catch (error) {
+      console.error('Error fetching posts:', error);
       set({ error: error.message, isLoading: false });
     }
   },
