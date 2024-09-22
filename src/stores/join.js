@@ -5,7 +5,7 @@ export const useJoin = create((set) => ({
   joinData: [],
 
   updateJoinData: (data) =>
-    set(({ joinData }) => ({ joinData: { ...joinData, ...data } })),
+    set(({ joinData }) => ({ joinData: [...joinData, data] })),
 
   fetchJoinData: async (postId) => {
     const results = await pb.collection('join').getList(1, 50, {

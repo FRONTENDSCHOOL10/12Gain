@@ -6,7 +6,6 @@ import IconButton from '@/components/Button/IconButton';
 import { func, object, array } from 'prop-types';
 import { useCommentData } from '@/stores/comment';
 import pb from '@/api/pb';
-import { useEffect } from 'react';
 
 Comment.propTypes = {
   isActive: func,
@@ -17,11 +16,6 @@ Comment.propTypes = {
 function Comment({ isActive, feed, commentList }) {
   const { commentData, updateCommentData, fetchCommentData, resetCommentData } =
     useCommentData();
-
-  useEffect(() => {
-    const feedId = feed.id;
-    fetchCommentData(feedId);
-  }, [feed.id, fetchCommentData]);
 
   const handleClick = () => {
     isActive(false);
@@ -49,6 +43,8 @@ function Comment({ isActive, feed, commentList }) {
 
     fetchCommentData(feedId);
   };
+
+  console.log(commentList);
 
   return (
     <div className={S.Comment}>

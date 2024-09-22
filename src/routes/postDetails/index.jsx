@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 import pb from '@/api/pb';
 import { useState } from 'react';
 import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
+import toast from 'react-hot-toast';
 import KebabMenu from '@/components/KebabMenu/KebabMenu';
 
 export function Component() {
@@ -21,13 +22,14 @@ export function Component() {
 
   const [isLoading, setIsLoading] = useState(false);
   const { postData, fetchPost } = usePostData();
-  const { joinData, fetchJoinData } = useJoin();
+  const { joinData, fetchJoinData, updateJoinData } = useJoin();
   const { users, fetchUsers } = useUsers();
 
   const auth = JSON.parse(localStorage.getItem('pocketbase_auth'));
   const user = auth.model.id;
 
   useEffect(() => {
+    setIsLoading(true);
     fetchPost(postId);
     fetchJoinData(postId);
   }, [fetchPost, fetchJoinData, postId]);
@@ -37,20 +39,27 @@ export function Component() {
 
   useEffect(() => {
     fetchUsers(filter);
+    setIsLoading(false);
   }, [fetchUsers, filter]);
 
   const handleClick = async () => {
-    setIsLoading(true);
-
     const data = {
       user_id: user,
       appointment_id: postData.id,
     };
 
-    await pb.collection('join').create(data);
+    try {
+      setIsLoading(true);
+      await pb.collection('join').create(data);
+      updateJoinData(data);
 
-    setIsLoading(false);
-    location.reload();
+      setIsLoading(false);
+
+      toast.success('해당 모임글에 참여하였습니다. 멤버들과 채팅을 나눠보세요');
+    } catch {
+      setIsLoading(false);
+      toast.error('채팅에 참여할 수 없습니다');
+    }
   };
 
   return isLoading ? (
@@ -91,12 +100,7 @@ export function Component() {
               / {postData.memberCount}명
             </span>
           </span>
-          <PostManager
-            nickName="사용자"
-            members={users}
-            imageWidth={44}
-            imageHeight={44}
-          />
+          <PostManager members={users} imageWidth={44} imageHeight={44} />
         </div>
 
         <div className={S.attend_button}>
