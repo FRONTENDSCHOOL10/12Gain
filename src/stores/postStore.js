@@ -26,14 +26,22 @@ const postStore = create((set, get) => ({
         sortField = '-created';
       } else if (filter.mainCategory === '관심') {
         const currentUser = pb.authStore.model;
+
         if (
           currentUser &&
           currentUser.interest &&
           currentUser.interest.length > 0
         ) {
-          filterString = `category ~ "${currentUser.interest.join('|')}"`;
+          const interestFilters = currentUser.interest.map(
+            (interest) => `category ~ "${interest}"`
+          );
+          filterString = `(${interestFilters.join(' || ')})`;
         } else {
-          set({ error: '관심 운동 종목을 설정해주세요.', isLoading: false });
+          set({
+            posts: [],
+            error: '관심 운동 종목을 설정해주세요.',
+            isLoading: false,
+          });
           return;
         }
       }
@@ -43,6 +51,7 @@ const postStore = create((set, get) => ({
         filter: filterString,
         expand: 'writer',
       });
+
       const formattedPosts = records.items.map((post) => ({
         ...post,
         date: post.date ? new Date(post.date).toISOString() : null,
@@ -50,7 +59,7 @@ const postStore = create((set, get) => ({
 
       set({ posts: formattedPosts, isLoading: false });
     } catch (error) {
-      set({ error, isLoading: false });
+      set({ error: error.message, isLoading: false });
     }
   },
 
@@ -64,11 +73,13 @@ const postStore = create((set, get) => ({
 
         const updatedUser = await pb.collection('users').getOne(currentUser.id);
         pb.authStore.save(updatedUser.token, updatedUser);
+
+        get().fetchPosts();
       } else {
         throw new Error('사용자가 로그인하지 않았습니다.');
       }
     } catch (error) {
-      set({ error });
+      set({ error: error.message });
     }
   },
 }));
