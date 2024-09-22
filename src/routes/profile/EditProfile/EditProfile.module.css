@@ -44,9 +44,6 @@
     padding-bottom: 5rem;
 
     h3 {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-between;
       padding: var(--spacing-12);
       height: var(--spacing-20);
     }
@@ -62,6 +59,11 @@
       border: 1px solid var(--content-secondary);
       padding: var(--spacing-8) var(--spacing-12);
       border-radius: var(--rounded-lg);
+    }
+
+    .textarea__span {
+      margin: var(--spacing-12) var(--spacing-8);
+      font-weight: 400;
     }
   }
 

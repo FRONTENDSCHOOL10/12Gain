@@ -42,9 +42,7 @@ export function Component() {
     <div className={S.component}>
       <HeaderForDetails
         text="회원 탈퇴"
-        leftIcon={[
-          { iconId: 'left', path: '/main/profile/setting', title: '뒤로가기' },
-        ]}
+        leftIcon={[{ iconId: 'left', path: '-1', title: '뒤로가기' }]}
       />
       <div className={S.content__container}>
         <h2>

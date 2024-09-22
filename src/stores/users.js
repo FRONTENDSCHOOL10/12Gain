@@ -23,6 +23,7 @@ export const useUsers = create((set) => ({
 const INITIAL_USERDATA = {
   email: '',
   nickname: '',
+  avatar: '',
   avatarUrl: '',
   interest: [],
   introduction: '',
@@ -32,12 +33,14 @@ export const useUserProfile = create((set) => ({
   userData: INITIAL_USERDATA,
   isLoading: false,
   error: null,
+  tempAvatar: null,
 
   fetchUserProfile: async (userId) => {
     set({ isLoading: true, error: null });
     try {
       const record = await pb.collection('users').getOne(userId);
-      const avatarUrl = getPbImageURL(record, 'avatar') || '/profile.png';
+      const avatarUrl =
+        record.avatar === '' ? '/profile.png' : getPbImageURL(record, 'avatar');
       set({ userData: { ...record, avatarUrl }, isLoading: false });
     } catch (error) {
       console.error('Failed to fetch user profile:', error);
@@ -59,6 +62,7 @@ export const useUserProfile = create((set) => ({
       console.error('Failed to update profile:', error);
       set({ error: 'Failed to update profile', isLoading: false });
       toast.error('저장 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+      throw error;
     }
   },
 
@@ -81,6 +85,8 @@ export const useUserProfile = create((set) => ({
     }
   },
 
+  setTempAvatar: (file) => set({ tempAvatar: file }),
+
   updateAvatar: async (userId, avatarFile) => {
     set({ isLoading: true, error: null });
     try {
@@ -93,11 +99,16 @@ export const useUserProfile = create((set) => ({
       set((state) => ({
         userData: { ...state.userData, avatarUrl },
         isLoading: false,
+        tempAvatar: null,
       }));
+      return avatarUrl;
     } catch (error) {
       console.error('Failed to update avatar:', error);
       set({ error: 'Failed to update avatar', isLoading: false });
-      toast.error('저장 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+      toast.error(
+        '프로필 이미지 저장 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.'
+      );
+      throw error;
     }
   },
 
