@@ -102,13 +102,21 @@ export function Component() {
 
   const isValid = collectedData.every((item) => Boolean(item[1]));
 
+  const handleClickLeft = () => {
+    resetPostData();
+    resetImageData();
+    navigate(-1);
+  };
+
   return isLoading ? (
     <LoadingSpinner />
   ) : (
     <>
       <HeaderForDetails
         text="모임 생성하기"
-        leftIcon={[{ iconId: 'left', path: '/main', title: '뒤로가기' }]}
+        leftIcon={[
+          { iconId: 'left', onClick: handleClickLeft, title: '뒤로가기' },
+        ]}
       />
       <div className={S.component}>
         <form>

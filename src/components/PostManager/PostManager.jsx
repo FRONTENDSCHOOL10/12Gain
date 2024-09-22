@@ -1,7 +1,7 @@
 import S from './PostManager.module.css';
-import { number, array } from 'prop-types';
+import { number, array, string } from 'prop-types';
 import ProfileImage from '@/components/ProfileImage/ProfileImage';
-import { string } from 'prop-types';
+import getPbImageURL from '@/api/getPbImageURL';
 
 PostManager.propTypes = {
   members: array,
@@ -16,7 +16,9 @@ function PostManager({ members, imageWidth, imageHeight }) {
       {members.map((member, index) => (
         <div key={index} className={S.profile__container}>
           <ProfileImage
-            url="/profile.png"
+            url={
+              member.avatar ? getPbImageURL(member, 'avatar') : '/profile.png'
+            }
             width={imageWidth}
             height={imageHeight}
           />

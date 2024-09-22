@@ -23,7 +23,10 @@ export const useMessageData = create((set) => ({
       sort: 'created',
     });
 
-    set({ chatData: results.items[0], messages: results.items[0]?.messages });
+    set({
+      chatData: results.items[0],
+      messages: results.items[0]?.messages ? results.items[0].messages : [],
+    });
   },
 
   fetchChatRealTime: (data) => set(() => ({ chatData: data })),
