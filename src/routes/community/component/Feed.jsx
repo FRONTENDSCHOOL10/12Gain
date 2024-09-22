@@ -13,9 +13,7 @@ import Comment from '../Comment/Comment';
 
 function Feed({
   imgSrc,
-  userId,
   content,
-  user,
   feed,
   comments,
   createdAt,
@@ -58,7 +56,7 @@ function Feed({
       <article className={S.Feed}>
         <section className={S.feedHeader}>
           <FeedProfile
-            nickName={writer?.name || 'Unknown'}
+            nickName={writer?.nickname || 'Unknown'}
             createdAt={createdAt}
           />
           <KebabMenu category={category} categoryText="게시물" />
@@ -80,7 +78,7 @@ function Feed({
         )}
         <section className={S.BtnCount}>
           <BtnThumsup />
-          <BtnComment nClick={handleCommentClick} count={count} />
+          <BtnComment onClick={handleCommentClick} count={count} />
         </section>
       </article>
 
@@ -104,7 +102,7 @@ Feed.propTypes = {
   createdAt: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   writer: PropTypes.shape({
-    name: PropTypes.string,
+    nickname: PropTypes.string,
   }),
   user: object,
   feed: object,

@@ -1,4 +1,5 @@
 import S from '@/components/TextArea/style.module.css';
+import clsx from 'clsx';
 
 import { string, number, bool, func } from 'prop-types';
 
@@ -8,6 +9,7 @@ function TextArea({
   id,
   placeholder,
   className,
+  classNameCount,
   maxLength = 1000,
   onChange,
   showTextLength = 'true',
@@ -24,7 +26,7 @@ function TextArea({
         onChange={onChange}
       ></textarea>
       {showTextLength && (
-        <span className={S.charCount}>
+        <span className={clsx(S.charCount, classNameCount)}>
           {value ? value.length : 0}/{maxLength}
         </span>
       )}
@@ -38,6 +40,7 @@ TextArea.propTypes = {
   id: string,
   placeholder: string,
   className: string,
+  classNameCount: string,
   maxLength: number,
   onChange: func,
   showTextLength: bool,

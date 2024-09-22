@@ -2,7 +2,7 @@ import Button from '@/components/Button/Button';
 import S from '@/routes/landing/style.module.css';
 import { useNavigate } from 'react-router-dom';
 import LandingLogo from './component/LandingLogo';
-import SignupLink from './component/signupLink';
+import SignupLink from './component/SignupLink';
 
 function Landing() {
   const navigate = useNavigate();

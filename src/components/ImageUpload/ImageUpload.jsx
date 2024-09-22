@@ -1,18 +1,20 @@
 import S from '@/components/ImageUpload/ImageUpload.module.css';
-import {} from 'prop-types';
-import { node, string, func, array } from 'prop-types';
+import clsx from 'clsx';
+import { node, string, func, array, oneOf } from 'prop-types';
 
 ImageUpload.propTypes = {
   children: node,
   value: string,
   onChange: func,
   imageData: array,
+  type: oneOf(['post', 'icon']),
+  className: string,
 };
 
-function ImageUpload({ children, onChange, imageData }) {
+function ImageUpload({ children, onChange, imageData = [], className }) {
   return (
     <div className={S.ImageUpload__container}>
-      <label className={S.label}>
+      <label className={clsx(S.label, className)}>
         <input
           className={S.input}
           type="file"

@@ -6,11 +6,68 @@ import Button from '@/components/Button/Button';
 import TextArea from '@/components/TextArea/TextArea';
 import IconButton from '@/components/Button/IconButton';
 import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
-
+import ImageUpload from '@/components/ImageUpload/ImageUpload';
+import Icon from '@/components/Icon/Icon';
+import Tooltip from '@/components/Tooltip/Tooltip';
+import { useKebabMenuStore } from '@/stores/kebabStore';
+import { useUserProfile } from '@/stores/users';
+import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 export function Component() {
-  const handleClick = useNavigate();
+  const {
+    userData,
+    setNickname,
+    setIntroduction,
+    fetchUserProfile,
+    updateProfile,
+    tempInterest,
+    resetTempInterest,
+    setTempAvatar,
+    updateAvatar,
+    tempAvatar,
+  } = useUserProfile();
+
+  const { fetchUser, currentUser } = useKebabMenuStore();
+  const nav = useNavigate();
+
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
+
+  useEffect(() => {
+    if (currentUser) {
+      fetchUserProfile(currentUser);
+    }
+  }, [fetchUserProfile, currentUser]);
+
+  const handleImageChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setTempAvatar(e.target.files[0]);
+    }
+  };
+
+  const handleSave = async () => {
+    try {
+      if (tempAvatar) {
+        await updateAvatar(currentUser, tempAvatar);
+      }
+
+      await updateProfile(currentUser, {
+        nickname: userData.nickname,
+        introduction: userData.introduction,
+        interest: tempInterest || userData.interest,
+      });
+
+      resetTempInterest();
+      nav(-1);
+      toast.success('저장이 완료되었습니다.');
+    } catch (error) {
+      console.error('Failed to save profile:', error);
+      toast.error('저장 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+    }
+  };
 
   return (
     <div className={S.component}>
@@ -23,40 +80,58 @@ export function Component() {
           { iconId: 'setting', path: '/main/profile/setting', title: '설정' },
         ]}
       />
+
       <section className={S.profile}>
-        <ProfileImage url="/profile.png" />
+        <ProfileImage
+          url={
+            tempAvatar ? URL.createObjectURL(tempAvatar) : userData.avatarUrl
+          }
+          nickname={userData.nickname}
+        />
+        <div className={S.profile__upload}>
+          <Tooltip text="프로필 수정하기" position="right">
+            <ImageUpload
+              className={S.upload__label}
+              onChange={handleImageChange}
+            >
+              <Icon id="pencil" width={10} height={10} />
+            </ImageUpload>
+          </Tooltip>
+        </div>
       </section>
+
       <form action="/">
         <label>
-          이름
-          <InputWithDelete placeholder="닉네임" name="nickName" />
+          <h3>이름</h3>
+          <InputWithDelete
+            placeholder="닉네임"
+            name="nickName"
+            value={userData.nickname}
+            onChange={(e) => setNickname(e.target.value)}
+          />
         </label>
+
         <section className={S.interest__container}>
-          관심 운동 종목
+          <h3>관심 운동 종목</h3>
           <IconButton iconId="right" path="interest" />
         </section>
 
         <section className={S.aboutMe}>
-          <h3>
-            <span>소개글</span>
-            <span className={S.aboutMe__textCheck}>0/180</span>
-          </h3>
+          <h3>소개글</h3>
           <TextArea
             placeholder="Text"
             id="aboutMe"
             name="aboutMe"
             maxLength={180}
             className={S.textarea}
-            showTextLength={false}
+            classNameCount={S.textarea__span}
+            showTextLength={true}
+            value={userData.introduction}
+            onChange={(e) => setIntroduction(e.target.value)}
           />
         </section>
       </form>
-      <Button
-        className="button-main"
-        onClick={() => {
-          handleClick(-1);
-        }}
-      >
+      <Button className="button-main" onClick={handleSave}>
         저장하기
       </Button>
     </div>
