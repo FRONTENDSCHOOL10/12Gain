@@ -67,9 +67,11 @@ export function Component() {
           </label>
         </div>
       </div>
-      <Button className={S.button} onClick={handleDeleteAccount}>
-        탈퇴하기
-      </Button>
+      <div className={S.buttonBox}>
+        <Button className={S.button} onClick={handleDeleteAccount}>
+          탈퇴하기
+        </Button>
+      </div>
     </div>
   );
 }

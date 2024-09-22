@@ -1,22 +1,45 @@
 import ProfileImage from '@/components/ProfileImage/ProfileImage';
 import S from '@/routes/chatList/component/Chat.module.css';
-import { func } from 'prop-types';
+
+import { func, object } from 'prop-types';
 
 Chat.propTypes = {
   onClick: func,
+  post: object,
+  chat: object,
 };
 
-function Chat({ onClick }) {
+function Chat({ onClick, post, chat }) {
+  const message = chat?.messages[chat?.messages.length - 1];
+
   return (
     <div className={S.component} onClick={onClick}>
-      <ProfileImage url="/profile.png" width={44} height={44} />
-      <div className={S.chat__container}>
-        <div className={S.chat__container__header}>
-          <h3>채팅방 이름</h3>
-          <span>몇분 전</span>
-        </div>
-        <span className={S.chat__container__message}>메세지</span>
-      </div>
+      {chat ? (
+        <>
+          <ProfileImage url="/profile.png" width={44} height={44} />
+          <div className={S.chat__container}>
+            <div className={S.chat__container__header}>
+              <h3>{post.expand.appointment_id.title}</h3>
+              <span>{message.time}</span>
+            </div>
+            <span className={S.chat__container__message}>
+              {message.message}
+            </span>
+          </div>
+        </>
+      ) : (
+        <>
+          <ProfileImage url="/profile.png" width={44} height={44} />
+          <div className={S.chat__container}>
+            <div className={S.chat__container__header}>
+              <h3>{post.expand.appointment_id.title}</h3>
+            </div>
+            <span className={S.chat__container__message}>
+              채팅을 시작해보세요
+            </span>
+          </div>
+        </>
+      )}
     </div>
   );
 }
