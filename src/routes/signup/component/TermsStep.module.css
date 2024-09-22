@@ -3,7 +3,9 @@
   display: flex;
   flex-flow: column;
 }
-
+.buttonBox {
+  text-align: center;
+}
 .button {
   width: 18.5rem;
   height: 2.8125rem;
