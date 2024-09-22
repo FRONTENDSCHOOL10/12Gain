@@ -19,10 +19,8 @@ export function Component() {
 
   useEffect(() => {
     const currentPath = location.pathname;
-    console.log('현재 경로:', currentPath);
     const currentTab =
       subNavList.find((item) => item.path === currentPath)?.text || '신규';
-    console.log('현재 탭:', currentTab);
     setFilter({ mainCategory: currentTab });
     fetchPosts();
   }, [location, setFilter, fetchPosts, subNavList]);

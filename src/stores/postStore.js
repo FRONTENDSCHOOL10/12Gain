@@ -26,15 +26,19 @@ const postStore = create((set, get) => ({
         sortField = '-created';
       } else if (filter.mainCategory === '관심') {
         const currentUser = pb.authStore.model;
-        if (currentUser && currentUser.interests) {
-          filterString = `category ~ "${currentUser.interests.join('|')}"`;
+        if (
+          currentUser &&
+          currentUser.interest &&
+          currentUser.interest.length > 0
+        ) {
+          filterString = `category ~ "${currentUser.interest.join('|')}"`;
         } else {
-          set({ error: '관심 카테고리를 설정해주세요.', isLoading: false });
+          set({ error: '관심 운동 종목을 설정해주세요.', isLoading: false });
           return;
         }
       }
 
-      const records = await pb.collection('appointments').getList(1, 15, {
+      const records = await pb.collection('appointments').getList(1, 50, {
         sort: sortField,
         filter: filterString,
         expand: 'writer',
@@ -55,7 +59,7 @@ const postStore = create((set, get) => ({
       const currentUser = pb.authStore.model;
       if (currentUser) {
         await pb.collection('users').update(currentUser.id, {
-          interests: newInterests,
+          interest: newInterests,
         });
 
         const updatedUser = await pb.collection('users').getOne(currentUser.id);
