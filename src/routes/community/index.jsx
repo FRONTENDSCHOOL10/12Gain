@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import PostList from '@/routes/profile/PostList';
 import PostButton from '@/components/Button/PostButton';
 import communityStore from '@/stores/communityStore';
+import CustomHelmet from '@/components/CustomHelmet/CustomHelmet';
 
 export function Component() {
   const [subNavList] = useState([
@@ -25,6 +26,11 @@ export function Component() {
   return (
     <>
       <div className={S.component}>
+        <CustomHelmet
+          title="커뮤니티"
+          description="사용자의 피드를 모아 놓은 커뮤니티 페이지입니다."
+          path="/main/community"
+        />
         <aside>
           <div className={S.button__container}>
             <PostButton iconId={'write'} path={'/main/community/create'} />

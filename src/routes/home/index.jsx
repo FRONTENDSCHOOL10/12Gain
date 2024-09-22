@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Banner from './banner/Banner';
 import postStore from '@/stores/postStore';
+import CustomHelmet from '@/components/CustomHelmet/CustomHelmet';
 
 export function Component() {
   const [subNavList] = useState([
@@ -28,6 +29,11 @@ export function Component() {
 
   return (
     <div className={S.component}>
+      <CustomHelmet
+        title="홈"
+        description="유앤밋 홈페이지 입니다. 홈페이지를 통해 각종 행사와 관심 있는 모임에 참여할 수 있습니다"
+        path="/home"
+      />
       <aside>
         <div className={S.button__container}>
           <PostButton iconId={'calendarPlus'} path={'/main/home/new/post'} />

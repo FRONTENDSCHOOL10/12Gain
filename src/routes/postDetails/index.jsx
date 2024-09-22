@@ -12,16 +12,15 @@ import { useJoin } from '@/stores/join';
 import { useUsers } from '@/stores/users';
 import { Link } from 'react-router-dom';
 import pb from '@/api/pb';
-import { useState } from 'react';
 import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 import toast from 'react-hot-toast';
 import KebabMenu from '@/components/KebabMenu/KebabMenu';
+import CustomHelmet from '@/components/CustomHelmet/CustomHelmet';
 
 export function Component() {
   const { postId } = useParams();
 
-  const [isLoading, setIsLoading] = useState(false);
-  const { postData, fetchPost } = usePostData();
+  const { postData, isLoading, fetchPost } = usePostData();
   const { joinData, fetchJoinData, updateJoinData } = useJoin();
   const { users, fetchUsers } = useUsers();
 
@@ -29,7 +28,6 @@ export function Component() {
   const user = auth.model.id;
 
   useEffect(() => {
-    setIsLoading(true);
     fetchPost(postId);
     fetchJoinData(postId);
   }, [fetchPost, fetchJoinData, postId]);
@@ -39,7 +37,6 @@ export function Component() {
 
   useEffect(() => {
     fetchUsers(filter);
-    setIsLoading(false);
   }, [fetchUsers, filter]);
 
   const handleClick = async () => {
@@ -49,15 +46,11 @@ export function Component() {
     };
 
     try {
-      setIsLoading(true);
       await pb.collection('join').create(data);
+
       updateJoinData(data);
-
-      setIsLoading(false);
-
       toast.success('해당 모임글에 참여하였습니다. 멤버들과 채팅을 나눠보세요');
     } catch {
-      setIsLoading(false);
       toast.error('채팅에 참여할 수 없습니다');
     }
   };
@@ -70,6 +63,11 @@ export function Component() {
     <LoadingSpinner />
   ) : (
     <>
+      <CustomHelmet
+        title={`모임글 | ${postData.title}`}
+        description={`${postData.title}모임글의 관련 정보를 확인할 수 있는 상세페이지 입니다.`}
+        path={`/main/post/${postData.id}`}
+      />
       <HeaderForDetails
         leftIcon={[
           { iconId: 'left', path: '-1', title: '뒤로가기' }, // TODO:
