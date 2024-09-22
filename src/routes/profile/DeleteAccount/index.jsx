@@ -42,9 +42,7 @@ export function Component() {
     <div className={S.component}>
       <HeaderForDetails
         text="회원 탈퇴"
-        leftIcon={[
-          { iconId: 'left', path: '/main/profile/setting', title: '뒤로가기' },
-        ]}
+        leftIcon={[{ iconId: 'left', path: '-1', title: '뒤로가기' }]}
       />
       <div className={S.content__container}>
         <h2>
@@ -69,9 +67,11 @@ export function Component() {
           </label>
         </div>
       </div>
-      <Button className={S.button} onClick={handleDeleteAccount}>
-        탈퇴하기
-      </Button>
+      <div className={S.buttonBox}>
+        <Button className={S.button} onClick={handleDeleteAccount}>
+          탈퇴하기
+        </Button>
+      </div>
     </div>
   );
 }

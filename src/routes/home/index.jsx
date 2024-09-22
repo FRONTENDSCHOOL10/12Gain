@@ -14,15 +14,14 @@ export function Component() {
     { path: '/main/home/interest', text: '관심' },
   ]);
 
-  const { setFilter, fetchPosts } = postStore();
+  const { setFilter, fetchPosts, posts, error } = postStore();
   const location = useLocation();
 
   useEffect(() => {
     const currentPath = location.pathname;
-    console.log('현재 경로:', currentPath);
     const currentTab =
       subNavList.find((item) => item.path === currentPath)?.text || '신규';
-    console.log('현재 탭:', currentTab);
+
     setFilter({ mainCategory: currentTab });
     fetchPosts();
   }, [location, setFilter, fetchPosts, subNavList]);
@@ -36,6 +35,10 @@ export function Component() {
       </aside>
       <MainPostList list={subNavList} />
       <Banner />
+      {error && <p className={S.error}>{error}</p>}
+      {posts.length === 0 && !error && (
+        <p className={S.noPosts}>게시글이 없습니다.</p>
+      )}
       <Outlet />
     </div>
   );

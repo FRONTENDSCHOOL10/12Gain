@@ -22,7 +22,7 @@ const communityStore = create((set, get) => ({
         sortField = '-created';
       }
 
-      const records = await pb.collection('feeds').getList(1, 50, {
+      const records = await pb.collection('feeds').getList(1, 15, {
         sort: sortField,
         expand: 'writer',
       });

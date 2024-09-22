@@ -15,6 +15,7 @@ import pb from '@/api/pb';
 import { useState } from 'react';
 import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 import toast from 'react-hot-toast';
+import KebabMenu from '@/components/KebabMenu/KebabMenu';
 
 export function Component() {
   const { postId } = useParams();
@@ -68,12 +69,15 @@ export function Component() {
   ) : (
     <>
       <HeaderForDetails
-        leftIcon={[{ iconId: 'left', path: '/main', title: '뒤로가기' }]}
-        rightIcon={[
-          { iconId: 'home', path: '/main', title: 'home' },
-          { iconId: 'more', path: '/', title: 'more' },
+        leftIcon={[
+          { iconId: 'left', path: '-1', title: '뒤로가기' }, // TODO:
         ]}
-      />
+        rightIcon={[{ iconId: 'home', path: '/main', title: 'home' }]}
+        width={20}
+        height={20}
+      >
+        <KebabMenu category="appointments" categoryText="모임" />
+      </HeaderForDetails>
       <article className={S.component}>
         {postData.image && postData.image.length > 0 && <PostDetailImage />}
         <div className={S.main}>

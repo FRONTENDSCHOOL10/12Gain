@@ -29,7 +29,7 @@ function Post({ title, date, place, member = 1, category, id }) {
           <div className={S.divider}></div>
           <div>
             <Icon id="personFull" width={12} height={12} color="#979797" />
-            {member} / 4
+            {member}
           </div>
           <div className={S.divider}></div>
           <div>{category}</div>
