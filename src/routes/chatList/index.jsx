@@ -29,7 +29,7 @@ export function Component() {
   return (
     <>
       <HeaderForDetails
-        leftIcon={[{ iconId: 'left', title: '뒤로 가기' }]}
+        leftIcon={[{ iconId: 'left', title: '뒤로 가기', path: '/main' }]}
         text="모임 채팅"
       />
       <main className={S.component}>

@@ -23,16 +23,16 @@ export function Component() {
     fetchChatData(postId);
     fetchPost(postId);
 
-    pb.collection('messages').subscribe(`${chatData.id}`, function (e) {
+    pb.collection('messages').subscribe(`${chatData?.id}`, function (e) {
       fetchChatRealTime(e.record);
     });
 
     setIsLoading(false);
 
     return () => {
-      pb.collection('messages').unsubscribe(`${chatData.id}`);
+      pb.collection('messages').unsubscribe(`${chatData?.id}`);
     };
-  }, [fetchChatData, postId, fetchPost, fetchChatRealTime, chatData.id]);
+  }, [fetchChatData, postId, fetchPost, fetchChatRealTime, chatData?.id]);
 
   return isLoading ? (
     <LoadingSpinner />
