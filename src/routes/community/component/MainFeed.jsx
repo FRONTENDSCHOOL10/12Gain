@@ -4,7 +4,7 @@ import { useCommentData } from '@/stores/comment';
 import communityStore from '@/stores/communityStore';
 import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 
-function MainFeed() {
+export function Component() {
   const { commentList, fetchCommentsData } = useCommentData();
 
   const { feeds, fetchFeeds, isLoading } = communityStore();
@@ -33,5 +33,3 @@ function MainFeed() {
     />
   ));
 }
-
-export default MainFeed;

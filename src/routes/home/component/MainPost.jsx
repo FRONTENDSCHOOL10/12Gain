@@ -7,7 +7,7 @@ import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 import { format, parseISO } from 'date-fns';
 import { ko } from 'date-fns/locale';
 
-function MainPost() {
+export function Component() {
   const { posts, fetchPosts, isLoading } = usePostStore();
 
   useEffect(() => {
@@ -51,5 +51,3 @@ function MainPost() {
     </div>
   );
 }
-
-export default MainPost;
