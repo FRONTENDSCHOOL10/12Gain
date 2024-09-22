@@ -2,7 +2,7 @@
   .content__container {
     display: flex;
     flex-flow: column;
-    height: 34.4375rem;
+    height: 36.75rem;
     gap: var(--spacing-8);
     padding: var(--spacing-12);
     border-bottom: 1px solid var(--content-tertiary);
@@ -43,7 +43,6 @@
     line-height: 0.98469rem;
   }
 
-  /* Icon을 감싸는 체크박스 스타일 */
   .checkbox {
     width: 1.25rem;
     height: 1.25rem;
@@ -60,10 +59,14 @@
     border-color: var(--primary);
   }
 
+  .buttonBox {
+    text-align: center;
+  }
+
   .button {
     width: 18.5rem;
     height: 2.8125rem;
-    margin: var(--spacing-12) auto;
+    margin: 0.625rem 0rem;
     border-radius: 1.25rem;
     background-color: var(--primary);
     color: var(--white);
