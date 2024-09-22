@@ -6,6 +6,6 @@
 
 .Outlet {
   flex: 1;
-  overflow-y: auto;
+  overflow-y: scroll;
   max-height: calc(100vh - 5.25rem);
 }
