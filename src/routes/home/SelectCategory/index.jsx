@@ -52,7 +52,7 @@ export function Component() {
       </div>
       <div className={S.button__container}>
         <Button
-          className={S.button}
+          className="button-main"
           onClick={() => {
             handleClick(-1);
           }}
