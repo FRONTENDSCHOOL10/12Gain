@@ -1,5 +1,6 @@
 .component {
   padding: 0.375rem;
+  padding-bottom: 2.96875rem;
   inline-size: 20rem;
   margin: auto;
   background: var(--background, #f4f4f4);

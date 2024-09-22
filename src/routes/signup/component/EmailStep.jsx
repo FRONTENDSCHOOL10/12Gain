@@ -64,7 +64,7 @@ function EmailStep({ onNext }) {
     !isValidEmail(email) || email.trim() === '' || isSubmitting;
 
   return (
-    <div className={S.Component}>
+    <div className={S.formWrapper}>
       <form className={S.EmailStepForm} onSubmit={handleSubmit}>
         <EmailInput
           type="email"

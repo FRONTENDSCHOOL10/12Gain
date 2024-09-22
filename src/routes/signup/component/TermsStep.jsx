@@ -95,9 +95,11 @@ function TermsStep({ onSubmit }) {
           />
         ))}
       </ul>
-      <Button type="button" onClick={handleSignUp} className={S.button}>
-        완료
-      </Button>
+      <div className={S.buttonBox}>
+        <Button type="button" onClick={handleSignUp} className={S.button}>
+          완료
+        </Button>
+      </div>
     </div>
   );
 }

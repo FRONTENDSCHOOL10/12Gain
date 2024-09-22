@@ -1,5 +1,5 @@
 .Component {
-  display: flex;
+  text-align: center;
   position: relative;
   color: var(--content-secondary);
 }
