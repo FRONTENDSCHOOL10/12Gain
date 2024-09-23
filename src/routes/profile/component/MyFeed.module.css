@@ -7,4 +7,8 @@
   height: 100%;
   padding: var(--spacing-20) var(--spacing-12);
   background-color: var(--background);
+
+  .message {
+    padding: var(--spacing-20) var(--spacing-12);
+  }
 }
