@@ -9,6 +9,7 @@ import PasswordInput from './component/PasswordInput';
 import pb from '@/api/pb.js';
 import { useAuthStore } from '@/stores/authStore';
 import toast from 'react-hot-toast';
+import CustomHelmet from '@/components/CustomHelmet/CustomHelmet';
 
 export function Component() {
   const navigate = useNavigate();
@@ -42,6 +43,12 @@ export function Component() {
 
   return (
     <div>
+      <CustomHelmet
+        title="로그인"
+        description="회원 로그인을 위한 페이지입니다."
+        path="/login"
+      />
+
       <HeaderForDetails
         leftIcon={[{ iconId: 'left', path: '/', title: '뒤로가기' }]}
       />

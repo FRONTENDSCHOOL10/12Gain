@@ -9,13 +9,13 @@ import { oneOf, bool } from 'prop-types';
 import clsx from 'clsx';
 import { useKebabMenuStore } from '@/stores/kebabStore';
 
-KebabMenuPost.propTypes = {
+KebabMenu.propTypes = {
   category: oneOf(['appointments', 'feeds']).isRequired,
   categoryText: oneOf(['모임', '게시물']).isRequired,
   chat: bool,
 };
 
-function KebabMenuPost({ category, categoryText, chat = false }) {
+function KebabMenu({ category, categoryText, chat = false }) {
   const { postId } = useParams();
   const nav = useNavigate();
   const {
@@ -124,4 +124,4 @@ function KebabMenuPost({ category, categoryText, chat = false }) {
   );
 }
 
-export default KebabMenuPost;
+export default KebabMenu;

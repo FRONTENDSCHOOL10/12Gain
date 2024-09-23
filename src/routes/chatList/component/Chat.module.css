@@ -31,7 +31,7 @@
   .chat__container__message {
     font-size: 0.875rem;
     font-weight: 400;
-    width: 90%;
+    width: 14rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

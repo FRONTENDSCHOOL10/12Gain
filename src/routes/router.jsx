@@ -1,11 +1,11 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
-import MainPost from './home/component/MainPost';
 import Landing from './landing';
-import Feed from './community/component/Feed';
+import NotFound from './notFound';
 
 const routes = [
   { path: '/', element: <Landing /> },
+  { path: '*', element: <NotFound /> },
   { path: 'login', lazy: () => import('@/routes/login') },
   { path: 'Landing/signUp', lazy: () => import('@/routes/signup') },
   {
@@ -21,9 +21,18 @@ const routes = [
         lazy: () => import('@/routes/home'),
         children: [
           { index: true, element: <Navigate to="new" replace /> },
-          { path: 'new', element: <MainPost /> },
-          { path: 'recommend', element: <MainPost /> },
-          { path: 'interest', element: <MainPost /> },
+          {
+            path: 'new',
+            lazy: () => import('@/routes/home/component/MainPost'),
+          },
+          {
+            path: 'recommend',
+            lazy: () => import('@/routes/home/component/MainPost'),
+          },
+          {
+            path: 'interest',
+            lazy: () => import('@/routes/home/component/MainPost'),
+          },
         ],
       },
       {
@@ -35,8 +44,14 @@ const routes = [
         lazy: () => import('@/routes/community'),
         children: [
           { index: true, element: <Navigate to="new" replace /> },
-          { path: 'new', element: <Feed /> },
-          { path: 'recommend', element: <Feed /> },
+          {
+            path: 'new',
+            lazy: () => import('@/routes/community/component/MainFeed'),
+          },
+          {
+            path: 'recommend',
+            lazy: () => import('@/routes/community/component/MainFeed'),
+          },
         ],
       },
       {
@@ -68,11 +83,11 @@ const routes = [
     lazy: () => import('@/routes/postDetails'),
   },
   {
-    path: 'chat',
+    path: '/main/chatlist',
     lazy: () => import('@/routes/chatList'),
   },
   {
-    path: 'chat/:chatroomId',
+    path: '/main/post/:postId/chat',
     lazy: () => import('@/routes/chatList/ChatRoom'),
   },
   {

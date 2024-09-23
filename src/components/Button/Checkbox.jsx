@@ -1,14 +1,15 @@
 import S from '@/components/Button/Checkbox.module.css';
-
-import { string } from 'prop-types';
+import { string, bool, func } from 'prop-types';
 
 Checkbox.propTypes = {
   text: string.isRequired,
+  checked: bool,
+  onChange: func,
 };
 
-function Checkbox({ text }) {
+function Checkbox({ text, checked, onChange }) {
   const handleInterestFilter = (e) => {
-    console.log(e.target.value, e.target.checked);
+    onChange(text, e.target.checked);
   };
 
   return (
@@ -18,6 +19,7 @@ function Checkbox({ text }) {
         id={text}
         name="interest"
         value={text}
+        checked={checked}
         onChange={handleInterestFilter}
       />
       <label htmlFor={text}>{text}</label>

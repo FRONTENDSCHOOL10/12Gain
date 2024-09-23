@@ -26,10 +26,22 @@ const postStore = create((set, get) => ({
         sortField = '-created';
       } else if (filter.mainCategory === '관심') {
         const currentUser = pb.authStore.model;
-        if (currentUser && currentUser.interests) {
-          filterString = `category ~ "${currentUser.interests.join('|')}"`;
+
+        if (
+          currentUser &&
+          currentUser.interest &&
+          currentUser.interest.length > 0
+        ) {
+          const interestFilters = currentUser.interest.map(
+            (interest) => `category ~ "${interest}"`
+          );
+          filterString = `(${interestFilters.join(' || ')})`;
         } else {
-          set({ error: '관심 카테고리를 설정해주세요.', isLoading: false });
+          set({
+            posts: [],
+            error: '관심 운동 종목을 설정해주세요.',
+            isLoading: false,
+          });
           return;
         }
       }
@@ -39,14 +51,27 @@ const postStore = create((set, get) => ({
         filter: filterString,
         expand: 'writer',
       });
+
+      const joinRecords = await pb.collection('join').getList(1, 1000, {
+        fields: 'appointment_id',
+      });
+
+      const joinCounts = joinRecords.items.reduce((acc, join) => {
+        acc[join.appointment_id] = (acc[join.appointment_id] || 0) + 1;
+        return acc;
+      }, {});
+
       const formattedPosts = records.items.map((post) => ({
         ...post,
-        date: post.date ? new Date(post.date).toISOString() : null,
+        date: post.date,
+        time: post.time,
+        currentMemberCount: joinCounts[post.id] || 0,
       }));
 
       set({ posts: formattedPosts, isLoading: false });
     } catch (error) {
-      set({ error, isLoading: false });
+      console.error('Error fetching posts:', error);
+      set({ error: error.message, isLoading: false });
     }
   },
 
@@ -55,16 +80,18 @@ const postStore = create((set, get) => ({
       const currentUser = pb.authStore.model;
       if (currentUser) {
         await pb.collection('users').update(currentUser.id, {
-          interests: newInterests,
+          interest: newInterests,
         });
 
         const updatedUser = await pb.collection('users').getOne(currentUser.id);
         pb.authStore.save(updatedUser.token, updatedUser);
+
+        get().fetchPosts();
       } else {
         throw new Error('사용자가 로그인하지 않았습니다.');
       }
     } catch (error) {
-      set({ error });
+      set({ error: error.message });
     }
   },
 }));

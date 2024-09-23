@@ -6,6 +6,7 @@ import pb from '@/api/pb.js';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import CustomHelmet from '@/components/CustomHelmet/CustomHelmet';
 
 const NICKNAME = '닉네임';
 
@@ -40,11 +41,15 @@ export function Component() {
 
   return (
     <div className={S.component}>
+      <CustomHelmet
+        title="회원 탈퇴"
+        description="회원 탈퇴 페이지입니다."
+        path="/profile/delete-account"
+      />
+
       <HeaderForDetails
         text="회원 탈퇴"
-        leftIcon={[
-          { iconId: 'left', path: '/main/profile/setting', title: '뒤로가기' },
-        ]}
+        leftIcon={[{ iconId: 'left', path: '-1', title: '뒤로가기' }]}
       />
       <div className={S.content__container}>
         <h2>
@@ -69,9 +74,11 @@ export function Component() {
           </label>
         </div>
       </div>
-      <Button className={S.button} onClick={handleDeleteAccount}>
-        탈퇴하기
-      </Button>
+      <div className={S.buttonBox}>
+        <Button className={S.button} onClick={handleDeleteAccount}>
+          탈퇴하기
+        </Button>
+      </div>
     </div>
   );
 }

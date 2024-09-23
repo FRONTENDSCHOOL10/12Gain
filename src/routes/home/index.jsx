@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Banner from './banner/Banner';
 import postStore from '@/stores/postStore';
+import CustomHelmet from '@/components/CustomHelmet/CustomHelmet';
 
 export function Component() {
   const [subNavList] = useState([
@@ -14,21 +15,25 @@ export function Component() {
     { path: '/main/home/interest', text: '관심' },
   ]);
 
-  const { setFilter, fetchPosts } = postStore();
+  const { setFilter, fetchPosts, posts, error } = postStore();
   const location = useLocation();
 
   useEffect(() => {
     const currentPath = location.pathname;
-    console.log('현재 경로:', currentPath);
     const currentTab =
       subNavList.find((item) => item.path === currentPath)?.text || '신규';
-    console.log('현재 탭:', currentTab);
+
     setFilter({ mainCategory: currentTab });
     fetchPosts();
   }, [location, setFilter, fetchPosts, subNavList]);
 
   return (
     <div className={S.component}>
+      <CustomHelmet
+        title="홈"
+        description="유앤밋 홈페이지 입니다. 홈페이지를 통해 각종 행사와 관심 있는 모임에 참여할 수 있습니다"
+        path="/home"
+      />
       <aside>
         <div className={S.button__container}>
           <PostButton iconId={'calendarPlus'} path={'/main/home/new/post'} />
@@ -36,6 +41,10 @@ export function Component() {
       </aside>
       <MainPostList list={subNavList} />
       <Banner />
+      {error && <p className={S.error}>{error}</p>}
+      {posts.length === 0 && !error && (
+        <p className={S.noPosts}>게시글이 없습니다.</p>
+      )}
       <Outlet />
     </div>
   );

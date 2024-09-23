@@ -1,4 +1,4 @@
-import { string, func, node, oneOf } from 'prop-types';
+import { string, func, node, oneOf, bool } from 'prop-types';
 import S from './Button.module.css';
 import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
@@ -10,6 +10,7 @@ function Button({
   type = 'button',
   onClick,
   children,
+  disabled = false,
 }) {
   return (
     <div className={S.Button}>
@@ -19,6 +20,7 @@ function Button({
           className={clsx(S.Button, className)}
           title={title}
           onClick={onClick}
+          tabIndex={0}
         >
           {children}
         </NavLink>
@@ -28,6 +30,8 @@ function Button({
           type={type}
           title={title}
           onClick={onClick}
+          disabled={disabled}
+          tabIndex={0}
         >
           {children}
         </button>
@@ -43,6 +47,7 @@ Button.propTypes = {
   type: oneOf(['button', 'submit', 'reset']),
   onClick: func,
   children: node,
+  disabled: bool,
 };
 
 export default Button;

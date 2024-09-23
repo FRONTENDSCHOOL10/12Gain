@@ -5,6 +5,7 @@ import SettingList from '@/routes/profile/component/SettingList';
 import pb from '@/api/pb';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import CustomHelmet from '@/components/CustomHelmet/CustomHelmet';
 
 export function Component() {
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
@@ -22,11 +23,15 @@ export function Component() {
 
   return (
     <div className={S.component}>
+      <CustomHelmet
+        title="설정"
+        description="사용자 계정 및 앱 설정 페이지입니다."
+        path="/profile/setting"
+      />
+
       <HeaderForDetails
         text="설정"
-        leftIcon={[
-          { iconId: 'left', path: '/main/profile/edit', title: '뒤로가기' },
-        ]}
+        leftIcon={[{ iconId: 'left', path: '-1', title: '뒤로가기' }]}
       />
       <main>
         <h2 className="sr-only">설정 항목</h2>

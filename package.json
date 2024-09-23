@@ -18,10 +18,11 @@
     "pocketbase": "^0.21.5",
     "react": "18.3.1",
     "react-dom": "18.3.1",
+    "react-helmet-async": "^2.0.5",
     "react-hot-toast": "^2.4.1",
     "react-router-dom": "6.26.1",
     "react-swiper": "^0.1.5",
-    "swiper": "^11.1.10",
+    "swiper": "^11.1.14",
     "zustand": "^4.5.5"
   },
   "devDependencies": {
