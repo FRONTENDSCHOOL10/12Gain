@@ -145,6 +145,7 @@ textarea {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  outline-color: var(--red);
 }
 body {
   font-family: 'Pretendard Variable', sans-serif;
