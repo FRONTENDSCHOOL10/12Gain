@@ -26,7 +26,7 @@ export function Component() {
       userId={feed.writer}
       content={feed.content}
       createdAt={feed.created}
-      category={feed.category}
+      category={'feeds'}
       writer={feed.expand?.writer}
       feed={feed}
       comments={commentList.filter((item) => item.feed === feed.id)}

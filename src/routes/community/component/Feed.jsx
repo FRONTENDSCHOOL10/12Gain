@@ -64,16 +64,9 @@ function Feed({
         <section className={S.feedMainDesc}>
           <span>{content}</span>
         </section>
-        {imgSrc && (
+        {imgSrc.slice(-1) !== '/' && (
           <section className={S.feedMainImg}>
-            <img
-              src={imgSrc}
-              alt="Feed image"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = '/path/to/fallback/image.jpg';
-              }}
-            />
+            <img src={imgSrc} alt="Feed image" />
           </section>
         )}
         <section className={S.BtnCount}>
@@ -100,7 +93,7 @@ Feed.propTypes = {
   userId: PropTypes.string,
   content: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
+  category: PropTypes.string,
   writer: PropTypes.shape({
     nickname: PropTypes.string,
   }),

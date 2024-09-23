@@ -32,8 +32,8 @@ export function Component() {
           console.error('날짜 포맷팅 오류:', error);
         }
 
-        const currentMemberCount = post.currentMemberCount || 0;
-        const totalMemberCount = post.memberCount || 0;
+        const currentMemberCount = post.currentMemberCount || '0';
+        const totalMemberCount = post.memberCount || '0';
 
         return (
           <Post

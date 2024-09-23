@@ -20,7 +20,7 @@ import CustomHelmet from '@/components/CustomHelmet/CustomHelmet';
 export function Component() {
   const { postId } = useParams();
 
-  const { postData, isLoading, fetchPost } = usePostData();
+  const { postData, isLoading, fetchPost, resetPostData } = usePostData();
   const { joinData, fetchJoinData, updateJoinData } = useJoin();
   const { users, fetchUsers } = useUsers();
 
@@ -30,7 +30,11 @@ export function Component() {
   useEffect(() => {
     fetchPost(postId);
     fetchJoinData(postId);
-  }, [fetchPost, fetchJoinData, postId]);
+
+    return () => {
+      resetPostData();
+    };
+  }, [fetchPost, fetchJoinData, postId, resetPostData]);
 
   const members = joinData.map((item) => item.user_id);
   const filter = members.map((item) => `id = "${item}"`).join(' || ');
