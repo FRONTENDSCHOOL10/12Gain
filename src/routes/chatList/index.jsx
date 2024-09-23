@@ -6,6 +6,7 @@ import HeaderForDetails from '@/components/HeaderForDetails/HeaderForDetails';
 import { useJoin } from '@/stores/join';
 import { useEffect } from 'react';
 import { useMessageData } from '@/stores/chat';
+import { useState } from 'react';
 
 export function Component() {
   const navigate = useNavigate();
@@ -13,14 +14,16 @@ export function Component() {
 
   const { joinData, fetchJoinDataByUser } = useJoin();
   const { chatList, fetchChatDataByFilter } = useMessageData();
+  const [filter, setFilter] = useState(null);
 
   useEffect(() => {
     fetchJoinDataByUser(userId);
-  }, [fetchJoinDataByUser, userId]);
+    const filter = joinData
+      .map((item) => `post_id = "${item.appointment_id}"`)
+      .join(' || ');
 
-  const filter = joinData
-    .map((item) => `post_id = "${item.appointment_id}"`)
-    .join(' || ');
+    setFilter(filter);
+  }, [fetchJoinDataByUser, userId, joinData]);
 
   useEffect(() => {
     fetchChatDataByFilter(filter);
