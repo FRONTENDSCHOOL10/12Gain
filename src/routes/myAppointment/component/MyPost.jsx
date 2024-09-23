@@ -5,8 +5,6 @@ import S from '@/routes/myAppointment/component/MyPost.module.css';
 import pb from '@/api/pb.js';
 import { useAuthStore } from '@/stores/authStore';
 import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
-import { addHours, format, parseISO } from 'date-fns';
-import { ko } from 'date-fns/locale';
 
 function MyPost() {
   const navigate = useNavigate();
@@ -23,18 +21,19 @@ function MyPost() {
 
           const joinRecords = await pb.collection('join').getFullList({
             filter: `user_id="${userId}"`,
-            expand: 'appointments_id',
+            expand: 'appointment_id',
           });
 
-          const fetchedAppointments = joinRecords.map(
-            (join) => join.expand.appointment_id
-          );
+          const fetchedAppointments = joinRecords
+            .map((join) => join.expand?.appointment_id) // 안전하게 appointment_id에 접근
+            .filter((appointment) => appointment !== undefined); // undefined 값 필터링
 
           setAppointmentsData(fetchedAppointments);
           setIsLoading(false);
         }
       } catch (error) {
         console.error('Error fetching appointments data:', error);
+        setIsLoading(false); // 오류 발생 시 로딩 상태를 false로 변경
       }
     }
 
@@ -46,45 +45,18 @@ function MyPost() {
   ) : (
     <div className={S.component}>
       {appointmentsData.length > 0 ? (
-        appointmentsData.map((appointment) => {
-          let formattedDate = '날짜 없음';
-          try {
-            if (appointment.date) {
-              const utcDate =
-                typeof appointment.date === 'string'
-                  ? parseISO(appointment.date)
-                  : new Date(appointment.date);
-              const kstDate = addHours(utcDate, 9); // UTC to KST
-              let dateString = format(kstDate, 'yyyy.MM.dd.');
-
-              if (appointment.time) {
-                const [hours, minutes] = appointment.time.split(':');
-                kstDate.setHours(parseInt(hours, 10), parseInt(minutes, 10));
-                dateString += ' ' + format(kstDate, 'a HH:mm', { locale: ko });
-              }
-
-              formattedDate = dateString;
-            }
-          } catch (error) {
-            console.error('날짜 포맷팅 오류:', error);
-          }
-
-          const currentMemberCount = appointment.currentMemberCount || '1';
-          const totalMemberCount = appointment.memberCount || '0';
-          return (
-            <Post
-              key={appointment.id}
-              title={appointment.title}
-              date={formattedDate}
-              place={appointment.location}
-              member={`${currentMemberCount} / ${totalMemberCount}`}
-              category={appointment.category}
-              id={appointment.id}
-              writer={user}
-              onClick={() => navigate(`/posts/${appointment.id}`)}
-            />
-          );
-        })
+        appointmentsData.map((appointment) => (
+          <Post
+            key={appointment.id}
+            title={appointment.title}
+            date={appointment.date}
+            place={appointment.location}
+            member={appointment.memberCount}
+            category={appointment.category}
+            id={appointment.id}
+            onClick={() => navigate(`/posts/${appointment.id}`)}
+          />
+        ))
       ) : (
         <p>No posts found.</p>
       )}
