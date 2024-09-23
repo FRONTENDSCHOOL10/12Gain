@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom';
 import S from '@/components/Post/style.module.css';
 import ProfileImage from '@/components/ProfileImage/ProfileImage';
 import Icon from '@/components/Icon/Icon';
-import { string, number, oneOfType } from 'prop-types';
+import { string, number, oneOfType, object } from 'prop-types';
 import getPbImageURL from '@/api/getPbImageURL';
+import {} from 'prop-types';
 
 Post.propTypes = {
   title: string.isRequired,
@@ -12,7 +13,7 @@ Post.propTypes = {
   member: oneOfType([string, number]),
   category: string.isRequired,
   id: string.isRequired,
-  writer: string.isRequired,
+  writer: oneOfType([string, object]),
 };
 
 function Post({ title, date, place, member = 1, category, id, writer }) {

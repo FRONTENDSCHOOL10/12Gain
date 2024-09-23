@@ -20,6 +20,7 @@ function Button({
           className={clsx(S.Button, className)}
           title={title}
           onClick={onClick}
+          tabIndex={0}
         >
           {children}
         </NavLink>
@@ -30,6 +31,7 @@ function Button({
           title={title}
           onClick={onClick}
           disabled={disabled}
+          tabIndex={0}
         >
           {children}
         </button>

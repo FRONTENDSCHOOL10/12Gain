@@ -24,14 +24,16 @@ const INITIAL_POSTDATA = {
 export const usePostData = create((set) => ({
   postData: INITIAL_POSTDATA,
   imageData: [],
+  isLoading: false,
 
   updatePostData: (data) =>
     set(({ postData }) => ({ postData: { ...postData, ...data } })),
 
   fetchPost: async (postId) => {
+    set({ isLoading: true });
     const post = await pb.collection('appointments').getOne(`${postId}`);
 
-    set({ postData: post });
+    set({ postData: post, isLoading: false });
   },
 
   resetPostData: () => set({ postData: INITIAL_POSTDATA }),

@@ -4,7 +4,7 @@ import { useCommentData } from '@/stores/comment';
 import communityStore from '@/stores/communityStore';
 import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 
-function MainFeed() {
+export function Component() {
   const { commentList, fetchCommentsData } = useCommentData();
 
   const { feeds, fetchFeeds, isLoading } = communityStore();
@@ -26,12 +26,10 @@ function MainFeed() {
       userId={feed.writer}
       content={feed.content}
       createdAt={feed.created}
-      category={feed.category}
+      category={'feeds'}
       writer={feed.expand?.writer}
       feed={feed}
       comments={commentList.filter((item) => item.feed === feed.id)}
     />
   ));
 }
-
-export default MainFeed;

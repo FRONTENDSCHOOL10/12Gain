@@ -10,6 +10,7 @@ import { useKebabMenuStore } from '@/stores/kebabStore';
 import { useEffect } from 'react';
 import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 import { useState } from 'react';
+import CustomHelmet from '@/components/CustomHelmet/CustomHelmet';
 
 export function Component() {
   const [profileNav] = useProfileNav((s) => [s.profileNav]);
@@ -39,6 +40,11 @@ export function Component() {
 
   return (
     <div className={S.component}>
+      <CustomHelmet
+        title="프로필"
+        description="사용자 프로필 페이지입니다. 프로필 수정 및 작성한 게시물을 볼 수 있습니다."
+        path="/main/profile"
+      />
       <main className={S.component__profile}>
         <ProfileCard
           nickName={userData.nickname}

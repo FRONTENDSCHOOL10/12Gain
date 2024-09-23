@@ -1,8 +1,6 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
-import MainPost from './home/component/MainPost';
 import Landing from './landing';
-import MainFeed from './community/component/MainFeed';
 import NotFound from './notFound';
 
 const routes = [
@@ -23,9 +21,18 @@ const routes = [
         lazy: () => import('@/routes/home'),
         children: [
           { index: true, element: <Navigate to="new" replace /> },
-          { path: 'new', element: <MainPost /> },
-          { path: 'recommend', element: <MainPost /> },
-          { path: 'interest', element: <MainPost /> },
+          {
+            path: 'new',
+            lazy: () => import('@/routes/home/component/MainPost'),
+          },
+          {
+            path: 'recommend',
+            lazy: () => import('@/routes/home/component/MainPost'),
+          },
+          {
+            path: 'interest',
+            lazy: () => import('@/routes/home/component/MainPost'),
+          },
         ],
       },
       {
@@ -37,8 +44,14 @@ const routes = [
         lazy: () => import('@/routes/community'),
         children: [
           { index: true, element: <Navigate to="new" replace /> },
-          { path: 'new', element: <MainFeed /> },
-          { path: 'recommend', element: <MainFeed /> },
+          {
+            path: 'new',
+            lazy: () => import('@/routes/community/component/MainFeed'),
+          },
+          {
+            path: 'recommend',
+            lazy: () => import('@/routes/community/component/MainFeed'),
+          },
         ],
       },
       {

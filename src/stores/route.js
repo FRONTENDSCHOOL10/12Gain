@@ -35,7 +35,7 @@ export const useHeader = create(() => ({
       path: '/main/home',
       iconList: [
         { iconId: 'search', path: '/main/search', title: '검색' },
-        { iconId: 'chat', path: '/main/chat', title: '채팅' },
+        { iconId: 'chat', path: '/main/chatlist', title: '채팅' },
         { iconId: 'alarm', path: '/main/alarm', title: '알림' },
       ],
     },
@@ -43,7 +43,7 @@ export const useHeader = create(() => ({
       path: '/main/home/new',
       iconList: [
         { iconId: 'search', path: '/main/search', title: '검색' },
-        { iconId: 'chat', path: '/main/chat', title: '채팅' },
+        { iconId: 'chat', path: '/main/chatlist', title: '채팅' },
         { iconId: 'alarm', path: '/main/alarm', title: '알림' },
       ],
     },
@@ -51,7 +51,7 @@ export const useHeader = create(() => ({
       path: '/main/home/recommend',
       iconList: [
         { iconId: 'search', path: '/main/search', title: '검색' },
-        { iconId: 'chat', path: '/main/chat', title: '채팅' },
+        { iconId: 'chat', path: '/main/chatlist', title: '채팅' },
         { iconId: 'alarm', path: '/main/alarm', title: '알림' },
       ],
     },
@@ -59,7 +59,7 @@ export const useHeader = create(() => ({
       path: '/main/home/interest',
       iconList: [
         { iconId: 'search', path: '/main/search', title: '검색' },
-        { iconId: 'chat', path: '/main/chat', title: '채팅' },
+        { iconId: 'chat', path: '/main/chatlist', title: '채팅' },
         { iconId: 'alarm', path: '/main/alarm', title: '알림' },
       ],
     },
@@ -68,7 +68,7 @@ export const useHeader = create(() => ({
       text: '내 모임',
       iconList: [
         { iconId: 'search', path: '/main/search', title: '검색' },
-        { iconId: 'chat', path: '/main/chat', title: '채팅' },
+        { iconId: 'chat', path: '/main/chatlist', title: '채팅' },
         { iconId: 'alarm', path: '/main/alarm', title: '알림' },
       ],
     },
@@ -77,7 +77,7 @@ export const useHeader = create(() => ({
       text: '커뮤니티',
       iconList: [
         { iconId: 'search', path: '/main/search', title: '검색' },
-        { iconId: 'chat', path: '/main/chat', title: '채팅' },
+        { iconId: 'chat', path: '/main/chatlist', title: '채팅' },
         { iconId: 'alarm', path: '/main/alarm', title: '알림' },
       ],
     },
@@ -86,7 +86,7 @@ export const useHeader = create(() => ({
       text: '커뮤니티',
       iconList: [
         { iconId: 'search', path: '/main/search', title: '검색' },
-        { iconId: 'chat', path: '/main/chat', title: '채팅' },
+        { iconId: 'chat', path: '/main/chatlist', title: '채팅' },
         { iconId: 'alarm', path: '/main/alarm', title: '알림' },
       ],
     },
@@ -95,7 +95,7 @@ export const useHeader = create(() => ({
       text: '커뮤니티',
       iconList: [
         { iconId: 'search', path: '/main/search', title: '검색' },
-        { iconId: 'chat', path: '/main/chat', title: '채팅' },
+        { iconId: 'chat', path: '/main/chatlist', title: '채팅' },
         { iconId: 'alarm', path: '/main/alarm', title: '알림' },
       ],
     },

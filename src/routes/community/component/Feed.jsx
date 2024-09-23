@@ -55,7 +55,6 @@ function Feed({
   };
 
   const count = comments ? comments.length : 0;
-  console.log(writer);
 
   const postWriterAvatar = getPbImageURL(writer, 'avatar');
   const postWriterAvatarURL =
