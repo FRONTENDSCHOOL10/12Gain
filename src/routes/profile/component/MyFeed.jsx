@@ -21,7 +21,6 @@ export function Component() {
         }
         const feeds = await pb.collection('feeds').getFullList();
         const writer = feeds.filter((myFeed) => myFeed.writer === currentUser);
-        console.log(feeds);
 
         setUserFeeds(
           writer.map((item) => ({
@@ -46,7 +45,6 @@ export function Component() {
   }, []);
 
   if (isLoading) return <LoadingSpinner />;
-  console.log(userFeeds);
 
   return (
     <div className={S.component}>
