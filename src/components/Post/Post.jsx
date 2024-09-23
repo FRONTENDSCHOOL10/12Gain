@@ -4,7 +4,6 @@ import ProfileImage from '@/components/ProfileImage/ProfileImage';
 import Icon from '@/components/Icon/Icon';
 import { string, number, oneOfType, object } from 'prop-types';
 import getPbImageURL from '@/api/getPbImageURL';
-import {} from 'prop-types';
 
 Post.propTypes = {
   title: string.isRequired,
@@ -17,9 +16,9 @@ Post.propTypes = {
 };
 
 function Post({ title, date, place, member = 1, category, id, writer }) {
-  const postWriterAvatar = getPbImageURL(writer, 'avatar');
+  const postWriterAvatar = writer ? getPbImageURL(writer, 'avatar') : '';
   const postWriterAvatarURL =
-    writer.avatar === '' ? '/profile.png' : postWriterAvatar;
+    writer && writer.avatar ? postWriterAvatar : '/profile.png';
 
   return (
     <article className={S.component}>

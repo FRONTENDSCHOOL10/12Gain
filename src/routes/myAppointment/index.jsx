@@ -11,7 +11,7 @@ export function Component() {
         description="내가 참여한 모임 리스트입니다."
         path="/main/myAppointment"
       />
-      <MyPost /> {/* MyPost 컴포넌트만 렌더링 */}
+      <MyPost />
       <Outlet />
     </div>
   );

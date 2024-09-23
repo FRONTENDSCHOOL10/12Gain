@@ -1,7 +1,10 @@
+import React, { Suspense } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import Landing from './landing';
 import NotFound from './notFound';
+
+const LazySearchPage = React.lazy(() => import('@/routes/search')); // Lazy loading 정의
 
 const routes = [
   { path: '/', element: <Landing /> },
@@ -34,6 +37,16 @@ const routes = [
             lazy: () => import('@/routes/home/component/MainPost'),
           },
         ],
+      },
+      {
+        path: 'search',
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            {' '}
+            {/* 로딩 스피너 없이 간단한 텍스트 */}
+            <LazySearchPage />
+          </Suspense>
+        ),
       },
       {
         path: 'myAppointment',
