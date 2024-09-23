@@ -96,19 +96,19 @@
   <tbody>
     <tr>
 <td align="center"><a href="https://github.com/hyoungsiyoung">
-<img src="https://avatars.githubusercontent.com/u/148939130?v=4" width="100," alt="형시영" >
+<img src="https://avatars.githubusercontent.com/u/148939130?v=4" width="150," alt="형시영" >
 </a><br/><sub><b>조장 : 형시영</b></sub></a><br /></td>
 
 <td align="center"><a href="https://github.com/seungsu-K">
-<img src="https://avatars.githubusercontent.com/u/153834323?v=4" width="100," alt="김승수" >
+<img src="https://avatars.githubusercontent.com/u/153834323?v=4" width="150," alt="김승수" >
 </a><br/><sub><b>조원 : 김승수</b></sub></a><br /></td>
 
 <td align="center"><a href="https://github.com/Yooniverse42">
-<img src="https://avatars.githubusercontent.com/u/162732401?v=4" width="100," alt="김지윤" >
+<img src="https://avatars.githubusercontent.com/u/162732401?v=4" width="150," alt="김지윤" >
 </a><br/><sub><b>조원 : 김지윤</b></sub></a><br /></td>
 
 <td align="center"><a href="https://github.com/soyeonpaark">
-<img src="https://github.com/user-attachments/assets/7fdb393b-3438-4453-a977-705ba39001b3" width="100," alt="박소연" >
+<img src="https://github.com/user-attachments/assets/7fdb393b-3438-4453-a977-705ba39001b3" width="150," alt="박소연" >
 </a><br/><sub><b>조원 : 박소연</b></sub></a><br /></td>
     </tr>
   </tbody>
