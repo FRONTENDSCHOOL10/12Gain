@@ -9,9 +9,7 @@ FeedCard.propTypes = {
   writer: string.isRequired,
 };
 
-function FeedCard({ content, imageUrl, date, writer }) {
-  console.log(writer);
-
+function FeedCard({ content, feedId, imageUrl, date, writer }) {
   return (
     <article className={S.component}>
       <h2 className="sr-only">{`${date} 게시글`}</h2>
@@ -19,7 +17,12 @@ function FeedCard({ content, imageUrl, date, writer }) {
       <div className={S.content__container}>
         <div className={S.content__container__sub}>
           <span className={S.content}>{content}</span>
-          <KebabMenu category="feeds" categoryText="게시물" writer={writer} />
+          <KebabMenu
+            category="feeds"
+            feedId={feedId}
+            categoryText="게시물"
+            writer={writer}
+          />
         </div>
         <span className={S.content__date}>{date}</span>
       </div>

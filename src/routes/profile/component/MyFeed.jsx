@@ -52,6 +52,7 @@ export function Component() {
         userFeeds.map((feed) => (
           <FeedCard
             key={feed.id}
+            feedId={feed.id}
             content={feed.content}
             imageUrl={feed.imageUrl}
             date={feed.date}

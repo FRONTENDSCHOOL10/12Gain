@@ -16,7 +16,7 @@ KebabMenu.propTypes = {
   writer: string.isRequired,
 };
 
-function KebabMenu({ category, categoryText, chat = false, writer }) {
+function KebabMenu({ category, feedId, categoryText, chat = false, writer }) {
   const { postId } = useParams();
   const nav = useNavigate();
   const {
@@ -43,11 +43,11 @@ function KebabMenu({ category, categoryText, chat = false, writer }) {
 
   useEffect(() => {
     if (category === 'appointments') {
-      fetchPostWriter(category, postId);
+      fetchPostWriter(category, feedId && postId);
     } else if (category === 'feeds') {
       setPostWriter(writer);
     }
-  }, [fetchPostWriter, category, postId, writer, setPostWriter]);
+  }, [fetchPostWriter, category, postId, writer, setPostWriter, feedId]);
 
   const isAuthor = currentUser === postWriter;
 
