@@ -9,6 +9,7 @@ import ProgressBar from './component/ProgressBar';
 import SignUpLogo from './component/SignUpLogo';
 import TermsStep from './component/TermsStep';
 import NicknameStep from './component/NicknameStep';
+import CustomHelmet from '@/components/CustomHelmet/CustomHelmet';
 
 export function Component() {
   const [step, setStep] = useState(1);
@@ -26,6 +27,12 @@ export function Component() {
 
   return (
     <div>
+      <CustomHelmet
+        title="회원가입"
+        description="새로운 계정을 만들기 위한 페이지입니다."
+        path="/main/signup"
+      />
+
       <HeaderForDetails
         leftIcon={[{ iconId: 'left', path: '/', title: '뒤로가기' }]}
       />
