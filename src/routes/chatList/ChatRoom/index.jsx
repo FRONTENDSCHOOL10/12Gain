@@ -39,9 +39,7 @@ export function Component() {
   ) : (
     <>
       <HeaderForDetails
-        leftIcon={[
-          { iconId: 'left', title: '뒤로가기', path: '/main/chatlist' },
-        ]}
+        leftIcon={[{ iconId: 'left', title: '뒤로가기', path: '-1' }]}
         text={postData.title}
         rightIcon={[{ iconId: 'more', title: '더보기' }]}
       />
