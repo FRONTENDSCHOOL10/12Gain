@@ -80,7 +80,10 @@ function KebabMenu({ category, categoryText, chat = false, writer }) {
               </div>
             ) : isAuthor ? (
               <div className={clsx(S.option__wrapper)}>
-                <NavLink to={'/main'} className={clsx(S.option__button)}>
+                <NavLink
+                  to={postId ? '/main/new/post' : '/main/community/create'}
+                  className={clsx(S.option__button)}
+                >
                   수정하기
                 </NavLink>
                 <Button

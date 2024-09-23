@@ -81,9 +81,7 @@ export function Component() {
     <>
       <HeaderForDetails
         text="피드 생성"
-        leftIcon={[
-          { iconId: 'left', path: '/main/community', title: '뒤로가기' },
-        ]}
+        leftIcon={[{ iconId: 'left', path: '-1', title: '뒤로가기' }]}
       />
       <form className={S.component}>
         <div className={S.textarea}>
