@@ -3,13 +3,12 @@ import S from '@/routes/community/component/Feed.module.css';
 import BtnThumsup from '@/routes/community/component/BtnThumsup';
 import FeedProfile from '@/routes/community/component/FeedProfile';
 import KebabMenu from '@/components/KebabMenu/KebabMenu';
-import PropTypes from 'prop-types';
 import BtnComment from './BtnComment';
-import { useState } from 'react';
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import { animate } from 'motion';
-import { object, array } from 'prop-types';
+import { object, array, string, shape } from 'prop-types';
 import Comment from '../Comment/Comment';
+import getPbImageURL from '@/api/getPbImageURL';
 
 function Feed({
   imgSrc,
@@ -56,6 +55,11 @@ function Feed({
   };
 
   const count = comments ? comments.length : 0;
+  console.log(writer);
+
+  const postWriterAvatar = getPbImageURL(writer, 'avatar');
+  const postWriterAvatarURL =
+    writer.avatar === '' ? '/profile.png' : postWriterAvatar;
 
   return (
     <>
@@ -64,6 +68,7 @@ function Feed({
           <FeedProfile
             nickName={writer?.nickname || 'Unknown'}
             createdAt={createdAt}
+            url={postWriterAvatarURL}
           />
           <KebabMenu category={category} categoryText="게시물" />
         </section>
@@ -95,13 +100,14 @@ function Feed({
 }
 
 Feed.propTypes = {
-  imgSrc: PropTypes.string,
-  userId: PropTypes.string,
-  content: PropTypes.string.isRequired,
-  createdAt: PropTypes.string.isRequired,
-  category: PropTypes.string,
-  writer: PropTypes.shape({
-    nickname: PropTypes.string,
+  imgSrc: string,
+  userId: string,
+  content: string.isRequired,
+  createdAt: string.isRequired,
+  category: string.isRequired,
+  writer: shape({
+    nickname: string,
+    avatar: string,
   }),
   user: object,
   feed: object,
