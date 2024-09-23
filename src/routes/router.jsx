@@ -3,9 +3,11 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import MainPost from './home/component/MainPost';
 import Landing from './landing';
 import MainFeed from './community/component/MainFeed';
+import NotFound from './notFound';
 
 const routes = [
   { path: '/', element: <Landing /> },
+  { path: '*', element: <NotFound /> },
   { path: 'login', lazy: () => import('@/routes/login') },
   { path: 'Landing/signUp', lazy: () => import('@/routes/signup') },
   {
@@ -68,11 +70,11 @@ const routes = [
     lazy: () => import('@/routes/postDetails'),
   },
   {
-    path: 'chat',
+    path: '/main/chatlist',
     lazy: () => import('@/routes/chatList'),
   },
   {
-    path: 'chat/:chatroomId',
+    path: '/main/post/:postId/chat',
     lazy: () => import('@/routes/chatList/ChatRoom'),
   },
   {

@@ -1,6 +1,7 @@
 import S from '@/components/Confirm/Confirm.module.css';
 import Button from '../Button/Button';
 import { string, func } from 'prop-types';
+import clsx from 'clsx';
 
 Confirm.propTypes = {
   text: string,
@@ -13,10 +14,16 @@ function Confirm({ text, onClick, onCancel }) {
     <div className={S.component}>
       <span>{text}</span>
       <div className={S.button__container}>
-        <Button className={S.button__cancel} onClick={onCancel}>
+        <Button
+          className={clsx(S.button__cancel, 'button-small')}
+          onClick={onCancel}
+        >
           취소
         </Button>
-        <Button className={S.button__confirm} onClick={onClick}>
+        <Button
+          className={clsx(S.button__confirm, 'button-small')}
+          onClick={onClick}
+        >
           확인
         </Button>
       </div>

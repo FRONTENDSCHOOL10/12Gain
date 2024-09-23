@@ -62,6 +62,10 @@ export function Component() {
     }
   };
 
+  const routeToChat = `/main/post/${postData.id}/chat`;
+
+  const date = `${postData.date.slice(0, 10)} ${postData.time}`;
+
   return isLoading ? (
     <LoadingSpinner />
   ) : (
@@ -83,7 +87,7 @@ export function Component() {
           <div className={S.main_detail}>
             <DetailItem label="종목" value={postData.category} />
             <DetailItem label="장소" value={postData.location} />
-            <DetailItem label="일시" value={postData.date} />
+            <DetailItem label="일시" value={date} />
             <DetailItem label="인원" value={postData.memberCount} />
           </div>
         </div>
@@ -105,7 +109,7 @@ export function Component() {
 
         <div className={S.attend_button}>
           {members.includes(user) ? (
-            <Link to={'join'} className={S.button}>
+            <Link to={routeToChat} className={S.button}>
               채팅하기
             </Link>
           ) : (

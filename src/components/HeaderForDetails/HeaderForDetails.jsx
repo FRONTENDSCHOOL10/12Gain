@@ -29,6 +29,7 @@ function HeaderForDetails({
                 iconId={item.iconId}
                 title={item.title}
                 path={item.path}
+                onClick={item.onClick}
                 width={18}
                 height={18}
               />
