@@ -11,7 +11,7 @@ TermsStep.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
-function TermsStep({ onSubmit }) {
+function TermsStep() {
   const navigate = useNavigate();
   const {
     agreeToTerms,
@@ -20,8 +20,6 @@ function TermsStep({ onSubmit }) {
     passwordConfirm,
     nickname,
     setAgreeToTerms,
-    setUser,
-    setToken,
   } = useSignupStore();
 
   const toggleTerm = (key) => {

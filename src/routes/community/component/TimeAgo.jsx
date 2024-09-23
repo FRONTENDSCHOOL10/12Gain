@@ -19,7 +19,7 @@ function TimeAgo({ time }) {
     if (!isValid(date)) {
       throw new Error('Invalid date');
     }
-  } catch (error) {
+  } catch {
     console.error('Invalid date format:', time);
     return <span style={{ color: 'var(--content-secondary)' }}>날짜 오류</span>;
   }

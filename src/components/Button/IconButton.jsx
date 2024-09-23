@@ -1,7 +1,7 @@
 import S from '@/components/Button/IconButton.module.css';
 import Icon from '../Icon/Icon';
 import { string, func, number } from 'prop-types';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { memo } from 'react';
 
 IconButton.propTypes = {
