@@ -1,6 +1,8 @@
 .component {
   background-color: var(--background);
   min-height: 25rem;
+  height: 37rem;
+  max-height: 100vh;
   position: relative;
   border-bottom: 1px solid var(--content-tertiary);
 
