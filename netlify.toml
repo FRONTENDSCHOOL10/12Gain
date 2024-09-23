@@ -1,9 +1,1 @@
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Content-Encoding = "br"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
