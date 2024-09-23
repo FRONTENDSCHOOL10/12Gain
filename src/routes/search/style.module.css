@@ -51,9 +51,9 @@
   display: flex;
   overflow-y: scroll;
   width: 20rem;
+  height: 43.125rem;
   padding: 0.75rem;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   gap: 0.75rem;
 }

@@ -18,20 +18,21 @@ function SearchPage() {
 
   useEffect(() => {
     const fetchSearchResults = async () => {
-      if (searchQuery.trim().length >= 2) {
-        setIsLoading(true);
-        try {
-          const results = await pb.collection('appointments').getFullList({
-            filter: `title ~ "${searchQuery}" || description ~ "${searchQuery}"`,
-          });
-          setSearchResults(results);
-        } catch (error) {
-          console.error('Error fetching search results:', error);
-        } finally {
-          setIsLoading(false);
-        }
-      } else {
+      if (!searchQuery.trim()) {
         setSearchResults([]);
+        return;
+      }
+
+      setIsLoading(true);
+      try {
+        const results = await pb.collection('appointments').getFullList({
+          filter: `title ~ "${searchQuery}" || description ~ "${searchQuery}"`,
+        });
+        setSearchResults(results);
+      } catch (error) {
+        console.error('Error fetching search results:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -64,6 +65,7 @@ function SearchPage() {
               member={post.memberCount}
               category={post.category}
               id={post.id}
+              writer={post.writer}
               onClick={() => navigate(`/posts/${post.id}`)}
             />
           ))}
