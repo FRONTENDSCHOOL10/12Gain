@@ -69,7 +69,11 @@ function Feed({
             createdAt={createdAt}
             url={postWriterAvatarURL}
           />
-          <KebabMenu category={category} categoryText="게시물" />
+          <KebabMenu
+            category={category}
+            categoryText="게시물"
+            writer={writer.id}
+          />
         </section>
         <section className={S.feedMainDesc}>
           <span>{content}</span>

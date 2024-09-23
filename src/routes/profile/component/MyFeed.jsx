@@ -54,6 +54,7 @@ export function Component() {
           content={feed.content}
           imageUrl={feed.imageUrl}
           date={feed.date}
+          writer={feed.writer}
         />
       ))}
     </div>
