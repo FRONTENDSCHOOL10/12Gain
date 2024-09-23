@@ -23,7 +23,7 @@ function MyPost() {
 
           const joinRecords = await pb.collection('join').getFullList({
             filter: `user_id="${userId}"`,
-            expand: 'appointment_id',
+            expand: 'appointments_id',
           });
 
           const fetchedAppointments = joinRecords.map(
