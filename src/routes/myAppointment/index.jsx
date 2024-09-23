@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 export function Component() {
   return (
     <div className={S.component}>
-      <MyPost /> {/* MyPost 컴포넌트만 렌더링 */}
+      <MyPost />
       <Outlet />
     </div>
   );
