@@ -21,6 +21,12 @@ function Feed({
 }) {
   const [commentActive, setcommentActive] = useState(false);
 
+  const [imageLoadError, setImageLoadError] = useState(false);
+
+  const handleImageError = () => {
+    setImageLoadError(true);
+  };
+
   const handleCommentClick = () => {
     if (commentActive) {
       setcommentActive(false);
@@ -69,16 +75,9 @@ function Feed({
         <section className={S.feedMainDesc}>
           <span>{content}</span>
         </section>
-        {imgSrc && (
+        {imgSrc && !imageLoadError && (
           <section className={S.feedMainImg}>
-            <img
-              src={imgSrc}
-              alt="Feed image"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = '/path/to/fallback/image.jpg';
-              }}
-            />
+            <img src={imgSrc} alt="" onError={handleImageError} />
           </section>
         )}
         <section className={S.BtnCount}>

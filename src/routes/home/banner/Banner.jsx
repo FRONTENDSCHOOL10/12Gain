@@ -50,9 +50,17 @@ function Banner() {
         modules={[Navigation, Pagination, Keyboard, Autoplay]}
         spaceBetween={0}
         slidesPerView={1}
+        slidesPerGroup={1}
         keyboard={{ enabled: true }}
-        autoplay={{ delay: 2500, disableOnInteraction: false }}
-        loop={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+          stopOnLastSlide: false,
+          reverseDirection: false,
+        }}
+        loop={images.length > 1}
+        watchSlidesProgress={true}
         onActiveIndexChange={(e) => setSwiperIndex(e.realIndex)}
         onSwiper={setSwiper}
       >
