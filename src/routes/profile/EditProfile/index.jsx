@@ -14,6 +14,7 @@ import { useUserProfile } from '@/stores/users';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import CustomHelmet from '@/components/CustomHelmet/CustomHelmet';
 
 export function Component() {
   const {
@@ -71,6 +72,12 @@ export function Component() {
 
   return (
     <div className={S.component}>
+      <CustomHelmet
+        title="프로필 수정"
+        description="프로필 사진, 이름, 관심 운동 종목, 소개글을 수정할 수 있는 페이지입니다."
+        path="/main/profile/edit"
+      />
+
       <HeaderForDetails
         text="프로필 수정"
         leftIcon={[
