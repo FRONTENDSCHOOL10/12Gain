@@ -51,8 +51,9 @@ export function Component() {
           <div className={S.chatRoom__container}>
             <div className={S.chatRoom__guide}>
               <span>
-                닉네임님은 우수판매자에요. 개인정보유도와 명예훼손 내용은 차단될
-                수 있어요. 자세히 보기
+                메세지를 주고 받을 때는 커뮤니티 가이드라인을 준수하고 서로
+                존중해주세요. 불쾌한 언행으로 신고가 누적된 사용자는 유앤밋
+                서비스 사용에 제한이 있을 수 있습니다.
               </span>
             </div>
             {chatData?.messages?.map((item, index) =>
