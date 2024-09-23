@@ -1,5 +1,5 @@
 import S from '@/routes/community/style.module.css';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import PostList from '@/routes/profile/PostList';
 import PostButton from '@/components/Button/PostButton';
@@ -13,10 +13,16 @@ export function Component() {
   ]);
 
   const location = useLocation();
+  const navigate = useNavigate();
   const { fetchFeeds, setFilter } = communityStore();
 
   useEffect(() => {
     const currentPath = location.pathname;
+
+    if (currentPath === '/main/community') {
+      navigate('/main/community/new', { replace: true });
+    }
+
     const currentTab =
       subNavList.find((item) => item.path === currentPath)?.text || '추천';
     setFilter({ category: currentTab });

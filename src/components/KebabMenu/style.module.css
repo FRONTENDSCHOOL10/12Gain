@@ -38,6 +38,13 @@
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.6;
+  cursor: pointer;
+
+  &:focus,
+  &:active,
+  &:hover {
+    background-color: var(--content-tertiary);
+  }
 }
 .option__buttonRed {
   color: var(--red);

@@ -1,9 +1,11 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import Landing from './landing';
+import NotFound from './notFound';
 
 const routes = [
   { path: '/', element: <Landing /> },
+  { path: '*', element: <NotFound /> },
   { path: 'login', lazy: () => import('@/routes/login') },
   { path: 'Landing/signUp', lazy: () => import('@/routes/signup') },
   {
