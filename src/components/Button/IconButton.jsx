@@ -1,9 +1,8 @@
 import S from '@/components/Button/IconButton.module.css';
 import Icon from '../Icon/Icon';
 import { string, func, number } from 'prop-types';
-import { NavLink } from 'react-router-dom';
-import { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { memo } from 'react';
 
 IconButton.propTypes = {
   title: string,
@@ -31,33 +30,25 @@ function IconButton({
       e.preventDefault();
       nav(-1);
     }
+
+    if (path && path !== '-1') {
+      nav(path);
+    }
+
     if (onClick) {
       onClick(e);
     }
   };
 
   return (
-    <>
-      {path ? (
-        <NavLink
-          to={path !== '-1' ? path : '#'}
-          className={S.IconButton}
-          title={title}
-          onClick={handleClick}
-        >
-          <Icon id={iconId} width={width} height={height} color={iconColor} />
-        </NavLink>
-      ) : (
-        <button
-          className={S.IconButton}
-          type="button"
-          title={title}
-          onClick={onClick}
-        >
-          <Icon id={iconId} width={width} height={height} color={iconColor} />
-        </button>
-      )}
-    </>
+    <button
+      className={S.IconButton}
+      type="button"
+      title={title}
+      onClick={handleClick}
+    >
+      <Icon id={iconId} width={width} height={height} color={iconColor} />
+    </button>
   );
 }
 

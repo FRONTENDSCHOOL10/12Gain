@@ -5,7 +5,7 @@ import Confirm from '@/components/Confirm/Confirm';
 
 import { useEffect } from 'react';
 import { NavLink, useParams, useNavigate } from 'react-router-dom';
-import { oneOf, bool } from 'prop-types';
+import { oneOf, bool, string } from 'prop-types';
 import clsx from 'clsx';
 import { useKebabMenuStore } from '@/stores/kebabStore';
 
@@ -13,15 +13,17 @@ KebabMenu.propTypes = {
   category: oneOf(['appointments', 'feeds']).isRequired,
   categoryText: oneOf(['모임', '게시물']).isRequired,
   chat: bool,
+  writer: string.isRequired,
 };
 
-function KebabMenu({ category, categoryText, chat = false }) {
+function KebabMenu({ category, categoryText, chat = false, writer }) {
   const { postId } = useParams();
   const nav = useNavigate();
   const {
     isOptionOpen,
     currentUser,
     postWriter,
+    setPostWriter,
     showConfirm,
     confirmText,
     fetchUser,
@@ -40,8 +42,12 @@ function KebabMenu({ category, categoryText, chat = false }) {
   }, [fetchUser]);
 
   useEffect(() => {
-    fetchPostWriter(category, postId);
-  }, [fetchPostWriter, category, postId]);
+    if (category === 'appointments') {
+      fetchPostWriter(category, postId);
+    } else if (category === 'feeds') {
+      setPostWriter(writer);
+    }
+  }, [fetchPostWriter, category, postId, writer, setPostWriter]);
 
   const isAuthor = currentUser === postWriter;
 
@@ -74,12 +80,17 @@ function KebabMenu({ category, categoryText, chat = false }) {
               </div>
             ) : isAuthor ? (
               <div className={clsx(S.option__wrapper)}>
-                <NavLink to={'/main'} className={clsx(S.option__button)}>
+                <NavLink
+                  to={postId ? '/main/new/post' : '/main/community/create'}
+                  className={clsx(S.option__button)}
+                >
                   수정하기
                 </NavLink>
                 <Button
                   className={clsx(S.option__button, S.option__buttonRed)}
-                  onClick={() => handleDeleteClick(categoryText)}
+                  onClick={() =>
+                    handleDeleteClick(category, postId, categoryText)
+                  }
                 >
                   삭제하기
                 </Button>

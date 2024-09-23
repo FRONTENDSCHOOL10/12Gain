@@ -24,15 +24,16 @@ function MyPost() {
             expand: 'appointment_id',
           });
 
-          const fetchedAppointments = joinRecords.map(
-            (join) => join.expand.appointment_id
-          );
+          const fetchedAppointments = joinRecords
+            .map((join) => join.expand?.appointment_id) // 안전하게 appointment_id에 접근
+            .filter((appointment) => appointment !== undefined); // undefined 값 필터링
 
           setAppointmentsData(fetchedAppointments);
           setIsLoading(false);
         }
       } catch (error) {
         console.error('Error fetching appointments data:', error);
+        setIsLoading(false); // 오류 발생 시 로딩 상태를 false로 변경
       }
     }
 

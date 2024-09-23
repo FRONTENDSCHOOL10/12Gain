@@ -11,7 +11,7 @@ NicknameStep.propTypes = {
 };
 
 function NicknameStep({ onNext }) {
-  const { nickname, setNickname } = useSignupStore();
+  const { setNickname } = useSignupStore();
   const [localNickname, setLocalNickname] = useState('');
 
   const handleSubmit = async (e) => {

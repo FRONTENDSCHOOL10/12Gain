@@ -48,14 +48,19 @@ export function Component() {
 
   return (
     <div className={S.component}>
-      {userFeeds.map((feed) => (
-        <FeedCard
-          key={feed.id}
-          content={feed.content}
-          imageUrl={feed.imageUrl}
-          date={feed.date}
-        />
-      ))}
+      {userFeeds.length > 0 ? (
+        userFeeds.map((feed) => (
+          <FeedCard
+            key={feed.id}
+            content={feed.content}
+            imageUrl={feed.imageUrl}
+            date={feed.date}
+            writer={feed.writer}
+          />
+        ))
+      ) : (
+        <p className={S.message}>No posts found.</p>
+      )}
     </div>
   );
 }

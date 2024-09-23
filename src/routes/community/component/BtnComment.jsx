@@ -1,13 +1,14 @@
 import IconButton from '@/components/Button/IconButton';
 import S from '@/routes/community/component/BtnCount.module.css';
-import { func, array } from 'prop-types';
+import { func, array, string } from 'prop-types';
 
 BtnComment.propTypes = {
   onClick: func,
   commentList: array,
+  count: string,
 };
 
-function BtnComment({ onClick, commentList, count }) {
+function BtnComment({ onClick, count }) {
   return (
     <div className={S.component} onClick={onClick}>
       <IconButton
