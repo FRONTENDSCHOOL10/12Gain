@@ -28,13 +28,24 @@ function EmailStep({ onNext }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setIsSubmitting(true);
 
-    const verificationCode = Math.floor(1000 + Math.random() * 9000).toString();
-    setVerificationCode(verificationCode);
-
     try {
+      const existingUsers = await pb.collection('users').getFullList({
+        filter: `email = "${email}"`,
+      });
+
+      if (existingUsers.length > 0) {
+        toast.error('이미 사용 중인 이메일입니다.');
+        setIsSubmitting(false);
+        return;
+      }
+
+      const verificationCode = Math.floor(
+        1000 + Math.random() * 9000
+      ).toString();
+      setVerificationCode(verificationCode);
+
       await pb.collection('emailcode').create({
         email,
         code: verificationCode,

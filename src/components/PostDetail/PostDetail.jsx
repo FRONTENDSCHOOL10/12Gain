@@ -33,9 +33,7 @@ function PostDetail() {
   return (
     <article className={S.component}>
       <HeaderForDetails
-        leftIcon={[
-          { iconId: 'left', path: '-1', title: '뒤로가기' }, // TODO:
-        ]}
+        leftIcon={[{ iconId: 'left', path: '-1', title: '뒤로가기' }]}
         rightIcon={[
           { iconId: 'home', path: '/main', title: 'home' },
           { iconId: 'more', path: '/', title: 'more' },
