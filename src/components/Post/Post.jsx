@@ -2,14 +2,13 @@ import { Link } from 'react-router-dom';
 import S from '@/components/Post/style.module.css';
 import ProfileImage from '../ProfileImage/ProfileImage';
 import Icon from '../Icon/Icon';
-import { string } from 'prop-types';
-import { number } from 'prop-types';
+import { string, oneOfType, number } from 'prop-types';
 
 Post.propTypes = {
   title: string.isRequired,
   date: string.isRequired,
   place: string.isRequired,
-  member: number,
+  member: oneOfType([string, number]),
   category: string.isRequired,
   id: string.isRequired,
 };
