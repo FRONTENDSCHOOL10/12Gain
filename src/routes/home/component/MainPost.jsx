@@ -53,7 +53,7 @@ function MainPost() {
             member={`${currentMemberCount} / ${totalMemberCount}`}
             category={post.category}
             id={post.id}
-            writer={post.expand?.writer?.name || 'Unknown'}
+            writer={post.expand?.writer || 'Unknown'}
           />
         );
       })}
