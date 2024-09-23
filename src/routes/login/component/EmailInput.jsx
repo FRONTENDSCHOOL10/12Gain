@@ -2,9 +2,16 @@ import InputWithDelete from '@/components/Input/InputWithDelete';
 import S from '@/components/Input/style.module.css';
 import Tooltip from '@/components/Tooltip/Tooltip';
 import { useLoginForm } from '@/stores/authStore';
+import { string, func, bool } from 'prop-types';
 
-function EmailInput({ type, value, onChange, placeholder, required }) {
-  const { email, setEmail } = useLoginForm();
+EmailInput.propTypes = {
+  type: string,
+  value: string,
+  onChange: func,
+  required: bool,
+};
+
+function EmailInput({ type, value, onChange, required }) {
   const isEmailValid = useLoginForm((state) => state.isEmailValid);
 
   return (

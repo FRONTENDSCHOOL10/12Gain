@@ -16,7 +16,7 @@ export function Component() {
       pb.authStore.clear();
       navigate('/');
       toast.success('로그아웃 되었습니다.');
-    } catch (error) {
+    } catch {
       toast.error('로그아웃에 실패했습니다. 다시 시도하세요.');
     }
   };

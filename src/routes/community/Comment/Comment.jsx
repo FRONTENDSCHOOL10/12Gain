@@ -44,8 +44,6 @@ function Comment({ isActive, feed, commentList }) {
     fetchCommentData(feedId);
   };
 
-  console.log(commentList);
-
   return (
     <div className={S.Comment}>
       <div className={S.Comment__header}>

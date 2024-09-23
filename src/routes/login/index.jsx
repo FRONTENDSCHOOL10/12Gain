@@ -33,7 +33,7 @@ export function Component() {
         clearForm();
         navigate('/main');
         toast.success('유앤밋에 방문하신 것을 환영합니다🤗');
-      } catch (error) {
+      } catch {
         toast.error('로그인이 실패되었습니다. 다시 시도하세요.');
       }
     } else {

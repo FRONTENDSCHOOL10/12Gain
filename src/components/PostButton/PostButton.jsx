@@ -1,4 +1,4 @@
-import { string, bool, func, object } from 'prop-types';
+import { string, bool, func, object, number } from 'prop-types';
 import S from './PostButton.module.css';
 
 function PostButton({

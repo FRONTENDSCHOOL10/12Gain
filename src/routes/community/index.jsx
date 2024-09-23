@@ -27,7 +27,7 @@ export function Component() {
       subNavList.find((item) => item.path === currentPath)?.text || '추천';
     setFilter({ category: currentTab });
     fetchFeeds();
-  }, [location, setFilter, fetchFeeds, subNavList]);
+  }, [location, setFilter, fetchFeeds, subNavList, navigate]);
 
   return (
     <>
