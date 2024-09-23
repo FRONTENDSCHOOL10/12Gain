@@ -43,7 +43,7 @@ function KebabMenu({ category, feedId, categoryText, chat = false, writer }) {
 
   useEffect(() => {
     if (category === 'appointments') {
-      fetchPostWriter(category, feedId && postId);
+      fetchPostWriter(category, feedId ? feedId : postId);
     } else if (category === 'feeds') {
       setPostWriter(writer);
     }
