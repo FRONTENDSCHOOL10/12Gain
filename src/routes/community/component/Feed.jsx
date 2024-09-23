@@ -3,13 +3,12 @@ import S from '@/routes/community/component/Feed.module.css';
 import BtnThumsup from '@/routes/community/component/BtnThumsup';
 import FeedProfile from '@/routes/community/component/FeedProfile';
 import KebabMenu from '@/components/KebabMenu/KebabMenu';
-import PropTypes from 'prop-types';
 import BtnComment from './BtnComment';
-import { useState } from 'react';
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import { animate } from 'motion';
-import { object, array } from 'prop-types';
+import { object, array, string, shape } from 'prop-types';
 import Comment from '../Comment/Comment';
+import getPbImageURL from '@/api/getPbImageURL';
 
 function Feed({
   imgSrc,
@@ -21,6 +20,12 @@ function Feed({
   writer,
 }) {
   const [commentActive, setcommentActive] = useState(false);
+
+  const [imageLoadError, setImageLoadError] = useState(false);
+
+  const handleImageError = () => {
+    setImageLoadError(true);
+  };
 
   const handleCommentClick = () => {
     if (commentActive) {
@@ -51,6 +56,10 @@ function Feed({
 
   const count = comments ? comments.length : 0;
 
+  const postWriterAvatar = getPbImageURL(writer, 'avatar');
+  const postWriterAvatarURL =
+    writer.avatar === '' ? '/profile.png' : postWriterAvatar;
+
   return (
     <>
       <article className={S.Feed}>
@@ -58,22 +67,16 @@ function Feed({
           <FeedProfile
             nickName={writer?.nickname || 'Unknown'}
             createdAt={createdAt}
+            url={postWriterAvatarURL}
           />
           <KebabMenu category={category} categoryText="게시물" />
         </section>
         <section className={S.feedMainDesc}>
           <span>{content}</span>
         </section>
-        {imgSrc && (
+        {imgSrc && !imageLoadError && (
           <section className={S.feedMainImg}>
-            <img
-              src={imgSrc}
-              alt="Feed image"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = '/path/to/fallback/image.jpg';
-              }}
-            />
+            <img src={imgSrc} alt="" onError={handleImageError} />
           </section>
         )}
         <section className={S.BtnCount}>
@@ -96,13 +99,14 @@ function Feed({
 }
 
 Feed.propTypes = {
-  imgSrc: PropTypes.string,
-  userId: PropTypes.string,
-  content: PropTypes.string.isRequired,
-  createdAt: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  writer: PropTypes.shape({
-    nickname: PropTypes.string,
+  imgSrc: string,
+  userId: string,
+  content: string.isRequired,
+  createdAt: string.isRequired,
+  category: string.isRequired,
+  writer: shape({
+    nickname: string,
+    avatar: string,
   }),
   user: object,
   feed: object,

@@ -3,10 +3,10 @@ import S from '@/routes/community/component/FeedProfile.module.css';
 import TimeAgo from '@/routes/community/component/TimeAgo';
 import PropTypes from 'prop-types';
 
-function FeedProfile({ nickName, createdAt }) {
+function FeedProfile({ nickName, createdAt, url }) {
   return (
     <div className={S.component}>
-      <ProfileImage url="/profile.png" width={30} height={30} />
+      <ProfileImage url={url} width={30} height={30} />
       <div className={S.nickName}>
         <h2>{nickName}</h2>
         <TimeAgo time={createdAt} />
@@ -22,6 +22,7 @@ FeedProfile.propTypes = {
     PropTypes.number,
     PropTypes.instanceOf(Date),
   ]),
+  url: PropTypes.string.isRequired,
 };
 
 export default FeedProfile;
