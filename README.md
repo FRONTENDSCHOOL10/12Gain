@@ -88,6 +88,10 @@
 
 ## 화면 구성
 
+
+### 랜딩 / 로그인 / 회원가입
+![12Gain-랜딩로그인회원가입](https://github.com/user-attachments/assets/a3caeb51-3fc1-4555-af9d-4768245dfb7d)
+
 <br/>
 
 ## 팀원
