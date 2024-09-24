@@ -137,10 +137,6 @@
 ### 회원 탈퇴
 ![12Gain-탈퇴](https://github.com/user-attachments/assets/d40f4bf9-967a-49ac-9d0b-b03c76f4aba7)
 
-### 404 Not Found
-![12Gain-404](https://github.com/user-attachments/assets/b9634ec8-fc92-4463-a44a-53ec5894e2fa)
-
-
 <br/>
 
 ## ✨ 팀원 소개
