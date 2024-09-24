@@ -107,6 +107,10 @@
 ### 채팅하기-2
 ![12Gain-채팅](https://github.com/user-attachments/assets/52dbdb09-c6c4-4640-b9c2-9a7cf9f7ba5b)
 
+### 검색 페이지
+![12Gain-검색](https://github.com/user-attachments/assets/d9b2b627-2128-4d16-bfcd-cddcccb9355d)
+
+
 ### 모임 게시글 생성
 ![12Gain-모임생성](https://github.com/user-attachments/assets/8bf9ac7b-66fc-4572-9df1-b74e0e292b19)
 
@@ -117,7 +121,8 @@
 ![12Gain-내모임](https://github.com/user-attachments/assets/f4d7a672-f1e7-4509-92be-01e2c2d349f3)
 
 ### 커뮤니티 페이지
-(추가 예정)
+![12Gain-커뮤니티](https://github.com/user-attachments/assets/eaa5dbe5-addd-4bce-8343-1a0feb1ca14f)
+
 
 ### 커뮤니티 피드 생성
 ![12Gain-커뮤니티피드생성](https://github.com/user-attachments/assets/6350af8c-fc24-47bb-b807-fcc2d4ca3774)
