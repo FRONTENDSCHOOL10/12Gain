@@ -95,6 +95,10 @@
 ### 메인, 모임 페이지
 ![12Gain-메인,모임](https://github.com/user-attachments/assets/e301ec80-bc04-4165-80cd-8438c1ae02a7)
 
+### 채팅하기
+![12Gain-모임채팅](https://github.com/user-attachments/assets/11c44839-40ae-4bc9-9bcd-834e7b327874) ![12Gain-채팅](https://github.com/user-attachments/assets/52dbdb09-c6c4-4640-b9c2-9a7cf9f7ba5b)
+
+
 
 <br/>
 
