@@ -44,6 +44,8 @@
 
 ### 유저 플로우
 ![image](https://github.com/user-attachments/assets/50a0e73d-6a9f-42a9-ba86-09d9fd610647)
+![12Gain-메인,모임](https://github.com/user-attachments/assets/e301ec80-bc04-4165-80cd-8438c1ae02a7)
+
 
 <br/>
 
