@@ -44,8 +44,6 @@
 
 ### 유저 플로우
 ![image](https://github.com/user-attachments/assets/50a0e73d-6a9f-42a9-ba86-09d9fd610647)
-![12Gain-메인,모임](https://github.com/user-attachments/assets/e301ec80-bc04-4165-80cd-8438c1ae02a7)
-
 
 <br/>
 
@@ -93,6 +91,10 @@
 
 ### 랜딩 / 로그인 / 회원가입
 ![12Gain-랜딩로그인회원가입](https://github.com/user-attachments/assets/a3caeb51-3fc1-4555-af9d-4768245dfb7d)
+
+### 메인, 모임 페이지
+![12Gain-메인,모임](https://github.com/user-attachments/assets/e301ec80-bc04-4165-80cd-8438c1ae02a7)
+
 
 <br/>
 
