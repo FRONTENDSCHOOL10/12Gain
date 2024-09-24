@@ -60,6 +60,9 @@ function Feed({
   const postWriterAvatarURL =
     writer.avatar === '' ? '/profile.png' : postWriterAvatar;
 
+  const feedWriter = writer?.id;
+  const feedId = feed?.id;
+
   return (
     <>
       <article className={S.Feed}>
@@ -72,7 +75,8 @@ function Feed({
           <KebabMenu
             category={category}
             categoryText="게시물"
-            writer={writer.id}
+            writer={feedWriter}
+            feedId={feedId}
           />
         </section>
         <section className={S.feedMainDesc}>

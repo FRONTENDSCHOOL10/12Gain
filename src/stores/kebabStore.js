@@ -62,20 +62,32 @@ export const useKebabMenuStore = create((set, get) => ({
     });
   },
 
-  handleConfirm: async (category, postId, categoryText, nav, isAuthor) => {
+  handleConfirm: async (category, postId, feedId, nav, isAuthor) => {
     const { confirmAction } = get();
     if (
       confirmAction === 'delete' ||
       (confirmAction === 'deletePost' && isAuthor)
     ) {
-      try {
-        await pb.collection(category).delete(postId);
-        nav('/main', { replace: true });
-        toast.success(`${categoryText}이 삭제되었습니다.`);
-      } catch {
-        toast.error(
-          `${categoryText} 삭제 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.`
-        );
+      if (category === 'appointmets') {
+        try {
+          await pb.collection('appointmets').delete(postId);
+          nav('/main', { replace: true });
+          toast.success(`모임이 삭제되었습니다.`);
+        } catch {
+          toast.error(
+            `모임 삭제 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.`
+          );
+        }
+      } else if (category === 'feeds') {
+        try {
+          await pb.collection('feeds').delete(feedId);
+          nav('/main/community', { replace: true });
+          toast.success(`게시물이 삭제되었습니다.`);
+        } catch {
+          toast.error(
+            `게시물 삭제 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.`
+          );
+        }
       }
     } else if (confirmAction === 'report') {
       try {
