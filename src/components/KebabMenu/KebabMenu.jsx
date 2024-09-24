@@ -13,10 +13,11 @@ KebabMenu.propTypes = {
   category: oneOf(['appointments', 'feeds']).isRequired,
   categoryText: oneOf(['모임', '게시물']).isRequired,
   chat: bool,
-  writer: string.isRequired,
+  writer: string,
+  feedId: string,
 };
 
-function KebabMenu({ category, categoryText, chat = false, writer }) {
+function KebabMenu({ category, categoryText, chat = false, writer, feedId }) {
   const { postId } = useParams();
   const nav = useNavigate();
   const {
@@ -125,7 +126,7 @@ function KebabMenu({ category, categoryText, chat = false, writer }) {
           <Confirm
             text={confirmText}
             onClick={() =>
-              handleConfirm(category, postId, categoryText, nav, isAuthor)
+              handleConfirm(category, postId, feedId, nav, isAuthor)
             }
             onCancel={handleCancel}
           />
