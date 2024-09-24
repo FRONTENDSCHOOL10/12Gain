@@ -123,7 +123,6 @@
 ### 커뮤니티 페이지
 ![12Gain-커뮤니티](https://github.com/user-attachments/assets/eaa5dbe5-addd-4bce-8343-1a0feb1ca14f)
 
-
 ### 커뮤니티 피드 생성
 ![12Gain-커뮤니티피드생성](https://github.com/user-attachments/assets/6350af8c-fc24-47bb-b807-fcc2d4ca3774)
 
